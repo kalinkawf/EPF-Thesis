@@ -1,0 +1,23 @@
+weather_dataset.csv attrs:
+
+timestamp - Date
+temp_skr - Temperature in Skierniewicze [C] (Cental Poland)
+temp_krk - Temperature in Krakow [C] (Southern Poland)
+temp_gda - Temperature in Gdansk [C] (Northern Poland)
+temp_babimos - Temperature in Babimost [C] (Western Poland)
+wind_speed_skr - Wind speed in Skierniewicze [m/s]
+wind_speed_krk - Wind speed in Krakow [m/s]
+wind_speed_gda - Wind speed in Gdansk [m/s]
+wind_speed_babimost - Wind speed in Babimost [m/s]
+cloud_cover_skr - Cloud cover in Skierniewicze [octas]
+cloud_cover_krk - Cloud cover in Krakow [octas]
+cloud_cover_gda - Cloud cover in Gdansk [octas]
+cloud_cover_babimost - Cloud cover in Babimost [octas]
+
+electricity_prices_day_ahead_hourly_all atts:
+date - Data i godzina 
+fixing_i_price - Cena na RDN [PLN / MWh]
+fixing_i_volume - Wolumen energii sprzedany w pierwszej sesji [MWh]
+fixing_ii_price - Cena energii elektrycznej ustalona w drugiej sesji (korekty) [PLN/MWh]
+fixing_ii_volume - Wolumen korekty [MWh]
+
