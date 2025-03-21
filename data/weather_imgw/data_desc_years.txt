@@ -1,0 +1,39 @@
+Source: https://danepubliczne.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/terminowe/klimat/
+
+
+Kod stacji                                                              9
+Nazwa stacji                                                           30
+Rok                                                                     4
+Miesiąc                                                                 2
+Dzień                                                                   2
+Godzina                                                                 2
+Temperatura powietrza [°C]                                              6/1
+Status pomiaru TEMP                                                     1
+Temperatura termometru zwilżonego [°C]                                  6/1
+Status pomiaru TTZW                                                     1
+Wskaźnik lodu [L/W]                                                     1
+Wskaźnik wentylacji [W/N]                                               1
+Wilgotność względna [%]                                                 5
+Status pomiaru WLGW                                                     1
+Kod kierunku wiatru [kod]                                               3
+Status pomiaru DKDK                                                     1
+Prędkość wiatru [m/s]                                                   5
+Status pomiaru FWR                                                      1
+Zachmurzenie ogólne [0-10 do dn.31.12.1988/oktanty od dn.01.01.1989]    5
+Status pomiaru ZOGK                                                     1
+Widzialność [kod]                                                       5
+Status pomiaru WID                                                      1
+
+Status "8" brak pomiaru
+
+które dane interesują : 
+Zachmurzenie ogólne [okt]
+Prędkość wiatru [m/s]
+Temperatura pow [°C]
+wilgotność? 
+
+Które stację interesują:
+Babimost
+Warszawa-Filtry
+Kraków-Obserwatorium
+Gdańsk-Rębiechowo
