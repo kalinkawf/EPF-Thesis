@@ -1,5 +1,3 @@
-weather_dataset.csv attrs:
-
 timestamp - Date
 temp_skr - Temperature in Skierniewicze [C] (Cental Poland)
 temp_krk - Temperature in Krakow [C] (Southern Poland)
@@ -14,10 +12,17 @@ cloud_cover_krk - Cloud cover in Krakow [octas]
 cloud_cover_gda - Cloud cover in Gdansk [octas]
 cloud_cover_babimost - Cloud cover in Babimost [octas]
 
-electricity_prices_day_ahead_hourly_all atts:
-date - Data i godzina 
 fixing_i_price - Cena na RDN [PLN / MWh]
-fixing_i_volume - Wolumen energii sprzedany w pierwszej sesji [MWh]
-fixing_ii_price - Cena energii elektrycznej ustalona w drugiej sesji (korekty) [PLN/MWh]
-fixing_ii_volume - Wolumen korekty [MWh]
 
+Niemcy Bilans - Bilans handlu z Niemcami [MWh]
+Czechy Bilans - Bilans handlu z Czechami [MWh]
+Litwa Bilans - Bilans handlu z Litwa [MWh]
+Słowacja Bilans - Bilans handlu z Slowacja [MWh]
+Szwecja Bilans - Bilans handlu ze Szwecja [MWh]
+Ukraina Bilans - Bilans handlu z Ukrainą [MWh]
+
+power_loss - Utrata mocy w wyniku awarii [MWh]
+Network_loss - Utrata mocy w sieci [MWh]
+
+gas_price - cena gazu []
+coal_price - cena c
