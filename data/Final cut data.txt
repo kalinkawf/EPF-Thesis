@@ -12,8 +12,6 @@ cloud_cover_krk - Cloud cover in Krakow [octas]
 cloud_cover_gda - Cloud cover in Gdansk [octas]
 cloud_cover_babimost - Cloud cover in Babimost [octas]
 
-fixing_i_price - Cena na RDN [PLN / MWh]
-
 Niemcy Bilans - Bilans handlu z Niemcami [MWh]
 Czechy Bilans - Bilans handlu z Czechami [MWh]
 Litwa Bilans - Bilans handlu z Litwa [MWh]
@@ -24,5 +22,15 @@ Ukraina Bilans - Bilans handlu z Ukrainą [MWh]
 power_loss - Utrata mocy w wyniku awarii [MWh]
 Network_loss - Utrata mocy w sieci [MWh]
 
-gas_price - cena gazu []
-coal_price - cena c
+fixing_i_price - Cena na RDN [PLN / MWh]
+gas_price - cena gazu ziemnego [PLN/MWh]
+coal_price - Cena polskiego węgla kamiennego []
+
+hard_coal - Produkcja energii z węgla kamiennego [MW]
+coal-derived - Produkcja energii z paliw pochodnych węgla [MW]
+lignite - Produkcja energii z węgla brunatnego [MW]
+gas - Produkcja energii z gazu ziemnego [MW]
+oil - Produkcja energii z ropy naftowej lub jej pochodnych [MW]
+biomass - Produkcja energii z biomasy [MW]
+wind_onshore - Produkcja energii z elektrowni wiatrowych lądowych [MW]
+solar - Produkcja energii z elektrowni słonecznych (fotowoltaicznych)  [MW]

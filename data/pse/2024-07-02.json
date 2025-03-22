@@ -1,0 +1,772 @@
+{
+    "value": [
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 00:15",
+            "obciazenie": 15731.197,
+            "udtczas_oreb": "00:00 - 00:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 00:30",
+            "obciazenie": 15451.915,
+            "udtczas_oreb": "00:15 - 00:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 00:45",
+            "obciazenie": 15319.449,
+            "udtczas_oreb": "00:30 - 00:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 01:00",
+            "obciazenie": 15245.356,
+            "udtczas_oreb": "00:45 - 01:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 01:15",
+            "obciazenie": 15120.462,
+            "udtczas_oreb": "01:00 - 01:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 01:30",
+            "obciazenie": 15099.66,
+            "udtczas_oreb": "01:15 - 01:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 01:45",
+            "obciazenie": 14783.936,
+            "udtczas_oreb": "01:30 - 01:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 02:00",
+            "obciazenie": 14869.8,
+            "udtczas_oreb": "01:45 - 02:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 02:15",
+            "obciazenie": 14540.689,
+            "udtczas_oreb": "02:00 - 02:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 02:30",
+            "obciazenie": 14600.852,
+            "udtczas_oreb": "02:15 - 02:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 02:45",
+            "obciazenie": 14536.788,
+            "udtczas_oreb": "02:30 - 02:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 03:00",
+            "obciazenie": 14673.801,
+            "udtczas_oreb": "02:45 - 03:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 03:15",
+            "obciazenie": 14612.759,
+            "udtczas_oreb": "03:00 - 03:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 03:30",
+            "obciazenie": 14375.631,
+            "udtczas_oreb": "03:15 - 03:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 03:45",
+            "obciazenie": 14534.985,
+            "udtczas_oreb": "03:30 - 03:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 04:00",
+            "obciazenie": 14360.725,
+            "udtczas_oreb": "03:45 - 04:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 04:15",
+            "obciazenie": 14460.813,
+            "udtczas_oreb": "04:00 - 04:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 04:30",
+            "obciazenie": 14487.806,
+            "udtczas_oreb": "04:15 - 04:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 04:45",
+            "obciazenie": 14495.254,
+            "udtczas_oreb": "04:30 - 04:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 05:00",
+            "obciazenie": 14600.416,
+            "udtczas_oreb": "04:45 - 05:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 05:15",
+            "obciazenie": 14756.5,
+            "udtczas_oreb": "05:00 - 05:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 05:30",
+            "obciazenie": 14984.935,
+            "udtczas_oreb": "05:15 - 05:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 05:45",
+            "obciazenie": 15081.012,
+            "udtczas_oreb": "05:30 - 05:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 06:00",
+            "obciazenie": 15576.913,
+            "udtczas_oreb": "05:45 - 06:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 06:15",
+            "obciazenie": 16792.281,
+            "udtczas_oreb": "06:00 - 06:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 06:30",
+            "obciazenie": 17480.203,
+            "udtczas_oreb": "06:15 - 06:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 06:45",
+            "obciazenie": 17817.213,
+            "udtczas_oreb": "06:30 - 06:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 07:00",
+            "obciazenie": 18274.793,
+            "udtczas_oreb": "06:45 - 07:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 07:15",
+            "obciazenie": 18838.094,
+            "udtczas_oreb": "07:00 - 07:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 07:30",
+            "obciazenie": 19062.521,
+            "udtczas_oreb": "07:15 - 07:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 07:45",
+            "obciazenie": 19322.121,
+            "udtczas_oreb": "07:30 - 07:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 08:00",
+            "obciazenie": 19599.297,
+            "udtczas_oreb": "07:45 - 08:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 08:15",
+            "obciazenie": 19771.104,
+            "udtczas_oreb": "08:00 - 08:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 08:30",
+            "obciazenie": 19876.266,
+            "udtczas_oreb": "08:15 - 08:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 08:45",
+            "obciazenie": 19634.969,
+            "udtczas_oreb": "08:30 - 08:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 09:00",
+            "obciazenie": 19943.066,
+            "udtczas_oreb": "08:45 - 09:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 09:15",
+            "obciazenie": 19985.482,
+            "udtczas_oreb": "09:00 - 09:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 09:30",
+            "obciazenie": 19819.879,
+            "udtczas_oreb": "09:15 - 09:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 09:45",
+            "obciazenie": 19744.74,
+            "udtczas_oreb": "09:30 - 09:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 10:00",
+            "obciazenie": 19586.049,
+            "udtczas_oreb": "09:45 - 10:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 10:15",
+            "obciazenie": 20011.092,
+            "udtczas_oreb": "10:00 - 10:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 10:30",
+            "obciazenie": 19618.355,
+            "udtczas_oreb": "10:15 - 10:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 10:45",
+            "obciazenie": 20486.305,
+            "udtczas_oreb": "10:30 - 10:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 11:00",
+            "obciazenie": 20199.982,
+            "udtczas_oreb": "10:45 - 11:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 11:15",
+            "obciazenie": 20061.29,
+            "udtczas_oreb": "11:00 - 11:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 11:30",
+            "obciazenie": 20361.807,
+            "udtczas_oreb": "11:15 - 11:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 11:45",
+            "obciazenie": 20095.088,
+            "udtczas_oreb": "11:30 - 11:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 12:00",
+            "obciazenie": 20430.637,
+            "udtczas_oreb": "11:45 - 12:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 12:15",
+            "obciazenie": 20494.486,
+            "udtczas_oreb": "12:00 - 12:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 12:30",
+            "obciazenie": 20696.045,
+            "udtczas_oreb": "12:15 - 12:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 12:45",
+            "obciazenie": 20496.4,
+            "udtczas_oreb": "12:30 - 12:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 13:00",
+            "obciazenie": 20140.824,
+            "udtczas_oreb": "12:45 - 13:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 13:15",
+            "obciazenie": 19551.107,
+            "udtczas_oreb": "13:00 - 13:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 13:30",
+            "obciazenie": 19588.719,
+            "udtczas_oreb": "13:15 - 13:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 13:45",
+            "obciazenie": 19988.953,
+            "udtczas_oreb": "13:30 - 13:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 14:00",
+            "obciazenie": 19102.717,
+            "udtczas_oreb": "13:45 - 14:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 14:15",
+            "obciazenie": 18733.984,
+            "udtczas_oreb": "14:00 - 14:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 14:30",
+            "obciazenie": 18981.766,
+            "udtczas_oreb": "14:15 - 14:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 14:45",
+            "obciazenie": 19366.604,
+            "udtczas_oreb": "14:30 - 14:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 15:00",
+            "obciazenie": 19087.197,
+            "udtczas_oreb": "14:45 - 15:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 15:15",
+            "obciazenie": 19348.225,
+            "udtczas_oreb": "15:00 - 15:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 15:30",
+            "obciazenie": 19251.455,
+            "udtczas_oreb": "15:15 - 15:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 15:45",
+            "obciazenie": 19352.512,
+            "udtczas_oreb": "15:30 - 15:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 16:00",
+            "obciazenie": 19394.643,
+            "udtczas_oreb": "15:45 - 16:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 16:15",
+            "obciazenie": 19371.328,
+            "udtczas_oreb": "16:00 - 16:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 16:30",
+            "obciazenie": 18839.902,
+            "udtczas_oreb": "16:15 - 16:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 16:45",
+            "obciazenie": 18972.516,
+            "udtczas_oreb": "16:30 - 16:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 17:00",
+            "obciazenie": 19454.594,
+            "udtczas_oreb": "16:45 - 17:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 17:15",
+            "obciazenie": 19504.61,
+            "udtczas_oreb": "17:00 - 17:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 17:30",
+            "obciazenie": 19840.17,
+            "udtczas_oreb": "17:15 - 17:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 17:45",
+            "obciazenie": 19615.768,
+            "udtczas_oreb": "17:30 - 17:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 18:00",
+            "obciazenie": 19392.01,
+            "udtczas_oreb": "17:45 - 18:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 18:15",
+            "obciazenie": 19432.027,
+            "udtczas_oreb": "18:00 - 18:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 18:30",
+            "obciazenie": 19612.2,
+            "udtczas_oreb": "18:15 - 18:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 18:45",
+            "obciazenie": 19861.605,
+            "udtczas_oreb": "18:30 - 18:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 19:00",
+            "obciazenie": 19810.082,
+            "udtczas_oreb": "18:45 - 19:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 19:15",
+            "obciazenie": 19669.695,
+            "udtczas_oreb": "19:00 - 19:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 19:30",
+            "obciazenie": 19745.008,
+            "udtczas_oreb": "19:15 - 19:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 19:45",
+            "obciazenie": 19717.117,
+            "udtczas_oreb": "19:30 - 19:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 20:00",
+            "obciazenie": 19707.094,
+            "udtczas_oreb": "19:45 - 20:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 20:15",
+            "obciazenie": 19817.047,
+            "udtczas_oreb": "20:00 - 20:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 20:30",
+            "obciazenie": 19632.635,
+            "udtczas_oreb": "20:15 - 20:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 20:45",
+            "obciazenie": 19487.402,
+            "udtczas_oreb": "20:30 - 20:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 21:00",
+            "obciazenie": 19502.867,
+            "udtczas_oreb": "20:45 - 21:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 21:15",
+            "obciazenie": 19313.291,
+            "udtczas_oreb": "21:00 - 21:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 21:30",
+            "obciazenie": 18960.635,
+            "udtczas_oreb": "21:15 - 21:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 21:45",
+            "obciazenie": 18963.068,
+            "udtczas_oreb": "21:30 - 21:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 22:00",
+            "obciazenie": 18386.291,
+            "udtczas_oreb": "21:45 - 22:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 22:15",
+            "obciazenie": 18061.594,
+            "udtczas_oreb": "22:00 - 22:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 22:30",
+            "obciazenie": 17990.559,
+            "udtczas_oreb": "22:15 - 22:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 22:45",
+            "obciazenie": 17570.182,
+            "udtczas_oreb": "22:30 - 22:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 23:00",
+            "obciazenie": 17249.303,
+            "udtczas_oreb": "22:45 - 23:00",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 23:15",
+            "obciazenie": 16852.605,
+            "udtczas_oreb": "23:00 - 23:15",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 23:30",
+            "obciazenie": 16717.92,
+            "udtczas_oreb": "23:15 - 23:30",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 23:45",
+            "obciazenie": 16027.024,
+            "udtczas_oreb": "23:30 - 23:45",
+            "business_date": "2024-07-02",
+            "source_datetime": "2025-02-02 19:49:07.344"
+        },
+        {
+            "doba": "2024-07-02",
+            "udtczas": "2024-07-02 00:00",
+            "obciazenie": 16180.803,
+            "udtczas_oreb": "23:45 - 24:00",
+            "business_date": "2024-07-01",
+            "source_datetime": "2025-02-02 19:49:05.731"
+        }
+    ]
+}
