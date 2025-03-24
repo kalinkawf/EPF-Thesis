@@ -1,16 +1,21 @@
 timestamp - Date
-temp_skr - Temperature in Skierniewicze [C] (Cental Poland)
+
+temp_waw - Temperature in Warsaw [C] (Cental Poland)
+wind_speed_waw - Wind speed [m/s]
+cloud_cover_waw - Cloud cover [octas]
+solar_radiation_waw - Promieniowanie [W/m²]
+temp_ksz - Temperature in Koszalin [C] (Northern Poland)
+wind_speed_ksz - Wind speed [m/s]
+cloud_cover_ksz - Cloud cover [octas]
+solar_radiation_ksz - Promieniowanie [W/m²]
 temp_krk - Temperature in Krakow [C] (Southern Poland)
-temp_gda - Temperature in Gdansk [C] (Northern Poland)
-temp_babimos - Temperature in Babimost [C] (Western Poland)
-wind_speed_skr - Wind speed in Skierniewicze [m/s]
-wind_speed_krk - Wind speed in Krakow [m/s]
-wind_speed_gda - Wind speed in Gdansk [m/s]
-wind_speed_babimost - Wind speed in Babimost [m/s]
-cloud_cover_skr - Cloud cover in Skierniewicze [octas]
-cloud_cover_krk - Cloud cover in Krakow [octas]
-cloud_cover_gda - Cloud cover in Gdansk [octas]
-cloud_cover_babimost - Cloud cover in Babimost [octas]
+wind_speed_krk - Wind speed [m/s]
+cloud_cover_krk - Cloud cover [octas]
+solar_radiation_krk - Promieniowanie [W/m²]
+temp_bab -  Temperature in Babimost [C] (Western Poland)
+wind_speed_bab - Wind speed [m/s]
+cloud_cover_bab - Cloud cover [octas]
+solar_radiation_bab - Promieniowanie [W/m²]
 
 Niemcy Bilans - Bilans handlu z Niemcami [MWh]
 Czechy Bilans - Bilans handlu z Czechami [MWh]
@@ -24,7 +29,7 @@ Network_loss - Utrata mocy w sieci [MWh]
 
 fixing_i_price - Cena na RDN [PLN / MWh]
 gas_price - cena gazu ziemnego [PLN/MWh]
-coal_price - Cena polskiego węgla kamiennego []
+coal_price - Cena polskiego węgla kamiennego [PLN/t]
 
 hard_coal - Produkcja energii z węgla kamiennego [MW]
 coal-derived - Produkcja energii z paliw pochodnych węgla [MW]
