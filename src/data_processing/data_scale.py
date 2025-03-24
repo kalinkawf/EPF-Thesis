@@ -1,9 +1,12 @@
 import pandas as pd
 import os
+from datetime import datetime, timedelta
+import holidays as hl
 
 # Ścieżki do plików
-input_dir = "../../data/"
-output_file = "../../data/combined_data.csv"
+input_dir = "../../data/processed_data/"
+other_data_input_dir = "../../data/other_data/"
+output_file = "../../data/database.csv"
 
 # Lista plików i ich kolumn z czasem
 files = {
@@ -12,6 +15,13 @@ files = {
     "import_export.csv": "Time",
     "energy_sources_prod.csv": "date",
     "electricity_prices_day_ahead_hourly_all.csv": "date"
+}
+
+price_files = {
+    "prices_gas_day_ahead_all.csv": ["gas_price", "gas_volume"],
+    "prices_coal_all.csv": ["coal_pscmi1_pln_per_gj"],
+    "prices_eu_co2.csv": ["co2_price"],
+    "usd_eur_pln_daily.csv": ["pln_usd", "pln_eur"]
 }
 
 # Wczytaj dane i ujednolić timestampy
@@ -41,13 +51,155 @@ for file_name, time_col in files.items():
 # Stwórz wspólny zakres czasowy (godzinowy)
 min_timestamp = min(df["timestamp"].min() for df in all_data)
 max_timestamp = max(df["timestamp"].max() for df in all_data)
-common_timestamps = pd.date_range(start=min_timestamp, end=max_timestamp, freq="H")
+common_timestamps = pd.date_range(start=min_timestamp, end=max_timestamp, freq="h")
 common_df = pd.DataFrame({"timestamp": common_timestamps})
 
 # Połącz dane w jeden DataFrame
 combined_df = common_df
 for df in all_data:
     combined_df = combined_df.merge(df, on="timestamp", how="outer")
+
+# Wczytaj dane z plików z cenami (dzienne, miesięczne i nieregularne)
+all_new_data = []
+for file_name, selected_cols in price_files.items():
+    file_path = os.path.join(other_data_input_dir, file_name)
+    print(f"\nWczytuję dane z pliku: {file_path}")
+    
+    # Wczytaj plik
+    df = pd.read_csv(file_path)
+    if "usd_eur" in file_name:
+        # Parsuj datę w formacie YYYY-MM-DD
+        df["date"] = pd.to_datetime(df["date"], format="%Y-%m-%d")
+    else:
+        df["date"] = pd.to_datetime(df["date"], format="%d.%m.%Y", errors="coerce")
+    
+    # Wybierz tylko potrzebne kolumny
+    df = df[["date"] + selected_cols]
+    
+    # Obsługa danych dziennych (ceny gazu)
+    if "gas" in file_name:
+        # Rozszerz dane dzienne na godzinowe
+        hourly_data = []
+        for _, row in df.iterrows():
+            day = row["date"]
+            for hour in range(24):
+                timestamp = day + pd.Timedelta(hours=hour)
+                new_row = {"timestamp": timestamp}
+                for col in selected_cols:
+                    new_row[col] = row[col]
+                hourly_data.append(new_row)
+        
+        # Stwórz DataFrame z danymi godzinowymi
+        hourly_df = pd.DataFrame(hourly_data)
+        all_new_data.append(hourly_df)
+    
+    # Obsługa danych miesięcznych (ceny węgla)
+    elif "coal" in file_name:
+        # Rozszerz dane miesięczne na dzienne, a następnie na godzinowe
+        hourly_data = []
+        for _, row in df.iterrows():
+            month_start = row["date"]
+            # Znajdź koniec miesiąca
+            if month_start.month == 12:
+                month_end = month_start.replace(year=month_start.year + 1, month=1, day=1) - pd.Timedelta(days=1)
+            else:
+                month_end = month_start.replace(month=month_start.month + 1, day=1) - pd.Timedelta(days=1)
+            
+            # Wygeneruj wszystkie dni w danym miesiącu
+            current_day = month_start
+            while current_day <= month_end:
+                # Dla każdego dnia wygeneruj 24 rekordy godzinowe
+                for hour in range(24):
+                    timestamp = current_day + pd.Timedelta(hours=hour)
+                    new_row = {"timestamp": timestamp}
+                    for col in selected_cols:
+                        new_row[col] = row[col]
+                    hourly_data.append(new_row)
+                current_day += pd.Timedelta(days=1)
+        
+        # Stwórz DataFrame z danymi godzinowymi
+        hourly_df = pd.DataFrame(hourly_data)
+        all_new_data.append(hourly_df)
+    
+    # Obsługa danych nieregularnych (ceny CO2)
+    elif "co2" in file_name:
+        # Interpolacja liniowa na dane dzienne
+        # Stwórz ciągły zakres czasowy (dzienny) od min do max daty
+        min_date = df["date"].min()
+        max_date = df["date"].max()
+        daily_dates = pd.date_range(start=min_date, end=max_date, freq="D")
+        daily_df = pd.DataFrame({"date": daily_dates})
+        
+        # Połącz z oryginalnymi danymi
+        daily_df = daily_df.merge(df, on="date", how="left")
+        
+        # Interpolacja liniowa dla wybranych kolumn
+        for col in selected_cols:
+            daily_df[col] = daily_df[col].interpolate(method="linear")
+        
+        # Rozszerz dane dzienne na godzinowe
+        hourly_data = []
+        for _, row in daily_df.iterrows():
+            day = row["date"]
+            for hour in range(24):
+                timestamp = day + pd.Timedelta(hours=hour)
+                new_row = {"timestamp": timestamp}
+                for col in selected_cols:
+                    new_row[col] = row[col]
+                hourly_data.append(new_row)
+        
+        # Stwórz DataFrame z danymi godzinowymi
+        hourly_df = pd.DataFrame(hourly_data)
+        all_new_data.append(hourly_df)
+    
+    # Obsługa danych nieregularnych (kursy walut z NBP)
+    elif "usd_eur" in file_name:
+        # Interpolacja liniowa na dane dzienne
+        # Stwórz ciągły zakres czasowy (dzienny) od min do max daty
+        min_date = df["date"].min()
+        max_date = df["date"].max()
+        daily_dates = pd.date_range(start=min_date, end=max_date, freq="D")
+        daily_df = pd.DataFrame({"date": daily_dates})
+        
+        # Połącz z oryginalnymi danymi
+        daily_df = daily_df.merge(df, on="date", how="left")
+        
+        # Interpolacja liniowa dla wybranych kolumn
+        for col in selected_cols:
+            daily_df[col] = daily_df[col].interpolate(method="linear")
+            # Wypełnij wartości NaN na początku i końcu (jeśli istnieją) metodą forward/backward fill
+            daily_df[col] = daily_df[col].ffill().bfill()
+        
+        # Rozszerz dane dzienne na godzinowe
+        hourly_data = []
+        for _, row in daily_df.iterrows():
+            day = row["date"]
+            for hour in range(24):
+                timestamp = day + pd.Timedelta(hours=hour)
+                new_row = {"timestamp": timestamp}
+                for col in selected_cols:
+                    new_row[col] = row[col]
+                hourly_data.append(new_row)
+        
+        # Stwórz DataFrame z danymi godzinowymi
+        hourly_df = pd.DataFrame(hourly_data)
+        all_new_data.append(hourly_df)
+
+# Połącz dane godzinowe z innymi danymi
+for df in all_new_data:
+    combined_df = combined_df.merge(df, on="timestamp", how="outer")
+
+# Przekształć wartości co2_price na PLN, mnożąc przez pln_eur
+combined_df["co2_price"] = combined_df["co2_price"] * combined_df["pln_eur"]
+combined_df = combined_df.drop(columns=["pln_eur"])
+
+# Dodaj kolumnę dzień tygodnia
+combined_df["day_of_week"] = combined_df["timestamp"].dt.dayofweek  # 0 = poniedziałek, 6 = niedziela
+
+# Dodaj kolumnę is_holiday (używając biblioteki holidays dla Polski)
+holidays = hl.PL(years=range(2016, 2025)).keys()
+print(f"\nLista dni wolnych w Polsce: {holidays}")
+combined_df["is_holiday"] = combined_df["timestamp"].dt.date.isin(holidays)
 
 # Posortuj według timestamp
 combined_df = combined_df.sort_values("timestamp")

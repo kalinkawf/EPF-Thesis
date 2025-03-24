@@ -1,4 +1,4 @@
-date,indeks,price,volume
+date,indeks,gas_price,gas_volume
 01.01.2016,tgegasda,72.07,64848.00
 02.01.2016,tgegasda,72.07,64848.00
 03.01.2016,tgegasda,70.97,111120.00
