@@ -36,6 +36,7 @@ fixing_i_volume - Wolumen [kMWh]
 gas_price - cena gazu ziemnego [PLN/MWh]
 coal_price - Cena polskiego węgla kamiennego [PLN/gj]
 co2_price - Cena uprawnień do emisji CO2 [PLN/tCO2]
+brent_price - Cena ropy Brent Europe [PLN/bar]
 pln_usd - Kurs PLN do USD 
 
 Produkcja energii z różnych źródeł:

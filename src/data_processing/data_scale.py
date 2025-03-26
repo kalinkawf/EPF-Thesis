@@ -21,7 +21,8 @@ price_files = {
     "prices_gas_day_ahead_all.csv": ["gas_price", "gas_volume"],
     "prices_coal_all.csv": ["coal_pscmi1_pln_per_gj"],
     "prices_eu_co2.csv": ["co2_price"],
-    "usd_eur_pln_daily.csv": ["pln_usd", "pln_eur"]
+    "usd_eur_pln_daily.csv": ["pln_usd", "pln_eur"],
+    "Europe_Brent_Spot_Price.csv": ["Brent_USD"],
 }
 
 # Wczytaj dane i ujednolić timestampy
@@ -70,6 +71,9 @@ for file_name, selected_cols in price_files.items():
     if "usd_eur" in file_name:
         # Parsuj datę w formacie YYYY-MM-DD
         df["date"] = pd.to_datetime(df["date"], format="%Y-%m-%d")
+    elif "Europe_Brent_Spot_Price" in file_name:
+        # Parsuj datę w formacie DD.MM.YYYY
+        df["date"] = pd.to_datetime(df["date"], format="%m/%d/%Y", errors="coerce")
     else:
         df["date"] = pd.to_datetime(df["date"], format="%d.%m.%Y", errors="coerce")
     
@@ -184,6 +188,37 @@ for file_name, selected_cols in price_files.items():
         # Stwórz DataFrame z danymi godzinowymi
         hourly_df = pd.DataFrame(hourly_data)
         all_new_data.append(hourly_df)
+    elif "Europe_Brent_Spot_Price" in file_name:
+        # Interpolacja liniowa na dane dzienne
+        # Stwórz ciągły zakres czasowy (dzienny) od min do max daty
+        min_date = df["date"].min()
+        max_date = df["date"].max()
+        daily_dates = pd.date_range(start=min_date, end=max_date, freq="D")
+        daily_df = pd.DataFrame({"date": daily_dates})
+        
+        # Połącz z oryginalnymi danymi
+        daily_df = daily_df.merge(df, on="date", how="left")
+        
+        # Interpolacja liniowa dla wybranych kolumn
+        for col in selected_cols:
+            daily_df[col] = daily_df[col].interpolate(method="linear")
+            # Wypełnij wartości NaN na początku i końcu (jeśli istnieją) metodą forward/backward fill
+            daily_df[col] = daily_df[col].ffill().bfill()
+        
+        # Rozszerz dane dzienne na godzinowe
+        hourly_data = []
+        for _, row in daily_df.iterrows():
+            day = row["date"]
+            for hour in range(24):
+                timestamp = day + pd.Timedelta(hours=hour)
+                new_row = {"timestamp": timestamp}
+                for col in selected_cols:
+                    new_row[col] = row[col]
+                hourly_data.append(new_row)
+        
+        # Stwórz DataFrame z danymi godzinowymi
+        hourly_df = pd.DataFrame(hourly_data)
+        all_new_data.append(hourly_df)
 
 # Połącz dane godzinowe z innymi danymi
 for df in all_new_data:
@@ -192,6 +227,10 @@ for df in all_new_data:
 # Przekształć wartości co2_price na PLN, mnożąc przez pln_eur
 combined_df["co2_price"] = combined_df["co2_price"] * combined_df["pln_eur"]
 combined_df = combined_df.drop(columns=["pln_eur"])
+
+# Przekształć wartości Brent_USD na PLN, mnożąc przez pln_usd, i zmień nazwę kolumny na brent_price
+combined_df["brent_price"] = combined_df["Brent_USD"] * combined_df["pln_usd"]
+combined_df = combined_df.drop(columns=["Brent_USD"])
 
 # Dodaj kolumnę dzień tygodnia
 combined_df["day_of_week"] = combined_df["timestamp"].dt.dayofweek  # 0 = poniedziałek, 6 = niedziela

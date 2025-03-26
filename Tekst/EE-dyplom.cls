@@ -104,8 +104,8 @@
     \setromanfont{Latin Modern Roman}
     \setsansfont{Latin Modern Sans}
     \setmonofont{Latin Modern Mono}
-    \setmathrm{Latin Modern Math}
-    \setmathfont(Digits,Latin)[Scale=MatchLowercase]{Latin Modern Math}
+    % \setmathrm{Latin Modern Math}
+    % \setmathfont(Digits,Latin)[Scale=MatchLowercase]{Latin Modern Math}
 \else
     \RequirePackage{lmodern}
     \renewcommand*\familydefault{\sfdefault}
