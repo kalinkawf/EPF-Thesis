@@ -48,7 +48,11 @@ oil - Produkcja energii z ropy naftowej lub jej pochodnych [MW]
 biomass - Produkcja energii z biomasy [MW]
 wind_onshore - Produkcja energii z elektrowni wiatrowych lądowych [MW]
 solar - Produkcja energii z elektrowni słonecznych (fotowoltaicznych)  [MW]
+Load - Rzeczywiste zapotrzebowanie na daną godzinę [MW]
 
 Other data:
 day_of_week - Dzień tyg [0-6]
 is_holiday - Czy święto [True/False]
+
+Ilosc danych : 78813
+Zakres 01.01.2016 - 31.12.2024 minus popsute dane

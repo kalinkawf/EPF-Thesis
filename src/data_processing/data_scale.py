@@ -14,7 +14,8 @@ files = {
     "power_outages.csv": "Time",
     "import_export.csv": "Time",
     "energy_sources_prod.csv": "date",
-    "electricity_prices_day_ahead_hourly_all.csv": "date"
+    "electricity_prices_day_ahead_hourly_all.csv": "date",
+    "load.csv": "date"
 }
 
 price_files = {
@@ -24,6 +25,9 @@ price_files = {
     "usd_eur_pln_daily.csv": ["pln_usd", "pln_eur"],
     "Europe_Brent_Spot_Price.csv": ["Brent_USD"],
 }
+
+# 78843 - tyle danych przed dodaniem load
+# 78813 - tyle danych po dodaniu load
 
 # Wczytaj dane i ujednolić timestampy
 all_data = []
