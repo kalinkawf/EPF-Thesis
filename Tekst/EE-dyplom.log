@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.3.25)  25 MAR 2025 18:50
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.8)  9 APR 2025 18:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -485,44 +485,6 @@ Package polyglossia Info: Default language is polish
 sh.ldf
 File: gloss-english.ldf polyglossia: module for English
 )
-(C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/polyglossia\gloss-latin
-.ldf
-File: gloss-latin.ldf polyglossia: module for Latin
-\g_polyglossia_latin_question_exclamation_class=\XeTeXcharclass4
-\g_polyglossia_latin_colon_semicolon_class=\XeTeXcharclass5
-\g_polyglossia_latin_opening_guillemet_class=\XeTeXcharclass6
-\g_polyglossia_latin_closing_guillemet_class=\XeTeXcharclass7
-\g_polyglossia_latin_opening_bracket_class=\XeTeXcharclass8
-\g_polyglossia_latin_closing_bracket_class=\XeTeXcharclass9
-
-Package polyglossia Info: Activating Latin language variant "modern" on line
-(polyglossia)             585.
-
-
-Package polyglossia Info: Activating hyphenation patterns for modern Latin on
-(polyglossia)             line 585.
-
-
-Package polyglossia Info: Activating Latin language variant "modern" on line
-(polyglossia)             590.
-
-
-Package polyglossia Info: Activating hyphenation patterns for modern Latin on
-(polyglossia)             line 590.
-
-Package babel Info: Making ' an active character on input line 598.
-Package babel Info: Making ^ an active character on input line 599.
-Package babel Info: Making = an active character on input line 600.
-)
-
-Package polyglossia Info: Activating Latin language variant "modern" on line
-(polyglossia)             136.
-
-
-Package polyglossia Info: Activating hyphenation patterns for modern Latin on
-(polyglossia)             line 136.
-
-
 (C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
@@ -1580,6 +1542,13 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 )
 \docparskip=\skip115
 \c@easyappendix=\count540
+) (C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count541
+\float@exts=\toks61
+\float@box=\box131
+\@float@everytoks=\toks62
+\@floatcapt=\box132
 )
 
 Package fontspec Info: 
@@ -1600,30 +1569,31 @@ Package fontspec Info:
 (fontspec)             Modern
 (fontspec)             Sans/BI/OT:script=latn;language=PLK;mapping=tex-text;"
 
- (EE-dyplom.aux)
+
+(EE-dyplom.aux)
 \openout1 = `EE-dyplom.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+ (EE-dyplom.glsdefs)
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1678,13 +1648,6 @@ Package biblatex Info: ... file 'english.lbx' found.
 x
 File: english.lbx 2024/03/21 v3.20 biblatex localization (PK/MW)
 ))
-Package biblatex Info: Trying to load language 'latin'...
-Package biblatex Info: ... file 'latin.lbx' not found.
-
-
-Package biblatex Warning: Language 'latin' not supported.
-(biblatex)                Using dummy definitions on input line 67.
-
 Package biblatex Info: Trying to load language 'polish'...
 Package biblatex Info: ... file 'polish.lbx' found.
 
@@ -1700,18 +1663,19 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'EE-dyplom.bbl' found.
  (EE-dyplom.bbl)
-Package biblatex Info: Reference section=0 on input line 67.
-Package biblatex Info: Reference segment=0 on input line 67.
+Package biblatex Info: Reference section=0 on input line 70.
+Package biblatex Info: Reference segment=0 on input line 70.
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 67.
+Package hyperref Info: Link coloring ON on input line 70.
  (EE-dyplom.out) (EE-dyplom.out)
 \@outlinefile=\write9
 \openout9 = `EE-dyplom.out'.
 
-\c@lstlisting=\count541
+\c@lstlisting=\count542
 File: gfx/HeadgikPL.png Graphic file (type bmp)
 <gfx/HeadgikPL.png>
 File: gfx/mgrhead.png Graphic file (type bmp)
@@ -1740,7 +1704,23 @@ File: gfx/mgrhead.png Graphic file (type bmp)
 
 [6
 
-] (EE-dyplom.toc)
+] (EE-dyplom.toc
+LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
+
+(C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 5.
+
+(C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+esint on input line 5
+.
+
+(C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/esint\uesint.fd
+File: uesint.fd 
+))
 \tf@toc=\write10
 \openout10 = `EE-dyplom.toc'.
 
@@ -1752,328 +1732,96 @@ File: gfx/mgrhead.png Graphic file (type bmp)
 
 [8
 
-] (tekst/main.tex
+] (tekst/wstep.tex
 Rozdział 1.
-(tekst/wstep.tex
-LaTeX Font Info:    Trying to load font information for U+msa on input line 3.
 
-(C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
-
-(C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Trying to load font information for U+esint on input line 3
-.
-
-(C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/esint\uesint.fd
-File: uesint.fd 
-)
 
 [9
 
-]
-File: rysunki/Kopernik.jpg Graphic file (type bmp)
-<rysunki/Kopernik.jpg>
-File: rysunki/wektorowo.pdf Graphic file (type pdf)
-<use rysunki/wektorowo.pdf>
-File: rysunki/wektorowo.png Graphic file (type bmp)
-<rysunki/wektorowo.png>
-
+]) (tekst/dane.tex
 
 [10]
 
 [11]
 
-LaTeX Warning: Citation 'fowler2009' on page 12 undefined on input line 82.
+[12
 
-
-LaTeX Warning: Citation 'maxwell1865' on page 12 undefined on input line 82.
-
-
-LaTeX Warning: Citation 'leksinski1995' on page 12 undefined on input line 82.
-
-
-LaTeX Warning: Citation 'leksinski1995' on page 12 undefined on input line 82.
-
-
-
-[12]
-
-LaTeX Warning: Citation 'tegoniema' on page 13 undefined on input line 90.
-
-File: rysunki/citethis.png Graphic file (type bmp)
-<rysunki/citethis.png>
-
-LaTeX Warning: Citation 'maxwell1865' on page 13 undefined on input line 101.
-
-
-LaTeX Warning: Citation 'cichon1995' on page 13 undefined on input line 101.
-
-
-LaTeX Warning: Citation 'lncsevo' on page 13 undefined on input line 101.
-
-
-Overfull \hbox (0.86353pt too wide) in paragraph at lines 101--102
- []\TU/LatinModernSans(1)/b/n/10.95 Przykład 1.[] \TU/LatinModernSans(1)/m/n/10
-.95 James Clerk Maxwell opublikował swe wiekopomne dzieło mając 35 lat [[]].
- []
-
+]
+Rozdział 2.
 
 
 [13]
-
-LaTeX Warning: Citation 'cpee2018' on page 14 undefined on input line 103.
-
-
-LaTeX Warning: Citation 'truong2018' on page 14 undefined on input line 105.
-
-
-LaTeX Warning: Citation 'poirier2020' on page 14 undefined on input line 105.
-
-
-LaTeX Warning: Citation 'nask2020' on page 14 undefined on input line 105.
-
-
-LaTeX Warning: Citation 'AN4230' on page 14 undefined on input line 105.
-
-
-LaTeX Warning: Citation 'szablon' on page 14 undefined on input line 107.
-
-
-LaTeX Warning: Citation 'wilamowski2017' on page 14 undefined on input line 116
-.
-
-
-Package polyglossia Info: Activating Latin language variant "modern" on line
-(polyglossia)             118.
-
-
-Package polyglossia Info: Activating hyphenation patterns for modern Latin on
-(polyglossia)             line 118.
-
-
-Package polyglossia Info: Activating Latin language variant "modern" on line
-(polyglossia)             118.
-
-
-Package polyglossia Info: Activating hyphenation patterns for modern Latin on
-(polyglossia)             line 118.
-
-
-Package polyglossia Info: Activating Latin language variant "modern" on line
-(polyglossia)             118.
-
-
-Package polyglossia Info: Activating hyphenation patterns for modern Latin on
-(polyglossia)             line 118.
-
+File: gfx/../plots/data/quarterly_fixing_i_price.png Graphic file (type bmp)
+<gfx/../plots/data/quarterly_fixing_i_price.png>
+File: gfx/../plots/data/histogram_fixing_i_price.png Graphic file (type bmp)
+<gfx/../plots/data/histogram_fixing_i_price.png>
 
 
 [14]
-Overfull \hbox (11.37851pt too wide) in paragraph at lines 129--130
-[]\TU/LatinModernSans(1)/m/n/10.95 Kolor „wrzosowy” – [][][][][][][]Administrac
-ji
- []
-
-Missing character: There is no e in font nullfont!
-Missing character: There is no v in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no y in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no / in font nullfont!
-Missing character: There is no . in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no y in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no r in font nullfont!
-
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 190--190
-[]|\TU/LatinModernSans(1)/m/n/10.95 2017-- 08-- 11
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+File: gfx/../plots/data/temp_time_series_full.png Graphic file (type bmp)
+<gfx/../plots/data/temp_time_series_full.png>
 
 
 [16]
-File: rysunki/kile.png Graphic file (type bmp)
-<rysunki/kile.png>
+File: gfx/../plots/data/wind_speed_time_series_full.png Graphic file (type bmp)
+
+<gfx/../plots/data/wind_speed_time_series_full.png>
+File: gfx/../plots/data/solar_radiation_time_series_full.png Graphic file (type
+ bmp)
+<gfx/../plots/data/solar_radiation_time_series_full.png>
 
 
 [17]
-File: rysunki/Ampere.jpg Graphic file (type bmp)
-<rysunki/Ampere.jpg>
+File: gfx/../plots/data/cloud_cover_time_series_full.png Graphic file (type bmp
+)
+<gfx/../plots/data/cloud_cover_time_series_full.png>
+File: gfx/../plots/data/temp_time_series_2022.png Graphic file (type bmp)
+<gfx/../plots/data/temp_time_series_2022.png>
 
 
 [18]
-File: rysunki/Faraday.jpg Graphic file (type bmp)
-<rysunki/Faraday.jpg>
-File: rysunki/Ohm.jpg Graphic file (type bmp)
-<rysunki/Ohm.jpg>
+File: gfx/../plots/data/wind_speed_time_series_2022.png Graphic file (type bmp)
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
+<gfx/../plots/data/wind_speed_time_series_2022.png>
+File: gfx/../plots/data/solar_radiation_time_series_2022.png Graphic file (type
+ bmp)
+<gfx/../plots/data/solar_radiation_time_series_2022.png>
+File: gfx/../plots/data/cloud_cover_time_series_2022.png Graphic file (type bmp
+)
+<gfx/../plots/data/cloud_cover_time_series_2022.png>
 
 
 [19]
 
-LaTeX Warning: Citation 'maxwell1865' on page 20 undefined on input line 311.
-
-
-
 [20]
-File: rysunki/Maxwell.jpg Graphic file (type bmp)
-<rysunki/Maxwell.jpg>
+File: gfx/../plots/data/energy_production_time_series_full.png Graphic file (ty
+pe bmp)
+<gfx/../plots/data/energy_production_time_series_full.png>
 
-
-[21]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 350
-.
- (C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd
-File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-)
-
-[22]
-(C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
-File: lstlang1.sty 2024/09/23 1.10c listings language file
-)
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 461.
-
-
-[23]
-
-LaTeX Font Warning: Font shape `TU/LatinModernMono(0)/b/n' undefined
-(Font)              using `TU/LatinModernMono(0)/m/n' instead on input line 467
-.
-
-
-LaTeX Warning: Reference `lst:helloC' on page 24 undefined on input line 481.
-
-(C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
-File: lstlang1.sty 2024/09/23 1.10c listings language file
-)
-(C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
-File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
-)
-
-LaTeX Warning: Reference `lst:Keccak' on page 24 undefined on input line 499.
-
-
-LaTeX Warning: Reference `lst:Keccak' on page 24 undefined on input line 499.
-
-(src/Keccak-inplace32BI.c
-
-[24])
-
-[25]
-(C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
-File: lstlang1.sty 2024/09/23 1.10c listings language file
-)
-(C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
-File: lstlang1.sty 2024/09/23 1.10c listings language file
-)
-
-[26]
-
-[27]
-
-LaTeX Warning: Reference `lst:kompilacja' on page 28 undefined on input line 61
-0.
-
-)
-
-[28]
-Rozdział 2.
-
-LaTeX Warning: Reference `ch:podsumowanie' on page 29 undefined on input line 1
-1.
-
-
-
-[29
-
-]
-
-[30
-
-]
-Rozdział 3.
-(tekst/praktyka.tex
-File: rysunki/Kopernik.jpg Graphic file (type bmp)
-<rysunki/Kopernik.jpg>
-
-Underfull \hbox (badness 10000) in paragraph at lines 15--15
-[]|\TU/LatinModernSans(1)/m/n/10.95 2017-- 08-- 11
+Overfull \hbox (45.52718pt too wide) in paragraph at lines 136--137
+ [][] 
  []
 
 
 
-[31]
+[21])
 
-[32]
+[22]
 
-[33]
+[23
 
-[34])
-
-[35]
-
-[36
-
-]
-Rozdział 4.
-(tekst/podsumowanie.tex))
-
-[37]
-
-[38
 
 ]
 
-LaTeX Warning: Empty bibliography on input line 78.
+[24
 
-No file EE-dyplom.acr.
-No file EE-dyplom.sls.
+] (EE-dyplom.acr) (EE-dyplom.sls)
 
+[25]
 
-[39
-
-]
-
-[40
+[26
 
 ] (EE-dyplom.lof)
 \tf@lof=\write11
@@ -2081,9 +1829,9 @@ No file EE-dyplom.sls.
 
 
 
-[41]
+[27]
 
-[42
+[28
 
 ] (EE-dyplom.lot)
 \tf@lot=\write12
@@ -2091,79 +1839,34 @@ No file EE-dyplom.sls.
 
 
 
-[43]
+[29]
 
-[44
+[30
 
 ] (EE-dyplom.app)
 \tf@app=\write13
 \openout13 = `EE-dyplom.app'.
 
- (appendices.tex
+ (appendices.tex)
 
-[45]
-
-[46
-
-]
-
-[47]
-
-[48
-
-]
-
-[49]
-
-[50
-
-]
-
-[51]
-
-[52
-
-])
-
-[53] (EE-dyplom.aux)
+[31] (EE-dyplom.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `EE-dyplom.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `EE-dyplom.out':
-(rerunfilecheck)             Before: 3582A7C8DEC6733B88CC81A76C123BC9;1977
-(rerunfilecheck)             After:  D09BEE4E57C0500AD4E7FAC5D28A4E37;4621.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                EE-dyplom
-(biblatex)                and rerun LaTeX afterwards.
-
+Package rerunfilecheck Info: File `EE-dyplom.out' has not changed.
+(rerunfilecheck)             Checksum: 98F3651534E6098B8D8C07DA06752FC4;1971.
 Package logreq Info: Writing requests to 'EE-dyplom.run.xml'.
 \openout1 = `EE-dyplom.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46965 strings out of 408640
- 945498 string characters out of 5744798
- 2254175 words of memory out of 5000000
- 69271 multiletter control sequences out of 15000+600000
- 570856 words of font info for 150 fonts, out of 8000000 for 9000
+ 46011 strings out of 408640
+ 930101 string characters out of 5744799
+ 2089206 words of memory out of 5000000
+ 68361 multiletter control sequences out of 15000+600000
+ 564486 words of font info for 113 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 114i,18n,131p,2386b,5050s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 114i,11n,131p,2386b,4958s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on EE-dyplom.pdf (53 pages).
+Output written on EE-dyplom.pdf (31 pages).

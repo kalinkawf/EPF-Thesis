@@ -1,0 +1,29 @@
+all parameters
+
+Ridge Regression (podział chronologiczny):
+Mean Squared Error (MSE): 62306.43
+Root Mean Squared Error (RMSE): 249.61
+Mean Absolute Error (MAE): 163.28
+Mean Absolute Percentage Error (MAPE): 3279.42%
+R²: 0.34
+
+Ridge Regression (podział losowy):
+Mean Squared Error (MSE): 14514.23
+Root Mean Squared Error (RMSE): 120.48
+Mean Absolute Error (MAE): 69.43
+Mean Absolute Percentage Error (MAPE): 650.06%
+R²: 0.80
+
+Prophet (podział losowy):
+Mean Squared Error (MSE): 12640.96
+Root Mean Squared Error (RMSE): 112.43
+Mean Absolute Error (MAE): 64.95
+Mean Absolute Percentage Error (MAPE): 1077.77%
+R²: 0.82
+
+Prophet (podział chronologiczny):
+Mean Squared Error (MSE): 72142.26
+Root Mean Squared Error (RMSE): 268.59
+Mean Absolute Error (MAE): 151.15
+Mean Absolute Percentage Error (MAPE): 4490.06%
+R²: 0.24
