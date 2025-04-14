@@ -539,9 +539,9 @@
 \newcommand{\kierunek}[1]{
     \newcommand{\@kierunek}{#1}
 }
-\newcommand{\specjalnosc}[1]{
-    \newcommand{\@specjalnosc}{#1}
-}
+% \newcommand{\specjalnosc}[1]{
+%     \newcommand{\@specjalnosc}{#1}
+% }
 \newcommand{\album}[1]{
     \newcommand{\@album}{#1}
 }
@@ -570,7 +570,7 @@
 
 \ifnum\strcmp{\locallang}{PL} = 0
     \newcommand{\kieruneklocal}{na~kierunku }
-    \newcommand{\specjalnosclocal}{w~specjalności }
+    % \newcommand{\specjalnosclocal}{w~specjalności }
     \newcommand{\titlelocal}{\@title }
     \newcommand{\albumlocal}{numer~albumu }
     \newcommand{\promotorlocal}{promotor}
@@ -610,7 +610,7 @@
         \vskip 1em
         \kieruneklocal \@kierunek
         \vskip .5em
-        \specjalnosclocal \@specjalnosc
+        % \specjalnosclocal \@specjalnosc
         \vskip 3em
         \large \titlelocal
         \vskip 3em

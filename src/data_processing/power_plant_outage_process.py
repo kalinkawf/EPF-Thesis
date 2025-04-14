@@ -39,21 +39,59 @@ def process_csv_files(input_folder, output_file):
                 # Tworzenie kolumny 'Time' na podstawie 'Doba' i 'OREB [Jednostka czasu od-do]'
                 df['Time'] = pd.to_datetime(
                     df['Doba'] + " " + df['OREB [Jednostka czasu od-do]'].str.split(" - ").str[0],
-                    format="%Y-%m-%d %H:%M"
+                    format="%Y-%m-%d %H:%M",
+                    errors='coerce'  # Zamienia błędne wartości na NaT
                 )
+
+                # Sprawdzenie, czy są jakieś błędne wartości w 'Time'
+                if df['Time'].isna().any():
+                    print("Uwaga: Niektóre wartości w kolumnie 'Time' nie mogły być przekonwertowane na datetime:")
+                    print(df[df['Time'].isna()][['Doba', 'OREB [Jednostka czasu od-do]']])
+
+                # Usunięcie rekordów z błędnymi wartościami 'Time' (opcjonalne)
+                df = df.dropna(subset=['Time'])
+
+                # Grupowanie po 'Time' i sumowanie wartości dla wszystkich jednostek w danym interwale
                 grouped = df.groupby('Time').agg({
                     'Ubytki elektrowniane [MW]': 'sum',
                     'Ubytki sieciowe [MW]': 'sum'
                 }).reset_index()
+
+                # Zmiana nazw kolumn
                 grouped.rename(columns={
                     'Ubytki elektrowniane [MW]': 'power_loss',
                     'Ubytki sieciowe [MW]': 'Network_loss'
                 }, inplace=True)
-                
-                # Konwersja na godzinowe interwały i podział przez 4
+
+                # Ustawienie 'Time' jako indeks
                 grouped.set_index('Time', inplace=True)
-                hourly_data = grouped.resample('h').sum() / 4  # Sumowanie i dzielenie przez 4
+
+                # Resampling do interwałów godzinowych
+                # Najpierw upewniamy się, że indeks jest w formacie datetime
+                grouped.index = pd.to_datetime(grouped.index)
+
+                print(grouped.head())
+
+                # Resampling z użyciem średniej
+                # Używamy 'H' (godzinowe interwały), a funkcja mean() automatycznie oblicza średnią z dostępnych rekordów
+                hourly_data = grouped.resample('H').mean()
+
+                print(hourly_data.head())
+
+                # Podzielenie wartości Network_loss przez 4
+                hourly_data['Network_loss'] = hourly_data['Network_loss'] / 4
+
+                # Wypełnienie brakujących wartości zerami (jeśli w danej godzinie nie ma żadnych danych)
+                hourly_data.fillna(0, inplace=True)
+
+                # Reset indeksu
                 hourly_data.reset_index(inplace=True)
+
+                # Sprawdzenie wyniku
+                print("Przykładowe dane po resamplingu:")
+                print(hourly_data.head())
+
+                # Dodanie do listy all_data
                 all_data.append(hourly_data)
             else:
                 print(f"Nieznany format pliku: {file_name}")

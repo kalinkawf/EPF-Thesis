@@ -27,8 +27,8 @@ Szwecja Bilans - Bilans handlu ze Szwecja [MWh]
 Ukraina Bilans - Bilans handlu z Ukrainą [MWh]
 
 Straty mocy:
-power_loss - Utrata mocy w wyniku awarii [MWh]
-Network_loss - Utrata mocy w sieci [MWh]
+power_loss - Utrata mocy w wyniku awarii [MW]
+Network_loss - Utrata mocy w sieci [MW]
 
 Ceny energii:
 fixing_i_price - Cena na RDN [PLN / MWh]
@@ -48,7 +48,7 @@ oil - Produkcja energii z ropy naftowej lub jej pochodnych [MW]
 biomass - Produkcja energii z biomasy [MW]
 wind_onshore - Produkcja energii z elektrowni wiatrowych lądowych [MW]
 solar - Produkcja energii z elektrowni słonecznych (fotowoltaicznych)  [MW]
-Load - Rzeczywiste zapotrzebowanie na daną godzinę [MW]
+Load - Rzeczywiste zapotrzebowanie na daną godzinę [MWh]
 
 Other data:
 day_of_week - Dzień tyg [0-6]

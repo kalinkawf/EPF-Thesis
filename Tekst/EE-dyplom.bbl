@@ -102,6 +102,132 @@
       \endverb
       \keyw{Energy systems,Electricity,Resilience,Texas}
     \endentry
+    \entry{en17225797}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=52c75eea7e2bb7fce1f687356aaf0e7a}{%
+           family={Laitsos},
+           familyi={L\bibinitperiod},
+           given={Vasileios},
+           giveni={V\bibinitperiod}}}%
+        {{hash=5950c78a4c423b413e8e694c4bc65a6e}{%
+           family={Vontzos},
+           familyi={V\bibinitperiod},
+           given={Georgios},
+           giveni={G\bibinitperiod}}}%
+        {{hash=92d0b47ef49a2d768344db55b948c177}{%
+           family={Paraschoudis},
+           familyi={P\bibinitperiod},
+           given={Paschalis},
+           giveni={P\bibinitperiod}}}%
+        {{hash=c222ea987bef3bd4aa82511d0a30d45a}{%
+           family={Tsampasis},
+           familyi={T\bibinitperiod},
+           given={Eleftherios},
+           giveni={E\bibinitperiod}}}%
+        {{hash=87dea245e643b0cfa7651d936f018ffc}{%
+           family={Bargiotas},
+           familyi={B\bibinitperiod},
+           given={Dimitrios},
+           giveni={D\bibinitperiod}}}%
+        {{hash=a7f483520bff596abd721c7970064910}{%
+           family={Tsoukalas},
+           familyi={T\bibinitperiod},
+           given={Lefteri\bibnamedelima H.},
+           giveni={L\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{827e734e5c51cccb306a887ce1ee3f83}
+      \strng{fullhash}{2e6aca8515213027570e72f517e5e513}
+      \strng{fullhashraw}{2e6aca8515213027570e72f517e5e513}
+      \strng{bibnamehash}{2e6aca8515213027570e72f517e5e513}
+      \strng{authorbibnamehash}{2e6aca8515213027570e72f517e5e513}
+      \strng{authornamehash}{827e734e5c51cccb306a887ce1ee3f83}
+      \strng{authorfullhash}{2e6aca8515213027570e72f517e5e513}
+      \strng{authorfullhashraw}{2e6aca8515213027570e72f517e5e513}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In a modern and dynamic electricity market, ensuring reliable, sustainable and efficient electricity distribution is a pillar of primary importance for grid operation. The high penetration of renewable energy sources and the formation of competitive prices for utilities play a critical role in the wider economic development. Electricity load and price forecasting have been a key focus of researchers in the last decade due to the substantial economic implications for both producers, aggregators and end consumers. Many forecasting techniques and methods have emerged during this period. This paper conducts a extensive and analytical review of the prevailing load and electricity price forecasting methods in the context of the modern wholesale electricity market. The study is separated into seven main sections. The first section provides the key challenges and the main contributions of this study. The second section delves into the workings of the electricity market, providing a detailed analysis of the three markets that have evolved, their functions and the key factors influencing overall market dynamics. In the third section, the main methodologies of electricity load and price forecasting approaches are analyzed in detail. The fourth section offers a comprehensive review of the existing literature focusing on load forecasting, highlighting various methodologies, models and their applications in this field. This section emphasizes the advances that have been made in all categories of forecasting models and their practical application in different market scenarios. The fifth section focuses on electricity price forecasting studies, summarizing important research papers investigating various modeling approaches. The sixth section constitutes a fundamental discussion and comparison between the load- and price-focused studies that are analyzed. Finally, by examining both traditional and cutting-edge forecasting methods, this review identifies key trends, challenges and future directions in the field. Overall, this paper aims to provide an in-depth analysis leading to the understanding of the state-of-the-art models in load and price forecasting and to be an important resource for researchers and professionals in the energy industry. Based on the research conducted, there is an increasing trend in the use of artificial intelligence models in recent years, due to the flexibility and adaptability they offer for big datasets, compared to traditional models. The combination of models, such as ensemble methods, gives us very promising results.}
+      \field{issn}{1996-1073}
+      \field{journaltitle}{Energies}
+      \field{number}{22}
+      \field{title}{The State of the Art Electricity Load and Price Forecasting for the Modern Wholesale Electricity Market}
+      \field{volume}{17}
+      \field{year}{2024}
+      \verb{doi}
+      \verb 10.3390/en17225797
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/1996-1073/17/22/5797
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/1996-1073/17/22/5797
+      \endverb
+    \endentry
+    \entry{en13184605}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=d049c99fa3e5674ec00d202decf5a142}{%
+           family={Marcjasz},
+           familyi={M\bibinitperiod},
+           given={Grzegorz},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{d049c99fa3e5674ec00d202decf5a142}
+      \strng{fullhash}{d049c99fa3e5674ec00d202decf5a142}
+      \strng{fullhashraw}{d049c99fa3e5674ec00d202decf5a142}
+      \strng{bibnamehash}{d049c99fa3e5674ec00d202decf5a142}
+      \strng{authorbibnamehash}{d049c99fa3e5674ec00d202decf5a142}
+      \strng{authornamehash}{d049c99fa3e5674ec00d202decf5a142}
+      \strng{authorfullhash}{d049c99fa3e5674ec00d202decf5a142}
+      \strng{authorfullhashraw}{d049c99fa3e5674ec00d202decf5a142}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Deep neural networks are rapidly gaining popularity. However, their application requires setting multiple hyper-parameters, and the performance relies strongly on this choice. We address this issue and propose a robust ex-ante hyper-parameter selection procedure for the day-ahead electricity price forecasting that, when used jointly with a tested forecast averaging scheme, yields high performance throughout three-year long out-of-sample test periods in two distinct markets. Being based on a grid search with models evaluated on long samples, the methodology mitigates the noise induced by local optimization. Forecast averaging across calibration window lengths and hyper-parameter sets allows the proposed methodology to outperform a parameter-rich least absolute shrinkage and selection operator (LASSO)-estimated model and a deep neural network (DNN) with non-optimized hyper-parameters in terms of the mean absolute forecast error.}
+      \field{issn}{1996-1073}
+      \field{journaltitle}{Energies}
+      \field{number}{18}
+      \field{title}{Forecasting Electricity Prices Using Deep Neural Networks: A Robust Hyper-Parameter Selection Scheme}
+      \field{volume}{13}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.3390/en13184605
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/1996-1073/13/18/4605
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/1996-1073/13/18/4605
+      \endverb
+    \endentry
+    \entry{MGR2025}{thesis}{}{}
+      \name{author}{1}{}{%
+        {{hash=7bc7231d3ff0ffc53535b105543c0ef4}{%
+           family={Mikołaj\bibnamedelima Kalisz},
+           familyi={M\bibinitperiod\bibinitdelim K\bibinitperiod},
+           given={Adam\bibnamedelima Mantiuk},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Politechnika Warszawska, Mechatroniki}%
+      }
+      \strng{namehash}{7bc7231d3ff0ffc53535b105543c0ef4}
+      \strng{fullhash}{7bc7231d3ff0ffc53535b105543c0ef4}
+      \strng{fullhashraw}{7bc7231d3ff0ffc53535b105543c0ef4}
+      \strng{bibnamehash}{7bc7231d3ff0ffc53535b105543c0ef4}
+      \strng{authorbibnamehash}{7bc7231d3ff0ffc53535b105543c0ef4}
+      \strng{authornamehash}{7bc7231d3ff0ffc53535b105543c0ef4}
+      \strng{authorfullhash}{7bc7231d3ff0ffc53535b105543c0ef4}
+      \strng{authorfullhashraw}{7bc7231d3ff0ffc53535b105543c0ef4}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Uczenie ciągłe w modelowaniu cen energii elektrycznej}
+      \field{type}{mathesis}
+      \field{year}{2025}
+    \endentry
     \entry{METEO}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=1a96b311f147ee9462d566e12fb01d40}{%
@@ -124,6 +250,55 @@
       \field{note}{Accessed: 2025-04-09}
       \field{title}{Prognozy pogody}
       \field{year}{2025}
+    \endentry
+    \entry{appliedmath3020018}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=d5449fc584ab2f2182b0b791e9e2524e}{%
+           family={Poggi},
+           familyi={P\bibinitperiod},
+           given={Aurora},
+           giveni={A\bibinitperiod}}}%
+        {{hash=2263c4fd4598d3f295a8f0f20909866b}{%
+           family={Di\bibnamedelima Persio},
+           familyi={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+           given={Luca},
+           giveni={L\bibinitperiod}}}%
+        {{hash=06162f840633e2adae140efa3535ba7a}{%
+           family={Ehrhardt},
+           familyi={E\bibinitperiod},
+           given={Matthias},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{29cf9f4a8a7a7514cf77120f6bd399d1}
+      \strng{fullhash}{7f87567729d3046538f23b0d733313fe}
+      \strng{fullhashraw}{7f87567729d3046538f23b0d733313fe}
+      \strng{bibnamehash}{7f87567729d3046538f23b0d733313fe}
+      \strng{authorbibnamehash}{7f87567729d3046538f23b0d733313fe}
+      \strng{authornamehash}{29cf9f4a8a7a7514cf77120f6bd399d1}
+      \strng{authorfullhash}{7f87567729d3046538f23b0d733313fe}
+      \strng{authorfullhashraw}{7f87567729d3046538f23b0d733313fe}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Our research involves analyzing the latest models used for electricity price forecasting, which include both traditional inferential statistical methods and newer deep learning techniques. Through our analysis of historical data and the use of multiple weekday dummies, we have proposed an innovative solution for forecasting electricity spot prices. This solution involves breaking down the spot price series into two components: a seasonal trend component and a stochastic component. By utilizing this approach, we are able to provide highly accurate predictions for all considered time frames.}
+      \field{issn}{2673-9909}
+      \field{journaltitle}{AppliedMath}
+      \field{number}{2}
+      \field{title}{Electricity Price Forecasting via Statistical and Deep Learning Approaches: The German Case}
+      \field{volume}{3}
+      \field{year}{2023}
+      \field{pages}{316\bibrangedash 342}
+      \range{pages}{27}
+      \verb{doi}
+      \verb 10.3390/appliedmath3020018
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/2673-9909/3/2/18
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/2673-9909/3/2/18
+      \endverb
     \endentry
     \entry{PSEOLD}{misc}{}{}
       \name{author}{1}{}{%
@@ -172,6 +347,152 @@
       \field{note}{Accessed: 2025-04-09}
       \field{title}{Raporty historyczne}
       \field{year}{2025}
+    \endentry
+    \entry{TAN20103606}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=398b14dcd211ed1800c94fe042a52fbb}{%
+           family={Tan},
+           familyi={T\bibinitperiod},
+           given={Zhongfu},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=ecd5be288817b37b6af9c1cc57704078}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Jinliang},
+           giveni={J\bibinitperiod}}}%
+        {{hash=735251ff30c1ec1c149b7acd80972b97}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Jianhui},
+           giveni={J\bibinitperiod}}}%
+        {{hash=05ed36bcb6a44b5b9e4d52219469373d}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Jun},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{4b3faa088ebe94412066a0f0574231f7}
+      \strng{fullhash}{7f42f640b6a0dc16c14381ab66241359}
+      \strng{fullhashraw}{7f42f640b6a0dc16c14381ab66241359}
+      \strng{bibnamehash}{7f42f640b6a0dc16c14381ab66241359}
+      \strng{authorbibnamehash}{7f42f640b6a0dc16c14381ab66241359}
+      \strng{authornamehash}{4b3faa088ebe94412066a0f0574231f7}
+      \strng{authorfullhash}{7f42f640b6a0dc16c14381ab66241359}
+      \strng{authorfullhashraw}{7f42f640b6a0dc16c14381ab66241359}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper proposes a novel price forecasting method based on wavelet transform combined with ARIMA and GARCH models. By wavelet transform, the historical price series is decomposed and reconstructed into one approximation series and some detail series. Then each subseries can be separately predicted by a suitable time series model. The final forecast is obtained by composing the forecasted results of each subseries. This proposed method is examined on Spanish and PJM electricity markets and compared with some other forecasting methods.}
+      \field{issn}{0306-2619}
+      \field{journaltitle}{Applied Energy}
+      \field{number}{11}
+      \field{title}{Day-ahead electricity price forecasting using wavelet transform combined with ARIMA and GARCH models}
+      \field{volume}{87}
+      \field{year}{2010}
+      \field{pages}{3606\bibrangedash 3610}
+      \range{pages}{5}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.apenergy.2010.05.012
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0306261910001807
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0306261910001807
+      \endverb
+      \keyw{Price forecasting,Wavelet transform,ARIMA,GARCH}
+    \endentry
+    \entry{WERON20141030}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=e1f0ef6630db56bf45bb6ba2fbf8f108}{%
+           family={Weron},
+           familyi={W\bibinitperiod},
+           given={Rafał},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{e1f0ef6630db56bf45bb6ba2fbf8f108}
+      \strng{fullhash}{e1f0ef6630db56bf45bb6ba2fbf8f108}
+      \strng{fullhashraw}{e1f0ef6630db56bf45bb6ba2fbf8f108}
+      \strng{bibnamehash}{e1f0ef6630db56bf45bb6ba2fbf8f108}
+      \strng{authorbibnamehash}{e1f0ef6630db56bf45bb6ba2fbf8f108}
+      \strng{authornamehash}{e1f0ef6630db56bf45bb6ba2fbf8f108}
+      \strng{authorfullhash}{e1f0ef6630db56bf45bb6ba2fbf8f108}
+      \strng{authorfullhashraw}{e1f0ef6630db56bf45bb6ba2fbf8f108}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A variety of methods and ideas have been tried for electricity price forecasting (EPF) over the last 15 years, with varying degrees of success. This review article aims to explain the complexity of available solutions, their strengths and weaknesses, and the opportunities and threats that the forecasting tools offer or that may be encountered. The paper also looks ahead and speculates on the directions EPF will or should take in the next decade or so. In particular, it postulates the need for objective comparative EPF studies involving (i) the same datasets, (ii) the same robust error evaluation procedures, and (iii) statistical testing of the significance of one model’s outperformance of another.}
+      \field{issn}{0169-2070}
+      \field{journaltitle}{International Journal of Forecasting}
+      \field{number}{4}
+      \field{title}{Electricity price forecasting: A review of the state-of-the-art with a look into the future}
+      \field{volume}{30}
+      \field{year}{2014}
+      \field{pages}{1030\bibrangedash 1081}
+      \range{pages}{52}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.ijforecast.2014.08.008
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0169207014001083
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0169207014001083
+      \endverb
+      \keyw{Electricity price forecasting,Day-ahead market,Seasonality,Autoregression,Neural network,Factor model,Forecast combination,Probabilistic forecast}
+    \endentry
+    \entry{ZHANG2012695}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=ecd5be288817b37b6af9c1cc57704078}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Jinliang},
+           giveni={J\bibinitperiod}}}%
+        {{hash=398b14dcd211ed1800c94fe042a52fbb}{%
+           family={Tan},
+           familyi={T\bibinitperiod},
+           given={Zhongfu},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=15421830f16c44982a178483c5e873b8}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Shuxia},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{ef3b8903f2b832a3f4d3b59f03fc3336}
+      \strng{fullhash}{900f4912f9d564438d5b837230b912ef}
+      \strng{fullhashraw}{900f4912f9d564438d5b837230b912ef}
+      \strng{bibnamehash}{900f4912f9d564438d5b837230b912ef}
+      \strng{authorbibnamehash}{900f4912f9d564438d5b837230b912ef}
+      \strng{authornamehash}{ef3b8903f2b832a3f4d3b59f03fc3336}
+      \strng{authorfullhash}{900f4912f9d564438d5b837230b912ef}
+      \strng{authorfullhashraw}{900f4912f9d564438d5b837230b912ef}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Electricity price forecasting has become necessary for power producers and consumers in the current deregulated electricity markets. Seeking for more accurate price forecasting techniques, this paper proposes a new hybrid method based on wavelet transform (WT), autoregressive integrated moving average (ARIMA) and least squares support vector machine (LSSVM) optimized by particle swarm optimization (PSO) to predict electricity prices. The proposed method is examined by using the data from New South Wales (NSW) of Australian national electricity market. Empirical testing indicates that the proposed method can provide more accurate and effective results than the other price forecasting methods.}
+      \field{issn}{0360-8352}
+      \field{journaltitle}{Computers \& Industrial Engineering}
+      \field{note}{Energy Management and Economics}
+      \field{number}{3}
+      \field{title}{Day-ahead electricity price forecasting by a new hybrid method}
+      \field{volume}{63}
+      \field{year}{2012}
+      \field{pages}{695\bibrangedash 701}
+      \range{pages}{7}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.cie.2012.03.016
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S036083521200085X
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S036083521200085X
+      \endverb
+      \keyw{Electricity price forecasting,WT,ARIMA,LSSVM,PSO}
     \endentry
   \enddatalist
 \endrefsection

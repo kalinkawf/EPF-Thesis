@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
+import matplotlib.dates as mdates
 
 # Wczytaj dane
 df = pd.read_csv("../../data/database.csv")
@@ -16,7 +17,7 @@ features = [
     "power_loss", "Network_loss",
     "Niemcy Bilans", "Czechy Bilans", "Litwa Bilans", "Słowacja Bilans", "Szwecja Bilans", "Ukraina Bilans",
     "hard_coal", "coal-derived", "lignite", "gas", "oil", "biomass", "wind_onshore", "solar",
-    "fixing_i_volume", "Load", "gas_price", "gas_volume", "coal_pscmi1_pln_per_gj", "co2_price",
+    "fixing_i_volume", "Load", "gas_price", "gas_volume", "coal_pscmi1_pln_per_gj", "coal_pscmi1_pln_per_gj",
     "pln_usd", "brent_price", "day_of_week", "is_holiday"
 ]
 target = "fixing_i_price"
@@ -207,3 +208,194 @@ plt.gca().set_xticks(daily_data_2022["day"][::30])
 plt.tight_layout()
 plt.savefig(f"{output_dir}/load_time_series_2022.png", dpi=300)
 plt.close()
+
+
+# Utworzenie folderu cross_border w folderze plots, jeśli nie istnieje
+output_dir = "C:/mgr/EPF-Thesis/plots/cross_border"
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+
+# Zakładam, że db to już wczytany DataFrame
+data = df.copy()
+
+# Dodanie kolumny z rokiem
+data["year"] = data["timestamp"].dt.year
+
+# Kolumny wymiany transgranicznej (wartości dodatnie = eksport, ujemne = import)
+countries = {
+    "Niemcy Bilans": "Niemcy",
+    "Czechy Bilans": "Czechy",
+    "Litwa Bilans": "Litwa",
+    "Słowacja Bilans": "Słowacja",
+    "Szwecja Bilans": "Szwecja",
+    "Ukraina Bilans": "Ukraina"
+}
+
+# Obliczenie średniej rocznej wymiany dla każdego kraju i roku
+annual_exchange = data.groupby("year")[[col for col in countries.keys()]].mean().reset_index()
+
+# Wypisanie wartości na konsoli
+print("Średnia roczna wymiana transgraniczna (w MW):")
+for year in annual_exchange["year"]:
+    print(f"\nRok {year}:")
+    for col in countries.keys():
+        value = annual_exchange.loc[annual_exchange["year"] == year, col].iloc[0]
+        print(f"{countries[col]}: {value:.2f} MW")
+
+# Wykres liniowy dla salda wymiany transgranicznej w latach 2016–2024
+plt.figure(figsize=(12, 6))
+for col, country in countries.items():
+    plt.plot(annual_exchange["year"], annual_exchange[col], label=country, linewidth=2)
+plt.axhline(0, color="black", linestyle="--", alpha=0.5)
+plt.title("Roczne saldo wymiany transgranicznej energii elektrycznej (2016–2024)", fontsize=14)
+plt.xlabel("Rok", fontsize=12)
+plt.ylabel("Saldo wymiany (MW)", fontsize=12)
+plt.legend(loc="upper left", bbox_to_anchor=(1, 1))
+plt.grid(True, linestyle="--", alpha=0.7)
+plt.tight_layout()
+plt.savefig(f"{output_dir}/cross_border_balance_2016_2024.png", dpi=300, bbox_inches="tight")
+plt.close()
+
+# Utworzenie folderu fuels w folderze plots, jeśli nie istnieje
+output_dir = "C:/mgr/EPF-Thesis/plots/fuels"
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+
+# Agregacja danych do średnich miesięcznych
+data["year_month"] = data["timestamp"].dt.to_period("M")
+monthly_data = data.groupby("year_month")[["gas_price", "co2_price", "coal_pscmi1_pln_per_gj", "brent_price"]].mean().reset_index()
+monthly_data["year_month"] = monthly_data["year_month"].dt.to_timestamp()
+
+# Wykres liniowy dla cen paliw i emisji CO2 w skali logarytmicznej
+fig, ax1 = plt.subplots(figsize=(12, 6))
+
+# Oś pierwsza (dla gas_price, coal_pscmi1_pln_per_gj, brent_price) w skali logarytmicznej
+ax1.plot(monthly_data["year_month"], monthly_data["gas_price"], label="Cena gazu (PLN/MWh)", color="blue", linewidth=2)
+ax1.plot(monthly_data["year_month"], monthly_data["co2_price"], label="Cena CO$_2$ (PLN/tCO$_2$)", color="red", linewidth=2)
+ax1.plot(monthly_data["year_month"], monthly_data["brent_price"], label="Cena ropy Brent (PLN/bar)", color="green", linewidth=2)
+ax1.set_xlabel("Rok", fontsize=12)
+ax1.set_ylabel("Cena (PLN/MWh, PLN/tCO$_2$, PLN/bar)", fontsize=12)
+ax1.set_yscale("log")  # Skala logarytmiczna dla osi Y
+ax1.legend(loc="upper left")
+ax1.grid(True, linestyle="--", alpha=0.7)
+
+# Oś druga (dla coal_pscmi1_pln_per_gj) w skali logarytmicznej
+ax2 = ax1.twinx()
+ax2.plot(monthly_data["year_month"], monthly_data["coal_pscmi1_pln_per_gj"], label="Cena węgla (PLN/GJ)", color="black", linewidth=2)
+ax2.set_ylabel("Cena węgla (PLN/GJ)", fontsize=12)
+ax2.set_yscale("log")  # Skala logarytmiczna dla osi Y
+ax2.legend(loc="upper right")
+
+# Ustawienie etykiet na osi X (co roku, tylko rok)
+ax1.xaxis.set_major_locator(mdates.YearLocator())  # Etykiety co roku
+ax1.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))  # Format: tylko rok (np. 2016)
+plt.xticks(rotation=45, ha="right")
+
+plt.title("Ceny paliw kopalnych i emisji CO$_2$ (2016–2024) w skali logarytmicznej", fontsize=14)
+plt.tight_layout()
+plt.savefig(f"{output_dir}/fuel_prices_2016_2024.png", dpi=300, bbox_inches="tight")
+plt.close()
+
+# Utworzenie folderu losses w folderze plots, jeśli nie istnieje
+output_dir = "C:/mgr/EPF-Thesis/plots/losses"
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+
+# Agregacja danych do średnich miesięcznych
+data["year_month"] = data["timestamp"].dt.to_period("M")
+monthly_data = data.groupby("year_month")[["power_loss", "Network_loss"]].mean().reset_index()
+monthly_data["year_month"] = monthly_data["year_month"].dt.to_timestamp()
+
+# Wykres liniowy dla strat mocy
+plt.figure(figsize=(12, 6))
+plt.plot(monthly_data["year_month"], monthly_data["power_loss"], label="Straty mocy stacji elektrycznych (MW)", color="red", linewidth=2)
+plt.plot(monthly_data["year_month"], monthly_data["Network_loss"], label="Utrata mocy w sieci (MW)", color="blue", linewidth=2)
+
+# Ustawienie etykiet na osi X (co roku, tylko rok)
+plt.gca().xaxis.set_major_locator(mdates.YearLocator())  # Etykiety co roku
+plt.gca().xaxis.set_major_formatter(mdates.DateFormatter("%Y"))  # Format: tylko rok (np. 2016)
+plt.xticks(rotation=45, ha="right")
+
+plt.xlabel("Rok", fontsize=12)
+plt.ylabel("Straty mocy (MW)", fontsize=12)
+plt.title("Straty mocy w wyniku awarii i w sieci (2016–2024)", fontsize=14)
+plt.legend(loc="upper left")
+plt.grid(True, linestyle="--", alpha=0.7)
+plt.tight_layout()
+plt.savefig(f"{output_dir}/power_losses_2016_2024.png", dpi=300, bbox_inches="tight")
+plt.close()
+
+# Filtrowanie danych dla okresu od marca 2024 do grudnia 2024
+data["date"] = data["timestamp"].dt.date
+start_date = pd.to_datetime("2024-03-01")
+end_date = pd.to_datetime("2024-12-31")
+filtered_data = data[(data["timestamp"] >= start_date) & (data["timestamp"] <= end_date)]
+
+# Agregacja danych do średnich dziennych
+daily_data = filtered_data.groupby("date")[["Network_loss"]].mean().reset_index()
+daily_data["date"] = pd.to_datetime(daily_data["date"])
+
+# Wykres liniowy dla network_loss w 2024 roku
+plt.figure(figsize=(12, 6))
+plt.plot(daily_data["date"], daily_data["Network_loss"], label="Utrata mocy w sieci (MW)", color="blue", linewidth=2)
+
+# Ustawienie etykiet na osi X (co miesiąc)
+plt.gca().xaxis.set_major_locator(mdates.MonthLocator())  # Etykiety co miesiąc
+plt.gca().xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))  # Format: rok-miesiąc (np. 2024-03)
+plt.xticks(rotation=45, ha="right")
+
+plt.xlabel("Data", fontsize=12)
+plt.ylabel("Straty mocy w sieci (MW)", fontsize=12)
+plt.title("Straty mocy w sieci (marzec 2024 – grudzień 2024)", fontsize=14)
+plt.legend(loc="upper left")
+plt.grid(True, linestyle="--", alpha=0.7)
+plt.tight_layout()
+plt.savefig(f"{output_dir}/network_loss_2024.png", dpi=300, bbox_inches="tight")
+plt.close()
+
+# Wykres dla Load i fixing_i_volume w ujęciu miesięcznym (2016–2024)
+# Utworzenie folderu market w folderze plots, jeśli nie istnieje
+output_dir = "C:/mgr/EPF-Thesis/plots/market"
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+
+# Agregacja danych do średnich miesięcznych
+data["year_month"] = data["timestamp"].dt.to_period("M")
+monthly_data = data.groupby("year_month")[["Load", "fixing_i_volume"]].mean().reset_index()
+monthly_data["year_month"] = monthly_data["year_month"].dt.to_timestamp()
+
+# Wykres liniowy dla Load i fixing_i_volume
+fig, ax1 = plt.subplots(figsize=(12, 6))
+
+# Oś pierwsza (dla Load)
+ax1.plot(monthly_data["year_month"], monthly_data["Load"], label="Zapotrzebowanie (MW)", color="blue", linewidth=2)
+ax1.set_xlabel("Rok", fontsize=12)
+ax1.set_ylabel("Zapotrzebowanie (MW)", fontsize=12, color="blue")
+ax1.tick_params(axis="y", labelcolor="blue")
+ax1.grid(True, linestyle="--", alpha=0.7)
+
+# Oś druga (dla fixing_i_volume)
+ax2 = ax1.twinx()
+ax2.plot(monthly_data["year_month"], monthly_data["fixing_i_volume"], label="Wolumen sprzedaży na RDN (MWh)", color="red", linewidth=2)
+ax2.set_ylabel("Wolumen sprzedaży (MWh)", fontsize=12, color="red")
+ax2.tick_params(axis="y", labelcolor="red")
+
+# Ustawienie etykiet na osi X (co roku)
+ax1.xaxis.set_major_locator(mdates.YearLocator())  # Etykiety co roku
+ax1.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))  # Format: tylko rok (np. 2016)
+plt.xticks(rotation=45, ha="right")
+
+# Tytuł i legenda
+plt.title("Średnie miesięczne zapotrzebowanie i wolumen sprzedaży na RDN (2016–2024)", fontsize=14)
+fig.legend(loc="upper center", bbox_to_anchor=(0.5, -0.05), ncol=2)
+plt.tight_layout()
+plt.savefig(f"{output_dir}/load_vs_volume_2016_2024.png", dpi=300, bbox_inches="tight")
+plt.close()
+
+# Grupowanie danych według roku i obliczanie średniej wartości pln_usd
+annual_pln_usd = data.groupby("year")["pln_usd"].mean().reset_index()
+
+# Wyświetlenie wyników na konsoli
+print("Średnioroczny kurs PLN/USD w latach 2016-2024:")
+for index, row in annual_pln_usd.iterrows():
+    print(f"Rok: {int(row['year'])}, Średni kurs PLN/USD: {row['pln_usd']:.2f}")

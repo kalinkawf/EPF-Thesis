@@ -1,6 +1,5 @@
 \chapter{Dane i zmienne}
 \label{ch:dane}
-
 \section{Opis zbioru danych}
 Dane odgrywają kluczową rolę w analizie i prognozowaniu cen energii na Rynku Dnia Następnego (RDN) w Polsce, stanowiąc fundament dla modeli uczenia maszynowego zastosowanych w niniejszej pracy. Zbiór danych wykorzystany w badaniu obejmuje okres od 1 stycznia 2016 roku do 31 grudnia 2024 roku i zawiera dane godzinowe, co powinno było dać łącznie 78 912 rekordów. Niestety niektóre dane są niekompletne i zawiera braki lub NaN wartości. Na szczęście, takich braków było stosunkowo nie dużo do kompletnych danych i postanowiłem pozbyć się rekordów o pustych parametrach. W efekcie, po usunięciu niekompletnych danych, pozostało 78 814 rekordów, co stanowi solidną podstawę do analizy i modelowania. Zbiór danych zawiera różnorodne zmienne, które można podzielić na kilka kategorii, które zostaną opisane w tym dziale. Większość danych pochodzi z \gls{pse} \cite{PSEOLD}, czyli otwartej platformie, która dostarcza różnego rodzaju danych dostępnych dla analizy. Warto zauważyć, że od 14 czerwca 2024 roku PSE zmieniła sposób raportowania danych i przeszła na nową stronę \cite{PSENEW}, w związku z tym PSE posiada dwie oddzielne strony do raportów historycznych przed i po tym dniu. Wiele z danych zostały pobrane również ze strony energy.instrat.pl. Jest to strona, która pobiera dane z platformy PSE i udostępnia w sposób wygodniejszy, ponieważ dane są do pobrania jednym klikiem za dowolny okres czasu z dowolną częstotliwością. Dane dotyczące cen paliw kopalnych oraz kursów walut (np. PLN/USD) zostały pozyskane z innych źródeł, takich jak publiczne bazy danych rynkowych i platformy finansowe. Niniejszy rozdział szczegółowo opisuje zmienną zależną i zmienne niezależne, podzielone na kategorie, a także prezentuje kluczowe cechy danych za pomocą tabel i wykresów, co pozwala na lepsze zrozumienie ich specyfiki i wyzwań związanych z modelowaniem.
 
@@ -27,7 +26,7 @@ Aby lepiej zrozumieć dynamikę cen energii na RDN, przeanalizowano ich zmienno�
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{../plots/data/quarterly_fixing_i_price.png}
+    \includegraphics[width=\textwidth]{../plots/quarterly_fixing_i_price.png}
     \caption{Zmienność cen energii elektrycznej na RDN w latach 2016–2024}
     \label{fig:fixing-i-price-trend}
 \end{figure}
@@ -36,7 +35,7 @@ Widać wyraźne różnice w poziomie cen w różnych okresach: od 2016 do Q4 rok
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{../plots/data/histogram_fixing_i_price.png}
+    \includegraphics[width=\textwidth]{../plots/fixing_i_price_histogram.png}
     \caption{Histogram rozkładu zmiennej fixing\_i\_price}
     \label{fig:fixing-i-price-histogram}
 \end{figure}
@@ -57,28 +56,28 @@ Poniżej przedstawię wykresy dla każdego z parametrów pogodowych, które zost
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{../plots/data/temp_time_series_full.png}
+    \includegraphics[width=\textwidth]{../plots/weather/temp_time_series_full.png}
     \caption{Zmienność temperatury w czasie (2016–2024)}
     \label{fig:temp-time-series-full}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{../plots/data/wind_speed_time_series_full.png}
+    \includegraphics[width=\textwidth]{../plots/weather/wind_speed_time_series_full.png}
     \caption{Zmienność prędkości wiatru w czasie (2016–2024)}
     \label{fig:wind-speed-time-series-full}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{../plots/data/solar_radiation_time_series_full.png}
+    \includegraphics[width=\textwidth]{../plots/weather/solar_radiation_time_series_full.png}
     \caption{Zmienność promieniowania słonecznego w czasie (2016–2024)}
     \label{fig:solar-radiation-time-series-full}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{../plots/data/cloud_cover_time_series_full.png}
+    \includegraphics[width=\textwidth]{../plots/weather/cloud_cover_time_series_full.png}
     \caption{Zmienność zachmurzenia w czasie (2016–2024)}
     \label{fig:cloud-cover-time-series-full}
 \end{figure}
@@ -89,28 +88,28 @@ Chciałbym również przybliżyć wykresy i potwierdzić efekt sezonowości na p
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{../plots/data/temp_time_series_2022.png}
+    \includegraphics[width=\textwidth]{../plots/weather/temp_time_series_2022.png}
     \caption{Zmienność temperatury w czasie (2022)}
     \label{fig:temp-time-series-2022}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{../plots/data/wind_speed_time_series_2022.png}
+    \includegraphics[width=\textwidth]{../plots/weather/wind_speed_time_series_2022.png}
     \caption{Zmienność prędkości wiatru w czasie (2022)}
     \label{fig:wind-speed-time-series-2022}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{../plots/data/solar_radiation_time_series_2022.png}
+    \includegraphics[width=\textwidth]{../plots/weather/solar_radiation_time_series_2022.png}
     \caption{Zmienność promieniowania słonecznego w czasie (2022)}
     \label{fig:solar-radiation-time-series-2022}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{../plots/data/cloud_cover_time_series_2022.png}
+    \includegraphics[width=\textwidth]{../plots/weather/cloud_cover_time_series_2022.png}
     \caption{Zmienność zachmurzenia w czasie (2022)}
     \label{fig:cloud-cover-time-series-2022}
 \end{figure}
@@ -133,12 +132,179 @@ Zmienne dotyczące produkcji energii z różnych źródeł odgrywają kluczową 
 Dane te pochodzą z Polskich Sieci Elektroenergetycznych (PSE) i zostały dopasowane do godzinowego formatu danych RDN, co pozwoliło na ich integrację z pozostałymi zmiennymi. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.1\textwidth]{../plots/data/energy_production_time_series_full.png}
+    \includegraphics[width=1.05\textwidth]{../plots/energy/energy_production_time_series_full.png}
     \caption{Zmienność produkcji energii z różnych źródeł w czasie (2016–2024)}
     \label{fig:energy-production-time-series-full}
 \end{figure}
 
-Wykres powyżej przedstawia średnią miesięczną produkcję energii z różnych źródeł w Polsce w latach 2016–2024, co jest istotne w kontekście prognozowania cen energii (EPF) na Rynku Dnia Następnego (RDN). Wykres obszarowy ukazuje dominację węgla kamiennego i brunatnego, której do tej pory odpowiadają za większość produkcji energii elektrycznej. Biomasa oraz paliwa pochodne węgla stanowią znikomą część podaży i mogą być pominięte dla redukcji ilości zmiennych. Produkcja za pomocą gazu i ropy stale posiada niewielką, ale istotną część produkcji energii. Warto zauważyć, że produkcja z OZE, szczególnie ze słońca znacząco rośnie w ostatnich latach, co może mieć istotny wpływ na ceny energii i umiejętność jej prognozowania. W najbardziej korzystne dla gospodatki momenty część produkcji z OZE może przekraczać zapewnienie energii z węgla, co może prowadzić do spadku cen energii. Warto również zauważyć, że produkcja z węgla kamiennego i brunatnego jest bardziej stabilna i przewidywalna niż produkcja z OZE, co może wpływać na dokładność prognoz. W związku z tym, zmienne dotyczące produkcji energii z różnych źródeł są istotnym elementem analizy i modelowania cen energii na RDN.
+Wykres powyżej przedstawia średnią miesięczną produkcję energii z różnych źródeł w Polsce w latach 2016–2024, co jest istotne w kontekście prognozowania cen energii (EPF) na Rynku Dnia Następnego (RDN). Wykres obszarowy ukazuje dominację węgla kamiennego i brunatnego, której do tej pory odpowiadają za większość produkcji energii elektrycznej. Biomasa oraz paliwa pochodne węgla stanowią znikomą część podaży i mogą być pominięte dla redukcji ilości zmiennych. Produkcja za pomocą gazu i ropy stale posiada niewielką, ale istotną część produkcji energii. Warto zauważyć, że produkcja z OZE, szczególnie ze słońca znacząco rośnie w ostatnich latach, co może mieć istotny wpływ na ceny energii i umiejętność jej prognozowania. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../plots/energy/emission_vs_non_emission_2024.png}
+    \caption{Porównanie produkcji energii z emisyjnych i bezemisyjnych źródeł w 2024 roku}
+    \label{fig:emission-vs-non-emission-2024}
+\end{figure}
+W najbardziej korzystne dla gospodatki momenty część produkcji z OZE może przekraczać zapewnienie energii z węgla, co może prowadzić do spadku cen energii. Warto również zauważyć, że produkcja z węgla kamiennego i brunatnego jest bardziej stabilna i przewidywalna niż produkcja z OZE, co może wpływać na dokładność prognoz. W związku z tym, zmienne dotyczące produkcji energii z różnych źródeł są istotnym elementem analizy i modelowania cen energii na RDN.
 
 \subsection{Handel energią z państwami sąsiednimi}
-Zmienne dotyczące wymiany energii z innymi krajami są istotnym elementem analizy cen energii na Rynku Dnia Następnego (RDN), ponieważ pozwalają na uwzględnienie wpływu handlu międzynarodowego na ceny energii w Polsce. W niniejszej pracy uwzględniono następujące zmienne opisujące wymianę energii z innymi krajami:
+\label{subsec:trade}
+Zmienne dotyczące wymiany energii z innymi krajami są istotnym elementem analizy cen energii na Rynku Dnia Następnego (RDN), ponieważ pozwalają na uwzględnienie wpływu handlu międzynarodowego na ceny energii w Polsce. W niniejszej pracy uwzględnione zostały bilanse handlu energią z Państwami sąsiednimi, z którymi Polska ma połączenia transgraniczne. Są to Państwa takie jak:
+\begin{itemize}
+    \item Niemcy (DE),
+    \item Czechy (CZ),
+    \item Słowacja (SK),
+    \item Litwa (LT),
+    \item Szwecja (SE),
+    \item Ukraina (UA).
+\end{itemize}
+
+Dane dotyczące wymiany energii z tymi krajami pochodzą z Polskich Sieci Elektroenergetycznych (PSE) i są dostępne w granulacji godzinowej. Warto zauważyć, że Polska jest jednym z kluczowych graczy na rynku energii w Europie Środkowo-Wschodniej, a wymiana energii z innymi krajami może mieć istotny wpływ na ceny energii w Polsce. W szczególności, w okresach wysokiego zapotrzebowania na energię lub w sytuacjach poważnych awarii, Polska może importować energię z innych krajów, co prowadzi do wzrostu cen. Z drugiej strony, w okresach niskiego zapotrzebowania, Polska może eksportować, czyli sprzedawać nadwyżki energii, co może prowadzić do spadku cen. Poniżej przedstawiam wykresy dotyczące wymiany energii z sąsiadami w latach 2016-2024.
+
+\begin{table}[H]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|c|r|r|r|r|r|r|}
+    \hline
+    \textbf{Rok} & \textbf{Niemcy (MW)} & \textbf{Czechy (MW)} & \textbf{Litwa (MW)} & \textbf{Słowacja (MW)} & \textbf{Szwecja (MW)} & \textbf{Ukraina (MW)} \\ \hline
+    2016 & 994.26  & -761.81 & 68.21   & -475.47 & 294.36  & 108.99  \\ \hline
+    2017 & 836.24  & -612.73 & 119.92  & -499.21 & 340.96  & 102.45  \\ \hline
+    2018 & 803.00  & -373.78 & 102.53  & -366.14 & 310.83  & 160.96  \\ \hline
+    2019 & 1149.22 & -312.31 & 216.38  & -367.32 & 329.80  & 157.17  \\ \hline
+    2020 & 1275.75 & -264.90 & 201.93  & -348.95 & 428.81  & 167.98  \\ \hline
+    2021 & 957.79  & -901.92 & 110.04  & -519.59 & 364.69  & 93.55   \\ \hline
+    2022 & 918.62  & -1000.89 & 86.53  & -684.25 & 429.17  & 126.95  \\ \hline
+    2023 & 851.27  & -526.46 & 58.40   & -382.18 & 431.60  & 5.76    \\ \hline
+    2024 & 1005.26 & -544.15 & -112.90 & -389.65 & 296.29  & -68.03  \\ \hline
+    \end{tabular}%
+    }
+    \caption{Średni bilans wymiany energii z sąsiadami w latach 2016–2024}
+    \label{tab:energy-trade-balance}
+\end{table}
+
+Wartości te są średniogodzinowymi bilansami wymiany energii z sąsiadami w latach 2016-2024. Wartości dodatnie oznaczają eksport energii, a wartości ujemne import energii. Polska ma dodatni bilans wymiany energii z Niemcami, co oznacza, że Polska regularnie eksportuje energię do Niemiec. Największe ujemne bilanse Polska posiada z Czechami, prawdopodobnie spowodowane jest to funkcjonującymi w Czechami elektrowniami atomowymi. Te przepływy wpływają na ceny na RDN: eksport do Niemiec i Szwecji może podnosić ceny w Polsce, a import z Czech i Słowacji stabilizuje system, ale zwiększa zależność od zewnętrznych dostawców.
+
+\subsection{Ceny paliw kopalnych i emisji CO2}
+\label{subsec:prices}
+
+Zmienne dotyczące cen paliw kopalnych oraz emisji CO$_2$ odgrywają kluczową rolę w analizie cen energii na Rynku Dnia Następnego (RDN), ponieważ koszty paliw i emisji mają bezpośredni wpływ na ceny energii elektrycznej w Polsce, gdzie dominującym źródłem energii jest węgiel. W niniejszej pracy uwzględniono cztery zmienne, które zostały opisane w Tabeli~\ref{tab:fuel_variables}.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    \textbf{Nazwa zmiennej} & \textbf{Opis} & \textbf{Źródło danych} & \textbf{Granulacja} \\ \hline
+    \texttt{gas\_price}     & Cena gazu ziemnego (PLN/MWh) & energy.instrat.pl & Dzienna \\ \hline
+    \texttt{coal\_price}    & Cena węgla kamiennego (PLN/GJ) & energy.instrat.pl & Dzienna \\ \hline
+    \texttt{co2\_price}     & Cena uprawnień do emisji CO$_2$ (PLN/tCO$_2$) & energy.instrat.pl & Dzienna \\ \hline
+    \texttt{brent\_price}   & Cena ropy Brent Europe (PLN/bar) & www.eia.gov & Dzienna \\ \hline
+    \end{tabular}
+    \caption{Opis zmiennych dotyczących cen paliw kopalnych i emisji CO$_2$.}
+    \label{tab:fuel_variables}
+\end{table}
+
+Dane te zostały dopasowane do godzinowego formatu danych RDN, w taki sposób, że w dniach pracy giełdy i znanych cen paliw, cena stale jest przypisana do godzin, a w dniach wolnych od pracy lub bez znanych cen, wartości są interpolowane. 
+
+Ceny paliw kopalnych i emisji CO$_2$ są istotne w kontekście prognozowania cen energii, ponieważ wpływają na koszty produkcji energii w elektrowniach konwencjonalnych, które dominują w polskim miksie energetycznym. Na przykład, wzrost ceny węgla (\texttt{coal\_price}) lub uprawnień do emisji CO$_2$ (\texttt{co2\_price}) zwiększa koszty produkcji energii w elektrowniach węglowych. Cena gazu (\texttt{gas\_price}) jest kluczowa dla elektrowni gazowych, które pełnią rolę bilansującą w systemie. Cena ropy Brent (\texttt{brent\_price}) ma mniejszy bezpośredni wpływ na produkcję energii w Polsce, ale jest istotna w kontekście globalnych trendów cen paliw, które mogą wpływać na inne zmienne, takie jak cena gazu.
+
+Aby zilustrować dynamikę tych zmiennych, na rysunku poniżej przedstawiono zmiany cen paliw kopalnych i emisji CO$_2$ w latach 2016--2024 w ujęciu miesięcznym. Dla lepszego przedstawienia danych użyłem skali logarytmicznej.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../plots/fuels/fuel_prices_2016_2024.png}
+    \caption{Ceny paliw kopalnych i emisji CO$_2$ w latach 2016--2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych rynkowych.}
+    \label{fig:fuel_prices}
+\end{figure}
+
+Ceny paliw kopalnych w okresie wysokiej zmienności szybko rosną, co prawdopodobnie jest przyczyną rosnących cen energii. Największy wzrost ma cena gazu, która od rozpoczęcia konfliktu zbrojnego wzrosła ponad 10-krotnie w ciągu roku. 
+
+\subsection{Straty mocy w systemie elektroenergetycznym}
+\label{subsec:losses}
+
+Zmienne dotyczące strat mocy w systemie elektroenergetycznym odgrywają istotną rolę w analizie cen energii na Rynku Dnia Następnego (RDN), ponieważ wpływają na dostępność energii w systemie oraz koszty jej przesyłu i dystrybucji. W niniejszej pracy uwzględniono następujące dane zbierane przez systemy PSE: \texttt{power\_loss} (utrata mocy w wyniku awarii w MW) oraz \texttt{network\_loss} (utrata mocy w sieci w MW). Udostępnione dane mają granulację godzinową. 
+
+Straty mocy w systemie elektroenergetycznym są kluczowe w kontekście prognozowania cen energii, ponieważ zmniejszają ilość energii dostępnej dla odbiorców, co może prowadzić do wzrostu cen na RDN oraz \gls{rb}. Utrata mocy w wyniku awarii
+
+Aby zilustrować dynamikę tych zmiennych, na rysunku~\ref{fig:power_losses} przedstawiono zmiany strat mocy w wyniku awarii (\texttt{power\_loss}) oraz strat mocy w sieci (\texttt{network\_loss}) w latach 2016--2024 w ujęciu miesięcznym.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../plots/losses/power_losses_2016_2024.png}
+    \caption{Straty mocy w wyniku awarii i w sieci w latach 2016--2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych z PSE.}
+    \label{fig:power_losses}
+\end{figure}
+
+Straty sieciowe na wykresie po 06.2024 są większe od poprzednich. Wynika to ze zmiany metodyki obliczania strat sieciowych przez PSE. Niemniej jednak straty mocy są znaczące, ale wynikają prawdopodbnie z tego, że nie wszystkie jednostki wytworcze pracują w danym momencie lub z ograniczonej ich eksploatacji. 
+
+\subsection{Zapotrzebowanie na energię i wolumen handlu}
+\label{subsec:demand}
+
+Zmienne dotyczące zapotrzebowania na energię i wolumenu handlu są kluczowe w analizie cen energii na Rynku Dnia Następnego (RDN), ponieważ mają bezpośredni wpływ na równowagę między podażą a popytem, co jest podstawowym czynnikiem kształtującym ceny energii. W niniejszej pracy uwzględniono następujące zmienne: \texttt{load} (zapotrzebowanie na energię w MWh) oraz \texttt{trade\_volume} (wolumen handlu w MWh). Obie zmienne pochodzą z Polskich Sieci Elektroenergetycznych (PSE) i są dostępne w granulacji godzinowej.
+
+Poniżej na wspólnym wykresie przedstawię różnice pomiędzy zapotrzebowaniem a wolumenem handlu.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../plots/market/load_vs_volume_2016_2024.png}
+    \caption{Zapotrzebowanie na energię i wolumen handlu w latach 2016--2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych z PSE.}
+    \label{fig:load_vs_trade_volume}
+\end{figure}
+
+Rozbieżność między zapotrzebowaniem a wolumenem sprzedaży na RDN ma swój powód. Wolumen sprzedaży na RDN zwykle nie przekracza 5000 MWh w porównaniu do zapotrzebowania na poziomie ponad 15 000  MWh wskazuje, że RDN pokrywa jedynie część \% całkowitego zapotrzebowania. Pozostała część jest zaspokajana przez: (1) kontrakty bilateralne (OTC), (2) rynek bilansujący, na którym PSE kupuje energię w czasie rzeczywistym, (3) import energii z sąsiednich krajów, jak pokazano w podrozdziale~\ref{subsec:trade} oraz innego rodzaju transakcje. 
+
+Wyraźnie widoczne są duże szczyty zapotrzebowania zapotrzebowania w okresie zimowym. Wynika to z zwiększonego zapotrzebowania na energię elektryczną w okresie grzewczym, co jest typowe dla klimatu Polski.
+
+\subsection{Inne zmienne}
+\label{subsec:seasonal}
+
+W swoim zbiorze danych uwzględnione zostały inne zmienne, które mogą mieć wpływ na ceny energii na RDN.
+
+\subsubsection{Zmienne sezonowe}
+\label{subsubsec:seasonal_variables}
+Zmienne sezonowe, takie jak \texttt{day\_of\_week}, \texttt{month} i \texttt{is\_holiday}, zostały wprowadzone do zbioru danych w celu uchwycenia cykliczności i wzorców sezonowych w cenach energii na Rynku Dnia Następnego. Zmienne te zostały wygenerowane na podstawie kolumny \texttt{timestamp}, co pozwoliło na ich integrację z pozostałymi danymi w formacie godzinowym.
+
+Zmienna \texttt{month} reprezentuje miesiąc roku (1--12, gdzie 1 to styczeń, a 12 to grudzień). Na temat cykliczności miesięcznej wspominałęm wcześniej w podrozdziałach \ref{subsec:prices} i \ref{subsec:demand}. Niemniej jednak, wprowadzenie zmiennych \texttt{day\_of\_week} i \texttt{month} do modelu pozwala lepiej uchwycić cykliczność i sezonowość w cenach energii, na poszczególne godziny dnia o czym świadczy poniższy wykres korelacji.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../plots/fixing_i_price_weekdays_holidays.png}
+    \caption{Korelacja dni tygodnia z cenami energii na RDN.}
+    \label{fig:seasonal-correlation}
+\end{figure}
+
+Zmienna \texttt{day\_of\_week} reprezentuje dzień tygodnia (0--6, gdzie 0 to poniedziałek, a 6 to niedziela) i pozwala modelowi uwzględnić cykliczność tygodniową w cenach energii. Z wykresu wynika, że zapotrzebowanie na energię jest zazwyczaj wyższe w dni robocze, gdy działa przemysł i biura, a niższe w weekendy i święta, gdy aktywność gospodarcza jest mniejsza. Ta cykliczność przekłada się na ceny energii na RDN: w dni robocze ceny są zazwyczaj wyższe, szczególnie w godzinach szczytu. Wprowadzone zmienne sezonowe pozwalają modelowi lepiej uchwycić te wzorce, co jest istotne w zadaniu modelowania.
+
+\subsubsection{Ceny historyczne}
+\label{subsec:historical_prices}
+
+Do wykresu 
+Zmienne historyczne \texttt{fixing\_i\_price\_lag24} i \texttt{fixing\_i\_price\_lag168}, zostały wprowadzone do zbioru danych w celu uchwycenia autokorelacji w cenach energii na RDN. Zmienne te zostały wygenerowane na podstawie kolumny \texttt{fixing\_i\_price}, która reprezentuje cenę energii na RDN w danej godzinie (w PLN/MWh), poprzez przesunięcie wartości o odpowiednio dobę i tydzień.
+
+Dla pierwszych rekordów w danych (pierwsze 24 godziny dla \texttt{fixing\_i\_price\_lag24} i pierwsze 168 godzin dla \texttt{fixing\_i\_price\_lag168}) brakujące wartości zostały skopiowane z ceny z tego dnia, z tego powodu pierwszy tydzień nie będzie analizowany jako zbiór testowy.
+
+Wprowadzenie zmiennych historycznych do modelu pozwala lepiej uchwycić autokorelację i cykliczność w cenach energii, co jest kluczowe dla poprawy dokładności prognoz. Ceny historyczne są często jednymi z najważniejszych predyktorów w modelach prognozowania cen energii, szczególnie w modelach autoregresyjnych i modelach uczenia maszynowego.
+
+\subsubsection{Kurs wymiany PLN/USD}
+\label{subsec:pln_usd}
+
+Zmienna \texttt{pln\_usd} reprezentuje kurs wymiany złotego polskiego względem dolara amerykańskiego (USD/PLN) w danej godzinie. Dane te zostały pozyskane z oficjalnej strony Narodowego Banku Polskiego (NBP) w granulacji dziennej. W celu dopasowania danych do godzinowego formatu RDN, wartości kursu zostały przypisane do wszystkich godzin w danym dniu. W przypadku dni wolnych od pracy lub braku dostępnych danych, wartości kursu zostały interpolowane.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+    \textbf{Rok} & \textbf{Średni kurs PLN/USD} \\ \hline
+    2016 & 3.94 \\ \hline
+    2017 & 3.78 \\ \hline
+    2018 & 3.61 \\ \hline
+    2019 & 3.84 \\ \hline
+    2020 & 3.90 \\ \hline
+    2021 & 3.86 \\ \hline
+    2022 & 4.46 \\ \hline
+    2023 & 4.20 \\ \hline
+    2024 & 3.98 \\ \hline
+    \end{tabular}
+    \caption{Średni kurs wymiany PLN/USD w latach 2016--2024. Źródło: Opracowanie własne na podstawie danych NBP.}
+    \label{tab:pln-usd-exchange-rate}
+\end{table}
+
+Kurs wymiany PLN/USD jest istotnym czynnikiem w kontekście prognozowania cen energii na RDN, ponieważ Polska importuje znaczną część paliw kopalnych, takich jak gaz ziemny i ropa naftowa, które są wyceniane w dolarach amerykańskich. Wzrost kursu PLN/USD (czyli osłabienie złotego względem dolara) zwiększa koszty importu tych paliw. Kurs polskiego złotego odzwierciedla też zmiany w gospodarce krajowej i globalnej. Próbując stabilizować kurs złotego, NBP zmienia politykę monetarną kraju, co może wpływać na ceny energii.

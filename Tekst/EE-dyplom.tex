@@ -29,7 +29,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \instytut{Instytut Automatyki i Robotyki}
 \kierunek{Automatyka, Robotyka i Informatyka Przemysłowa}
-\specjalnosc{Rzeczowidztwo}
+% \specjalnosc{Rzeczowidztwo}
 \title{Dupa Dupa}
 \engtitle{Dupa Dupa}
 \album{335662}
@@ -40,10 +40,7 @@
 
 %\grantlicense{TRUE} % [TRUE|FALSE]
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Streszczenie pracy i abstract.
-% In case of thesis in English swap the order - English version goes first.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \streszczeniepracy{
 To jest streszczenie. To jest trochę za krótkie, jako że powinno zająć całą stronę.
 
@@ -63,18 +60,16 @@ This is abstract. This one is a little too short as it should occupy the whole p
 \usepackage{float}
 \makeglossaries
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Tu zaczyna się dokument
-% Here is the beginning of the document
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-    % Strony nagłówkowe
-    % Headers
-    \frontpages
+    \frontpages % Strony nagłówkowe
 
-    % Wstęp
     \input{tekst/wstep}
+    \makeatletter
+    \@openrightfalse
+    \makeatother
+    \input{tekst/literatura}
     \input{tekst/dane}
+    \input{tekst/metodology}
 
     % Bibliografia - musi być
     % Bibliography - must exist

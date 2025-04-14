@@ -1,0 +1,38 @@
+\chapter{Przegląd literatury}
+\label{ch:literatura}
+Na podstawie ponadczasowej pracy prof. Rafała Werona poniższy rozdział omawia typowe podejścia w EPF, stosowane metody do predykcji cen oraz zmienne wejściowe. Badania prof. Werona związanego z Politechniką Wrocławską pasują do wszystkich rynków energii na świecie w tym rynku polskiego.
+
+\section{Modele prognozowania}
+\label{sec:modele_prognozowania_literatura}
+
+Wśród stosowanych metod do predykcji cen energii elektrycznej wyróżnia się różne podejścia. Rafał Weron w swojej obszernej pracy z 2014 roku "Electricity price forecasting: A review of the state-of-the-art with a look into the future" \cite{WERON20141030} dokonuje przeglądu literatury z ubiegłych wtedy 15 lat, systematyzując szybko rosnącą liczbę publikacji w tej dziedzinie. Weron wyjaśnia mechanizmy kształtowania się cen na rynkach energii elektrycznej, koncentrując się na cenach dnia następnego. Klasyfikuje techniki predykcyjne pod względem horyzontu czasowego i zastosowanej metodologii. Wymienia następujące kategorie modeli: 
+\begin{itemize}
+    \item multi-agent
+    \item fundamentalne,
+    \item reduced-form,
+    \item statystyczne,
+    \item computational intelligence,
+    \item hybrydowe.
+\end{itemize}
+
+Modele multi-agent symulują zachowanie uczestników rynku energii, takich jak producenci i konsumenci, w celu przewidywania cen. Weron \cite{WERON20141030} wskazuje, że modele oparte na równowadze Nasha-Cournota czy równowadze funkcji podaży, są przydatne w analizie długoterminowej, ale nie uwzględniają strategiczne obstawianie cen przez uczestników rynku. W związku z tym tego rodzaju metody pasują najbardziej do stabilnych rynków bez dużych wahań cenowych. 
+
+Modele fundamentalne opierają się na analizie czynników ekonomicznych i fizycznych, takich jak ceny paliw, emisje CO2 czy zapotrzebowanie. Weron \cite{WERON20141030} dzieli je na parameter-rich (uwzględniające wiele zmiennych) i parsimonious structural (uproszczone). Jednym z wyzwań takich modeli jest ich złożoność i wymóg dużej ilości danych, które często mogą być niedostępne w czasie rzeczywistym. 
+
+Modele reduced-form opisują dynamikę cen za pomocą procesów stochastycznych, takich jak jump-diffusions czy Markov regime-switching. Weron \cite{WERON20141030} wskazuje, że są one użyteczne w modelowaniu dziennej zmienności cen, ale mogą nie być dokładne w próbie dokładnego liczenia cen godzinowych, gdyż nie uwględniają wpływu zmiennych fundamentalnych, takich jak sezonowość czy zmiany w podaży i popycie.
+
+Modele statystyczne, takie jak ARIMA i GARCH, są szeroko stosowane w krótkoterminowym EPF. Modele autoregresyjne (AR) wykorzystują liniową kombinację przeszłych wartości zmiennej do prognozowania przyszłych wartości. Modele średniej ruchomej (MA) prognozują zmienną na podstawie liniowej kombinacji przeszłych błędów prognoz. Modele ARMA łączy te dwa podejścia, a modele ARIMA dodają różnicowanie, aby uwzględnić niestacjonarność danych. W celu uwzględnienia sezonowości wykorzystuje się również model SARIMA. Zgodnie z \cite{appliedmath3020018} modele SARIMA wykazują dobre wyniki w prognozowaniu cen energii elektrycznej, ale ich skuteczność może być ograniczona w przypadku danych o dużej zmienności. Weron \cite{WERON20141030} wspomina również o modelach ARX i ARMAX, gdzie X odpowiada za zmienne zewnętrzne objaśniające. Model GARCH jest szczególnie przydatny w modelowaniu zmienności cen energii elektrycznej, ponieważ uwzględnia heteroskedastyczność i zmienność w czasie.
+
+Modele computational intelligence, oparte na technikach uczenia maszynowego, zyskały na popularności w nowszych badaniach. Wśród popularnych metod wyróżniają się metody rozmyte, metody wektorów nośnych, LSTM oraz CNN. Mikołaj Kalisz i Adam Mantiuk z Politechniki Warszawskiej \cite{MGR2025} używają Perceptron wielowarstwowego (MLP). W pracy Grzegorza Marcjasza \cite{en13184605} proponowany jest dobór hiperparametrów do głębokiej sieci neuronowej (DNN). Badanie porównuje DNN do statystycznego modelu LASSO. W tym badaniu pokazuje się, że wyniki DNN są lepsze od wybranego modelu statystycznego, co może wskazywać na przewagę uczenia maszynowego nad tradycyjnymi metodami statystycznymi.
+
+Modele hybrydowe łączą elementy różnych kategorii, aby wykorzystać ich zalety. Jinliang Zhang jest przykładem takiego podejścia. W pracy \cite{TAN20103606} łączy transformację falkową z ARIMA i GARCH. W tej pracy argumentuje się, że połączenie WT z modelami ARIMA i GARCH pozwala na skuteczne modelowanie złożonych cech cen energii elektrycznej, takich jak niestacjonarność, nieliniowość i wysoka zmienność. W późniejszej pracy Zhang \cite{ZHANG2012695} łączy wspomniane transformację falkową oraz ARIMA z metodę najmniejszych kwadratów maszyn wektorów nośnych (LSSVM). Potwierdzając skuteczność takich metód, Weron \cite{WERON20141030} podaje, że popularnym podejściem hybrydowym jest łączenie modeli statystycznych z sieciami neuronowymi, co pozwala na modelowanie zarówno liniowych, jak i nieliniowych zależności.
+
+W niniejszej pracy planuje się zastosowanie modeli Prophet i MLP do prognozowania cen energii elektrycznej na RDN. Prophet najbardziej pasuje do kategorii statystycznych, ale jego algorytm jest bardziej złożony niż tradycyjne modele ARIMA. MLP to przykład modelu computational intelligence, który wykorzystuje sieci neuronowe do prognozowania cen energii elektrycznej.
+
+\section{Zmienne wejściowe}
+\label{sec:zmienne_wejsciowe_literatura}
+
+
+
+
+

@@ -239,10 +239,29 @@ combined_df = combined_df.drop(columns=["Brent_USD"])
 # Dodaj kolumnę dzień tygodnia
 combined_df["day_of_week"] = combined_df["timestamp"].dt.dayofweek  # 0 = poniedziałek, 6 = niedziela
 
+# Dodanie zmiennej month (1-12)
+combined_df["month"] = combined_df["timestamp"].dt.month
+
+combined_df["fixing_i_price_lag24"] = combined_df["fixing_i_price"].shift(24)  # Cena w tej samej godzinie poprzedniego dnia
+combined_df["fixing_i_price_lag168"] = combined_df["fixing_i_price"].shift(168)  # Cena w tej samej godzinie poprzedniego tygodnia
+
+# Wypełnienie brakujących wartości w lag24 wartościami z fixing_i_price dla pierwszych 24 rekordów
+combined_df.loc[:23, "fixing_i_price_lag24"] = combined_df.loc[:23, "fixing_i_price"]
+
+# Wypełnienie brakujących wartości w lag168 wartościami z fixing_i_price dla pierwszych 168 rekordów
+combined_df.loc[:167, "fixing_i_price_lag168"] = combined_df.loc[:167, "fixing_i_price"]
+
+# Sprawdzenie wyniku
+print("Przykładowe dane po dodaniu nowych zmiennych:")
+print(combined_df[["timestamp", "month", "fixing_i_price", "fixing_i_price_lag24", "fixing_i_price_lag168"]].head())
+
 # Dodaj kolumnę is_holiday (używając biblioteki holidays dla Polski)
 holidays = hl.PL(years=range(2016, 2025)).keys()
 print(f"\nLista dni wolnych w Polsce: {holidays}")
 combined_df["is_holiday"] = combined_df["timestamp"].dt.date.isin(holidays)
+
+# Zamień wartości w kolumnie is_holiday na 1 (True) lub 0 (False)
+combined_df["is_holiday"] = combined_df["is_holiday"].astype(int)
 
 # Posortuj według timestamp
 combined_df = combined_df.sort_values("timestamp")

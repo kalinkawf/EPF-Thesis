@@ -1,0 +1,170 @@
+\chapter{Metodologia}
+\label{ch:metodologia}
+
+W rozdziale tym przedstawiono metodologię przeprowadzonych badań. Rozdział składa się z dwóch sekcji. W pierwszej przedstawiono metodykę oceny jakości prognoz, a w drugiej omówiono metodykę prognozowania cen energii elektrycznej.
+
+\section{Ocena jakości prognoz}
+\label{sec:ocena_jakosci_prognoz}
+
+Ocena jakości modeli prognozowania cen energii elektrycznej jest kluczowym etapem analizy, ponieważ pozwala na porównanie skuteczności różnych podejść. W niniejszej pracy zastosowano następujące popularne metryki oceny: Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), Mean Absolute Percentage Error (MAPE), Symmetric Mean Absolute Percentage Error (sMAPE) oraz \( R^2 \). Wszystkie z tych metryk są omawiane w literaturze porównania skuteczności modeli \cite{en17225797}. W pracy prof. Werona \cite{WERON20141030} podano, że nie ma standardu obliczenia metryk EPF i wspomina o innych metrykach stosowanych przez innych autorów artykułów, między innymi wymieniono -- Ważony Średni Błąd Bezwzględny (WMAE), średni błąd dniowy (MDE) i tygodniowy (MWE). Niemniej jednak, w tej pracy skupiono się na tych najszerzej stosowanych metrykach. Każda z tych metryk ma swoje zalety i ograniczenia, których omówienie jest przedstawione poniżej, wraz z ich matematycznymi definicjami i przykładami zastosowania w EPF.
+
+\subsection{Mean Absolute Error (MAE)}
+\label{subsec:mae}
+
+Mean Absolute Error jest jedną z najprostszych i najczęściej stosowanych metryk w prognozowaniu szeregów czasowych, w tym w EPF. MAE mierzy średnią wartość bezwzględnych błędów prognoz, co pozwala na ocenę dokładności modelu bez uwzględniania kierunku błędu (nad- lub niedoszacowania).
+
+Matematyczna definicja MAE jest następująca:
+
+\[
+\text{MAE} = \frac{1}{n} \sum_{t=1}^{n} \left| y_t - \hat{y}_t \right|
+\]
+
+gdzie:
+\begin{itemize}
+    \item \( y_t \) to rzeczywista cena energii w godzinie \( t \),
+    \item \( \hat{y}_t \) to przewidywana cena energii w godzinie \( t \),
+    \item \( n \) to liczba obserwacji w zbiorze testowym.
+\end{itemize}
+
+MAE jest wyrażane w tej samej jednostce co prognozowane wartości (w omawianym przypadku jest to PLN/MWh), co czyni je łatwym do interpretacji. Na przykład, jeśli MAE wynosi 10 PLN/MWh, oznacza to, że średni błąd prognozy wynosi 10 PLN na każdą megawatogodzinę.
+
+\textbf{Zalety MAE:}
+\begin{itemize}
+    \item Prosta interpretacja i obliczenia.
+    \item Równomierne traktowanie wszystkich błędów, niezależnie od ich kierunku.
+\end{itemize}
+
+\textbf{Ograniczenia MAE:}
+\begin{itemize}
+    \item Nie uwzględnia kwadratu błędów, przez co nie penalizuje większych odchyleń w sposób szczególny, co może być problematyczne w EPF, gdzie duże skoki cen (np. w godzinach szczytu) są istotne.
+\end{itemize}
+
+\subsection{Root Mean Squared Error (RMSE)}
+\label{subsec:rmse}
+
+Root Mean Squared Error (RMSE) jest kolejną popularną metryką w EPF, która uwzględnia kwadrat błędów, co powoduje większe uwzględnienie większych odchyleń między wartościami rzeczywistymi a przewidywanymi. RMSE jest szczególnie użyteczne w sytuacjach, gdzie duże błędy prognoz mogą mieć poważne konsekwencje ekonomiczne.
+
+Definicja RMSE jest następująca:
+
+\[
+\text{RMSE} = \sqrt{\frac{1}{n} \sum_{t=1}^{n} \left( y_t - \hat{y}_t \right)^2}
+\]
+
+gdzie:
+\begin{itemize}
+    \item \( y_t \), \( \hat{y}_t \) i \( n \) mają takie same znaczenie jak w MAE.
+\end{itemize}
+
+RMSE jest również wyrażane w jednostkach oryginalnych danych, co ułatwia interpretację. Na przykład, RMSE równe 15 PLN/MWh oznacza, że typowy błąd prognozy (w sensie średniego kwadratu) wynosi 15 PLN na megawatogodzinę.
+
+\textbf{Zalety RMSE:}
+\begin{itemize}
+    \item Większa wrażliwość na duże błędy, co jest istotne w EPF, gdzie skoki cen mogą być kosztowne.
+\end{itemize}
+
+\textbf{Ograniczenia RMSE:}
+\begin{itemize}
+    \item Wrażliwość na wartości odstające -- pojedyncze duże błędy mogą znacząco zawyżyć wartość RMSE.
+    \item Mniej intuicyjne w interpretacji niż MAE, ponieważ kwadrat błędów zmienia skalę.
+\end{itemize}
+
+\subsection{Mean Absolute Percentage Error (MAPE)}
+\label{subsec:mape}
+
+Mean Absolute Percentage Error (MAPE) jest metryką wyrażającą błąd prognozy jako procent rzeczywistej wartości, co czyni ją szczególnie użyteczną w porównaniach między różnymi zbiorami danych lub rynkami o różnych poziomach cen.
+
+Definicja MAPE jest następująca:
+
+\[
+\text{MAPE} = \frac{1}{n} \sum_{t=1}^{n} \left| \frac{y_t - \hat{y}_t}{y_t} \right| \times 100
+\]
+
+gdzie:
+\begin{itemize}
+    \item \( y_t \), \( \hat{y}_t \) i \( n \) mają takie same znaczenie jak wcześniej.
+\end{itemize}
+
+MAPE jest wyrażane w procentach, co ułatwia interpretację. Na przykład, MAPE równe 5\% oznacza, że średni błąd prognozy wynosi 5\% rzeczywistej ceny. W kontekście RDN, jeśli cena energii wynosi 200 PLN/MWh, a MAPE wynosi 5\%, średni błąd wynosi 10 PLN/MWh.
+
+\textbf{Zalety MAPE:}
+\begin{itemize}
+    \item Intuicyjna interpretacja w procentach, nie trzeba zastanawiać się nad jednostkami bądź kursami walutowymi.
+\end{itemize}
+
+\textbf{Ograniczenia MAPE:}
+\begin{itemize}
+    \item Problemy z wartościami bliskimi zera -- jeśli \( y_t \) jest bardzo małe, co jest możliwe w godzinach nocnych, dzielenie przez \( y_t \) prowadzi do bardzo dużych wartości procentowych, a nawet do błędu matematycznego (dzielenie przez zero).
+    \item Asymetria -- MAPE bardziej penalizuje niedoszacowania niż przeszacowania, co może prowadzić do nieobiektywnej oceny.
+\end{itemize}
+
+\subsection{Symmetric Mean Absolute Percentage Error (sMAPE)}
+\label{subsec:smape}
+
+Symmetric Mean Absolute Percentage Error (sMAPE) jest zmodyfikowaną wersją MAPE, która rozwiązuje problem asymetrii i dzielenia przez zero. sMAPE uwzględnia zarówno rzeczywiste, jak i przewidywane wartości w mianowniku, co czyni ją bardziej stabilną w sytuacjach, gdy ceny energii są niskie.
+
+Definicja sMAPE jest następująca:
+
+\[
+\text{sMAPE} = \frac{1}{n} \sum_{t=1}^{n} \frac{\left| y_t - \hat{y}_t \right|}{\left( \left| y_t \right| + \left| \hat{y}_t \right| \right) / 2} \times 100
+\]
+
+gdzie:
+\begin{itemize}
+    \item \( y_t \), \( \hat{y}_t \) i \( n \) mają takie same znaczenie jak wcześniej.
+\end{itemize}
+
+Podobnie jak MAPE, sMAPE jest wyrażane w procentach. Na przykład, sMAPE równe 4\% oznacza, że średni błąd symetryczny wynosi 4\% średniej wartości rzeczywistej i przewidywanej ceny.
+
+\textbf{Zalety sMAPE:}
+\begin{itemize}
+    \item Rozwiązuje problem dzielenia przez zero, co jest istotne w EPF, gdzie ceny mogą być bliskie zera.
+    \item Symetria -- traktuje nad- i niedoszacowania w bardziej zrównoważony sposób niż MAPE.
+\end{itemize}
+
+\textbf{Ograniczenia sMAPE:}
+\begin{itemize}
+    \item Nadal może być wrażliwe na skrajne wartości, choć w mniejszym stopniu niż MAPE.
+    \item Interpretacja jest mniej intuicyjna niż w przypadku MAE czy RMSE, ponieważ uwzględnia zarówno \( y_t \), jak i \( \hat{y}_t \) w mianowniku.
+\end{itemize}
+
+\subsection{Współczynnik determinacji}
+\label{subsec:r2}
+
+Współczynnik determinacji, oznaczany jako \( R^2 \), jest metryką powszechnie stosowaną w analizie regresji i prognozowaniu. \( R^2 \) mierzy, jak dobrze model wyjaśnia zmienność danych rzeczywistych, czyli jaki procent wariancji zmiennej zależnej jest wyjaśniony przez model prognostyczny. Jest to metryka szczególnie użyteczna w ocenie modeli liniowych, ale znajduje zastosowanie również w bardziej złożonych modelach, w celu ogólnej oceny ich dopasowania do danych.
+
+Definicja \( R^2 \) jest następująca:
+
+\[
+R^2 = 1 - \frac{\sum_{t=1}^{n} \left( y_t - \hat{y}_t \right)^2}{\sum_{t=1}^{n} \left( y_t - \bar{y} \right)^2}
+\]
+
+gdzie:
+\begin{itemize}
+    \item \( y_t \), \( \hat{y}_t \) i \( n \) mają takie same znaczenie jak wcześniej,
+    \item \( n \) to liczba obserwacji w zbiorze testowym.
+\end{itemize}
+
+Licznik w wyrażeniu \( \sum_{t=1}^{n} \left( y_t - \hat{y}_t \right)^2 \) to suma kwadratów reszt, czyli całkowity błąd modelu, natomiast mianownik \( \sum_{t=1}^{n} \left( y_t - \bar{y} \right)^2 \) to całkowita suma kwadratów, czyli całkowita wariancja danych względem ich średniej. \( R^2 \) przyjmuje wartości w przedziale od 0 do 1, gdzie:
+\begin{itemize}
+    \item \( R^2 = 1 \) oznacza, że model idealnie przewiduje wszystkie wartości (błąd wynosi 0),
+    \item \( R^2 = 0 \) oznacza, że model nie wyjaśnia żadnej zmienności danych i jest równoważny prostemu modelowi średniej (\( \hat{y}_t = \bar{y} \)).
+\end{itemize}
+
+W kontekście EPF, na przykład na RDN, \( R^2 \) równe 0,85 oznaczałoby, że model wyjaśnia 85\% zmienności cen energii.
+
+\textbf{Zalety \( R^2 \):}
+\begin{itemize}
+    \item Intuicyjna interpretacja -- \( R^2 \) jasno wskazuje, jaki procent zmienności danych jest wyjaśniony przez model.
+    \item Bez jednostek -- umożliwia porównanie modeli na różnych zbiorach danych, niezależnie od skali cen (np. PLN/MWh na RDN vs. EUR/MWh na EEX).
+\end{itemize}
+
+\textbf{Ograniczenia \( R^2 \):}
+\begin{itemize}
+    \item Wrażliwość na przeuczenie -- \( R^2 \) może być zawyżone w modelach o dużej liczbie parametrów, szczególnie w przypadku małych zbiorów danych, co może prowadzić do mylnego wniosku o dobrym dopasowaniu modelu.
+    \item Brak informacji o kierunku błędów -- \( R^2 \) nie rozróżnia, czy model nad- czy niedoszacowuje wartości, co w EPF może być istotne z ekonomicznego punktu widzenia.
+\end{itemize}
+
+W niniejszej pracy \( R^2 \) zostanie wykorzystane jako dodatkowa metryka oceny, aby uzupełnić analizę opartą na MAE, RMSE, MAPE, sMAPE.
+
+\section{Wybrane metody prognozowania cen energii elektrycznej}
+\label{sec:wybrane_metody_prognozowania_cen_energii_elektrycznej}
