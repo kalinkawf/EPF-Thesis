@@ -41,13 +41,13 @@
   >
 ]>
 <requests version="1.0">
-  <internal package="biblatex" priority="9" active="1">
+  <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>EE-Dyplom.bcf</file>
+      <file>EE-dyplom.bcf</file>
     </provides>
     <requires type="dynamic">
-      <file>EE-Dyplom.bbl</file>
+      <file>EE-dyplom.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -69,19 +69,19 @@
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
-      <infile>EE-Dyplom</infile>
+      <infile>EE-dyplom</infile>
     </cmdline>
     <input>
-      <file>EE-Dyplom.bcf</file>
+      <file>EE-dyplom.bcf</file>
     </input>
     <output>
-      <file>EE-Dyplom.bbl</file>
+      <file>EE-dyplom.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>EE-Dyplom.bbl</file>
+      <file>EE-dyplom.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>EE-Dyplom.bcf</file>
+      <file>EE-dyplom.bcf</file>
     </requires>
     <requires type="editable">
       <file>EE-dyplom.bib</file>

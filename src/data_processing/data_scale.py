@@ -242,6 +242,9 @@ combined_df["day_of_week"] = combined_df["timestamp"].dt.dayofweek  # 0 = ponied
 # Dodanie zmiennej month (1-12)
 combined_df["month"] = combined_df["timestamp"].dt.month
 
+# Dodanie zmiennej hour (0-23)
+combined_df["hour"] = combined_df["timestamp"].dt.hour
+
 combined_df["fixing_i_price_lag24"] = combined_df["fixing_i_price"].shift(24)  # Cena w tej samej godzinie poprzedniego dnia
 combined_df["fixing_i_price_lag168"] = combined_df["fixing_i_price"].shift(168)  # Cena w tej samej godzinie poprzedniego tygodnia
 

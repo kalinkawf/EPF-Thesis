@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.8)  13 APR 2025 13:14
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.8)  14 APR 2025 19:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./EE-Dyplom.tex
-(EE-Dyplom.tex
+**./EE-dyplom.tex
+(EE-dyplom.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (EE-dyplom.cls
@@ -258,17 +258,17 @@ Package: glossary-tree 2025/03/19 v4.58 (NLCT)
 ))
 \glswrite=\write3
 \glo@main@file=\write4
-\openout4 = `EE-Dyplom.glo'.
+\openout4 = `EE-dyplom.glo'.
 
-Package glossaries Info: Writing glossary file EE-Dyplom.glo on input line 77.
+Package glossaries Info: Writing glossary file EE-dyplom.glo on input line 77.
 \glo@acronym@file=\write5
-\openout5 = `EE-Dyplom.acn'.
+\openout5 = `EE-dyplom.acn'.
 
-Package glossaries Info: Writing glossary file EE-Dyplom.acn on input line 77.
+Package glossaries Info: Writing glossary file EE-dyplom.acn on input line 77.
 \glo@symbols@file=\write6
-\openout6 = `EE-Dyplom.slo'.
+\openout6 = `EE-dyplom.slo'.
 
-Package glossaries Info: Writing glossary file EE-Dyplom.slo on input line 77.
+Package glossaries Info: Writing glossary file EE-dyplom.slo on input line 77.
  (glossary.tex)
 (C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
@@ -1570,8 +1570,8 @@ Package fontspec Info:
 (fontspec)             Sans/BI/OT:script=latn;language=PLK;mapping=tex-text;"
 
 
-(EE-Dyplom.aux)
-\openout1 = `EE-Dyplom.aux'.
+(EE-dyplom.aux)
+\openout1 = `EE-dyplom.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
 LaTeX Font Info:    ... okay on input line 63.
@@ -1593,7 +1593,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 63.
 LaTeX Font Info:    ... okay on input line 63.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 63.
 LaTeX Font Info:    ... okay on input line 63.
- (EE-Dyplom.glsdefs)
+ (EE-dyplom.glsdefs)
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1658,11 +1658,11 @@ Package biblatex Info: XeTeX detected.
 (biblatex)             Assuming input encoding 'utf8'.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
-\openout7 = `EE-Dyplom.bcf'.
+\openout7 = `EE-dyplom.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'EE-Dyplom.bbl' found.
- (EE-Dyplom.bbl)
+Package biblatex Info: ... file 'EE-dyplom.bbl' found.
+ (EE-dyplom.bbl)
 Package biblatex Info: Reference section=0 on input line 63.
 Package biblatex Info: Reference segment=0 on input line 63.
 Package caption Info: Begin \AtBeginDocument code.
@@ -1671,9 +1671,9 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring ON on input line 63.
- (EE-Dyplom.out) (EE-Dyplom.out)
+ (EE-dyplom.out) (EE-dyplom.out)
 \@outlinefile=\write9
-\openout9 = `EE-Dyplom.out'.
+\openout9 = `EE-dyplom.out'.
 
 \c@lstlisting=\count542
 File: gfx/HeadgikPL.png Graphic file (type bmp)
@@ -1684,7 +1684,7 @@ File: gfx/mgrhead.png Graphic file (type bmp)
 
 [1
 
-\openout3 = `EE-Dyplom.ist'.
+\openout3 = `EE-dyplom.ist'.
 
 ]
 
@@ -1704,7 +1704,7 @@ File: gfx/mgrhead.png Graphic file (type bmp)
 
 [6
 
-] (EE-Dyplom.toc
+] (EE-dyplom.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
 
 (C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -1726,7 +1726,15 @@ File: uesint.fd
 
 ])
 \tf@toc=\write10
-\openout10 = `EE-Dyplom.toc'.
+
+! I can't write on file `EE-dyplom.toc'.
+<to be read again> 
+                   \relax 
+l.64     \frontpages
+                     % Strony nagłówkowe
+(Press Enter to retry, or Control-C to exit; default file extension is `.tex')
+Please type another output file name: 
+\openout10 = `EE-dyplom.toc'.
 
 
 
@@ -1843,91 +1851,93 @@ File: ../plots/fixing_i_price_weekdays_holidays.png Graphic file (type bmp)
 <../plots/fixing_i_price_weekdays_holidays.png>
 
 
-[29]) (tekst/metodology.tex
+[29]) (tekst/eksploracja.tex
 
 [30]
 Rozdział 4.
-
+) (tekst/metodology.tex
 
 [31
 
 ]
+Rozdział 5.
 
-[32]
+
+[32
+
+]
 
 [33]
 
-[34])
+[34]
 
-[35]
+[35]) (tekst/analiza.tex
 
-[36
-
-]
+[36]
+Rozdział 6.
+) (tekst/podsumowanie.tex
 
 [37
 
 ]
+Rozdział 7.
+)
 
-[38] (EE-Dyplom.acr) (EE-Dyplom.sls)
+[38
+
+]
 
 [39
 
-] (EE-Dyplom.lof)
-\tf@lof=\write11
-\openout11 = `EE-Dyplom.lof'.
 
+]
 
-
-[40
-
-] (EE-Dyplom.lot)
-\tf@lot=\write12
-\openout12 = `EE-Dyplom.lot'.
-
-
+[40] (EE-dyplom.acr) (EE-dyplom.sls)
 
 [41
 
-] (EE-Dyplom.app)
-\tf@app=\write13
-\openout13 = `EE-Dyplom.app'.
+] (EE-dyplom.lof)
+\tf@lof=\write11
+\openout11 = `EE-dyplom.lof'.
 
- (appendices.tex)
+
 
 [42
 
-] (EE-Dyplom.aux)
+] (EE-dyplom.lot)
+\tf@lot=\write12
+\openout12 = `EE-dyplom.lot'.
+
+
+
+[43
+
+] (EE-dyplom.app)
+\tf@app=\write13
+\openout13 = `EE-dyplom.app'.
+
+ (appendices.tex)
+
+[44
+
+] (EE-dyplom.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-Package rerunfilecheck Warning: File `EE-Dyplom.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `EE-Dyplom.out':
-(rerunfilecheck)             Before: 7A0E3601439F2CF7193D03F49B8080F1;5190
-(rerunfilecheck)             After:  8E38B7F90622974DFCC3664D5D3DD788;5190.
-
-Package biblatex Warning: Please rerun LaTeX.
-
-Package logreq Info: Writing requests to 'EE-Dyplom.run.xml'.
-\openout1 = `EE-Dyplom.run.xml'.
+Package rerunfilecheck Info: File `EE-dyplom.out' has not changed.
+(rerunfilecheck)             Checksum: F3B89011325ADE7348F0ED06318B6E0E;5650.
+Package logreq Info: Writing requests to 'EE-dyplom.run.xml'.
+\openout1 = `EE-dyplom.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46233 strings out of 408640
- 935095 string characters out of 5744799
- 2105016 words of memory out of 5000000
- 68561 multiletter control sequences out of 15000+600000
+ 46259 strings out of 408640
+ 935707 string characters out of 5744799
+ 2105524 words of memory out of 5000000
+ 68579 multiletter control sequences out of 15000+600000
  566410 words of font info for 127 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  114i,12n,131p,2691b,5015s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on EE-Dyplom.pdf (42 pages).
+Output written on EE-dyplom.pdf (44 pages).

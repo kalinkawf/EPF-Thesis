@@ -1,0 +1,131 @@
+Prophet 1:
+Wyniki dla modelu Prophet (porównanie pełnego i skróconego zestawu danych):
+           Metryka  Spokojny (2019, pełny)  Spokojny (2019, skrócony)  Niespokojny (2023, pełny)  Niespokojny (2023, skrócony)
+0    MAE (PLN/MWh)                   16.01                      17.37                     173.25                        186.95
+1   RMSE (PLN/MWh)                   20.64                      22.29                     197.70                        210.77
+2  MSE (PLN/MWh)^2                  426.06                     496.72                   39083.64                      44424.16
+3         MAPE (%)                     NaN                        NaN                        NaN                           NaN
+4        sMAPE (%)                     NaN                        NaN                        NaN                           NaN
+5             MASE                     NaN                        NaN                        NaN                           NaN
+6               R2                    0.83                       0.80                      -0.26                         -0.43
+
+Wyniki dla Spokojny (2019, pełny zestaw):
+                    Kombinacja    MAE  RMSE     MSE  MAPE  sMAPE  MASE    R2
+0  cps=0.01, sps=1.0, hps=10.0  15.93  20.5  420.06   NaN    NaN   NaN  0.83
+
+Wyniki dla Spokojny (2019, skrócony zestaw):
+                    Kombinacja    MAE   RMSE     MSE  MAPE  sMAPE  MASE    R2
+0  cps=0.01, sps=1.0, hps=10.0  16.98  21.77  473.98   NaN    NaN   NaN  0.81
+
+Wyniki dla Niespokojny (2023, pełny zestaw):
+                    Kombinacja     MAE    RMSE       MSE  MAPE  sMAPE  MASE    R2
+0  cps=0.01, sps=1.0, hps=10.0  180.68  204.77  41932.27   NaN    NaN   NaN -0.35
+
+Wyniki dla Niespokojny (2023, skrócony zestaw):
+                    Kombinacja     MAE   RMSE       MSE  MAPE  sMAPE  MASE    R2
+0  cps=0.01, sps=1.0, hps=10.0  170.06  193.7  37520.51   NaN    NaN   NaN -0.21
+
+TESTY Z LOGARYTMIZOWANIEM : 
+
+Wyniki dla Spokojny (2019, pełny zestaw):
+                    Kombinacja    MAE   RMSE      MSE  MAPE  sMAPE  MASE    R2
+0  cps=0.01, sps=1.0, hps=10.0  15.93  20.50   420.06   NaN    NaN   NaN  0.83
+1   cps=0.1, sps=1.0, hps=10.0  24.59  29.55   873.29   NaN    NaN   NaN  0.65
+2   cps=0.5, sps=1.0, hps=10.0  26.17  31.06   964.83   NaN    NaN   NaN  0.61
+3   cps=0.1, sps=5.0, hps=10.0  26.55  31.67  1002.95   NaN    NaN   NaN  0.59
+4  cps=0.1, sps=20.0, hps=10.0  19.90  24.73   611.64   NaN    NaN   NaN  0.75
+5    cps=0.1, sps=5.0, hps=0.1  23.59  28.44   808.78   NaN    NaN   NaN  0.67
+6   cps=0.1, sps=5.0, hps=20.0  24.18  29.07   845.03   NaN    NaN   NaN  0.66
+
+Wyniki dla Spokojny (2019, skrócony zestaw):
+                    Kombinacja    MAE   RMSE     MSE  MAPE  sMAPE  MASE    R2
+0  cps=0.01, sps=1.0, hps=10.0  16.98  21.77  473.98   NaN    NaN   NaN  0.81
+1   cps=0.1, sps=1.0, hps=10.0  20.86  26.01  676.61   NaN    NaN   NaN  0.73
+2   cps=0.5, sps=1.0, hps=10.0  20.36  25.32  641.26   NaN    NaN   NaN  0.74
+3   cps=0.1, sps=5.0, hps=10.0  20.38  25.31  640.69   NaN    NaN   NaN  0.74
+4  cps=0.1, sps=20.0, hps=10.0  18.61  23.52  553.04   NaN    NaN   NaN  0.78
+5    cps=0.1, sps=5.0, hps=0.1  20.41  25.36  643.24   NaN    NaN   NaN  0.74
+6   cps=0.1, sps=5.0, hps=20.0  20.79  25.77  663.89   NaN    NaN   NaN  0.73
+
+Wyniki dla Niespokojny (2023, pełny zestaw):
+                    Kombinacja     MAE    RMSE       MSE  MAPE  sMAPE  MASE    R2
+0  cps=0.01, sps=1.0, hps=10.0  180.68  204.77  41932.27   NaN    NaN   NaN -0.35
+1   cps=0.1, sps=1.0, hps=10.0  183.72  215.89  46608.43   NaN    NaN   NaN -0.51
+2   cps=0.5, sps=1.0, hps=10.0  187.64  222.48  49498.07   NaN    NaN   NaN -0.60
+3   cps=0.1, sps=5.0, hps=10.0  185.02  217.84  47455.23   NaN    NaN   NaN -0.53
+4  cps=0.1, sps=20.0, hps=10.0  183.37  215.91  46615.50   NaN    NaN   NaN -0.51
+5    cps=0.1, sps=5.0, hps=0.1  184.15  216.68  46948.51   NaN    NaN   NaN -0.52
+6   cps=0.1, sps=5.0, hps=20.0  192.16  225.76  50965.87   NaN    NaN   NaN -0.65
+
+Wyniki dla Niespokojny (2023, skrócony zestaw):
+                    Kombinacja     MAE    RMSE       MSE  MAPE  sMAPE  MASE    R2
+0  cps=0.01, sps=1.0, hps=10.0  170.06  193.70  37520.51   NaN    NaN   NaN -0.21
+1   cps=0.1, sps=1.0, hps=10.0  164.66  195.51  38224.14   NaN    NaN   NaN -0.23
+2   cps=0.5, sps=1.0, hps=10.0  168.56  200.60  40238.72   NaN    NaN   NaN -0.30
+3   cps=0.1, sps=5.0, hps=10.0  174.24  205.78  42345.37   NaN    NaN   NaN -0.37
+4  cps=0.1, sps=20.0, hps=10.0  166.79  197.77  39114.84   NaN    NaN   NaN -0.26
+5    cps=0.1, sps=5.0, hps=0.1  176.67  209.35  43828.22   NaN    NaN   NaN -0.42
+6   cps=0.1, sps=5.0, hps=20.0  171.94  202.05  40822.82   NaN    NaN   NaN -0.32
+6   cps=0.1, sps=5.0, hps=20.0  171.94  202.05  40822.82   NaN    NaN   NaN -0.32
+
+NAJLEPSZE : 
+cps=0.1, sps=20.0, hps=10.0
+cps=0.1, sps=50.0, hps=10.0
+cps=0.01, sps=20.0, hps=10.0
+cps=0.01, sps=50.0, hps=0.01
+
+bez LOG : 
+Wyniki dla Spokojny (2019, pełny zestaw):
+                     Kombinacja    MAE   RMSE      MSE  MAPE  sMAPE  MASE    R2
+0   cps=0.1, sps=20.0, hps=10.0  39.79  44.99  2024.43   NaN    NaN   NaN  0.18
+1   cps=0.1, sps=50.0, hps=10.0  38.90  44.06  1941.08   NaN    NaN   NaN  0.21
+2  cps=0.01, sps=20.0, hps=10.0  16.00  20.57   423.01   NaN    NaN   NaN  0.83
+3  cps=0.01, sps=50.0, hps=0.01  15.98  20.55   422.18   NaN    NaN   NaN  0.83
+
+Wyniki dla Spokojny (2019, skrócony zestaw):
+                     Kombinacja    MAE   RMSE     MSE  MAPE  sMAPE  MASE    R2
+0   cps=0.1, sps=20.0, hps=10.0  25.07  30.07  904.20   NaN    NaN   NaN  0.63
+1   cps=0.1, sps=50.0, hps=10.0  21.59  26.60  707.65   NaN    NaN   NaN  0.71
+2  cps=0.01, sps=20.0, hps=10.0  16.17  20.96  439.31   NaN    NaN   NaN  0.82
+3  cps=0.01, sps=50.0, hps=0.01  16.08  20.86  435.06   NaN    NaN   NaN  0.82
+
+Wyniki dla Niespokojny (2023, pełny zestaw):
+                     Kombinacja     MAE    RMSE       MSE  MAPE  sMAPE  MASE    R2
+0   cps=0.1, sps=20.0, hps=10.0  181.36  208.56  43498.35   NaN    NaN   NaN -0.40
+1   cps=0.1, sps=50.0, hps=10.0  191.12  219.29  48086.17   NaN    NaN   NaN -0.55
+2  cps=0.01, sps=20.0, hps=10.0  140.75  161.84  26193.55   NaN    NaN   NaN  0.15
+3  cps=0.01, sps=50.0, hps=0.01  131.17  152.25  23178.82   NaN    NaN   NaN  0.25
+
+Wyniki dla Niespokojny (2023, skrócony zestaw):
+                     Kombinacja     MAE    RMSE       MSE  MAPE  sMAPE  MASE    R2
+0   cps=0.1, sps=20.0, hps=10.0  184.34  208.84  43616.11   NaN    NaN   NaN -0.41
+1   cps=0.1, sps=50.0, hps=10.0  190.04  215.49  46437.14   NaN    NaN   NaN -0.50
+2  cps=0.01, sps=20.0, hps=10.0  144.33  164.70  27127.30   NaN    NaN   NaN  0.12
+3  cps=0.01, sps=50.0, hps=0.01  135.57  156.06  24355.26   NaN    NaN   NaN  0.21
+
+KOLEJNE TESTY Z LOG:
+Wyniki dla Spokojny (2019, pełny zestaw):
+                    Kombinacja    MAE   RMSE     MSE  MAPE  sMAPE  MASE    R2
+0  cps=0.01, sps=50.0, hps=0.1  15.96  20.55  422.16   NaN    NaN   NaN  0.83
+1   cps=0.1, sps=50.0, hps=0.1  25.38  30.37  922.63   NaN    NaN   NaN  0.63
+2   cps=0.1, sps=20.0, hps=0.1  24.92  29.77  886.10   NaN    NaN   NaN  0.64
+
+Wyniki dla Spokojny (2019, skrócony zestaw):
+                    Kombinacja    MAE   RMSE     MSE  MAPE  sMAPE  MASE    R2
+0  cps=0.01, sps=50.0, hps=0.1  16.80  21.56  465.01   NaN    NaN   NaN  0.81
+1   cps=0.1, sps=50.0, hps=0.1  19.43  24.35  592.84   NaN    NaN   NaN  0.76
+2   cps=0.1, sps=20.0, hps=0.1  20.92  25.86  668.52   NaN    NaN   NaN  0.73
+
+Wyniki dla Niespokojny (2023, pełny zestaw):
+                    Kombinacja     MAE    RMSE       MSE  MAPE  sMAPE  MASE    R2
+0  cps=0.01, sps=50.0, hps=0.1  174.22  198.15  39263.65   NaN    NaN   NaN -0.27
+1   cps=0.1, sps=50.0, hps=0.1  188.44  222.17  49360.21   NaN    NaN   NaN -0.59
+2   cps=0.1, sps=20.0, hps=0.1  189.22  223.12  49781.09   NaN    NaN   NaN -0.61
+
+Wyniki dla Niespokojny (2023, skrócony zestaw):
+                    Kombinacja     MAE    RMSE       MSE  MAPE  sMAPE  MASE    R2
+0  cps=0.01, sps=50.0, hps=0.1  162.05  185.80  34520.28   NaN    NaN   NaN -0.11
+1   cps=0.1, sps=50.0, hps=0.1  170.01  200.48  40192.87   NaN    NaN   NaN -0.30
+2   cps=0.1, sps=20.0, hps=0.1  170.29  200.66  40264.95   NaN    NaN   NaN -0.30
+
+cps=0.01, sps=50.0, hps=0.1

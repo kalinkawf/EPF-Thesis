@@ -40,14 +40,14 @@ brent_price - Cena ropy Brent Europe [PLN/bar]
 pln_usd - Kurs PLN do USD 
 
 Produkcja energii z różnych źródeł:
-hard_coal - Produkcja energii z węgla kamiennego [MW]
-coal-derived - Produkcja energii z paliw pochodnych węgla [MW]
-lignite - Produkcja energii z węgla brunatnego [MW]
-gas - Produkcja energii z gazu ziemnego [MW]
-oil - Produkcja energii z ropy naftowej lub jej pochodnych [MW]
-biomass - Produkcja energii z biomasy [MW]
-wind_onshore - Produkcja energii z elektrowni wiatrowych lądowych [MW]
-solar - Produkcja energii z elektrowni słonecznych (fotowoltaicznych)  [MW]
+hard_coal - Produkcja energii z węgla kamiennego [MWh]
+coal-derived - Produkcja energii z paliw pochodnych węgla [MWh]
+lignite - Produkcja energii z węgla brunatnego [MWh]
+gas - Produkcja energii z gazu ziemnego [MWh]
+oil - Produkcja energii z ropy naftowej lub jej pochodnych [MWh]
+biomass - Produkcja energii z biomasy [MWh]
+wind_onshore - Produkcja energii z elektrowni wiatrowych lądowych [MWh]
+solar - Produkcja energii z elektrowni słonecznych (fotowoltaicznych)  [MWh]
 Load - Rzeczywiste zapotrzebowanie na daną godzinę [MWh]
 
 Other data:

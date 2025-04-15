@@ -4,11 +4,11 @@ import seaborn as sns
 import os
 import matplotlib.dates as mdates
 
-# Wczytaj dane
+# Wczytaj dane 
 df = pd.read_csv("../../data/database.csv")
 df["timestamp"] = pd.to_datetime(df["timestamp"])
 
-# Wybierz zmienne do analizy korelacji (wszystkie zmienne numeryczne poza timestamp)
+# KORELACJA ZMIENNYCH Z fixing_i_price
 features = [
     "temp_waw", "wind_speed_waw", "cloud_cover_waw", "solar_radiation_waw",
     "temp_ksz", "wind_speed_ksz", "cloud_cover_ksz", "solar_radiation_ksz",
@@ -17,42 +17,54 @@ features = [
     "power_loss", "Network_loss",
     "Niemcy Bilans", "Czechy Bilans", "Litwa Bilans", "Słowacja Bilans", "Szwecja Bilans", "Ukraina Bilans",
     "hard_coal", "coal-derived", "lignite", "gas", "oil", "biomass", "wind_onshore", "solar",
-    "fixing_i_volume", "Load", "gas_price", "gas_volume", "coal_pscmi1_pln_per_gj", "coal_pscmi1_pln_per_gj",
-    "pln_usd", "brent_price", "day_of_week", "is_holiday"
+    "fixing_i_volume", "Load", "gas_price", "gas_volume", "coal_pscmi1_pln_per_gj", "co2_price",
+    "pln_usd", "brent_price", "day_of_week", "month", "hour", "fixing_i_price_lag24", "fixing_i_price_lag168", "is_holiday"
 ]
 target = "fixing_i_price"
 
-# # Oblicz korelacje
-# correlation_df = df[features + [target]].corr()[[target]].drop(target)
-# correlation_df.columns = ["Korelacja"]
-# correlation_df = correlation_df.sort_values(by="Korelacja", ascending=False)
+# Konwersja zmiennych logicznych/kategorycznych na numeryczne (np. is_holiday)
+df["is_holiday"] = df["is_holiday"].astype(int)
 
-# # Ustaw styl wykresu
-# # plt.style.use("seaborn")
-# plt.figure(figsize=(12, 8))
+# Usunięcie brakujących wartości (NaN) z wybranych kolumn
+analysis_df = df[features + [target]].dropna()
 
-# # Kolory: dodatnie korelacje na zielono, ujemne na czerwono
-# colors = ["#2ecc71" if x >= 0 else "#e74c3c" for x in correlation_df["Korelacja"]]
+# Oblicz korelacje
+correlation_df = analysis_df.corr()[[target]].drop(target)
+correlation_df.columns = ["Korelacja"]
+correlation_df = correlation_df.sort_values(by="Korelacja", ascending=False)
 
-# # Wykres słupkowy
-# sns.barplot(x="Korelacja", y=correlation_df.index, palette=colors, df=correlation_df)
+# Ustawienie stylu wykresu (opcjonalne, można pominąć)
+# plt.style.use("seaborn-v0_8")
 
-# # Dodaj etykiety i tytuł
-# plt.title("Korelacja zmiennych z fixing_i_price", fontsize=16, pad=20)
-# plt.xlabel("Współczynnik korelacji", fontsize=12)
-# plt.ylabel("Zmienna", fontsize=12)
-# plt.xticks(ticks=range(0, len(correlation_df.index), 3), labels=correlation_df.index[::3])
+# Tworzenie wykresu
+plt.figure(figsize=(12, 8))
 
-# # Dodaj siatkę dla lepszej czytelności
-# plt.grid(True, axis="x", linestyle="--", alpha=0.7)
-# # Dopasuj układ
-# plt.tight_layout()
+# Kolory: dodatnie korelacje na zielono, ujemne na czerwono
+colors = ["#2ecc71" if x >= 0 else "#e74c3c" for x in correlation_df["Korelacja"]]
 
-# # Zapisz wykres
-# plt.savefig("../../plots/correlation_with_fixing_i_price.png", dpi=300)
-# plt.close()
+# Wykres słupkowy
+sns.barplot(x="Korelacja", y=correlation_df.index, palette=colors, data=correlation_df)
 
-# print("Wykres zapisany w ../../plots/correlation_with_fixing_i_price.png")
+# Dodaj etykiety i tytuł
+plt.title("Korelacja zmiennych z fixing_i_price", fontsize=16, pad=20)
+plt.xlabel("Współczynnik korelacji", fontsize=12)
+plt.ylabel("Zmienna", fontsize=12)
+
+# Dodaj siatkę dla lepszej czytelności
+plt.grid(True, axis="x", linestyle="--", alpha=0.7)
+
+# Dopasuj układ
+plt.tight_layout()
+
+# Zapisz wykres
+plt.savefig("../../plots/correlation_with_fixing_i_price.png", dpi=300)
+plt.close()
+
+print("Wykres zapisany w ../../plots/correlation_with_fixing_i_price.png")
+
+# Wyświetlenie wyników analizy korelacji w konsoli
+print("Analiza korelacji zmiennych z fixing_i_price:")
+print(correlation_df)
 
 # Przekształcenie daty na kwartały
 df["quarter"] = df["timestamp"].dt.to_period("Q").astype(str)
@@ -399,3 +411,18 @@ annual_pln_usd = data.groupby("year")["pln_usd"].mean().reset_index()
 print("Średnioroczny kurs PLN/USD w latach 2016-2024:")
 for index, row in annual_pln_usd.iterrows():
     print(f"Rok: {int(row['year'])}, Średni kurs PLN/USD: {row['pln_usd']:.2f}")
+
+# # Obliczenie macierzy korelacji
+# correlation_matrix = data.corr()
+# # Wyodrębnienie korelacji dla fixing_i_price
+# fixing_i_price_correlations = correlation_matrix['fixing_i_price'].drop('fixing_i_price')
+# # Wyświetlenie korelacji dla fixing_i_price
+# print("Korelacje zmiennej fixing_i_price z pozostałymi zmiennymi:")
+# print(fixing_i_price_correlations)
+
+# # Wizualizacja macierzy korelacji za pomocą heatmapy
+# plt.figure(figsize=(10, 8))
+# sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', vmin=-1, vmax=1, center=0)
+# plt.title('Macierz korelacji zmiennych')
+# plt.show()
+
