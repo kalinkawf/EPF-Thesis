@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.8)  14 APR 2025 19:32
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.8)  16 APR 2025 18:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1726,14 +1726,6 @@ File: uesint.fd
 
 ])
 \tf@toc=\write10
-
-! I can't write on file `EE-dyplom.toc'.
-<to be read again> 
-                   \relax 
-l.64     \frontpages
-                     % Strony nagłówkowe
-(Press Enter to retry, or Control-C to exit; default file extension is `.tex')
-Please type another output file name: 
 \openout10 = `EE-dyplom.toc'.
 
 
@@ -1934,7 +1926,7 @@ Package logreq Info: Writing requests to 'EE-dyplom.run.xml'.
 Here is how much of TeX's memory you used:
  46259 strings out of 408640
  935707 string characters out of 5744799
- 2105524 words of memory out of 5000000
+ 2105528 words of memory out of 5000000
  68579 multiletter control sequences out of 15000+600000
  566410 words of font info for 127 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

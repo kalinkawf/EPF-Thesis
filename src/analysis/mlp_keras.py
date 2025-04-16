@@ -101,7 +101,7 @@ def train_and_evaluate_keras(df, features, period_name, train_data, val_data, te
     model.add(Dense(1))
 
     # Kompilacja modelu
-    model.compile(optimizer=Adam(learning_rate=0.001), loss='mse')
+    model.compile(optimizer=Adam(learning_rate=0.0001), loss='mse')
 
     # Wczesne zatrzymywanie
     early_stopping = EarlyStopping(
@@ -177,7 +177,11 @@ architectures = [
     # (32, 32, 32),
     # (64, 32, 16)
     # (32, 32, 16),
-    (32, 16, 8),
+    # (32, 16, 8),
+    # (128, 64, 32),
+    # (64, 32, 16, 8),
+    (32, 32, 16, 8),
+    (32, 16, 16, 8),
 ]
 
 # Listy do przechowywania wyników
