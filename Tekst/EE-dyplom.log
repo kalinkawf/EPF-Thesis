@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.8)  17 APR 2025 12:06
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.8)  17 APR 2025 18:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1747,15 +1747,19 @@ Rozdział 2.
 
 [12
 
-]) (tekst/dane.tex
+]
 
 [13]
 
-[14]
+[14]) (tekst/dane.tex
+
+[15]
+
+[16]
 Rozdział 3.
 
 
-[15
+[17
 
 ]
 File: ../plots/quarterly_fixing_i_price.png Graphic file (type bmp)
@@ -1764,14 +1768,14 @@ File: ../plots/fixing_i_price_histogram.png Graphic file (type bmp)
 <../plots/fixing_i_price_histogram.png>
 
 
-[16]
+[18]
 
-[17]
+[19]
 File: ../plots/weather/temp_time_series_full.png Graphic file (type bmp)
 <../plots/weather/temp_time_series_full.png>
 
 
-[18]
+[20]
 File: ../plots/weather/wind_speed_time_series_full.png Graphic file (type bmp)
 <../plots/weather/wind_speed_time_series_full.png>
 File: ../plots/weather/solar_radiation_time_series_full.png Graphic file (type 
@@ -1779,7 +1783,7 @@ bmp)
 <../plots/weather/solar_radiation_time_series_full.png>
 
 
-[19]
+[21]
 File: ../plots/weather/cloud_cover_time_series_full.png Graphic file (type bmp)
 
 <../plots/weather/cloud_cover_time_series_full.png>
@@ -1787,7 +1791,7 @@ File: ../plots/weather/temp_time_series_2022.png Graphic file (type bmp)
 <../plots/weather/temp_time_series_2022.png>
 
 
-[20]
+[22]
 File: ../plots/weather/wind_speed_time_series_2022.png Graphic file (type bmp)
 <../plots/weather/wind_speed_time_series_2022.png>
 File: ../plots/weather/solar_radiation_time_series_2022.png Graphic file (type 
@@ -1795,13 +1799,13 @@ bmp)
 <../plots/weather/solar_radiation_time_series_2022.png>
 
 
-[21]
+[23]
 File: ../plots/weather/cloud_cover_time_series_2022.png Graphic file (type bmp)
 
 <../plots/weather/cloud_cover_time_series_2022.png>
 
 
-[22]
+[24]
 File: ../plots/energy/energy_production_time_series_full.png Graphic file (type
  bmp)
 <../plots/energy/energy_production_time_series_full.png>
@@ -1815,78 +1819,78 @@ File: ../plots/energy/emission_vs_non_emission_2024.png Graphic file (type bmp)
 <../plots/energy/emission_vs_non_emission_2024.png>
 
 
-[23]
+[25]
 
-[24]
+[26]
 Overfull \hbox (4.14987pt too wide) in paragraph at lines 193--201
  [][] 
  []
 
 
 
-[25]
+[27]
 File: ../plots/fuels/fuel_prices_2016_2024.png Graphic file (type bmp)
 <../plots/fuels/fuel_prices_2016_2024.png>
 
 
-[26]
+[28]
 File: ../plots/losses/power_losses_2016_2024.png Graphic file (type bmp)
 <../plots/losses/power_losses_2016_2024.png>
 File: ../plots/market/load_vs_volume_2016_2024.png Graphic file (type bmp)
 <../plots/market/load_vs_volume_2016_2024.png>
 
 
-[27]
+[29]
 
-[28]
+[30]
 File: ../plots/fixing_i_price_weekdays_holidays.png Graphic file (type bmp)
 <../plots/fixing_i_price_weekdays_holidays.png>
 
 
-[29]) (tekst/eksploracja.tex
+[31]) (tekst/eksploracja.tex
 
-[30]
+[32]
 Rozdział 4.
 ) (tekst/metodology.tex
 
-[31
+[33
 
 ]
 Rozdział 5.
 
 
-[32
+[34
 
 ]
 
-[33]
-
-[34]
-
-[35]) (tekst/analiza.tex
+[35]
 
 [36]
+
+[37]) (tekst/analiza.tex
+
+[38]
 Rozdział 6.
 ) (tekst/podsumowanie.tex
 
-[37
+[39
 
 ]
 Rozdział 7.
 )
 
-[38
+[40
 
 ]
-
-[39
-
-
-]
-
-[40] (EE-dyplom.acr) (EE-dyplom.sls)
 
 [41
+
+
+]
+
+[42] (EE-dyplom.acr) (EE-dyplom.sls)
+
+[43
 
 ] (EE-dyplom.lof)
 \tf@lof=\write11
@@ -1894,7 +1898,7 @@ Rozdział 7.
 
 
 
-[42
+[44
 
 ] (EE-dyplom.lot)
 \tf@lot=\write12
@@ -1902,7 +1906,7 @@ Rozdział 7.
 
 
 
-[43
+[45
 
 ] (EE-dyplom.app)
 \tf@app=\write13
@@ -1910,7 +1914,7 @@ Rozdział 7.
 
  (appendices.tex)
 
-[44
+[46
 
 ] (EE-dyplom.aux)
  ***********
@@ -1918,18 +1922,18 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `EE-dyplom.out' has not changed.
-(rerunfilecheck)             Checksum: 16CF96FF937D74B6EEBC9F677E540C99;5650.
+(rerunfilecheck)             Checksum: 0153A9DDFA86CF8456C645F84977566B;5650.
 Package logreq Info: Writing requests to 'EE-dyplom.run.xml'.
 \openout1 = `EE-dyplom.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46260 strings out of 408640
- 935728 string characters out of 5744799
- 2105571 words of memory out of 5000000
- 68580 multiletter control sequences out of 15000+600000
+ 46289 strings out of 408640
+ 936781 string characters out of 5744799
+ 2102817 words of memory out of 5000000
+ 68609 multiletter control sequences out of 15000+600000
  566410 words of font info for 127 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 114i,12n,131p,2691b,5015s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 114i,12n,131p,2691b,5100s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on EE-dyplom.pdf (44 pages).
+Output written on EE-dyplom.pdf (46 pages).

@@ -1,11 +1,55 @@
 \chapter{Przegląd literatury}
 \label{ch:literatura}
-Na podstawie ponadczasowej pracy prof. Rafała Werona poniższy rozdział omawia typowe podejścia w EPF, stosowane metody do predykcji cen oraz zmienne wejściowe. Badania prof. Werona związanego z Politechniką Wrocławską pasują do wszystkich rynków energii na świecie w tym rynku polskiego.
+Rozdział przedstawia przegląd literatury dotyczącej prognozowania cen energii elektrycznej, ze szczególnym uwzględnieniem zmiennych wejściowych oraz zwykle używanych modeli prognozowania. W analizie odwołano się zarówno do prac profesora Rafała Werona z Politechniki Wrocławskiej, który jest uznanym ekspertem w dziedzinie EPF, jak i do badań innych autorów, aby zapewnić kompleksowy kontekst dla przeprowadzonego badania.
+
+\section{Zmienne wejściowe}
+\label{sec:zmienne_wejsciowe_literatura}
+
+W przeglądzie literatury dotyczącym prognozowania cen energii elektrycznej na rynkach dnia następnego, artykuł napisany przez Jesus Lago o współautorstwie prof. Werona \cite{LAGO2021116983} może stanowić istotny punkt odniesienia pod względem wyboru zmiennych wejściowych. Autorzy przyjęli zestaw dostępnych danych wejściowych dla prognozowania godzinowych cen na rynkach energii elektrycznej Nord Pool, EPEX-BE, EPEX-FR, EPEX-DE oraz PJM.
+Niezależnie od zastosowanych przez autorów modeli (LEAR czy DNN), dla wszystkich rynków stworzono wektory zawierające po 24 wartości odpowiadające każdej godzinie dla cen z poprzednich trzech dni oraz tygodnia wstecz. Do tych wektorów dodano wektor określający dzień tygodnia w celu uwzględnienia sezonowości dziennej. Dodatkowo pod uwagę wzięto zmienne fundamentalne różniące się w zależności od analizowanego rynku. \newline
+Dla rynku Nord Pool (NP) były to prognoza zapotrzebowania na moc oraz prognoza generacji energii wiatrowej.\newline
+Dla rynku PJM w Stanach Zjednoczonych uwzględniono dwie serie prognoz zapotrzebowania na moc: prognozę zapotrzebowania dla całego systemu oraz prognozę dla strefy Commonwealth Edison.\newline
+Dla rynku EPEX-BE w Belgii wykorzystano prognozę zapotrzebowania na moc we Francji oraz prognozę generacji we Francji, ponieważ wcześniejsze badania wykazują, że te dwie zmienne są najlepszymi predyktorami cen belgijskich. \newline
+Dla rynku EPEX-FR we Francji brano pod uwagę prognozę zapotrzebowania na moc oraz prognozę generacji.\newline
+Dla rynku EPEX-DE w Niemczech uwzględniono prognozę zapotrzebowania na moc oraz zagregowane prognozy generacji energii wiatrowej i słonecznej.\newline
+Do wszystkich wymienionych zmiennych fundamentalnych dodano wektory tych zmiennych na dzień oraz tydzień wstecz.
+
+Kolejnym artykułem wartym uwagi jest artykuł skupiony na postprocesingu \cite{LIPIECKI2024107934} w prognozowaniu cen energii elektrycznej metodami probabilistycznymi. Do osiągnięcia celu zostały wykorzystane następujące zmienne: 
+\begin{itemize}
+    \item Historyczne ceny energii elektrycznej z poprzednich jednego, dwóch, trzech i siedmiu dni
+    \item Prognoza systemowego zapotrzebowania na moc
+    \item Prognoza generacji energii z odnawialnych źródeł będąca sumą prognoz generacji energii wiatrowej i słonecznej
+    \item Ceny uprawnień do emisji dwutlenku węgla
+    \item Ceny gazu ziemnego
+    \item Ceny ropy naftowej Brent
+    \item Cena emisji węgla
+    \item Zmienne czasowe reprezentujące dni tygodnia
+    \item Zmienne czasowe, czyli wektory dummy reprezentujące dni tygodnia
+\end{itemize}
+Warto podkreślić, że autorzy zastosowali transformację hiperbolicznego sinusa do cen energii elektrycznej w celu stabilizacji wariancji przed modelowaniem.
+
+W innym artykule o współautorstwie prof. Werona \cite{en9080621} podkreśla się, że opóźnione ceny oraz zmienne egzogeniczne określające obciążenie systemowe oraz strefowe mają bardzo istotny wpływ na prognozowanie cen.
+
+Artykuł prof. Ziel \cite{ZIEL201598} analizujący niemiecki RDN, potwierdza poprzednie tezy, wskazując na znaczenie cen energii opóźnionych, obciążenia sieci i energii z OZE. Opisujący przez niego model autoregresyjny opisuje każdą z tych zmiennych jako zależną od jej własnych opóźnionych wartości. Wprowadza skomplikowany zestaw cech opóźnionych jak i również opóźnione zależności niektórych z cech:
+\begin{itemize}
+    \item Opóźnienia cen energii elektrycznej o 1, 2, …, 361, 504, 505, 672, 673, 840, 841, 1008, 1009 godzin
+    \item Opóźnienia obciążenia sieci o 1, 2, …, 361, 504, 505, 672, 673, 840, 841, 1008, 1009 godzin
+    \item Opóźnienia generacji energii z OZE o 1, 2, …, 361 godzine
+    \item Opóźnienia obciążenia zależnego od ceny
+    \item Opóźnienia ceny zależnej od obciążenia o 1, 2, …, 361, 504, 505, 672, 673, 840, 841, 1008, 1009 godzin
+    \item Opóźnienia ceny zależnej od generacji energii z OZE o 1, 2, …, 49 godzin
+    \item Opóźnienia obciążenia zależnego od generacji energii z OZE o 1, 2, …, 49 godzin
+\end{itemize}
+Oprócz opóźnionych wartości zmiennych, model uwzględnia również trend i efekty sezonowe, takie jak efekty czasowe i kalendarzowe, godziny w ciągu dnia, dni tygodnia, święta publiczne (w tym krajowe i regionalne), zmiany czasu letniego.
+
+Innym przykładem jest praca inżynierska napisana przez Mikołaj Kalisz i Adam Mantiuk na Politechnice Warszawskiej \cite{MGR2025}. Analizując rynek energii elektrycznej w Polsce w latach 2021-2023, autorzy analizują zmienne średnią temperaturę godzinową w Polsce, handel międzynarodowy, kurs polskiego złotego względem euro oraz dolara oraz poziom inflacji miesiąc do miesiąca i rok do roku oraz rezerwy mocy ponad i poniżej zapotrzebowania. Po analizie korelacji z wielkiego zestawu cech wybierają dziesięć zmiennych, które mają największy wpływ na cenę energii w wybranym okresie. Są to: produkcja energii z fotowoltaiki, rezerwa mocy poniżej zapotrzebowania, cena uprawnień emisyjnych (CO2), inflacja w porównaniu do poprzedniego roku, cena gazu oraz historyczne ceny prądu (minus 2 do 6 dni). 
+
+Podsumowując, w literaturze dotyczącej prognozowania cen energii elektrycznej na rynkach dnia następnego, zmienne wejściowe są różnorodne i zależą od specyfiki danego rynku. Wybrane badania podkreślają znaczenie historycznych cen energii, zapotrzebowanie  oraz generacji energii z OZE jako kluczowych zmiennych wpływających na prognozy. Dodatkowo, zmienne fundamentalne, takie jak ceny surowców energetycznych czy zmienne czasowe, również odgrywają istotną rolę. Wszystkie z kluczowych cech są wykorzystywane w niniejszej pracy.
 
 \section{Modele prognozowania}
 \label{sec:modele_prognozowania_literatura}
 
-Wśród stosowanych metod do predykcji cen energii elektrycznej wyróżnia się różne podejścia. Rafał Weron w swojej obszernej pracy z 2014 roku "Electricity price forecasting: A review of the state-of-the-art with a look into the future" \cite{WERON20141030} dokonuje przeglądu literatury z ubiegłych wtedy 15 lat, systematyzując szybko rosnącą liczbę publikacji w tej dziedzinie. Weron wyjaśnia mechanizmy kształtowania się cen na rynkach energii elektrycznej, koncentrując się na cenach dnia następnego. Klasyfikuje techniki predykcyjne pod względem horyzontu czasowego i zastosowanej metodologii. Wymienia następujące kategorie modeli: 
+Wśród stosowanych metod do predykcji cen energii elektrycznej wyróżnia się różne podejścia. Rafał Weron w swojej ponadczasowej pracy z 2014 roku "Electricity price forecasting: A review of the state-of-the-art with a look into the future" \cite{WERON20141030} dokonuje przeglądu literatury z ubiegłych wtedy 15 lat, systematyzując szybko rosnącą liczbę publikacji w tej dziedzinie. Weron wyjaśnia mechanizmy kształtowania się cen na rynkach energii elektrycznej, koncentrując się na cenach dnia następnego. Klasyfikuje techniki predykcyjne pod względem horyzontu czasowego i zastosowanej metodologii. Wymienia następujące kategorie modeli: 
 \begin{itemize}
     \item multi-agent
     \item fundamentalne,
@@ -23,16 +67,8 @@ Modele reduced-form opisują dynamikę cen za pomocą procesów stochastycznych,
 
 Modele statystyczne, takie jak ARIMA i GARCH, są szeroko stosowane w krótkoterminowym EPF. Modele autoregresyjne (AR) wykorzystują liniową kombinację przeszłych wartości zmiennej do prognozowania przyszłych wartości. Modele średniej ruchomej (MA) prognozują zmienną na podstawie liniowej kombinacji przeszłych błędów prognoz. Modele ARMA łączy te dwa podejścia, a modele ARIMA dodają różnicowanie, aby uwzględnić niestacjonarność danych. W celu uwzględnienia sezonowości wykorzystuje się również model SARIMA. Zgodnie z \cite{appliedmath3020018} modele SARIMA wykazują dobre wyniki w prognozowaniu cen energii elektrycznej, ale ich skuteczność może być ograniczona w przypadku danych o dużej zmienności. Weron \cite{WERON20141030} wspomina również o modelach ARX i ARMAX, gdzie X odpowiada za zmienne zewnętrzne objaśniające. Model GARCH jest szczególnie przydatny w modelowaniu zmienności cen energii elektrycznej, ponieważ uwzględnia heteroskedastyczność i zmienność w czasie.
 
-Modele computational intelligence, oparte na technikach uczenia maszynowego, zyskały na popularności w nowszych badaniach. Wśród popularnych metod wyróżniają się metody rozmyte, metody wektorów nośnych, LSTM oraz CNN. Mikołaj Kalisz i Adam Mantiuk z Politechniki Warszawskiej \cite{MGR2025} używają Perceptron wielowarstwowego (MLP). W pracy Grzegorza Marcjasza \cite{en13184605} proponowany jest dobór hiperparametrów do głębokiej sieci neuronowej (DNN). Badanie porównuje DNN do statystycznego modelu LASSO. W tym badaniu pokazuje się, że wyniki DNN są lepsze od wybranego modelu statystycznego, co może wskazywać na przewagę uczenia maszynowego nad tradycyjnymi metodami statystycznymi.
+Modele computational intelligence, oparte na technikach uczenia maszynowego, zyskały na popularności w nowszych badaniach. Wśród popularnych metod wyróżniają się metody rozmyte, metody wektorów nośnych, LSTM oraz CNN. We wspomnianej przeze mnie pracy inżynierskiej na Politechnice Warszawskiej \cite{MGR2025} autorzy używają Perceptronu wielowarstwowego (MLP). W innej pracy Grzegorza Marcjasza \cite{en13184605} proponowany jest dobór hiperparametrów do głębokiej sieci neuronowej (DNN). Badanie porównuje DNN do statystycznego modelu LASSO. W tym badaniu pokazuje się, że wyniki DNN są lepsze od wybranego modelu statystycznego, co może wskazywać na przewagę nowoczesnego uczenia maszynowego nad tradycyjnymi metodami statystycznymi.
 
-Modele hybrydowe łączą elementy różnych kategorii, aby wykorzystać ich zalety. Jinliang Zhang jest przykładem takiego podejścia. W pracy \cite{TAN20103606} łączy transformację falkową z ARIMA i GARCH. W tej pracy argumentuje się, że połączenie WT z modelami ARIMA i GARCH pozwala na skuteczne modelowanie złożonych cech cen energii elektrycznej, takich jak niestacjonarność, nieliniowość i wysoka zmienność. W późniejszej pracy Zhang \cite{ZHANG2012695} łączy wspomniane transformację falkową oraz ARIMA z metodę najmniejszych kwadratów maszyn wektorów nośnych (LSSVM). Potwierdzając skuteczność takich metód, Weron \cite{WERON20141030} podaje, że popularnym podejściem hybrydowym jest łączenie modeli statystycznych z sieciami neuronowymi, co pozwala na modelowanie zarówno liniowych, jak i nieliniowych zależności.
+Modele hybrydowe łączą elementy różnych kategorii, aby wykorzystać ich zalety. Jinliang Zhang jest przykładem takiego podejścia. W pracy \cite{TAN20103606} łączy transformację falkową z ARIMA i GARCH. W tej pracy argumentuje się, że połączenie WT z modelami ARIMA i GARCH pozwala na skuteczne modelowanie złożonych cech cen energii elektrycznej, takich jak niestacjonarność, nieliniowość i wysoka zmienność. W późniejszej pracy Zhang \cite{ZHANG2012695} łączy wspomniane transformację falkową oraz ARIMA z metodą najmniejszych kwadratów maszyn wektorów nośnych (LSSVM). Potwierdzając skuteczność takich metód, Weron \cite{WERON20141030} podaje, że popularnym podejściem hybrydowym jest łączenie modeli statystycznych z sieciami neuronowymi, co pozwala na modelowanie zarówno liniowych, jak i nieliniowych zależności.
 
-W niniejszej pracy planuje się zastosowanie modeli Prophet i MLP do prognozowania cen energii elektrycznej na RDN. Prophet najbardziej pasuje do kategorii statystycznych, ale jego algorytm jest bardziej złożony niż tradycyjne modele ARIMA. MLP to przykład modelu computational intelligence, który wykorzystuje sieci neuronowe do prognozowania cen energii elektrycznej.
-
-\section{Zmienne wejściowe}
-\label{sec:zmienne_wejsciowe_literatura}
-
-
-
-
-
+W niniejszej pracy stworzony zbiór danych jest analizowany regresją liniową oraz grzbietową oraz modelami Prophet i MLP. Według klasyfikacji Werona regresję liniową można zaliczyć do modeli statystycznych, ponieważ zakłada liniowe zależności pomiędzy zmienną objąśnianą a objaśniającą. Regresja grzbietowa jest rozszerzeniem regresji liniowej, dlatego również odpowiada modelowi statystycznemu. Prophet także najbardziej pasuje do kategorii statystycznych, ale jego algorytm jest bardziej złożony od podanych regresji bądź szeroko używanych modeli ARIMA. Z kolei perceptron wielowarstwowy to przykład modelu computational intelligence, który wykorzystuje sieci neuronowe o różnej architekturze do prognozowania zmiennej docelowej.

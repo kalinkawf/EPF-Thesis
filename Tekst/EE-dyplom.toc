@@ -2,35 +2,35 @@
 \xpg@aux {}{polish}
 \contentsline {chapter}{\numberline {1}Wstep}{9}{chapter.1}%
 \contentsline {chapter}{\numberline {2}Przegląd literatury}{12}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Modele prognozowania}{12}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Zmienne wejściowe}{14}{section.2.2}%
-\contentsline {chapter}{\numberline {3}Dane i zmienne}{15}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Opis zbioru danych}{15}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Zmienna zależna}{15}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Zbiór zmiennych niezależnych}{17}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Dane pogodowe}{18}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Produkcja energii z wybranych źródeł}{22}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Handel energią z państwami sąsiednimi}{24}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Ceny paliw kopalnych i emisji CO2}{25}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Straty mocy w systemie elektroenergetycznym}{26}{subsection.3.3.5}%
-\contentsline {subsection}{\numberline {3.3.6}Zapotrzebowanie na energię i wolumen handlu}{27}{subsection.3.3.6}%
-\contentsline {subsection}{\numberline {3.3.7}Inne zmienne}{28}{subsection.3.3.7}%
-\contentsline {subsubsection}{Zmienne sezonowe}{28}{section*.22}%
-\contentsline {subsubsection}{Ceny historyczne}{29}{section*.24}%
-\contentsline {subsubsection}{Kurs wymiany PLN/USD}{30}{section*.25}%
-\contentsline {chapter}{\numberline {4}Eksploracja danych}{31}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Metodologia}{32}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Ocena jakości prognoz}{32}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Mean Absolute Error (MAE)}{32}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Root Mean Squared Error (RMSE)}{33}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Mean Absolute Percentage Error (MAPE)}{34}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}Symmetric Mean Absolute Percentage Error (sMAPE)}{34}{subsection.5.1.4}%
-\contentsline {subsection}{\numberline {5.1.5}Współczynnik determinacji}{35}{subsection.5.1.5}%
-\contentsline {section}{\numberline {5.2}Wybrane metody prognozowania cen energii elektrycznej}{36}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Analiza danych}{37}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Podsumowanie wyników i wnioski}{38}{chapter.7}%
-\contentsline {chapter}{Bibliografia}{39}{section*.27}%
-\contentsline {chapter}{Wykaz skrótów i symboli}{41}{chapter*.29}%
-\contentsline {chapter}{Spis rysunków}{42}{chapter*.32}%
-\contentsline {chapter}{Spis tabel}{43}{chapter*.33}%
-\contentsline {chapter}{Spis załączników}{44}{chapter*.34}%
+\contentsline {section}{\numberline {2.1}Zmienne wejściowe}{12}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Modele prognozowania}{14}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Dane i zmienne}{17}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Opis zbioru danych}{17}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Zmienna zależna}{17}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Zbiór zmiennych niezależnych}{19}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Dane pogodowe}{20}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Produkcja energii z wybranych źródeł}{24}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Handel energią z państwami sąsiednimi}{26}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Ceny paliw kopalnych i emisji CO2}{27}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Straty mocy w systemie elektroenergetycznym}{28}{subsection.3.3.5}%
+\contentsline {subsection}{\numberline {3.3.6}Zapotrzebowanie na energię i wolumen handlu}{29}{subsection.3.3.6}%
+\contentsline {subsection}{\numberline {3.3.7}Inne zmienne}{30}{subsection.3.3.7}%
+\contentsline {subsubsection}{Zmienne sezonowe}{30}{section*.22}%
+\contentsline {subsubsection}{Ceny historyczne}{31}{section*.24}%
+\contentsline {subsubsection}{Kurs wymiany PLN/USD}{32}{section*.25}%
+\contentsline {chapter}{\numberline {4}Eksploracja danych}{33}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Metodologia}{34}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Ocena jakości prognoz}{34}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Mean Absolute Error (MAE)}{34}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Root Mean Squared Error (RMSE)}{35}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Mean Absolute Percentage Error (MAPE)}{36}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Symmetric Mean Absolute Percentage Error (sMAPE)}{36}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}Współczynnik determinacji}{37}{subsection.5.1.5}%
+\contentsline {section}{\numberline {5.2}Wybrane metody prognozowania cen energii elektrycznej}{38}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Analiza danych}{39}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Podsumowanie wyników i wnioski}{40}{chapter.7}%
+\contentsline {chapter}{Bibliografia}{41}{section*.27}%
+\contentsline {chapter}{Wykaz skrótów i symboli}{43}{chapter*.29}%
+\contentsline {chapter}{Spis rysunków}{44}{chapter*.32}%
+\contentsline {chapter}{Spis tabel}{45}{chapter*.33}%
+\contentsline {chapter}{Spis załączników}{46}{chapter*.34}%

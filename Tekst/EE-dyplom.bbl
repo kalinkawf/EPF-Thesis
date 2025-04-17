@@ -102,6 +102,60 @@
       \endverb
       \keyw{Energy systems,Electricity,Resilience,Texas}
     \endentry
+    \entry{LAGO2021116983}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=e6d8a5b4cb4cd4ec0c45b4b15eaecce7}{%
+           family={Lago},
+           familyi={L\bibinitperiod},
+           given={Jesus},
+           giveni={J\bibinitperiod}}}%
+        {{hash=d049c99fa3e5674ec00d202decf5a142}{%
+           family={Marcjasz},
+           familyi={M\bibinitperiod},
+           given={Grzegorz},
+           giveni={G\bibinitperiod}}}%
+        {{hash=3aa279196551f6d4f6429776156250b6}{%
+           family={{De Schutter}},
+           familyi={D\bibinitperiod},
+           given={Bart},
+           giveni={B\bibinitperiod}}}%
+        {{hash=e1f0ef6630db56bf45bb6ba2fbf8f108}{%
+           family={Weron},
+           familyi={W\bibinitperiod},
+           given={Rafał},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{f35b7b3a425f597f35f5713c0d0b0192}
+      \strng{fullhash}{6272e89d6c171cab4b86aef60364d063}
+      \strng{fullhashraw}{6272e89d6c171cab4b86aef60364d063}
+      \strng{bibnamehash}{6272e89d6c171cab4b86aef60364d063}
+      \strng{authorbibnamehash}{6272e89d6c171cab4b86aef60364d063}
+      \strng{authornamehash}{f35b7b3a425f597f35f5713c0d0b0192}
+      \strng{authorfullhash}{6272e89d6c171cab4b86aef60364d063}
+      \strng{authorfullhashraw}{6272e89d6c171cab4b86aef60364d063}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{While the field of electricity price forecasting has benefited from plenty of contributions in the last two decades, it arguably lacks a rigorous approach to evaluating new predictive algorithms. The latter are often compared using unique, not publicly available datasets and across too short and limited to one market test samples. The proposed new methods are rarely benchmarked against well established and well performing simpler models, the accuracy metrics are sometimes inadequate and testing the significance of differences in predictive performance is seldom conducted. Consequently, it is not clear which methods perform well nor what are the best practices when forecasting electricity prices. In this paper, we tackle these issues by comparing state-of-the-art statistical and deep learning methods across multiple years and markets, and by putting forward a set of best practices. In addition, we make available the considered datasets, forecasts of the state-of-the-art models, and a specifically designed python toolbox, so that new algorithms can be rigorously evaluated in future studies.}
+      \field{issn}{0306-2619}
+      \field{journaltitle}{Applied Energy}
+      \field{title}{Forecasting day-ahead electricity prices: A review of state-of-the-art algorithms, best practices and an open-access benchmark}
+      \field{volume}{293}
+      \field{year}{2021}
+      \field{pages}{116983}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.apenergy.2021.116983
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0306261921004529
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0306261921004529
+      \endverb
+      \keyw{Electricity price forecasting,Regression model,Deep learning,Open-access benchmark,Forecast evaluation,Best practices}
+    \endentry
     \entry{en17225797}{article}{}{}
       \name{author}{6}{}{%
         {{hash=52c75eea7e2bb7fce1f687356aaf0e7a}{%
@@ -163,6 +217,55 @@
       \verb{url}
       \verb https://www.mdpi.com/1996-1073/17/22/5797
       \endverb
+    \endentry
+    \entry{LIPIECKI2024107934}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=473b5556fb05c0df34a14eb67a3b61b3}{%
+           family={Lipiecki},
+           familyi={L\bibinitperiod},
+           given={Arkadiusz},
+           giveni={A\bibinitperiod}}}%
+        {{hash=706a737c0e45dfec3c1b8ed2d4ace631}{%
+           family={Uniejewski},
+           familyi={U\bibinitperiod},
+           given={Bartosz},
+           giveni={B\bibinitperiod}}}%
+        {{hash=e1f0ef6630db56bf45bb6ba2fbf8f108}{%
+           family={Weron},
+           familyi={W\bibinitperiod},
+           given={Rafał},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{1e8e071126ebefbdade1a215c3bd1c16}
+      \strng{fullhash}{9aad72afd9fa63fe42f7115afcd2e333}
+      \strng{fullhashraw}{9aad72afd9fa63fe42f7115afcd2e333}
+      \strng{bibnamehash}{9aad72afd9fa63fe42f7115afcd2e333}
+      \strng{authorbibnamehash}{9aad72afd9fa63fe42f7115afcd2e333}
+      \strng{authornamehash}{1e8e071126ebefbdade1a215c3bd1c16}
+      \strng{authorfullhash}{9aad72afd9fa63fe42f7115afcd2e333}
+      \strng{authorfullhashraw}{9aad72afd9fa63fe42f7115afcd2e333}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Operational decisions relying on predictive distributions of electricity prices can result in significantly higher profits compared to those based solely on point forecasts. However, the majority of models developed in both academic and industrial settings provide only point predictions. To address this, we examine three postprocessing methods for converting point forecasts of day-ahead electricity prices into probabilistic ones: Quantile Regression Averaging, Conformal Prediction, and the recently introduced Isotonic Distributional Regression. We find that while the latter demonstrates the most varied behavior, it contributes the most to the ensemble of the three predictive distributions, as measured by Shapley values. Remarkably, the performance of the combination is superior to that of state-of-the-art Distributional Deep Neural Networks over two 4.5-year test periods from the German and Spanish power markets, spanning the COVID pandemic and the war in Ukraine.}
+      \field{issn}{0140-9883}
+      \field{journaltitle}{Energy Economics}
+      \field{title}{Postprocessing of point predictions for probabilistic forecasting of day-ahead electricity prices: The benefits of using isotonic distributional regression}
+      \field{volume}{139}
+      \field{year}{2024}
+      \field{pages}{107934}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.eneco.2024.107934
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S014098832400642X
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S014098832400642X
+      \endverb
+      \keyw{Day-ahead electricity price,Quantile regression,Conformal prediction,Isotonic distributional regression,Combining probabilistic forecasts,Shapley values}
     \endentry
     \entry{en13184605}{article}{}{}
       \name{author}{1}{}{%
@@ -403,6 +506,53 @@
       \endverb
       \keyw{Price forecasting,Wavelet transform,ARIMA,GARCH}
     \endentry
+    \entry{en9080621}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=706a737c0e45dfec3c1b8ed2d4ace631}{%
+           family={Uniejewski},
+           familyi={U\bibinitperiod},
+           given={Bartosz},
+           giveni={B\bibinitperiod}}}%
+        {{hash=41adf994afcd040e998fd8805692ffe6}{%
+           family={Nowotarski},
+           familyi={N\bibinitperiod},
+           given={Jakub},
+           giveni={J\bibinitperiod}}}%
+        {{hash=e1f0ef6630db56bf45bb6ba2fbf8f108}{%
+           family={Weron},
+           familyi={W\bibinitperiod},
+           given={Rafał},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{3fbd3b22a9ec47bdc9bd7b9483ba79e0}
+      \strng{fullhash}{11c5671ae8ebad3a19456c10a22dbd04}
+      \strng{fullhashraw}{11c5671ae8ebad3a19456c10a22dbd04}
+      \strng{bibnamehash}{11c5671ae8ebad3a19456c10a22dbd04}
+      \strng{authorbibnamehash}{11c5671ae8ebad3a19456c10a22dbd04}
+      \strng{authornamehash}{3fbd3b22a9ec47bdc9bd7b9483ba79e0}
+      \strng{authorfullhash}{11c5671ae8ebad3a19456c10a22dbd04}
+      \strng{authorfullhashraw}{11c5671ae8ebad3a19456c10a22dbd04}
+      \field{sortinit}{U}
+      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In day-ahead electricity price forecasting (EPF) variable selection is a crucial issue. Conducting an empirical study involving state-of-the-art parsimonious expert models as benchmarks, datasets from three major power markets and five classes of automated selection and shrinkage procedures (single-step elimination, stepwise regression, ridge regression, lasso and elastic nets), we show that using the latter two classes can bring significant accuracy gains compared to commonly-used EPF models. In particular, one of the elastic nets, a class that has not been considered in EPF before, stands out as the best performing model overall.}
+      \field{issn}{1996-1073}
+      \field{journaltitle}{Energies}
+      \field{number}{8}
+      \field{title}{Automated Variable Selection and Shrinkage for Day-Ahead Electricity Price Forecasting}
+      \field{volume}{9}
+      \field{year}{2016}
+      \verb{doi}
+      \verb 10.3390/en9080621
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/1996-1073/9/8/621
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/1996-1073/9/8/621
+      \endverb
+    \endentry
     \entry{WERON20141030}{article}{}{}
       \name{author}{1}{}{%
         {{hash=e1f0ef6630db56bf45bb6ba2fbf8f108}{%
@@ -493,6 +643,55 @@
       \verb https://www.sciencedirect.com/science/article/pii/S036083521200085X
       \endverb
       \keyw{Electricity price forecasting,WT,ARIMA,LSSVM,PSO}
+    \endentry
+    \entry{ZIEL201598}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=b84096dff196730e7468c55326fa0a0e}{%
+           family={Ziel},
+           familyi={Z\bibinitperiod},
+           given={Florian},
+           giveni={F\bibinitperiod}}}%
+        {{hash=365462be3d6d3e05840eec34cbed958e}{%
+           family={Steinert},
+           familyi={S\bibinitperiod},
+           given={Rick},
+           giveni={R\bibinitperiod}}}%
+        {{hash=2cabd7ac3534d4b345ad523af475ca85}{%
+           family={Husmann},
+           familyi={H\bibinitperiod},
+           given={Sven},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{24bc36665bd20dd5416bd5a2caee69e0}
+      \strng{fullhash}{eca640cc65b4fee659cc0dbab5c9cf88}
+      \strng{fullhashraw}{eca640cc65b4fee659cc0dbab5c9cf88}
+      \strng{bibnamehash}{eca640cc65b4fee659cc0dbab5c9cf88}
+      \strng{authorbibnamehash}{eca640cc65b4fee659cc0dbab5c9cf88}
+      \strng{authornamehash}{24bc36665bd20dd5416bd5a2caee69e0}
+      \strng{authorfullhash}{eca640cc65b4fee659cc0dbab5c9cf88}
+      \strng{authorfullhashraw}{eca640cc65b4fee659cc0dbab5c9cf88}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The increasing importance of renewable energy, especially solar and wind power, has led to new forces in the formation of electricity prices. Hence, this paper introduces an econometric model for the hourly time series of electricity prices of the European Power Exchange (EPEX) which incorporates specific features like renewable energy. The model consists of several sophisticated and established approaches and can be regarded as a periodic VAR-TARCH with wind power, solar power, and load as influences on the time series. It is able to map the distinct and well-known features of electricity prices in Germany. An efficient iteratively reweighted lasso approach is used for the estimation. Moreover, it is shown that several existing models are outperformed by the procedure developed in this paper.}
+      \field{issn}{0140-9883}
+      \field{journaltitle}{Energy Economics}
+      \field{title}{Efficient modeling and forecasting of electricity spot prices}
+      \field{volume}{47}
+      \field{year}{2015}
+      \field{pages}{98\bibrangedash 111}
+      \range{pages}{14}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.eneco.2014.10.012
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0140988314002576
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0140988314002576
+      \endverb
+      \keyw{Electricity price,Renewable energy,Leverage effect,Forecasting,VAR,Lasso}
     \endentry
   \enddatalist
 \endrefsection
