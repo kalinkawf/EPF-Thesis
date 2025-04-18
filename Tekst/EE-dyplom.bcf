@@ -2398,6 +2398,7 @@
     <bcf:citekey order="20" intorder="1">METEO</bcf:citekey>
     <bcf:citekey order="21" intorder="1">en17225797</bcf:citekey>
     <bcf:citekey order="22" intorder="1">WERON20141030</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">prophet_doc</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.8)  17 APR 2025 18:10
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.8)  18 APR 2025 16:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1593,7 +1593,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 63.
 LaTeX Font Info:    ... okay on input line 63.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 63.
 LaTeX Font Info:    ... okay on input line 63.
- (EE-dyplom.glsdefs)
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1851,6 +1851,10 @@ File: ../plots/fixing_i_price_weekdays_holidays.png Graphic file (type bmp)
 
 [32]
 Rozdział 4.
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 4.
+
 ) (tekst/metodology.tex
 
 [33
@@ -1867,30 +1871,42 @@ Rozdział 5.
 
 [36]
 
-[37]) (tekst/analiza.tex
+[37]
 
 [38]
+
+[39]
+
+[40]
+
+[41]
+
+[42]
+
+[43]) (tekst/analiza.tex
+
+[44]
 Rozdział 6.
 ) (tekst/podsumowanie.tex
 
-[39
+[45
 
 ]
 Rozdział 7.
 )
 
-[40
+[46
 
 ]
 
-[41
+[47
 
 
 ]
 
-[42] (EE-dyplom.acr) (EE-dyplom.sls)
+[48] (EE-dyplom.acr) (EE-dyplom.sls)
 
-[43
+[49
 
 ] (EE-dyplom.lof)
 \tf@lof=\write11
@@ -1898,7 +1914,7 @@ Rozdział 7.
 
 
 
-[44
+[50
 
 ] (EE-dyplom.lot)
 \tf@lot=\write12
@@ -1906,7 +1922,7 @@ Rozdział 7.
 
 
 
-[45
+[51
 
 ] (EE-dyplom.app)
 \tf@app=\write13
@@ -1914,7 +1930,7 @@ Rozdział 7.
 
  (appendices.tex)
 
-[46
+[52
 
 ] (EE-dyplom.aux)
  ***********
@@ -1922,18 +1938,18 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `EE-dyplom.out' has not changed.
-(rerunfilecheck)             Checksum: 0153A9DDFA86CF8456C645F84977566B;5650.
+(rerunfilecheck)             Checksum: 7BD05FC9ECF2ED332A65C419F7E27B85;6385.
 Package logreq Info: Writing requests to 'EE-dyplom.run.xml'.
 \openout1 = `EE-dyplom.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46289 strings out of 408640
- 936781 string characters out of 5744799
- 2102817 words of memory out of 5000000
- 68609 multiletter control sequences out of 15000+600000
- 566410 words of font info for 127 fonts, out of 8000000 for 9000
+ 46277 strings out of 408640
+ 936440 string characters out of 5744799
+ 2103157 words of memory out of 5000000
+ 68592 multiletter control sequences out of 15000+600000
+ 569172 words of font info for 135 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 114i,12n,131p,2691b,5100s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 114i,12n,131p,2691b,5098s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on EE-dyplom.pdf (46 pages).
+Output written on EE-dyplom.pdf (52 pages).

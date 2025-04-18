@@ -166,5 +166,239 @@ W kontekście EPF, na przykład na RDN, \( R^2 \) równe 0,85 oznaczałoby, że 
 
 W niniejszej pracy \( R^2 \) zostanie wykorzystane jako dodatkowa metryka oceny, aby uzupełnić analizę opartą na MAE, RMSE, MAPE, sMAPE.
 
-\section{Wybrane metody prognozowania cen energii elektrycznej}
-\label{sec:wybrane_metody_prognozowania_cen_energii_elektrycznej}
+\section{Wybrane metody weryfikacji zbioru danych}
+\label{sec:metody_weryfikacji_zbioru_danych}
+
+Stworzony zbiór danych z cechami objaśniającymi ceny energii elektrycznej należy zweryfikować pod kątem jego skuteczności. W związku z tym zostały wybrane cztery metody prognozowania.
+
+\subsection{Regresja liniowa}
+
+\textbf{Opis metody} \\
+Regresja liniowa jest jednym z najprostszych i najczęściej stosowanych modeli statystycznych w analizie zbiorów danych. Zakłada liniową zależność między zmienną zależną, a zestawem zmiennych niezależnych (predyktorów). W kontekście EPF regresja liniowa jest często stosowana jako model bazowy, który pozwala na szybkie uzyskanie prognoz i ocenę wpływu poszczególnych zmiennych na ceny energii. Jej zaletą jest prostota interpretacji oraz niski koszt obliczeniowy, co czyni ją odpowiednią do analizy dużych zbiorów danych, co czyni ją odpowiednią do tej pracy.
+
+\textbf{Wzór modelu} \\
+Model regresji liniowej można zapisać jako:
+\begin{equation}
+y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p + \epsilon
+\end{equation}
+gdzie:
+\begin{itemize}
+    \item \( y \) -- zmienna zależna, cena energii elektrycznej
+    \item \( \beta_0 \) -- wyraz wolny,
+    \item \( \beta_1, \beta_2, \dots, \beta_p \) -- współczynniki regresji dla zmiennych niezależnych,
+    \item \( x_1, x_2, \dots, x_p \) -- zmienne niezależne (predyktory, np. zmienne związane z zapotrzebowaniem, cenami paliw czy danymi kalendarzowymi),
+    \item \( \epsilon \) -- składnik losowy (błąd), zakładany jako \( \epsilon \sim N(0, \sigma^2) \).
+\end{itemize}
+
+W macierzowej formie model przyjmuje postać:
+\begin{equation}
+\mathbf{y} = \mathbf{X} \boldsymbol{\beta} + \boldsymbol{\epsilon}
+\end{equation}
+gdzie:
+\begin{itemize}
+    \item \( \mathbf{y} \) -- wektor obserwacji zmiennej zależnej,
+    \item \( \mathbf{X} \) -- macierz projektowa zawierająca wartości zmiennych niezależnych,
+    \item \( \boldsymbol{\beta} \) -- wektor współczynników regresji,
+    \item \( \boldsymbol{\epsilon} \) -- wektor błędów.
+\end{itemize}
+
+\textbf{Estymacja parametrów} \\
+Parametry modelu \( \boldsymbol{\beta} \) są estymowane za pomocą metody najmniejszych kwadratów (OLS), która minimalizuje sumę kwadratów błędów:
+\begin{equation}
+\min \sum_{i=1}^n (y_i - \hat{y}_i)^2
+\end{equation}
+gdzie \( \hat{y}_i = \beta_0 + \beta_1 x_{i1} + \dots + \beta_p x_{ip} \) to przewidywana wartość dla \( i \)-tej obserwacji. Rozwiązanie analityczne to:
+\begin{equation}
+\boldsymbol{\beta} = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}
+\end{equation}
+
+\textbf{Istotne parametry modelu} \\
+W niniejszej pracy regresja liniowa została zaimplementowana za pomocą biblioteki \texttt{scikit-learn} w Pythonie. Kluczowe parametry modelu obejmują:
+\begin{itemize}
+    \item \texttt{fit\_intercept=True}: Włączenie wyrazu wolnego (\( \beta_0 \)).
+    \item \texttt{normalize=False}: Brak normalizacji zmiennych przed estymacją.
+    \item \texttt{solver='auto'}: Automatyczny wybór algorytmu estymacji, domyślnie OLS.
+\end{itemize}
+
+\textbf{Zalety i ograniczenia} \\
+Regresja liniowa jest łatwa do interpretacji, ponieważ współczynniki \( \beta_j \) wskazują, o ile zmieni się cena energii przy wzroście zmiennej \( x_j \) o jednostkę (przy założeniu stałości pozostałych zmiennych). Jednak model zakłada liniowe zależności między zmiennymi, co może być ograniczeniem w przypadku bardziej złożonych, nieliniowych wzorców w danych cen energii, szczególnie w okresie niespokojnym.
+
+\subsection{Regresja grzbietowa (Ridge)}
+
+\textbf{Opis metody} \\
+Regresja grzbietowa (ang. Ridge Regression) jest rozszerzeniem regresji liniowej, które wprowadza regularyzację L2, aby zapobiec przeuczeniu i poprawić stabilność modelu w przypadku współliniowości między zmiennymi objaśniającymi. W prognozowaniu cen energii regresja grzbietowa jest szczególnie użyteczna, gdy zestaw danych zawiera wiele zmiennych, które mogą być skorelowane. Regularyzacja pozwala na zmniejszenie wpływu mniej istotnych zmiennych, co poprawia generalizację modelu.
+
+\textbf{Wzór modelu} \\
+Model regresji grzbietowej opiera się na tej samej zależności liniowej co regresja liniowa:
+\begin{equation}
+y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p + \epsilon
+\end{equation}
+
+Jednak estymacja parametrów uwzględnia dodatkową karę regularyzacyjną L2. Funkcja kosztu w regresji grzbietowej to:
+\begin{equation}
+\min \sum_{i=1}^n (y_i - \hat{y}_i)^2 + \lambda \sum_{j=1}^p \beta_j^2
+\end{equation}
+gdzie:
+\begin{itemize}
+    \item Pierwsza część (\( \sum_{i=1}^n (y_i - \hat{y}_i)^2 \)) to suma kwadratów błędów, jak w OLS.
+    \item Druga część (\( \lambda \sum_{j=1}^p \beta_j^2 \)) to kara L2 na wielkość współczynników \( \beta_j \).
+    \item \( \lambda \geq 0 \) -- parametr regularyzacji, który kontroluje siłę kary (większe \( \lambda \) oznacza silniejszą regularyzację).
+\end{itemize}
+
+W macierzowej formie funkcja kosztu to:
+\begin{equation}
+\min \|\mathbf{y} - \mathbf{X} \boldsymbol{\beta}\|_2^2 + \lambda \|\boldsymbol{\beta}\|_2^2
+\end{equation}
+
+Rozwiązanie analityczne dla parametrów to:
+\begin{equation}
+\boldsymbol{\beta} = (\mathbf{X}^T \mathbf{X} + \lambda \mathbf{I})^{-1} \mathbf{X}^T \mathbf{y}
+\end{equation}
+gdzie \( \mathbf{I} \) to macierz jednostkowa.
+
+\textbf{Istotne parametry modelu} \\
+Regresja grzbietowa została zaimplementowana w Pythonie za pomocą biblioteki \texttt{scikit-learn}. Kluczowe parametry modelu to:
+\begin{itemize}
+    \item \texttt{alpha=1.0}: Domyślna wartość parametru regularyzacji \( \lambda \). W pracy metodą empiryczną spróbuje się różnych wartości \texttt{alpha} (np. 0.1, 1.0, 10.0, 100.0) za pomocą walidacji krzyżowej, aby wybrać optymalną.
+    \item \texttt{fit\_intercept=True}: Włączenie wyrazu wolnego (\( \beta_0 \)).
+    \item \texttt{normalize=False}: Brak normalizacji zmiennych przed estymacją (zmienne przeskalowano wcześniej za pomocą \texttt{StandardScaler}).
+    \item \texttt{solver='auto'}: Automatyczny wybór algorytmu (domyślnie Cholesky dla małych zbiorów danych lub SAG dla dużych).
+\end{itemize}
+
+\textbf{Zalety i ograniczenia} \\
+Regresja grzbietowa jest bardziej odporna na współliniowość i przeuczenie od regresji liniowa, co czyni ją odpowiednią do zestawów danych z dużą liczbą zmiennych objaśniających. Jest to szczególnie przydatne, gdyż w pracy uwzględnione zostają parametry temperatury z całej Polski, które zdecydowanie mają korelację. Jednak, podobnie jak regresja liniowa, zakłada liniowe zależności, co może ograniczać jej skuteczność w modelowaniu bardziej złożonych wzorców, szczególnie w niestabilnych okresach rynkowych.
+
+\subsection{Prophet}
+
+\textbf{Opis metody} \\
+Prophet \cite{prophet_doc} to model prognozowania szeregów czasowych opracowany przez Facebooka, zaprojektowany do analizy danych z wyraźną sezonowością i trendami, które mogą ulegać zmianom w czasie. W kontekście prognozowania cen energii elektrycznej (EPF) Prophet jest szczególnie ciekawy ze względu na zdolność do modelowania cyklicznych wzorców jakie występują na tym rynku oraz uwzględniania efektów specjalnych, takich jak święta. Model jest oparty na addytywnym podejściu, które rozkłada szereg czasowy na składowe trendu, sezonowości i efektów dodatkowych. Jego intuicyjna parametryzacja i możliwość automatycznego dopasowania do danych czynią go atrakcyjnym narzędziem w analizie dużych zbiorów danych, takich jak te wykorzystane w niniejszej pracy.
+
+\textbf{Wzór modelu} \\
+Prophet modeluje zmienną zależną jako sumę trzech głównych składowych plus składnik losowy:
+\begin{equation}
+y(t) = g(t) + s(t) + h(t) + r(t) + \epsilon_t
+\end{equation}
+gdzie:
+\begin{itemize}
+    \item \( y(t) \) -- wartość prognozowana,
+    \item \( g(t) \) -- składowa trendu, modelująca długoterminowe zmiany w danych,
+    \item \( s(t) \) -- składowa sezonowości, modelująca cykliczne wzorce (np. dobowe, tygodniowe),
+    \item \( h(t) \) -- składowa efektów specjalnych takich jak święta,
+    \item \( r(t) \) -- składowa zmiennych objaśniających, uwzględniająca wpływ dodatkowych regresorów, takich jak zapotrzebowanie czy dane pogodowe,
+    \item \( \epsilon_t \) -- składnik losowy (błąd), zakładany jako \( \epsilon_t \sim N(0, \sigma^2) \).
+\end{itemize}
+
+\textbf{Składowa trendu (\( g(t) \))} \\
+Trend w modelu Prophet jest modelowany za pomocą nieliniowej funkcji z punktami zmiany (ang. changepoints), które pozwalają na elastyczne dopasowanie do nagłych zmian w danych. Standardowo używa się funkcji liniowej z punktami zmiany:
+\begin{equation}
+g(t) = (k + \mathbf{a}(t)^T \boldsymbol{\delta}) t + (m + \mathbf{a}(t)^T \boldsymbol{\gamma})
+\end{equation}
+gdzie:
+\begin{itemize}
+    \item \( k \) -- współczynnik nachylenia trendu,
+    \item \( m \) -- wyraz wolny,
+    \item \( \mathbf{a}(t) \) -- wektor binarny wskazujący punkty zmiany,
+    \item \( \boldsymbol{\delta} \) -- wektor zmian nachylenia w punktach zmiany,
+    \item \( \boldsymbol{\gamma} \) -- wektor przesunięć dla ciągłości trendu w punktach zmiany.
+\end{itemize}
+
+\textbf{Składowa sezonowości (\( s(t) \))} \\
+Sezonowość jest modelowana za pomocą szeregu Fouriera, który aproksymuje cykliczne wzorce:
+\begin{equation}
+s(t) = \sum_{n=1}^N \left( a_n \cos\left(\frac{2\pi n t}{P}\right) + b_n \sin\left(\frac{2\pi n t}{P}\right) \right)
+\end{equation}
+gdzie:
+\begin{itemize}
+    \item \( P \) -- okres sezonowości (np. 24 godziny dla sezonowości dobowej, 168 godzin dla tygodniowej),
+    \item \( a_n, b_n \) -- współczynniki szeregu Fouriera,
+    \item \( N \) -- liczba składników szeregu (kontrolowana przez parametr \texttt{fourier\_order}).
+\end{itemize}
+
+\textbf{Składowa efektów specjalnych (\( h(t) \))} \\
+Efekty specjalne, takie jak święta, są modelowane jako:
+\begin{equation}
+h(t) = \mathbf{Z}(t) \boldsymbol{\kappa}
+\end{equation}
+gdzie:
+\begin{itemize}
+    \item \( \mathbf{Z}(t) \) -- macierz binarna wskazująca wystąpienie efektów specjalnych (np. 1 dla dni świątecznych, 0 w pozostałych),
+    \item \( \boldsymbol{\kappa} \) -- wektor efektów dla każdego zdarzenia.
+\end{itemize}
+
+\textbf{Składowa zmiennych objaśniających (\( r(t) \))} \\
+Zmienne objaśniające, takie jak zapotrzebowanie, dane pogodowe czy bilanse handlowe, są uwzględniane jako dodatkowa już znana składowa liniowa:
+\begin{equation}
+r(t) = \beta_1 x_1(t) + \beta_2 x_2(t) + \dots + \beta_p x_p(t)
+\end{equation}
+
+\textbf{Estymacja parametrów} \\
+Parametry modelu (\( k, m, \boldsymbol{\delta}, \boldsymbol{\gamma}, a_n, b_n, \boldsymbol{\kappa}, \beta_1, \dots, \beta_p \)) są estymowane za pomocą maksymalizacji funkcji wiarogodności lub metod bayesowskich. Prophet wykorzystuje algorytm L-BFGS do optymalizacji w trybie domyślnym, co zapewnia szybkie dopasowanie modelu. Punkty zmiany są automatycznie wykrywane, a ich liczba i rozmieszczenie są kontrolowane przez parametry modelu, takie jak \texttt{n\_changepoints} i \texttt{changepoint\_prior\_scale}.
+
+\textbf{Istotne parametry modelu} \\
+W niniejszej pracy model Prophet został zaimplementowany w Pythonie za pomocą biblioteki \texttt{prophet}. Dane wejściowe zostały przygotowane w formacie wymaganym przez Prophet, gdzie kolumna \texttt{ds} zawiera znaczniki czasowe (\texttt{timestamp}), a kolumna \texttt{y} zawiera ceny energii (\texttt{fixing\_i\_price}). Kluczowe parametry modelu to:
+\begin{itemize}
+    \item \texttt{n\_changepoints}: Liczba punktów zmiany trendu, umożliwiająca dopasowanie do potencjalnych zmian w danych (domyślna wartość 25).
+    \item \texttt{changepoint\_prior\_scale}: Siła regularyzacji punktów zmiany (domyślna wartość 0.05).
+    \item \texttt{yearly\_seasonality=False}: Wyłączenie sezonowości rocznej, ponieważ dane cen energii wykazują głównie sezonowość dobową i tygodniową.
+    \item \texttt{weekly\_seasonality=True}: Włączenie sezonowości tygodniowej.
+    \item \texttt{daily\_seasonality=True}: Włączenie sezonowości dobowej.
+    \item \texttt{fourier\_order}: Liczba składników szeregu Fouriera dla każdej sezonowości (domyślna wartość 10).
+    \item \texttt{holidays}: Włączono efekty dni świątecznych na podstawie zmiennej \texttt{is\_holiday} z danych.
+    \item Dodatkowe regresory: W przypadku pełnego zestawu danych wszystkie zmienne objaśniające, takie jak zapotrzebowanie, dane pogodowe, bilanse handlowe czy ceny paliw, zostały dodane za pomocą funkcji \texttt{add\_regressor}.
+\end{itemize}
+
+\textbf{Zalety i ograniczenia} \\
+Prophet jest intuicyjny i dobrze radzi sobie z danymi o wyraźnej sezonowości, co czyni go odpowiednim do modelowania cen energii w stabilnych okresach. Automatyczne wykrywanie punktów zmiany, obsługa efektów specjalnych oraz możliwość włączenia wszystkich zmiennych objaśniających ułatwiają jego stosowanie w praktyce. Jednak model może mieć trudności z modelowaniem bardzo dużych wahań cen, takich jak te obserwowane w okresie niespokojnym (2020--2023), szczególnie jeśli zmienne objaśniające nie w pełni tłumaczą zmienność. Ponadto Prophet zakłada addytywną strukturę szeregu czasowego, co może ograniczać jego zdolność do wychwytywania bardziej złożonych, nieliniowych zależności.
+
+\subsection{Wielowarstwowy perceptron (MLP)}
+
+\textbf{Opis metody} \\
+Wielowarstwowy perceptron (MLP) to rodzaj sztucznej sieci neuronowej wykorzystywany w zadaniach uczenia maszynowego. Składa się z warstw neuronów: wejściowej, ukrytych i wyjściowej, które są w pełni połączone.
+
+\textbf{Wzór modelu} \\
+MLP przekształca wektor zmiennych wejściowych \( \mathbf{x} = [x_1, x_2, \dots, x_p]^T \) w wartość prognozowaną \( \hat{y} \) (cenę energii, oznaczaną w pracy jako \texttt{fixing\_i\_price}) poprzez sekwencję warstw neuronów. Dla sieci z jedną warstwą ukrytą model można zapisać jako:
+\begin{equation}
+\hat{y} = f_o\left( \mathbf{w}_o^T \mathbf{h} + b_o \right)
+\end{equation}
+gdzie:
+\begin{itemize}
+    \item \( \mathbf{h} = f_h\left( \mathbf{W}_h \mathbf{x} + \mathbf{b}_h \right) \) -- wektor aktywacji warstwy ukrytej,
+    \item \( \mathbf{x} = [x_1, x_2, \dots, x_p]^T \) -- wektor zmiennych objaśniających,
+    \item \( \mathbf{W}_h \) -- macierz wag między warstwą wejściową a ukrytą,
+    \item \( \mathbf{b}_h \) -- wektor biasów warstwy ukrytej,
+    \item \( f_h(\cdot) \) -- funkcja aktywacji warstwy ukrytej (np. \texttt{tanh}),
+    \item \( \mathbf{w}_o \) -- wektor wag między warstwą ukrytą a wyjściową,
+    \item \( b_o \) -- bias warstwy wyjściowej,
+    \item \( f_o(\cdot) \) -- funkcja aktywacji warstwy wyjściowej (dla regresji zazwyczaj liniowa, tj. \( f_o(z) = z \)).
+\end{itemize}
+
+Dla sieci z wieloma warstwami ukrytymi proces jest analogiczny, z kolejnymi przekształceniami dla każdej warstwy:
+\begin{equation}
+\mathbf{h}_k = f_k\left( \mathbf{W}_k \mathbf{h}_{k-1} + \mathbf{b}_k \right), \quad k = 1, 2, \dots, K
+\end{equation}
+gdzie \( \mathbf{h}_0 = \mathbf{x} \), \( K \) to liczba warstw ukrytych, a \( \mathbf{h}_K \) to wejście do warstwy wyjściowej.
+
+W części analitycznej pracy są przedstawione wyniki z różną ilością warstw ukrytych. 
+
+\textbf{Estymacja parametrów} \\
+Parametry modelu (\( \mathbf{W}_k, \mathbf{b}_k \) dla każdej warstwy oraz \( \mathbf{w}_o, b_o \)) są estymowane przez minimalizację funkcji kosztu, czyli średniego błędu kwadratowego (MSE):
+\begin{equation}
+\text{MSE} = \frac{1}{n} \sum_{i=1}^n \left( y_i - \hat{y}_i \right)^2
+\end{equation}
+gdzie \( y_i \) to rzeczywista cena energii, a \( \hat{y}_i \) to przewidywana wartość dla \( i \)-tej obserwacji.
+
+Estymacja parametrów odbywa się za pomocą algorytmu wstecznej propagacji błędu (backpropagation) w połączeniu z optymalizatorem, takim jak Adam. Proces treningu polega na iteracyjnym dostosowywaniu wag i biasów w celu zmniejszenia błędu na zbiorze treningowym, z uwzględnieniem walidacji na oddzielnym zbiorze danych w celu uniknięcia przeuczenia.
+
+\textbf{Istotne parametry modelu} \\
+W niniejszej pracy model MLP został zaimplementowany w Pythonie za pomocą modułu \texttt{Keras} z biblioteki TensorFlow. Kluczowe parametry modelu, wraz z ich domyślnymi wartościami w bibliotece \texttt{Keras}, obejmują:
+\begin{itemize}
+    \item \texttt{units}: Liczba neuronów w każdej warstwie ukrytej.
+    \item \texttt{activation}: Funkcja aktywacji dla warstw ukrytych (domyślnie \texttt{relu} dla warstw gęstych).
+    \item \texttt{optimizer}: Algorytm optymalizacji (domyślnie \texttt{rmsprop} dla modelu sekwencyjnego).
+    \item \texttt{learning\_rate}: Szybkość uczenia dla optymalizatora (domyślnie 0.001 dla optimizera \texttt{Adam}).
+    \item \texttt{batch\_size}: Rozmiar partii danych w każdej iteracji treningu (domyślnie 32 w metodzie \texttt{fit}).
+    \item \texttt{epochs}: Maksymalna liczba epok treningu.
+\end{itemize}
+
+\textbf{Zalety i ograniczenia} \\
+MLP jest elastycznym modelem zdolnym do wychwytywania nieliniowych zależności w danych, co czyni go odpowiednim do modelowania cen energii w okresach o dużej zmienności. Możliwość dostosowania architektury sieci i hiperparametrów pozwala na optymalizację modelu pod kątem specyfiki danych. Jednak MLP wymaga starannego doboru hiperparametrów i preprocessingu danych, a jego trening jest bardziej kosztowny obliczeniowo niż w przypadku modeli statystycznych. Ponadto model może być podatny na przeuczenie, jeśli liczba warstw lub neuronów jest zbyt duża w stosunku do dostępnych danych.
