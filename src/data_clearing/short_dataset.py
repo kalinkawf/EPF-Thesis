@@ -11,18 +11,18 @@ df["timestamp"] = pd.to_datetime(df["timestamp"])
 df["is_holiday"] = df["is_holiday"].astype(int)
 
 # Obliczenie średnich dla zmiennych pogodowych
-df["avg_temp"] = df[["temp_waw", "temp_ksz", "temp_krk", "temp_bab"]].mean(axis=1)
 df["avg_wind_speed"] = df[["wind_speed_waw", "wind_speed_ksz", "wind_speed_krk", "wind_speed_bab"]].mean(axis=1)
 df["avg_solar_radiation"] = df[["solar_radiation_waw", "solar_radiation_ksz", "solar_radiation_krk", "solar_radiation_bab"]].mean(axis=1)
 
 # Definicja nowego skróconego zestawu danych
 columns_to_keep = [
     "timestamp", "fixing_i_price",  # Zmienna czasowa i zmienna celu
-    "fixing_i_price_lag24", "fixing_i_price_lag168",
+    "fixing_i_price_lag24", "fixing_i_price_lag48", "fixing_i_price_lag72",
+    "fixing_i_price_lag96", "fixing_i_price_lag120", "fixing_i_price_lag144",
+    "fixing_i_price_lag168", "fixing_i_price_mean24", "fixing_i_price_mean48",
     "gas_price", "co2_price", "brent_price", "pln_usd", "coal_pscmi1_pln_per_gj",
-    "power_loss", "fixing_i_volume", "solar", "gas", "oil", "Load",
-    "avg_temp", "avg_wind_speed", "avg_solar_radiation",
-    "hour", "month", "is_holiday", "wind_onshore", "day_of_week"
+    "power_loss", "fixing_i_volume", "solar", "gas", "oil", "Load", "avg_wind_speed", "avg_solar_radiation",
+    "hour", "month", "is_holiday", "non_emissive_sources_percentage", "day_of_week"
 ]
 
 # Utworzenie nowego DataFrame z wybranymi kolumnami

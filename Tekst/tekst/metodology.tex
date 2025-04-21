@@ -6,7 +6,7 @@ W rozdziale tym przedstawiono metodologię przeprowadzonych badań. Rozdział sk
 \section{Ocena jakości prognoz}
 \label{sec:ocena_jakosci_prognoz}
 
-Ocena jakości modeli prognozowania cen energii elektrycznej jest kluczowym etapem analizy, ponieważ pozwala na porównanie skuteczności różnych podejść. W niniejszej pracy zastosowano następujące popularne metryki oceny: Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), Mean Absolute Percentage Error (MAPE), Symmetric Mean Absolute Percentage Error (sMAPE) oraz \( R^2 \). Wszystkie z tych metryk są omawiane w literaturze porównania skuteczności modeli \cite{en17225797}. W pracy prof. Werona \cite{WERON20141030} podano, że nie ma standardu obliczenia metryk EPF i wspomina o innych metrykach stosowanych przez innych autorów artykułów, między innymi wymieniono -- Ważony Średni Błąd Bezwzględny (WMAE), średni błąd dniowy (MDE) i tygodniowy (MWE). Niemniej jednak, w tej pracy skupiono się na tych najszerzej stosowanych metrykach. Każda z tych metryk ma swoje zalety i ograniczenia, których omówienie jest przedstawione poniżej, wraz z ich matematycznymi definicjami i przykładami zastosowania w EPF.
+Ocena jakości modeli prognozowania cen energii elektrycznej jest kluczowym etapem analizy, ponieważ pozwala na porównanie skuteczności różnych podejść. W niniejszej pracy zastosowano następujące popularne metryki oceny: Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), Mean Absolute Percentage Error (MAPE), Symmetric Mean Absolute Percentage Error (sMAPE) oraz \( R^2 \). Wszystkie z tych metryk są omawiane w literaturze porównania skuteczności modeli \cite{en17225797}. W pracy prof. Werona \cite{WERON20141030} podano, że nie ma standardu obliczenia metryk EPF i wspomina o innych metrykach stosowanych przez innych autorów artykułów, między innymi wymieniono - Ważony Średni Błąd Bezwzględny (WMAE), średni błąd dniowy (MDE) i tygodniowy (MWE). Niemniej jednak, w tej pracy skupiono się na tych najszerzej stosowanych metrykach. Każda z tych metryk ma swoje zalety i ograniczenia, których omówienie jest przedstawione poniżej, wraz z ich matematycznymi definicjami i przykładami zastosowania w EPF.
 
 \subsection{Mean Absolute Error (MAE)}
 \label{subsec:mae}
@@ -64,7 +64,7 @@ RMSE jest również wyrażane w jednostkach oryginalnych danych, co ułatwia int
 
 \textbf{Ograniczenia RMSE:}
 \begin{itemize}
-    \item Wrażliwość na wartości odstające -- pojedyncze duże błędy mogą znacząco zawyżyć wartość RMSE.
+    \item Wrażliwość na wartości odstające - pojedyncze duże błędy mogą znacząco zawyżyć wartość RMSE.
     \item Mniej intuicyjne w interpretacji niż MAE, ponieważ kwadrat błędów zmienia skalę.
 \end{itemize}
 
@@ -93,8 +93,8 @@ MAPE jest wyrażane w procentach, co ułatwia interpretację. Na przykład, MAPE
 
 \textbf{Ograniczenia MAPE:}
 \begin{itemize}
-    \item Problemy z wartościami bliskimi zera -- jeśli \( y_t \) jest bardzo małe, co jest możliwe w godzinach nocnych, dzielenie przez \( y_t \) prowadzi do bardzo dużych wartości procentowych, a nawet do błędu matematycznego (dzielenie przez zero).
-    \item Asymetria -- MAPE bardziej penalizuje niedoszacowania niż przeszacowania, co może prowadzić do nieobiektywnej oceny.
+    \item Problemy z wartościami bliskimi zera - jeśli \( y_t \) jest bardzo małe, co jest możliwe w godzinach nocnych, dzielenie przez \( y_t \) prowadzi do bardzo dużych wartości procentowych, a nawet do błędu matematycznego (dzielenie przez zero).
+    \item Asymetria - MAPE bardziej penalizuje niedoszacowania niż przeszacowania, co może prowadzić do nieobiektywnej oceny.
 \end{itemize}
 
 \subsection{Symmetric Mean Absolute Percentage Error (sMAPE)}
@@ -118,7 +118,7 @@ Podobnie jak MAPE, sMAPE jest wyrażane w procentach. Na przykład, sMAPE równe
 \textbf{Zalety sMAPE:}
 \begin{itemize}
     \item Rozwiązuje problem dzielenia przez zero, co jest istotne w EPF, gdzie ceny mogą być bliskie zera.
-    \item Symetria -- traktuje nad- i niedoszacowania w bardziej zrównoważony sposób niż MAPE.
+    \item Symetria - traktuje nad- i niedoszacowania w bardziej zrównoważony sposób niż MAPE.
 \end{itemize}
 
 \textbf{Ograniczenia sMAPE:}
@@ -154,14 +154,14 @@ W kontekście EPF, na przykład na RDN, \( R^2 \) równe 0,85 oznaczałoby, że 
 
 \textbf{Zalety \( R^2 \):}
 \begin{itemize}
-    \item Intuicyjna interpretacja -- \( R^2 \) jasno wskazuje, jaki procent zmienności danych jest wyjaśniony przez model.
-    \item Bez jednostek -- umożliwia porównanie modeli na różnych zbiorach danych, niezależnie od skali cen (np. PLN/MWh na RDN vs. EUR/MWh na EEX).
+    \item Intuicyjna interpretacja - \( R^2 \) jasno wskazuje, jaki procent zmienności danych jest wyjaśniony przez model.
+    \item Bez jednostek - umożliwia porównanie modeli na różnych zbiorach danych, niezależnie od skali cen (np. PLN/MWh na RDN vs. EUR/MWh na EEX).
 \end{itemize}
 
 \textbf{Ograniczenia \( R^2 \):}
 \begin{itemize}
-    \item Wrażliwość na przeuczenie -- \( R^2 \) może być zawyżone w modelach o dużej liczbie parametrów, szczególnie w przypadku małych zbiorów danych, co może prowadzić do mylnego wniosku o dobrym dopasowaniu modelu.
-    \item Brak informacji o kierunku błędów -- \( R^2 \) nie rozróżnia, czy model nad- czy niedoszacowuje wartości, co w EPF może być istotne z ekonomicznego punktu widzenia.
+    \item Wrażliwość na przeuczenie - \( R^2 \) może być zawyżone w modelach o dużej liczbie parametrów, szczególnie w przypadku małych zbiorów danych, co może prowadzić do mylnego wniosku o dobrym dopasowaniu modelu.
+    \item Brak informacji o kierunku błędów - \( R^2 \) nie rozróżnia, czy model nad- czy niedoszacowuje wartości, co w EPF może być istotne z ekonomicznego punktu widzenia.
 \end{itemize}
 
 W niniejszej pracy \( R^2 \) zostanie wykorzystane jako dodatkowa metryka oceny, aby uzupełnić analizę opartą na MAE, RMSE, MAPE, sMAPE.
@@ -183,11 +183,11 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p + \epsilon
 \end{equation}
 gdzie:
 \begin{itemize}
-    \item \( y \) -- zmienna zależna, cena energii elektrycznej
-    \item \( \beta_0 \) -- wyraz wolny,
-    \item \( \beta_1, \beta_2, \dots, \beta_p \) -- współczynniki regresji dla zmiennych niezależnych,
-    \item \( x_1, x_2, \dots, x_p \) -- zmienne niezależne (predyktory, np. zmienne związane z zapotrzebowaniem, cenami paliw czy danymi kalendarzowymi),
-    \item \( \epsilon \) -- składnik losowy (błąd), zakładany jako \( \epsilon \sim N(0, \sigma^2) \).
+    \item \( y \) - zmienna zależna, cena energii elektrycznej
+    \item \( \beta_0 \) - wyraz wolny,
+    \item \( \beta_1, \beta_2, \dots, \beta_p \) - współczynniki regresji dla zmiennych niezależnych,
+    \item \( x_1, x_2, \dots, x_p \) - zmienne niezależne (predyktory, np. zmienne związane z zapotrzebowaniem, cenami paliw czy danymi kalendarzowymi),
+    \item \( \epsilon \) - składnik losowy (błąd), zakładany jako \( \epsilon \sim N(0, \sigma^2) \).
 \end{itemize}
 
 W macierzowej formie model przyjmuje postać:
@@ -196,10 +196,10 @@ W macierzowej formie model przyjmuje postać:
 \end{equation}
 gdzie:
 \begin{itemize}
-    \item \( \mathbf{y} \) -- wektor obserwacji zmiennej zależnej,
-    \item \( \mathbf{X} \) -- macierz projektowa zawierająca wartości zmiennych niezależnych,
-    \item \( \boldsymbol{\beta} \) -- wektor współczynników regresji,
-    \item \( \boldsymbol{\epsilon} \) -- wektor błędów.
+    \item \( \mathbf{y} \) - wektor obserwacji zmiennej zależnej,
+    \item \( \mathbf{X} \) - macierz projektowa zawierająca wartości zmiennych niezależnych,
+    \item \( \boldsymbol{\beta} \) - wektor współczynników regresji,
+    \item \( \boldsymbol{\epsilon} \) - wektor błędów.
 \end{itemize}
 
 \textbf{Estymacja parametrów} \\
@@ -242,7 +242,7 @@ gdzie:
 \begin{itemize}
     \item Pierwsza część (\( \sum_{i=1}^n (y_i - \hat{y}_i)^2 \)) to suma kwadratów błędów, jak w OLS.
     \item Druga część (\( \lambda \sum_{j=1}^p \beta_j^2 \)) to kara L2 na wielkość współczynników \( \beta_j \).
-    \item \( \lambda \geq 0 \) -- parametr regularyzacji, który kontroluje siłę kary (większe \( \lambda \) oznacza silniejszą regularyzację).
+    \item \( \lambda \geq 0 \) - parametr regularyzacji, który kontroluje siłę kary (większe \( \lambda \) oznacza silniejszą regularyzację).
 \end{itemize}
 
 W macierzowej formie funkcja kosztu to:
@@ -280,12 +280,12 @@ y(t) = g(t) + s(t) + h(t) + r(t) + \epsilon_t
 \end{equation}
 gdzie:
 \begin{itemize}
-    \item \( y(t) \) -- wartość prognozowana,
-    \item \( g(t) \) -- składowa trendu, modelująca długoterminowe zmiany w danych,
-    \item \( s(t) \) -- składowa sezonowości, modelująca cykliczne wzorce (np. dobowe, tygodniowe),
-    \item \( h(t) \) -- składowa efektów specjalnych takich jak święta,
-    \item \( r(t) \) -- składowa zmiennych objaśniających, uwzględniająca wpływ dodatkowych regresorów, takich jak zapotrzebowanie czy dane pogodowe,
-    \item \( \epsilon_t \) -- składnik losowy (błąd), zakładany jako \( \epsilon_t \sim N(0, \sigma^2) \).
+    \item \( y(t) \) - wartość prognozowana,
+    \item \( g(t) \) - składowa trendu, modelująca długoterminowe zmiany w danych,
+    \item \( s(t) \) - składowa sezonowości, modelująca cykliczne wzorce (np. dobowe, tygodniowe),
+    \item \( h(t) \) - składowa efektów specjalnych takich jak święta,
+    \item \( r(t) \) - składowa zmiennych objaśniających, uwzględniająca wpływ dodatkowych regresorów, takich jak zapotrzebowanie czy dane pogodowe,
+    \item \( \epsilon_t \) - składnik losowy (błąd), zakładany jako \( \epsilon_t \sim N(0, \sigma^2) \).
 \end{itemize}
 
 \textbf{Składowa trendu (\( g(t) \))} \\
@@ -295,11 +295,11 @@ g(t) = (k + \mathbf{a}(t)^T \boldsymbol{\delta}) t + (m + \mathbf{a}(t)^T \bolds
 \end{equation}
 gdzie:
 \begin{itemize}
-    \item \( k \) -- współczynnik nachylenia trendu,
-    \item \( m \) -- wyraz wolny,
-    \item \( \mathbf{a}(t) \) -- wektor binarny wskazujący punkty zmiany,
-    \item \( \boldsymbol{\delta} \) -- wektor zmian nachylenia w punktach zmiany,
-    \item \( \boldsymbol{\gamma} \) -- wektor przesunięć dla ciągłości trendu w punktach zmiany.
+    \item \( k \) - współczynnik nachylenia trendu,
+    \item \( m \) - wyraz wolny,
+    \item \( \mathbf{a}(t) \) - wektor binarny wskazujący punkty zmiany,
+    \item \( \boldsymbol{\delta} \) - wektor zmian nachylenia w punktach zmiany,
+    \item \( \boldsymbol{\gamma} \) - wektor przesunięć dla ciągłości trendu w punktach zmiany.
 \end{itemize}
 
 \textbf{Składowa sezonowości (\( s(t) \))} \\
@@ -309,9 +309,9 @@ s(t) = \sum_{n=1}^N \left( a_n \cos\left(\frac{2\pi n t}{P}\right) + b_n \sin\le
 \end{equation}
 gdzie:
 \begin{itemize}
-    \item \( P \) -- okres sezonowości (np. 24 godziny dla sezonowości dobowej, 168 godzin dla tygodniowej),
-    \item \( a_n, b_n \) -- współczynniki szeregu Fouriera,
-    \item \( N \) -- liczba składników szeregu (kontrolowana przez parametr \texttt{fourier\_order}).
+    \item \( P \) - okres sezonowości (np. 24 godziny dla sezonowości dobowej, 168 godzin dla tygodniowej),
+    \item \( a_n, b_n \) - współczynniki szeregu Fouriera,
+    \item \( N \) - liczba składników szeregu (kontrolowana przez parametr \texttt{fourier\_order}).
 \end{itemize}
 
 \textbf{Składowa efektów specjalnych (\( h(t) \))} \\
@@ -321,8 +321,8 @@ h(t) = \mathbf{Z}(t) \boldsymbol{\kappa}
 \end{equation}
 gdzie:
 \begin{itemize}
-    \item \( \mathbf{Z}(t) \) -- macierz binarna wskazująca wystąpienie efektów specjalnych (np. 1 dla dni świątecznych, 0 w pozostałych),
-    \item \( \boldsymbol{\kappa} \) -- wektor efektów dla każdego zdarzenia.
+    \item \( \mathbf{Z}(t) \) - macierz binarna wskazująca wystąpienie efektów specjalnych (np. 1 dla dni świątecznych, 0 w pozostałych),
+    \item \( \boldsymbol{\kappa} \) - wektor efektów dla każdego zdarzenia.
 \end{itemize}
 
 \textbf{Składowa zmiennych objaśniających (\( r(t) \))} \\
@@ -348,7 +348,7 @@ W niniejszej pracy model Prophet został zaimplementowany w Pythonie za pomocą 
 \end{itemize}
 
 \textbf{Zalety i ograniczenia} \\
-Prophet jest intuicyjny i dobrze radzi sobie z danymi o wyraźnej sezonowości, co czyni go odpowiednim do modelowania cen energii w stabilnych okresach. Automatyczne wykrywanie punktów zmiany, obsługa efektów specjalnych oraz możliwość włączenia wszystkich zmiennych objaśniających ułatwiają jego stosowanie w praktyce. Jednak model może mieć trudności z modelowaniem bardzo dużych wahań cen, takich jak te obserwowane w okresie niespokojnym (2020--2023), szczególnie jeśli zmienne objaśniające nie w pełni tłumaczą zmienność. Ponadto Prophet zakłada addytywną strukturę szeregu czasowego, co może ograniczać jego zdolność do wychwytywania bardziej złożonych, nieliniowych zależności.
+Prophet jest intuicyjny i dobrze radzi sobie z danymi o wyraźnej sezonowości, co czyni go odpowiednim do modelowania cen energii w stabilnych okresach. Automatyczne wykrywanie punktów zmiany, obsługa efektów specjalnych oraz możliwość włączenia wszystkich zmiennych objaśniających ułatwiają jego stosowanie w praktyce. Jednak model może mieć trudności z modelowaniem bardzo dużych wahań cen, takich jak te obserwowane w okresie niespokojnym (2020-2023), szczególnie jeśli zmienne objaśniające nie w pełni tłumaczą zmienność. Ponadto Prophet zakłada addytywną strukturę szeregu czasowego, co może ograniczać jego zdolność do wychwytywania bardziej złożonych, nieliniowych zależności.
 
 \subsection{Wielowarstwowy perceptron (MLP)}
 
@@ -362,14 +362,14 @@ MLP przekształca wektor zmiennych wejściowych \( \mathbf{x} = [x_1, x_2, \dots
 \end{equation}
 gdzie:
 \begin{itemize}
-    \item \( \mathbf{h} = f_h\left( \mathbf{W}_h \mathbf{x} + \mathbf{b}_h \right) \) -- wektor aktywacji warstwy ukrytej,
-    \item \( \mathbf{x} = [x_1, x_2, \dots, x_p]^T \) -- wektor zmiennych objaśniających,
-    \item \( \mathbf{W}_h \) -- macierz wag między warstwą wejściową a ukrytą,
-    \item \( \mathbf{b}_h \) -- wektor biasów warstwy ukrytej,
-    \item \( f_h(\cdot) \) -- funkcja aktywacji warstwy ukrytej (np. \texttt{tanh}),
-    \item \( \mathbf{w}_o \) -- wektor wag między warstwą ukrytą a wyjściową,
-    \item \( b_o \) -- bias warstwy wyjściowej,
-    \item \( f_o(\cdot) \) -- funkcja aktywacji warstwy wyjściowej (dla regresji zazwyczaj liniowa, tj. \( f_o(z) = z \)).
+    \item \( \mathbf{h} = f_h\left( \mathbf{W}_h \mathbf{x} + \mathbf{b}_h \right) \) - wektor aktywacji warstwy ukrytej,
+    \item \( \mathbf{x} = [x_1, x_2, \dots, x_p]^T \) - wektor zmiennych objaśniających,
+    \item \( \mathbf{W}_h \) - macierz wag między warstwą wejściową a ukrytą,
+    \item \( \mathbf{b}_h \) - wektor biasów warstwy ukrytej,
+    \item \( f_h(\cdot) \) - funkcja aktywacji warstwy ukrytej (np. \texttt{tanh}),
+    \item \( \mathbf{w}_o \) - wektor wag między warstwą ukrytą a wyjściową,
+    \item \( b_o \) - bias warstwy wyjściowej,
+    \item \( f_o(\cdot) \) - funkcja aktywacji warstwy wyjściowej (dla regresji zazwyczaj liniowa, tj. \( f_o(z) = z \)).
 \end{itemize}
 
 Dla sieci z wieloma warstwami ukrytymi proces jest analogiczny, z kolejnymi przekształceniami dla każdej warstwy:

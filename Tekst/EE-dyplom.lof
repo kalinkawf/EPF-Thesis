@@ -13,11 +13,14 @@
 \contentsline {figure}{\numberline {10}{\ignorespaces \xpg@aux {}{polish}Zmienność zachmurzenia w czasie (2022)}}{24}{figure.caption.14}%
 \contentsline {figure}{\numberline {11}{\ignorespaces \xpg@aux {}{polish}Zmienność produkcji energii z różnych źródeł w czasie (2016–2024)}}{25}{figure.caption.15}%
 \contentsline {figure}{\numberline {12}{\ignorespaces \xpg@aux {}{polish}Porównanie produkcji energii z emisyjnych i bezemisyjnych źródeł w 2024 roku}}{26}{figure.caption.16}%
-\contentsline {figure}{\numberline {13}{\ignorespaces \xpg@aux {}{polish}Ceny paliw kopalnych i emisji CO$_2$ w latach 2016--2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych rynkowych.}}{28}{figure.caption.19}%
-\contentsline {figure}{\numberline {14}{\ignorespaces \xpg@aux {}{polish}Straty mocy w wyniku awarii i w sieci w latach 2016--2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych z PSE.}}{29}{figure.caption.20}%
-\contentsline {figure}{\numberline {15}{\ignorespaces \xpg@aux {}{polish}Zapotrzebowanie na energię i wolumen handlu w latach 2016--2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych z PSE.}}{30}{figure.caption.21}%
+\contentsline {figure}{\numberline {13}{\ignorespaces \xpg@aux {}{polish}Ceny paliw kopalnych i emisji CO$_2$ w latach 2016-2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych rynkowych.}}{28}{figure.caption.19}%
+\contentsline {figure}{\numberline {14}{\ignorespaces \xpg@aux {}{polish}Straty mocy w wyniku awarii i w sieci w latach 2016-2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych z PSE.}}{29}{figure.caption.20}%
+\contentsline {figure}{\numberline {15}{\ignorespaces \xpg@aux {}{polish}Zapotrzebowanie na energię i wolumen handlu w latach 2016-2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych z PSE.}}{30}{figure.caption.21}%
 \contentsline {figure}{\numberline {16}{\ignorespaces \xpg@aux {}{polish}Korelacja dni tygodnia z cenami energii na RDN.}}{31}{figure.caption.23}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {17}{\ignorespaces \xpg@aux {}{polish}Wykres korelacji zmiennych objaśniających względem zmiennej docelowej \texttt {fixing\_i\_price}.}}{37}{figure.caption.29}%
+\contentsline {figure}{\numberline {18}{\ignorespaces \xpg@aux {}{polish}Mapa cieplna korelacji zmiennych objaśniających w skróconym zbiorze danych.}}{38}{figure.caption.31}%
+\contentsline {figure}{\numberline {19}{\ignorespaces \xpg@aux {}{polish}Podział szeregów czasowych cen energii na zbiory treningowe i testowe}}{40}{figure.caption.35}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

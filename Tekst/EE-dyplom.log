@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.8)  18 APR 2025 16:20
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.8)  21 APR 2025 17:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1809,11 +1809,6 @@ File: ../plots/weather/cloud_cover_time_series_2022.png Graphic file (type bmp)
 File: ../plots/energy/energy_production_time_series_full.png Graphic file (type
  bmp)
 <../plots/energy/energy_production_time_series_full.png>
-
-Overfull \hbox (22.76358pt too wide) in paragraph at lines 135--136
- [][] 
- []
-
 File: ../plots/energy/emission_vs_non_emission_2024.png Graphic file (type bmp)
 
 <../plots/energy/emission_vs_non_emission_2024.png>
@@ -1847,20 +1842,24 @@ File: ../plots/fixing_i_price_weekdays_holidays.png Graphic file (type bmp)
 <../plots/fixing_i_price_weekdays_holidays.png>
 
 
-[31]) (tekst/eksploracja.tex
+[31]
+Underfull \hbox (badness 2818) in paragraph at lines 288--289
+[]\TU/LatinModernSans(1)/m/n/10.95 Opróćz ceny opóźnionej, zostały wprowadzone 
+średnie kroczące z ostatnich 24 i 48
+ []
+
+
+Underfull \hbox (badness 3668) in paragraph at lines 288--289
+\TU/LatinModernSans(1)/m/n/10.95 godzin. W wyniku tego do datasetu zostały doda
+ne zmienne \TU/LatinModernMono(0)/m/n/10.95 fixing_i_price_mean24
+ []
+
+) (tekst/eksploracja.tex
 
 [32]
+
+[33]
 Rozdział 4.
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 4.
-
-) (tekst/metodology.tex
-
-[33
-
-]
-Rozdział 5.
 
 
 [34
@@ -1868,53 +1867,89 @@ Rozdział 5.
 ]
 
 [35]
+File: ../plots/correlation_with_fixing_i_price.png Graphic file (type bmp)
+<../plots/correlation_with_fixing_i_price.png>
+
 
 [36]
 
 [37]
+File: ../plots/heatmap_short_db_features.png Graphic file (type bmp)
+<../plots/heatmap_short_db_features.png>
+
 
 [38]
 
 [39]
+File: gfx/../../plots/periods_split_combined.png Graphic file (type bmp)
+<gfx/../../plots/periods_split_combined.png>
 
-[40]
+
+[40]) (tekst/metodology.tex
 
 [41]
+Rozdział 5.
 
-[42]
 
-[43]) (tekst/analiza.tex
+[42
+
+]
+
+[43]
 
 [44]
+
+[45]
+
+[46]
+
+[47]
+
+[48]
+
+[49]
+
+[50]
+
+[51]) (tekst/analiza.tex
+
+[52]
 Rozdział 6.
 ) (tekst/podsumowanie.tex
 
-[45
+[53
 
 ]
 Rozdział 7.
 )
 
-[46
+[54
 
 ]
 
-[47
+[55
 
 
 ]
 
-[48] (EE-dyplom.acr) (EE-dyplom.sls)
+[56] (EE-dyplom.acr) (EE-dyplom.sls)
 
-[49
+[57
 
-] (EE-dyplom.lof)
+] (EE-dyplom.lof
+Overfull \hbox (16.10959pt too wide) in paragraph at lines 21--21
+ [][] [][][]\TU/LatinModernSans(1)/m/n/10.95 Wykres korelacji zmiennych objaśni
+ających względem zmiennej docelowej \TU/LatinModernMono(0)/m/n/10.95 fixing_i_p
+rice\TU/LatinModernSans(1)/m/n/10.95 .[][] [][]  
+ []
+
+)
 \tf@lof=\write11
 \openout11 = `EE-dyplom.lof'.
 
 
 
-[50
+[58
 
 ] (EE-dyplom.lot)
 \tf@lot=\write12
@@ -1922,7 +1957,7 @@ Rozdział 7.
 
 
 
-[51
+[59
 
 ] (EE-dyplom.app)
 \tf@app=\write13
@@ -1930,7 +1965,7 @@ Rozdział 7.
 
  (appendices.tex)
 
-[52
+[60
 
 ] (EE-dyplom.aux)
  ***********
@@ -1938,18 +1973,18 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `EE-dyplom.out' has not changed.
-(rerunfilecheck)             Checksum: 7BD05FC9ECF2ED332A65C419F7E27B85;6385.
+(rerunfilecheck)             Checksum: C25F62E8E8B862F53D556FA25129B189;6720.
 Package logreq Info: Writing requests to 'EE-dyplom.run.xml'.
 \openout1 = `EE-dyplom.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46277 strings out of 408640
- 936440 string characters out of 5744799
- 2103157 words of memory out of 5000000
- 68592 multiletter control sequences out of 15000+600000
- 569172 words of font info for 135 fonts, out of 8000000 for 9000
+ 46313 strings out of 408640
+ 937968 string characters out of 5744799
+ 2102643 words of memory out of 5000000
+ 68623 multiletter control sequences out of 15000+600000
+ 569180 words of font info for 136 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  114i,12n,131p,2691b,5098s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on EE-dyplom.pdf (52 pages).
+Output written on EE-dyplom.pdf (60 pages).

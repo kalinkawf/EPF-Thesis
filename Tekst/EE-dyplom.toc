@@ -5,37 +5,44 @@
 \contentsline {section}{\numberline {2.1}Zmienne wejściowe}{12}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Modele prognozowania}{14}{section.2.2}%
 \contentsline {chapter}{\numberline {3}Dane i zmienne}{17}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Opis zbioru danych}{17}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Zmienna zależna}{17}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Zbiór zmiennych niezależnych}{19}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Dane pogodowe}{19}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Produkcja energii z wybranych źródeł}{24}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Handel energią z państwami sąsiednimi}{26}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Ceny paliw kopalnych i emisji CO2}{27}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Straty mocy w systemie elektroenergetycznym}{28}{subsection.3.3.5}%
-\contentsline {subsection}{\numberline {3.3.6}Zapotrzebowanie na energię i wolumen handlu}{29}{subsection.3.3.6}%
-\contentsline {subsection}{\numberline {3.3.7}Inne zmienne}{30}{subsection.3.3.7}%
+\contentsline {section}{\numberline {3.1}Zmienna zależna}{17}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Zbiór zmiennych niezależnych}{19}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Dane pogodowe}{19}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Produkcja energii z wybranych źródeł}{24}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Handel energią z państwami sąsiednimi}{26}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Ceny paliw kopalnych i emisji CO2}{27}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Straty mocy w systemie elektroenergetycznym}{28}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.6}Zapotrzebowanie na energię i wolumen handlu}{29}{subsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.2.7}Inne zmienne}{30}{subsection.3.2.7}%
 \contentsline {subsubsection}{Zmienne sezonowe}{30}{section*.22}%
-\contentsline {subsubsection}{Ceny historyczne}{31}{section*.24}%
+\contentsline {subsubsection}{Ceny historyczne}{32}{section*.24}%
 \contentsline {subsubsection}{Kurs wymiany PLN/USD}{32}{section*.25}%
-\contentsline {chapter}{\numberline {4}Eksploracja danych}{33}{chapter.4}%
-\contentsline {subsection}{\numberline {4.0.1}Braki danych}{33}{subsection.4.0.1}%
-\contentsline {chapter}{\numberline {5}Metodologia}{34}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Ocena jakości prognoz}{34}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Mean Absolute Error (MAE)}{34}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Root Mean Squared Error (RMSE)}{35}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Mean Absolute Percentage Error (MAPE)}{36}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}Symmetric Mean Absolute Percentage Error (sMAPE)}{36}{subsection.5.1.4}%
-\contentsline {subsection}{\numberline {5.1.5}Współczynnik determinacji}{37}{subsection.5.1.5}%
-\contentsline {section}{\numberline {5.2}Wybrane metody weryfikacji zbioru danych}{38}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Regresja liniowa}{38}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Regresja grzbietowa (Ridge)}{39}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Prophet}{40}{subsection.5.2.3}%
-\contentsline {subsection}{\numberline {5.2.4}Wielowarstwowy perceptron (MLP)}{43}{subsection.5.2.4}%
-\contentsline {chapter}{\numberline {6}Analiza danych}{45}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Podsumowanie wyników i wnioski}{46}{chapter.7}%
-\contentsline {chapter}{Bibliografia}{47}{section*.27}%
-\contentsline {chapter}{Wykaz skrótów i symboli}{49}{chapter*.29}%
-\contentsline {chapter}{Spis rysunków}{50}{chapter*.32}%
-\contentsline {chapter}{Spis tabel}{51}{chapter*.33}%
-\contentsline {chapter}{Spis załączników}{52}{chapter*.34}%
+\contentsline {chapter}{\numberline {4}Eksploracja danych}{34}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Wstępna obróbka danych}{34}{section.4.1}%
+\contentsline {subsubsection}{Obsługa braków wartości}{34}{section*.27}%
+\contentsline {subsubsection}{Obsługa granulacji}{34}{section*.28}%
+\contentsline {section}{\numberline {4.2}Analiza korelacji}{35}{section.4.2}%
+\contentsline {subsubsection}{Zbiór danych skrócony}{38}{section*.30}%
+\contentsline {section}{\numberline {4.3}Podział danych}{39}{section.4.3}%
+\contentsline {subsubsection}{Podział na okresy spokojny i niespokojny}{39}{section*.32}%
+\contentsline {subsubsection}{Podział danych na zbiory treningowe i testowe}{39}{section*.34}%
+\contentsline {section}{\numberline {4.4}Przygotowanie danych}{40}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Metodologia}{42}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Ocena jakości prognoz}{42}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Mean Absolute Error (MAE)}{42}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Root Mean Squared Error (RMSE)}{43}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Mean Absolute Percentage Error (MAPE)}{44}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Symmetric Mean Absolute Percentage Error (sMAPE)}{44}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}Współczynnik determinacji}{45}{subsection.5.1.5}%
+\contentsline {section}{\numberline {5.2}Wybrane metody weryfikacji zbioru danych}{46}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Regresja liniowa}{46}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Regresja grzbietowa (Ridge)}{47}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Prophet}{48}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}Wielowarstwowy perceptron (MLP)}{51}{subsection.5.2.4}%
+\contentsline {chapter}{\numberline {6}Analiza danych}{53}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Podsumowanie wyników i wnioski}{54}{chapter.7}%
+\contentsline {chapter}{Bibliografia}{55}{section*.36}%
+\contentsline {chapter}{Wykaz skrótów i symboli}{57}{chapter*.38}%
+\contentsline {chapter}{Spis rysunków}{58}{chapter*.41}%
+\contentsline {chapter}{Spis tabel}{59}{chapter*.42}%
+\contentsline {chapter}{Spis załączników}{60}{chapter*.43}%

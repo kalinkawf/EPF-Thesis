@@ -15,7 +15,8 @@ files = {
     "import_export.csv": "Time",
     "energy_sources_prod.csv": "date",
     "electricity_prices_day_ahead_hourly_all.csv": "date",
-    "load.csv": "date"
+    "load.csv": "date",
+    "non_emissive.csv": "Time",
 }
 
 price_files = {
@@ -44,12 +45,17 @@ for file_name, time_col in files.items():
         df["timestamp"] = pd.to_datetime(df[time_col], format="%d.%m.%Y %H:%M")
         df = df.drop(columns='fixing_ii_price')
         df = df.drop(columns='fixing_ii_volume')
+    # elif file_name == "emissive_vs_non_emissive_all.csv":
+    #     df["timestamp"] = pd.to_datetime(df[time_col], format="%d.%m.%Y %H:%M")
+    #     df = df.drop(columns=['date', 'date_utc', 'emissive_sources', 'emissive_sources_percentage', 'non_emissive_sources'])
+    #     df = df.set_index('timestamp').resample('h').mean().reset_index()  # Resample to hourly data
     else:
         # Dla pozostałych plików zakładamy standardowy format YYYY-MM-DD HH:MM:SS
         df["timestamp"] = pd.to_datetime(df[time_col])
     
     # Usuń oryginalną kolumnę z czasem
-    df = df.drop(columns=[time_col])
+    if time_col in df.columns:
+        df = df.drop(columns=[time_col])
     
     all_data.append(df)
 
@@ -245,7 +251,16 @@ combined_df["month"] = combined_df["timestamp"].dt.month
 # Dodanie zmiennej hour (0-23)
 combined_df["hour"] = combined_df["timestamp"].dt.hour
 
+# Srednie kroczące dla cen energii 
+combined_df['fixing_i_price_mean24'] = combined_df["fixing_i_price"].shift(1).rolling(window=24, min_periods=1).mean()
+combined_df['fixing_i_price_mean48'] = combined_df["fixing_i_price"].shift(1).rolling(window=48, min_periods=1).mean()
+
 combined_df["fixing_i_price_lag24"] = combined_df["fixing_i_price"].shift(24)  # Cena w tej samej godzinie poprzedniego dnia
+combined_df["fixing_i_price_lag48"] = combined_df["fixing_i_price"].shift(48)  # Cena w tej samej godzinie przed dwoma dniami
+combined_df["fixing_i_price_lag72"] = combined_df["fixing_i_price"].shift(72)  # Cena w tej samej godzinie przed trzema dniami
+combined_df["fixing_i_price_lag96"] = combined_df["fixing_i_price"].shift(96)  # Cena w tej samej godzinie przed czterema dniami
+combined_df["fixing_i_price_lag120"] = combined_df["fixing_i_price"].shift(120)  # Cena w tej samej godzinie przed pięcioma dniami
+combined_df["fixing_i_price_lag144"] = combined_df["fixing_i_price"].shift(144)  # Cena w tej samej godzinie przed sześcioma dniami
 combined_df["fixing_i_price_lag168"] = combined_df["fixing_i_price"].shift(168)  # Cena w tej samej godzinie poprzedniego tygodnia
 
 # Wypełnienie brakujących wartości w lag24 wartościami z fixing_i_price dla pierwszych 24 rekordów
@@ -265,6 +280,27 @@ combined_df["is_holiday"] = combined_df["timestamp"].dt.date.isin(holidays)
 
 # Zamień wartości w kolumnie is_holiday na 1 (True) lub 0 (False)
 combined_df["is_holiday"] = combined_df["is_holiday"].astype(int)
+
+# Usuń kolumnę gas_volume
+if "gas_volume" in combined_df.columns:
+    combined_df = combined_df.drop(columns=["gas_volume"])
+
+combined_df["peak_hour"] = 0
+# Ustaw wartość peak_hour w zależności od warunków
+combined_df["peak_hour"] = combined_df.apply(
+    lambda row: 1 if (
+        (row["is_holiday"] == 1 or row["day_of_week"] in [5, 6]) and row["Load"] > 18000 and row["hour"] in [7,8,9,16,17,18]
+    ) or (
+        (row["is_holiday"] == 0 and row["day_of_week"] not in [5, 6]) and row["Load"] > 23000 and row["hour"] in [7,8,9,16,17,18]
+    ) else 0,
+    axis=1
+)
+
+# Wyświetl liczbę wartości 1 w kolumnie peak_hour
+peak_hour_count = combined_df["peak_hour"].sum()
+high_load_count = combined_df[combined_df["Load"] > 23000].shape[0]
+print(f"Liczba wartości 1 w kolumnie peak_hour: {peak_hour_count}")
+print(f"Liczba rekordów z Load > 23000: {high_load_count}")
 
 # Posortuj według timestamp
 combined_df = combined_df.sort_values("timestamp")

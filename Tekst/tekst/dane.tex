@@ -1,6 +1,6 @@
 \chapter{Dane i zmienne}
 \label{ch:dane}
-\section{Opis zbioru danych}
+
 Dane odgrywają kluczową rolę w analizie i prognozowaniu cen energii na Rynku Dnia Następnego (RDN) w Polsce, stanowiąc fundament dla modeli uczenia maszynowego zastosowanych w niniejszej pracy. Zbiór danych stworzony w pracy obejmuje okres od 1 stycznia 2016 roku do 31 grudnia 2024 roku i zawiera dane godzinowe. Zbiór danych zawiera różnorodne zmienne, które można podzielić na kilka kategorii, które zostaną opisane w tym dziale. Duża ilość danych pochodzi z \gls{pse} \cite{PSEOLD}, czyli otwartej platformie, która dostarcza różnego rodzaju danych dostępnych dla analizy. Warto zauważyć, że od 14 czerwca 2024 roku PSE zmieniła sposób raportowania danych i przeszła na nową stronę \cite{PSENEW}, w związku z tym PSE posiada dwie oddzielne strony do raportów historycznych przed i po tym dniu. Wiele z danych zostały pobrane również ze strony energy.instrat.pl. Jest to strona, która pobiera dane z platformy PSE i udostępnia je w sposób wygodniejszy, dzięki czemu arkusze csv z dowolnego okresu czasowego z dowolną częstotliwością można pobrać jednym przyciskiem myszy. Dane dotyczące cen paliw kopalnych oraz kursów walut (np. PLN/USD) zostały pozyskane z innych źródeł, takich jak publiczne bazy danych rynkowych i platformy finansowe. Niniejszy rozdział szczegółowo opisuje zmienną zależną i zmienne niezależne, podzielone na kategorie, a także prezentuje kluczowe cechy danych za pomocą tabel i wykresów, co wyjaśnia dobór zmiennych i pozwala na lepsze zrozumienie ich specyfiki i wyzwań związanych z modelowaniem.
 
 \section{Zmienna zależna}
@@ -132,12 +132,12 @@ Zmienne dotyczące produkcji energii z różnych źródeł odgrywają kluczową 
 Dane te pochodzą z Polskich Sieci Elektroenergetycznych (PSE) i zostały dopasowane do godzinowego formatu danych RDN, co pozwoliło na ich integrację z pozostałymi zmiennymi. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.05\textwidth]{../plots/energy/energy_production_time_series_full.png}
+    \includegraphics[width=1.0\textwidth]{../plots/energy/energy_production_time_series_full.png}
     \caption{Zmienność produkcji energii z różnych źródeł w czasie (2016–2024)}
     \label{fig:energy-production-time-series-full}
 \end{figure}
 
-Wykres powyżej przedstawia średnią miesięczną produkcję energii z różnych źródeł w Polsce w latach 2016–2024, co jest istotne w kontekście prognozowania cen energii (EPF) na Rynku Dnia Następnego (RDN). Wykres obszarowy ukazuje dominację węgla kamiennego i brunatnego, której do tej pory odpowiadają za większość produkcji energii elektrycznej. Biomasa oraz paliwa pochodne węgla stanowią znikomą część podaży i mogą być pominięte dla redukcji ilości zmiennych. Produkcja za pomocą gazu i ropy stale posiada niewielką, ale istotną część produkcji energii. Warto zauważyć, że produkcja z OZE, szczególnie ze słońca znacząco rośnie w ostatnich latach, co może mieć istotny wpływ na ceny energii i umiejętność jej prognozowania. 
+Wykres powyżej przedstawia średnią miesięczną produkcję energii z różnych źródeł w Polsce w latach 2016–2024, co jest istotne w kontekście prognozowania cen energii (EPF) na Rynku Dnia Następnego (RDN). Wykres obszarowy ukazuje dominację węgla kamiennego i brunatnego, której do tej pory odpowiadają za większość produkcji energii elektrycznej. Biomasa oraz paliwa pochodne węgla stanowią znikomą część podaży i mogą być pominięte dla redukcji ilości zmiennych. Produkcja za pomocą gazu i ropy stale posiada niewielką, ale istotną część produkcji energii. Warto zauważyć, że produkcja z OZE, szczególnie ze słońca znacząco rośnie w ostatnich latach, co może mieć istotny wpływ na ceny energii i umiejętność jej prognozowania. Do poprzednio omówionych zmiennych dodano również zmienną \texttt{non\_emissive\_sources\_percentage}, która reprezentuje procentowy udział energii produkowanej z OZE w całkowitej produkcji energii elektrycznej w Polsce.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../plots/energy/emission_vs_non_emission_2024.png}
@@ -194,8 +194,8 @@ Zmienne dotyczące cen paliw kopalnych oraz emisji CO$_2$ odgrywają kluczową r
     \hline
     \textbf{Nazwa zmiennej} & \textbf{Opis} & \textbf{Źródło danych} & \textbf{Granulacja} \\ \hline
     \texttt{gas\_price}     & Cena gazu ziemnego (PLN/MWh) & energy.instrat.pl & Dzienna \\ \hline
-    \texttt{coal\_price}    & Cena węgla kamiennego (PLN/GJ) & energy.instrat.pl & Dzienna \\ \hline
-    \texttt{co2\_price}     & Cena uprawnień do emisji CO$_2$ (PLN/tCO$_2$) & energy.instrat.pl & Dzienna \\ \hline
+    \texttt{coal\_price}    & Cena węgla kamiennego (PLN/GJ) & energy.instrat.pl & miesięczna \\ \hline
+    \texttt{co2\_price}     & Cena uprawnień do emisji CO$_2$ (PLN/tCO$_2$) & energy.instrat.pl & tygodniowa \\ \hline
     \texttt{brent\_price}   & Cena ropy Brent Europe (PLN/bar) & www.eia.gov & Dzienna \\ \hline
     \end{tabular}
     \caption{Opis zmiennych dotyczących cen paliw kopalnych i emisji CO$_2$.}
@@ -206,12 +206,12 @@ Dane te zostały dopasowane do godzinowego formatu danych RDN, w taki sposób, �
 
 Ceny paliw kopalnych i emisji CO$_2$ są istotne w kontekście prognozowania cen energii, ponieważ wpływają na koszty produkcji energii w elektrowniach konwencjonalnych, które dominują w polskim miksie energetycznym. Na przykład, wzrost ceny węgla (\texttt{coal\_price}) lub uprawnień do emisji CO$_2$ (\texttt{co2\_price}) zwiększa koszty produkcji energii w elektrowniach węglowych. Cena gazu (\texttt{gas\_price}) jest kluczowa dla elektrowni gazowych, które pełnią rolę bilansującą w systemie. Cena ropy Brent (\texttt{brent\_price}) ma mniejszy bezpośredni wpływ na produkcję energii w Polsce, ale jest istotna w kontekście globalnych trendów cen paliw, które mogą wpływać na inne zmienne, takie jak cena gazu.
 
-Aby zilustrować dynamikę tych zmiennych, na rysunku poniżej przedstawiono zmiany cen paliw kopalnych i emisji CO$_2$ w latach 2016--2024 w ujęciu miesięcznym. Dla lepszego przedstawienia danych użyłem skali logarytmicznej.
+Aby zilustrować dynamikę tych zmiennych, na rysunku poniżej przedstawiono zmiany cen paliw kopalnych i emisji CO$_2$ w latach 2016-2024 w ujęciu miesięcznym. Dla lepszego przedstawienia danych użyłem skali logarytmicznej.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.9\textwidth]{../plots/fuels/fuel_prices_2016_2024.png}
-    \caption{Ceny paliw kopalnych i emisji CO$_2$ w latach 2016--2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych rynkowych.}
+    \caption{Ceny paliw kopalnych i emisji CO$_2$ w latach 2016-2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych rynkowych.}
     \label{fig:fuel_prices}
 \end{figure}
 
@@ -224,12 +224,12 @@ Zmienne dotyczące strat mocy w systemie elektroenergetycznym odgrywają istotn�
 
 Straty mocy w systemie elektroenergetycznym są kluczowe w kontekście prognozowania cen energii, ponieważ zmniejszają ilość energii dostępnej dla odbiorców, co może prowadzić do wzrostu cen na RDN oraz \gls{rb}. Utrata mocy w wyniku awarii
 
-Aby zilustrować dynamikę tych zmiennych, na rysunku~\ref{fig:power_losses} przedstawiono zmiany strat mocy w wyniku awarii (\texttt{power\_loss}) oraz strat mocy w sieci (\texttt{network\_loss}) w latach 2016--2024 w ujęciu miesięcznym.
+Aby zilustrować dynamikę tych zmiennych, na rysunku~\ref{fig:power_losses} przedstawiono zmiany strat mocy w wyniku awarii (\texttt{power\_loss}) oraz strat mocy w sieci (\texttt{network\_loss}) w latach 2016-2024 w ujęciu miesięcznym.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.9\textwidth]{../plots/losses/power_losses_2016_2024.png}
-    \caption{Straty mocy w wyniku awarii i w sieci w latach 2016--2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych z PSE.}
+    \caption{Straty mocy w wyniku awarii i w sieci w latach 2016-2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych z PSE.}
     \label{fig:power_losses}
 \end{figure}
 
@@ -245,7 +245,7 @@ Poniżej na wspólnym wykresie przedstawię różnice pomiędzy zapotrzebowaniem
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{../plots/market/load_vs_volume_2016_2024.png}
-    \caption{Zapotrzebowanie na energię i wolumen handlu w latach 2016--2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych z PSE.}
+    \caption{Zapotrzebowanie na energię i wolumen handlu w latach 2016-2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych z PSE.}
     \label{fig:load_vs_trade_volume}
 \end{figure}
 
@@ -262,7 +262,7 @@ W swoim zbiorze danych uwzględnione zostały inne zmienne, które mogą mieć w
 \label{subsubsec:seasonal_variables}
 Zmienne sezonowe, takie jak \texttt{day\_of\_week}, \texttt{month} i \texttt{is\_holiday}, zostały wprowadzone do zbioru danych w celu uchwycenia cykliczności i wzorców sezonowych w cenach energii na Rynku Dnia Następnego. Zmienne te zostały wygenerowane na podstawie kolumny \texttt{timestamp}, co pozwoliło na ich integrację z pozostałymi danymi w formacie godzinowym.
 
-Zmienna \texttt{month} reprezentuje miesiąc roku (1--12, gdzie 1 to styczeń, a 12 to grudzień). Na temat cykliczności miesięcznej wspominałęm wcześniej w podrozdziałach \ref{subsec:prices} i \ref{subsec:demand}. Niemniej jednak, wprowadzenie zmiennych \texttt{day\_of\_week} i \texttt{month} do modelu pozwala lepiej uchwycić cykliczność i sezonowość w cenach energii, na poszczególne godziny dnia o czym świadczy poniższy wykres korelacji.
+Zmienna \texttt{month} reprezentuje miesiąc roku (1-12, gdzie 1 to styczeń, a 12 to grudzień). Na temat cykliczności miesięcznej wspominałęm wcześniej w podrozdziałach \ref{subsec:prices} i \ref{subsec:demand}. Niemniej jednak, wprowadzenie zmiennych \texttt{day\_of\_week} i \texttt{month} do modelu pozwala lepiej uchwycić cykliczność i sezonowość w cenach energii, na poszczególne godziny dnia o czym świadczy poniższy wykres korelacji.
 
 \begin{figure}[H]
     \centering
@@ -271,17 +271,23 @@ Zmienna \texttt{month} reprezentuje miesiąc roku (1--12, gdzie 1 to styczeń, a
     \label{fig:seasonal-correlation}
 \end{figure}
 
-Zmienna \texttt{day\_of\_week} reprezentuje dzień tygodnia (0--6, gdzie 0 to poniedziałek, a 6 to niedziela) i pozwala modelowi uwzględnić cykliczność tygodniową w cenach energii. Z wykresu wynika, że zapotrzebowanie na energię jest zazwyczaj wyższe w dni robocze, gdy działa przemysł i biura, a niższe w weekendy i święta, gdy aktywność gospodarcza jest mniejsza. Ta cykliczność przekłada się na ceny energii na RDN: w dni robocze ceny są zazwyczaj wyższe, szczególnie w godzinach szczytu. Wprowadzone zmienne sezonowe pozwalają modelowi lepiej uchwycić te wzorce, co jest istotne w zadaniu modelowania.
+Zmienna \texttt{day\_of\_week} reprezentuje dzień tygodnia (0-6, gdzie 0 to poniedziałek, a 6 to niedziela) i pozwala modelowi uwzględnić cykliczność tygodniową w cenach energii. Z wykresu wynika, że zapotrzebowanie na energię jest zazwyczaj wyższe w dni robocze, gdy działa przemysł i biura, a niższe w weekendy i święta, gdy aktywność gospodarcza jest mniejsza. Ta cykliczność przekłada się na ceny energii na RDN: w dni robocze ceny są zazwyczaj wyższe, szczególnie w godzinach szczytu. Wprowadzone zmienne sezonowe pozwalają modelowi lepiej uchwycić te wzorce, co jest istotne w zadaniu modelowania.
+
+Dodatkowo wprowadzono zmienną \texttt{peak\_hour}, która jest zmienną binarną określającą godziny szczytu, w których występuje zwiększone zapotrzebowanie na energię elektryczną. Przyjmuje wartość 1, jeśli spełniony jest jeden z dwóch warunków, w przeciwnym razie 0:
+\begin{itemize}
+    \item W dni wolne lub dni weekendowe, zapotrzebowanie przekracza 18 000 MW, a godzina należy do przedziałów porannych (7:00-9:00) lub wieczornych (16:00-18:00).
+    \item W dni robocze, zapotrzebowanie przekracza 23 000 MW i posiada takie same przedziały godzinowe jak w dni wolne.
+\end{itemize}
+Definicja ta odzwierciedla wyższe zapotrzebowanie na energię w godzinach szczytu, z różnymi progami dla dni roboczych i wolnych, co jest zgodne z charakterystyką polskiego rynku energii.
 
 \subsubsection{Ceny historyczne}
 \label{subsec:historical_prices}
+ 
+Zmienne historyczne \texttt{fixing\_i\_price\_lag24}, \texttt{fixing\_i\_price\_lag48}, \texttt{fixing\_i\_price\_lag72}, \texttt{fixing\_i\_price\_lag96}, \texttt{fixing\_i\_price\_lag120}, \texttt{fixing\_i\_price\_lag144} oraz \newline \texttt{fixing\_i\_price\_lag168}, zostały wprowadzone do zbioru danych w celu uchwycenia autokorelacji w cenach energii na RDN. Zmienne te zostały wygenerowane na podstawie kolumny \texttt{fixing\_i\_price}, która reprezentuje cenę energii na RDN w danej godzinie (w PLN/MWh), poprzez przesunięcie wartości o odpowiednią liczbę godzin. 
 
-Do wykresu 
-Zmienne historyczne \texttt{fixing\_i\_price\_lag24} i \texttt{fixing\_i\_price\_lag168}, zostały wprowadzone do zbioru danych w celu uchwycenia autokorelacji w cenach energii na RDN. Zmienne te zostały wygenerowane na podstawie kolumny \texttt{fixing\_i\_price}, która reprezentuje cenę energii na RDN w danej godzinie (w PLN/MWh), poprzez przesunięcie wartości o odpowiednio dobę i tydzień.
+Opróćz ceny opóźnionej, zostały wprowadzone średnie kroczące z ostatnich 24 i 48 godzin. W wyniku tego do datasetu zostały dodane zmienne \texttt{fixing\_i\_price\_mean24} i \texttt{fixing\_i\_price\_mean48}, które reprezentują średnie ceny energii na RDN w ostatnich 24 i 48 godzinach. Wartości te zostały obliczone na podstawie danych z kolumny \texttt{fixing\_i\_price} z przesunięciem o jedną godzinę, żeby nie w średniej kroczącej nie brać pod uwagę obecnej wartości. 
 
-Dla pierwszych rekordów w danych (pierwsze 24 godziny dla \texttt{fixing\_i\_price\_lag24} i pierwsze 168 godzin dla \texttt{fixing\_i\_price\_lag168}) brakujące wartości zostały skopiowane z ceny z tego dnia, z tego powodu pierwszy tydzień nie będzie analizowany jako zbiór testowy.
-
-Wprowadzenie zmiennych historycznych do modelu pozwala lepiej uchwycić autokorelację i cykliczność w cenach energii, co jest kluczowe dla poprawy dokładności prognoz. Ceny historyczne są często jednymi z najważniejszych predyktorów w modelach prognozowania cen energii, szczególnie w modelach autoregresyjnych i modelach uczenia maszynowego.
+Wprowadzenie zmiennych historycznych do modelu pozwala lepiej uchwycić autokorelację i cykliczność w cenach energii, co jest kluczowe dla poprawy dokładności prognoz. Zgodnie z literaturą, ceny historyczne są często jednymi z najważniejszych predyktorów w modelach prognozowania cen energii, szczególnie w modelach autoregresyjnych i modelach uczenia maszynowego.
 
 \subsubsection{Kurs wymiany PLN/USD}
 \label{subsec:pln_usd}
@@ -303,7 +309,7 @@ Zmienna \texttt{pln\_usd} reprezentuje kurs wymiany złotego polskiego względem
     2023 & 4.20 \\ \hline
     2024 & 3.98 \\ \hline
     \end{tabular}
-    \caption{Średni kurs wymiany PLN/USD w latach 2016--2024. Źródło: Opracowanie własne na podstawie danych NBP.}
+    \caption{Średni kurs wymiany PLN/USD w latach 2016-2024. Źródło: Opracowanie własne na podstawie danych NBP.}
     \label{tab:pln-usd-exchange-rate}
 \end{table}
 
