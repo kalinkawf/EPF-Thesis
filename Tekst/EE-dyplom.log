@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.8)  21 APR 2025 17:51
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.8)  23 APR 2025 20:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1817,7 +1817,7 @@ File: ../plots/energy/emission_vs_non_emission_2024.png Graphic file (type bmp)
 [25]
 
 [26]
-Overfull \hbox (4.14987pt too wide) in paragraph at lines 193--201
+Overfull \hbox (4.14987pt too wide) in paragraph at lines 200--208
  [][] 
  []
 
@@ -1843,13 +1843,13 @@ File: ../plots/fixing_i_price_weekdays_holidays.png Graphic file (type bmp)
 
 
 [31]
-Underfull \hbox (badness 2818) in paragraph at lines 288--289
+Underfull \hbox (badness 2818) in paragraph at lines 295--296
 []\TU/LatinModernSans(1)/m/n/10.95 Opróćz ceny opóźnionej, zostały wprowadzone 
 średnie kroczące z ostatnich 24 i 48
  []
 
 
-Underfull \hbox (badness 3668) in paragraph at lines 288--289
+Underfull \hbox (badness 3668) in paragraph at lines 295--296
 \TU/LatinModernSans(1)/m/n/10.95 godzin. W wyniku tego do datasetu zostały doda
 ne zmienne \TU/LatinModernMono(0)/m/n/10.95 fixing_i_price_mean24
  []

@@ -8,7 +8,7 @@
 \contentsline {section}{\numberline {3.1}Zmienna zależna}{17}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Zbiór zmiennych niezależnych}{19}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Dane pogodowe}{19}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Produkcja energii z wybranych źródeł}{24}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.2}Produkcja energii z wybranych źródeł}{25}{subsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.2.3}Handel energią z państwami sąsiednimi}{26}{subsection.3.2.3}%
 \contentsline {subsection}{\numberline {3.2.4}Ceny paliw kopalnych i emisji CO2}{27}{subsection.3.2.4}%
 \contentsline {subsection}{\numberline {3.2.5}Straty mocy w systemie elektroenergetycznym}{28}{subsection.3.2.5}%
@@ -25,7 +25,7 @@
 \contentsline {subsubsection}{Zbiór danych skrócony}{38}{section*.30}%
 \contentsline {section}{\numberline {4.3}Podział danych}{39}{section.4.3}%
 \contentsline {subsubsection}{Podział na okresy spokojny i niespokojny}{39}{section*.32}%
-\contentsline {subsubsection}{Podział danych na zbiory treningowe i testowe}{39}{section*.34}%
+\contentsline {subsubsection}{Podział danych na zbiory treningowe i testowe}{40}{section*.34}%
 \contentsline {section}{\numberline {4.4}Przygotowanie danych}{40}{section.4.4}%
 \contentsline {chapter}{\numberline {5}Metodologia}{42}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Ocena jakości prognoz}{42}{section.5.1}%

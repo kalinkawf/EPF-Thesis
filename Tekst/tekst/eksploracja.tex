@@ -1,11 +1,11 @@
 \chapter{Eksploracja danych}
 \label{sec:eksploracja}
 
-W niniejszym rozdziale przedstawiono proces przygotowania wyżej omówionego zestawu danych. Proces eksploracji danych obejmował obsługę braków wartości, dostosowanie granulacji zmiennych, analizę korelacji, podział danych na okresy o różnej zmienności, podział na zbiory treningowy, walidacyjny i testowy oraz preprocessing danych przed modelowaniem.
+W niniejszym rozdziale przedstawiono proces przygotowania omówionego zestawu danych. Proces eksploracji danych ubejmuje obsługę braków wartości, dostosowanie granulacji zmiennych, analizę korelacji, podział danych na okresy o różnej zmienności, podział na zbiory treningowy, walidacyjny i testowy oraz preprocessing danych przed modelowaniem.
 
 \section{Wstępna obróbka danych}
 \subsubsection{Obsługa braków wartości}
-Pierwszym krokiem w eksploracji danych była analiza i obsługa braków wartości w zmiennych, takich jak cena energii, zapotrzebowanie, czy bilanse handlowe. Braki wartości w zmiennych objaśniających mogą wynikać z przyczyny, że w trakcie niektórych godzin pomiary nie były zbierane, lub z powodu błędów w danych, które mogły prowadzić do ich usunięcia. Na szczęście pierwotny zbiór danych zawierał niewiele braków i były one losowe w kontekście całego zbioru. Z oczekiwanych 78912 rekordów godzinowych pozostało 78451. Jest to zaledwie 0.55\% braków, co jest nie powinno stanowić problemu w dalszej analizie.
+Pierwszym krokiem eksploracji jest analiza i obsługa brakujących wartości w zbiorze danych. Braki wartości w zmiennych objaśniających mogą wynikać z przyczyny, że w trakcie niektórych godzin pomiary nie były zbierane, lub z powodu błędów w danych, które mogły prowadzić do ich usunięcia. Na szczęście pierwotny zbiór danych zawierał niewiele braków i nie były one zbyt ciągłe w kontekście całego zbioru. W związku z tym rekordy zawierające brakujące wartości w miejscu dowolnej zmiennej zostały usunięte. Z oczekiwanych 78912 rekordów godzinowych pozostało 78451. Jest to zaledwie 0.55\% braków, co jest nie powinno stanowić problemu w dalszej analizie.
 
 Niektóre zmienne, takie jak kursy walut czy ceny paliw kopalnych miały braki w okresach zamkniętego rynku, czyli weeekendy i święta. W takich przypadkach brakujące wartości zostały przeniesione z poprzedniego dnia handlu. 
 
@@ -16,9 +16,10 @@ Aby ujednolicić granulację do poziomu godzinowego, zastosowano dwie techniki. 
 
 Dla zmiennych o rzadszych granulacji, na przykład dla ceny węgla (miesięczna) oraz emisji CO2 (tygodniowa), przeprowadzono uzupełnianie danych metodą interpolacji liniowej między sąsiednimi wartościami. Poniższy przykład dla granulacji tygodniowej.
 \[
-\text{cena w dniu } d = \text{cena w tygodniu } t + \left( \frac{\text{cena w tygodniu } t+1 - \text{cena w tygodniu } t}{6} \right) \times d,
+\text{cena w dniu } d = \text{cena w tygodniu } t + \left( \frac{\text{cena w tygodniu } t+1 - \text{cena w tygodniu } t}{6} \right) \times d
 \]
-Następnie, podobnie jak w przypadku danych dziennych, wartości te przypisano każdej godzinie w danej dobie. Podejście to umożliwiło ujednolicenie wszystkich zmiennych do godzinowej rozdzielczości danych docelowych, co było niezbędne dla weryfikacji zbioru danych.
+, gdzie \( \quad d \in [t, t+1] \) \newline
+Następnie, podobnie jak w przypadku danych dziennych, wartości te przypisano każdej godzinie w danej dobie. Podejście to umożliwiło ujednolicenie wszystkich zmiennych do godzinowej rozdzielczości danych docelowych, co jest niezbędnym krokiem dla poddania zbioru danych analizie.
 
 \section{Analiza korelacji}
 
@@ -38,13 +39,13 @@ Współczynnik korelacji Spearmana (\( \rho \)) mierzy monotoniczną zależnoś�
 \rho = 1 - \frac{6 \sum_{i=1}^{n} d_i^2}{n(n^2 - 1)},
 \]
 
-gdzie \( d_i \) to różnica między rangami wartości \( x_i \) i \( y_i \). Współczynnik Spearmana również przyjmuje wartości w przedziale \([-1, 1]\), ale nie zakłada liniowości relacji – wystarczy, że wzrost jednej zmiennej odpowiada wzrostowi (lub spadkowi) drugiej w sposób monotoniczny.
+gdzie \( d_i \) to różnica między rangami wartości \( x_i \) i \( y_i \). Współczynnik Spearmana również przyjmuje wartości w przedziale \([-1, 1]\), ale nie zakłada liniowości relacji - wystarczy, że wzrost jednej zmiennej odpowiada wzrostowi (lub spadkowi) drugiej w sposób monotoniczny.
 
-Spearman jest szczególnie użyteczny dla zmiennych o nieliniowej relacji z \texttt{fixing\_i\_price}, takich jak \texttt{co2\_price}, \texttt{coal\_pscmi1\_pln\_per\_gj} czy \texttt{solar}. Na przykład wzrost cen CO2 w 2022 roku prowadził do nieproporcjonalnego wzrostu cen energii, co lepiej oddaje Spearman niż Pearson.
+Spearman jest szczególnie użyteczny dla zmiennych o nieliniowej relacji z \texttt{fixing\_i\_price}. Na przykład wzrost cen gazu w 2022 roku prowadził do nieproporcjonalnego wzrostu cen energii, co lepiej oddaje Spearman niż Pearson.
 
 W celu wyboru odpowiedniego współczynnika korelacji obliczono zarówno korelację Pearsona, jak i Spearmana dla wszystkich zmiennych objaśniających względem \texttt{fixing\_i\_price}. Następnie obliczono bezwzględną różnicę między tymi współczynnikami (\(| \rho - r |\)). Zmienne, dla których różnica była większa niż 0,1, uznano za posiadające nieliniową relację z \texttt{fixing\_i\_price}, stosując dla nich korelację Spearmana. W pozostałych przypadkach wybrano korelację Pearsona, zakładając liniową zależność. 
 
-Analiza wykazała, że zmienne takie jak \texttt{co2\_price} (różnica 0,114), \texttt{coal\_pscmi1\_pln\_per\_gj} (0,161), \texttt{pln\_usd} (0,112), \texttt{solar} (0,172), \texttt{gas} (0,153), \texttt{biomass} (0,174), \texttt{coal-derived} (0,142) oraz zmienne związane z promieniowaniem słonecznym (różnice 0,106-0,115) mają nieliniową relację z \texttt{fixing\_i\_price}. Nieliniowość wynika z charakteru tych zmiennych – na przykład wysoka produkcja energii z fotowoltaiki w miesiącach letnich obniża ceny energii w sposób nieproporcjonalny, co prowadzi do bardzo niskich, a czasem ujemnych cen. Podobnie gwałtowny wzrost cen CO2 w okresie niespokojnym (2020-2023) zwiększał koszty produkcji energii w elektrowniach węglowych, ale efekt ten był wzmacniany przez inne czynniki, takie jak spekulacje rynkowe.
+Analiza wykazała, że zmienne takie jak \texttt{co2\_price} (różnica 0,114), \texttt{coal\_pscmi1\_pln\_per\_gj} (0,161), \texttt{pln\_usd} (0,112), \texttt{solar} (0,172), \texttt{gas} (0,153), \texttt{biomass} (0,174), \texttt{coal-derived} (0,142) oraz zmienne związane z promieniowaniem słonecznym (różnice 0,106-0,115) mają nieliniową relację z \texttt{fixing\_i\_price}. Nieliniowość wynika z charakteru tych zmiennych - na przykład wysoka produkcja energii z fotowoltaiki w miesiącach letnich obniża ceny energii w sposób nieproporcjonalny, co prowadzi do bardzo niskich, a czasem ujemnych cen. Podobnie gwałtowny wzrost cen CO2 w okresie niespokojnym (2020-2023) zwiększał koszty produkcji energii w elektrowniach węglowych, ale efekt ten był wzmacniany przez inne czynniki, takie jak spekulacje rynkowe.
 
 W wyniku tego powstał następujący wykres korelacji poniżej
 
@@ -55,7 +56,7 @@ W wyniku tego powstał następujący wykres korelacji poniżej
     \label{fig:correlation_plot}
 \end{figure}
 
-Zgodnie z literaturą największy wpływ na ceny energii mają zmienne, które powstały w wyniku przetworzenia zmiennej objaśnianej, czyli ceny opóźnione i średnie. Koljenymi zmiennymi wykazującymi silną korelację są ceny na surowce, kurs pollskiego złotego oraz zapotrzebowanie i wolumen. Sprzeczna z logiką może być pozytywna korelacja ceny z zmienną \texttt{solar}, która wskazuje na produkcję energii z paneli fotowoltaicznych. Wynika to z faktu, w momentach, gdy świeci słońce i produkcja energii z OZE jest wysoka, zapotrzebowanie również jest zwiększone i to powoduje wzrost cen. Z kolei wartości reprezentujące parametry pogodowe nie wykazują istotnej korelacji. 
+Zgodnie z literaturą, największy wpływ na ceny energii mają zmienne, które powstały w wyniku przetworzenia zmiennej objaśnianej, czyli ceny opóźnione i średnie. Koljenymi zmiennymi wykazującymi silną korelację są ceny na surowce, kurs pollskiego złotego oraz zapotrzebowanie i wolumen. Sprzeczna z logiką może być pozytywna korelacja ceny z zmienną \texttt{solar}, która wskazuje na produkcję energii z paneli fotowoltaicznych. Wynika to prawdopodobnie z faktu, w momentach, gdy świeci słońce i produkcja energii z OZE jest wysoka, zapotrzebowanie również jest zwiększone i to powoduje wzrost cen. Z kolei wartości reprezentujące parametry pogodowe nie wykazują istotnej korelacji. 
 
 Produkcja energii z odnawialnych źródeł i gazu również odgrywa rolę. Zmienna \texttt{solar} (Spearman: 0,490) wskazuje, że wysoka produkcja energii z fotowoltaiki obniża ceny energii, szczególnie w miesiącach letnich, gdzie nadpodaż energii z OZE może prowadzić do bardzo niskich cen. \texttt{gas} (Spearman: 0,449) pokazuje, że produkcja energii z gazu ma nieliniowy wpływ, zależny od cen gazu i dostępności innych źródeł energii. Ponadto zmienne takie jak \texttt{fixing\_i\_volume} (Spearman: 0,442), \texttt{power\_loss} (Spearman: 0,441), \texttt{oil} (Spearman: 0,349) oraz \texttt{Load} (Pearson: 0,256) mają umiarkowany wpływ, odzwierciedlając znaczenie wolumenu obrotu, strat w sieci, produkcji z oleju oraz zapotrzebowania na energię.
 
@@ -69,13 +70,13 @@ Na podstawie analizy korelacji stworzony został skrócony zbiór danych, który
     \label{fig:heatmap_shortened_dataset}
 \end{figure}
 
-Z powyższej mapy cieplnej wynika, że zmienne o dużej korelacji z ceną energii w dużym stopniu są skorelowane między sobą. 
+Z powyższej mapy cieplnej wynika, że zmienne o największej korelacji z ceną energii w dużym stopniu są również skorelowane pomiędzy sobą. 
 
 \section{Podział danych}
 
 \subsubsection{Podział na okresy spokojny i niespokojny}
 
-Dane zostały podzielone na dwa okresy w celu uwzględnienia różnych warunków rynkowych i ich wpływu na ceny energii. Okres spokojny (2016-2019) charakteryzuje się stabilnymi cenami energii, wynikającymi z braku znaczących szoków podażowych, przewidywalnych cen paliw oraz stopniowego wzrostu cen CO2 w ramach polityki klimatycznej UE. W tym okresie nie występowały większe kryzysy geopolityczne ani pandemie, co pozwoliło na utrzymanie cen w stosunkowo wąskim zakresie.
+Dane zostały podzielone na dwa okresy w celu uwzględnienia różnych warunków rynkowych i ich wpływu na ceny energii. Okres spokojny (2016-2019) charakteryzuje się stabilnymi cenami energii, wynikającymi z braku znaczących szoków podażowych, łatwiej przewidywalnych cen paliw oraz łagodnego wzrostu cen CO2 w ramach polityki klimatycznej UE. W tym okresie nie występowały większe kryzysy geopolityczne ani pandemie, co pozwoliło na utrzymanie cen w stosunkowo wąskim zakresie.
 
 Okres niespokojny (2020-2023) został zdominowany przez szereg wydarzeń, które drastycznie wpłynęły na rynek energii. Pandemia COVID-19 w latach 2020-2021 początkowo obniżyła zapotrzebowanie na energię, ale ożywienie gospodarcze w 2021 roku spowodowało gwałtowny wzrost cen. Kryzys energetyczny w latach 2021-2022, związany z ograniczoną podażą gazu, rekordowymi cenami CO2 oraz wysokimi cenami węgla, doprowadził do ekstremalnych skoków cen energii. Wybuch wojny na Ukrainie w 2022 roku dodatkowo zaostrzył sytuację, powodując przerwanie dostaw gazu z Rosji, sankcje i spekulacje rynkowe, co przełożyło się na rekordowe ceny energii. W tym okresie pojawiły się również ujemne ceny, wynikające z nadpodaży energii z OZE i ograniczonej elastyczności systemu elektroenergetycznego.
 

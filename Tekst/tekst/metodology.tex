@@ -1,12 +1,12 @@
 \chapter{Metodologia}
 \label{ch:metodologia}
 
-W rozdziale tym przedstawiono metodologię przeprowadzonych badań. Rozdział składa się z dwóch sekcji. W pierwszej przedstawiono metodykę oceny jakości prognoz, a w drugiej omówiono metodykę prognozowania cen energii elektrycznej.
+W tym rozdziale przedstawiono metodologię przeprowadzonych badań. Rozdział składa się z dwóch sekcji. W pierwszej przedstawiono metodykę oceny jakości prognoz, a w drugiej omówiono metodykę prognozowania cen energii elektrycznej.
 
 \section{Ocena jakości prognoz}
 \label{sec:ocena_jakosci_prognoz}
 
-Ocena jakości modeli prognozowania cen energii elektrycznej jest kluczowym etapem analizy, ponieważ pozwala na porównanie skuteczności różnych podejść. W niniejszej pracy zastosowano następujące popularne metryki oceny: Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), Mean Absolute Percentage Error (MAPE), Symmetric Mean Absolute Percentage Error (sMAPE) oraz \( R^2 \). Wszystkie z tych metryk są omawiane w literaturze porównania skuteczności modeli \cite{en17225797}. W pracy prof. Werona \cite{WERON20141030} podano, że nie ma standardu obliczenia metryk EPF i wspomina o innych metrykach stosowanych przez innych autorów artykułów, między innymi wymieniono - Ważony Średni Błąd Bezwzględny (WMAE), średni błąd dniowy (MDE) i tygodniowy (MWE). Niemniej jednak, w tej pracy skupiono się na tych najszerzej stosowanych metrykach. Każda z tych metryk ma swoje zalety i ograniczenia, których omówienie jest przedstawione poniżej, wraz z ich matematycznymi definicjami i przykładami zastosowania w EPF.
+Ocena jakości modeli prognozowania cen energii elektrycznej jest kluczowym etapem analizy, ponieważ pozwala na porównanie skuteczności różnych podejść. W niniejszej pracy zastosowano następujące popularne metryki oceny: Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), Mean Absolute Percentage Error (MAPE), Symmetric Mean Absolute Percentage Error (sMAPE) oraz \( R^2 \). Wszystkie z tych metryk są omawiane w literaturze porównania skuteczności modeli \cite{en17225797}. W pracy prof. Werona \cite{WERON20141030} podano, że nie ma standardu obliczenia metryk EPF i wspomina o innych metrykach stosowanych przez innych autorów, między innymi wymieniono - Ważony Średni Błąd Bezwzględny (WMAE), średni błąd dniowy (MDE) i tygodniowy (MWE). Niemniej jednak, w tej pracy skupiono się na tych najszerzej stosowanych metrykach. Każda z tych metryk ma swoje zalety i ograniczenia, których omówienie jest przedstawione poniżej, wraz z ich matematycznymi definicjami i przykładami zastosowania w EPF.
 
 \subsection{Mean Absolute Error (MAE)}
 \label{subsec:mae}
@@ -26,7 +26,7 @@ gdzie:
     \item \( n \) to liczba obserwacji w zbiorze testowym.
 \end{itemize}
 
-MAE jest wyrażane w tej samej jednostce co prognozowane wartości (w omawianym przypadku jest to PLN/MWh), co czyni je łatwym do interpretacji. Na przykład, jeśli MAE wynosi 10 PLN/MWh, oznacza to, że średni błąd prognozy wynosi 10 PLN na każdą megawatogodzinę.
+MAE jest wyrażane w tej samej jednostce co prognozowane wartości (w omawianym przypadku jest to PLN/MWh), co łatwo interpretować. Na przykład, jeśli MAE wynosi 10 PLN/MWh, oznacza to, że średni błąd prognozy wynosi 10 PLN na każdą megawatogodzinę.
 
 \textbf{Zalety MAE:}
 \begin{itemize}
@@ -42,7 +42,7 @@ MAE jest wyrażane w tej samej jednostce co prognozowane wartości (w omawianym 
 \subsection{Root Mean Squared Error (RMSE)}
 \label{subsec:rmse}
 
-Root Mean Squared Error (RMSE) jest kolejną popularną metryką w EPF, która uwzględnia kwadrat błędów, co powoduje większe uwzględnienie większych odchyleń między wartościami rzeczywistymi a przewidywanymi. RMSE jest szczególnie użyteczne w sytuacjach, gdzie duże błędy prognoz mogą mieć poważne konsekwencje ekonomiczne.
+Root Mean Squared Error (RMSE) jest kolejną popularną metryką w EPF, która uwzględnia kwadrat błędów, co powoduje większy wpływ dużych odchyleń między wartościami rzeczywistymi a przewidywanymi. RMSE jest szczególnie użyteczne w sytuacjach, gdzie duże błędy prognoz mogą mieć poważne konsekwencje ekonomiczne.
 
 Definicja RMSE jest następująca:
 
@@ -55,7 +55,7 @@ gdzie:
     \item \( y_t \), \( \hat{y}_t \) i \( n \) mają takie same znaczenie jak w MAE.
 \end{itemize}
 
-RMSE jest również wyrażane w jednostkach oryginalnych danych, co ułatwia interpretację. Na przykład, RMSE równe 15 PLN/MWh oznacza, że typowy błąd prognozy (w sensie średniego kwadratu) wynosi 15 PLN na megawatogodzinę.
+RMSE jest również wyrażane w jednostkach oryginalnych danych, co ułatwia interpretację. Na przykład, RMSE równe 15 PLN/MWh oznacza, że typowy błąd prognozy w sensie średniego kwadratu wynosi 15 PLN na megawatogodzinę.
 
 \textbf{Zalety RMSE:}
 \begin{itemize}
@@ -93,7 +93,7 @@ MAPE jest wyrażane w procentach, co ułatwia interpretację. Na przykład, MAPE
 
 \textbf{Ograniczenia MAPE:}
 \begin{itemize}
-    \item Problemy z wartościami bliskimi zera - jeśli \( y_t \) jest bardzo małe, co jest możliwe w godzinach nocnych, dzielenie przez \( y_t \) prowadzi do bardzo dużych wartości procentowych, a nawet do błędu matematycznego (dzielenie przez zero).
+    \item Problemy z wartościami bliskimi zera - jeśli \( y_t \) jest bardzo małe, co jest możliwe w godzinach nocnych, dzielenie przez \( y_t \) prowadzi do bardzo dużych wartości procentowych, a nawet do matematycznego błędu dzieleniea przez zero.
     \item Asymetria - MAPE bardziej penalizuje niedoszacowania niż przeszacowania, co może prowadzić do nieobiektywnej oceny.
 \end{itemize}
 
