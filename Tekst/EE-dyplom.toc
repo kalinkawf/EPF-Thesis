@@ -40,9 +40,12 @@
 \contentsline {subsection}{\numberline {5.2.3}Prophet}{48}{subsection.5.2.3}%
 \contentsline {subsection}{\numberline {5.2.4}Wielowarstwowy perceptron (MLP)}{51}{subsection.5.2.4}%
 \contentsline {chapter}{\numberline {6}Analiza danych}{53}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Podsumowanie wyników i wnioski}{54}{chapter.7}%
-\contentsline {chapter}{Bibliografia}{55}{section*.36}%
-\contentsline {chapter}{Wykaz skrótów i symboli}{57}{chapter*.38}%
-\contentsline {chapter}{Spis rysunków}{58}{chapter*.41}%
-\contentsline {chapter}{Spis tabel}{59}{chapter*.42}%
-\contentsline {chapter}{Spis załączników}{60}{chapter*.43}%
+\contentsline {section}{\numberline {6.1}Okres stabilny}{53}{section.6.1}%
+\contentsline {subsubsection}{Regresja liniowa i Ridge}{53}{section*.36}%
+\contentsline {section}{\numberline {6.2}Okres niestabilny}{56}{section.6.2}%
+\contentsline {chapter}{\numberline {7}Podsumowanie wyników i wnioski}{57}{chapter.7}%
+\contentsline {chapter}{Bibliografia}{59}{section*.42}%
+\contentsline {chapter}{Wykaz skrótów i symboli}{61}{chapter*.44}%
+\contentsline {chapter}{Spis rysunków}{62}{chapter*.47}%
+\contentsline {chapter}{Spis tabel}{63}{chapter*.48}%
+\contentsline {chapter}{Spis załączników}{64}{chapter*.49}%

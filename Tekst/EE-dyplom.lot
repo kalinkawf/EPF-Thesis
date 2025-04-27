@@ -9,4 +9,7 @@
 \contentsline {table}{\numberline {5}{\ignorespaces \xpg@aux {}{polish}Porównanie statystyk opisowych cen energii w okresach spokojnym (2016-2019) i niespokojnym (2020-2023).}}{39}{table.caption.33}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {6}{\ignorespaces \xpg@aux {}{polish}Wyniki regresji liniowej i Ridge dla pełnego zbioru danych w okresie stabilnym (2019).}}{53}{table.caption.37}%
+\contentsline {table}{\numberline {7}{\ignorespaces \xpg@aux {}{polish}Wyniki regresji liniowej i Ridge dla skróconego zbioru danych w okresie stabilnym (2019) wraz z różnicami względem pełnego zbioru.}}{54}{table.caption.38}%
+\contentsline {table}{\numberline {8}{\ignorespaces \xpg@aux {}{polish}Wyniki regresji liniowej i Ridge z logarytmizacją dla okresu stabilnego (2019).}}{54}{table.caption.39}%
 \addvspace {10\p@ }
