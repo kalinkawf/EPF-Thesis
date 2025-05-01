@@ -6,7 +6,9 @@ import holidays as hl
 # Ścieżki do plików
 input_dir = "../../data/processed_data/"
 other_data_input_dir = "../../data/other_data/"
+output_dir = "../../data/processed_data/"
 output_file = "../../data/database.csv"
+os.makedirs(output_dir, exist_ok=True)
 
 # Lista plików i ich kolumn z czasem
 files = {
@@ -17,6 +19,8 @@ files = {
     "electricity_prices_day_ahead_hourly_all.csv": "date",
     "load.csv": "date",
     "non_emissive.csv": "Time",
+    "rb_data.csv": "Time",
+    "foreign_prices.csv": "Time",
 }
 
 price_files = {
@@ -26,9 +30,6 @@ price_files = {
     "usd_eur_pln_daily.csv": ["pln_usd", "pln_eur"],
     "Europe_Brent_Spot_Price.csv": ["Brent_USD"],
 }
-
-# 78843 - tyle danych przed dodaniem load
-# 78813 - tyle danych po dodaniu load
 
 # Wczytaj dane i ujednolić timestampy
 all_data = []
@@ -45,10 +46,6 @@ for file_name, time_col in files.items():
         df["timestamp"] = pd.to_datetime(df[time_col], format="%d.%m.%Y %H:%M")
         df = df.drop(columns='fixing_ii_price')
         df = df.drop(columns='fixing_ii_volume')
-    # elif file_name == "emissive_vs_non_emissive_all.csv":
-    #     df["timestamp"] = pd.to_datetime(df[time_col], format="%d.%m.%Y %H:%M")
-    #     df = df.drop(columns=['date', 'date_utc', 'emissive_sources', 'emissive_sources_percentage', 'non_emissive_sources'])
-    #     df = df.set_index('timestamp').resample('h').mean().reset_index()  # Resample to hourly data
     else:
         # Dla pozostałych plików zakładamy standardowy format YYYY-MM-DD HH:MM:SS
         df["timestamp"] = pd.to_datetime(df[time_col])
@@ -60,8 +57,8 @@ for file_name, time_col in files.items():
     all_data.append(df)
 
 # Stwórz wspólny zakres czasowy (godzinowy)
-min_timestamp = min(df["timestamp"].min() for df in all_data)
-max_timestamp = max(df["timestamp"].max() for df in all_data)
+min_timestamp = pd.Timestamp("2016-01-01 00:00:00")
+max_timestamp = pd.Timestamp("2023-12-31 23:00:00")
 common_timestamps = pd.date_range(start=min_timestamp, end=max_timestamp, freq="h")
 common_df = pd.DataFrame({"timestamp": common_timestamps})
 
@@ -234,13 +231,21 @@ for file_name, selected_cols in price_files.items():
 for df in all_new_data:
     combined_df = combined_df.merge(df, on="timestamp", how="outer")
 
+# Usuń dane poza zakresem min_timestamp i max_timestamp
+combined_df = combined_df[(combined_df["timestamp"] >= min_timestamp) & (combined_df["timestamp"] <= max_timestamp)]
+
 # Przekształć wartości co2_price na PLN, mnożąc przez pln_eur
 combined_df["co2_price"] = combined_df["co2_price"] * combined_df["pln_eur"]
-combined_df = combined_df.drop(columns=["pln_eur"])
 
 # Przekształć wartości Brent_USD na PLN, mnożąc przez pln_usd, i zmień nazwę kolumny na brent_price
 combined_df["brent_price"] = combined_df["Brent_USD"] * combined_df["pln_usd"]
 combined_df = combined_df.drop(columns=["Brent_USD"])
+
+# Przekształć ceny rynków zagranicznych (sk_price, se_price, cz_price, lt_price) na PLN, mnożąc przez pln_eur
+foreign_price_cols = ["sk_price", "se_price", "cz_price", "lt_price"]
+for col in foreign_price_cols:
+    if col in combined_df.columns:
+        combined_df[col] = combined_df[col] * combined_df["pln_eur"]
 
 # Dodaj kolumnę dzień tygodnia
 combined_df["day_of_week"] = combined_df["timestamp"].dt.dayofweek  # 0 = poniedziałek, 6 = niedziela
@@ -251,23 +256,17 @@ combined_df["month"] = combined_df["timestamp"].dt.month
 # Dodanie zmiennej hour (0-23)
 combined_df["hour"] = combined_df["timestamp"].dt.hour
 
-# Srednie kroczące dla cen energii 
+# Średnie kroczące dla cen energii
 combined_df['fixing_i_price_mean24'] = combined_df["fixing_i_price"].shift(1).rolling(window=24, min_periods=1).mean()
 combined_df['fixing_i_price_mean48'] = combined_df["fixing_i_price"].shift(1).rolling(window=48, min_periods=1).mean()
 
-combined_df["fixing_i_price_lag24"] = combined_df["fixing_i_price"].shift(24)  # Cena w tej samej godzinie poprzedniego dnia
-combined_df["fixing_i_price_lag48"] = combined_df["fixing_i_price"].shift(48)  # Cena w tej samej godzinie przed dwoma dniami
-combined_df["fixing_i_price_lag72"] = combined_df["fixing_i_price"].shift(72)  # Cena w tej samej godzinie przed trzema dniami
-combined_df["fixing_i_price_lag96"] = combined_df["fixing_i_price"].shift(96)  # Cena w tej samej godzinie przed czterema dniami
-combined_df["fixing_i_price_lag120"] = combined_df["fixing_i_price"].shift(120)  # Cena w tej samej godzinie przed pięcioma dniami
-combined_df["fixing_i_price_lag144"] = combined_df["fixing_i_price"].shift(144)  # Cena w tej samej godzinie przed sześcioma dniami
-combined_df["fixing_i_price_lag168"] = combined_df["fixing_i_price"].shift(168)  # Cena w tej samej godzinie poprzedniego tygodnia
-
-# Wypełnienie brakujących wartości w lag24 wartościami z fixing_i_price dla pierwszych 24 rekordów
-combined_df.loc[:23, "fixing_i_price_lag24"] = combined_df.loc[:23, "fixing_i_price"]
-
-# Wypełnienie brakujących wartości w lag168 wartościami z fixing_i_price dla pierwszych 168 rekordów
-combined_df.loc[:167, "fixing_i_price_lag168"] = combined_df.loc[:167, "fixing_i_price"]
+# Obliczanie lagów
+lags = [24, 48, 72, 96, 120, 144, 168]
+for lag in lags:
+    col_name = f"fixing_i_price_lag{lag}"
+    combined_df[col_name] = combined_df["fixing_i_price"].shift(lag)
+    # Wypełnij brakujące wartości na początku wartościami z fixing_i_price
+    combined_df.loc[:lag-1, col_name] = combined_df.loc[:lag-1, "fixing_i_price"]
 
 # Sprawdzenie wyniku
 print("Przykładowe dane po dodaniu nowych zmiennych:")
@@ -308,8 +307,16 @@ combined_df = combined_df.sort_values("timestamp")
 # Usuń rekordy, gdzie timestamp ma niezerowe minuty
 combined_df = combined_df[combined_df['timestamp'].dt.minute == 0]
 
-# Usuń rekordy, gdzie jakakolwiek kolumna zawiera NaN
-combined_df = combined_df.dropna()
+# Deduplikacja timestampów (zachowaj pierwszy rekord)
+print(f"\nLiczba rekordów przed deduplikacją: {len(combined_df)}")
+duplicates_before = combined_df['timestamp'].duplicated().sum()
+print(f"Liczba zduplikowanych timestampów przed deduplikacją: {duplicates_before}")
+combined_df = combined_df.drop_duplicates(subset=['timestamp'], keep='first')
+print(f"Liczba rekordów po deduplikacji: {len(combined_df)}")
+
+# Sprawdź duplikaty timestampów po deduplikacji
+duplicates_after = combined_df['timestamp'].duplicated().sum()
+print(f"Liczba zduplikowanych timestampów po deduplikacji: {duplicates_after}")
 
 # Weryfikacja liczby rekordów
 print(f"\nMinimalny timestamp: {combined_df['timestamp'].min()}")
@@ -319,13 +326,6 @@ print(f"Maksymalny timestamp: {combined_df['timestamp'].max()}")
 expected_records = (combined_df['timestamp'].max() - combined_df['timestamp'].min()).total_seconds() / 3600 + 1
 print(f"Oczekiwana liczba rekordów: {int(expected_records)}")
 print(f"Rzeczywista liczba rekordów: {len(combined_df)}")
-
-# Sprawdź duplikaty timestampów
-duplicates = combined_df['timestamp'].duplicated().sum()
-print(f"Liczba zduplikowanych timestampów: {duplicates}")
-if duplicates > 0:
-    print("Przykładowe zduplikowane timestampy:")
-    print(combined_df[combined_df['timestamp'].duplicated(keep=False)].head())
 
 # Sprawdź, czy różnice między timestampami wynoszą dokładnie 1 godzinę
 combined_df['time_diff'] = combined_df['timestamp'].diff().dt.total_seconds() / 3600
@@ -339,8 +339,77 @@ else:
 # Usuń tymczasową kolumnę time_diff
 combined_df = combined_df.drop(columns=['time_diff'])
 
-# Wyświetl informacje o brakujących wartościach
-print("\nLiczba brakujących wartości (NaN) w każdej kolumnie:")
+# Wyświetl informacje o brakujących wartościach i zapisz statystyki do pliku tekstowego PRZED interpolacją
+print("\nLiczba brakujących wartości (NaN) w każdej kolumnie przed interpolacją:")
+missing_values = combined_df.isna().sum()
+print(missing_values)
+
+# Przygotuj statystyki tekstowe o brakujących wartościach
+missing_stats_file = os.path.join(output_dir, "missing_values_stats_2016_2023.txt")
+with open(missing_stats_file, "w", encoding="utf-8") as f:
+    f.write("Statystyki brakujących wartości (NaN) w danych przed interpolacją:\n\n")
+    total_records = len(combined_df)
+    for column in combined_df.columns:
+        missing_count = combined_df[column].isna().sum()
+        if missing_count > 0:
+            missing_percentage = (missing_count / total_records) * 100
+            f.write(f"Kolumna '{column}': {missing_count} brakujących wartości ({missing_percentage:.2f}% z {total_records} rekordów)\n")
+            # Wylistuj timestampy z brakującymi wartościami
+            missing_timestamps = combined_df[combined_df[column].isna()]["timestamp"].dt.strftime("%Y-%m-%d %H:%M:%S").tolist()
+            f.write("Brakujące wartości w następujących timestampach:\n")
+            f.write("\n".join(missing_timestamps[:1000]))  # Ograniczamy do 1000 timestampów, aby plik nie był zbyt duży
+            if len(missing_timestamps) > 1000:
+                f.write(f"\n... i {len(missing_timestamps) - 1000} więcej timestampów ...\n")
+            f.write("\n\n")
+        else:
+            f.write(f"Kolumna '{column}': Brak brakujących wartości.\n\n")
+
+print(f"\nStatystyki brakujących wartości zapisano do pliku: {missing_stats_file}")
+
+# Interpolacja liniowa dla wszystkich kolumn numerycznych
+numeric_cols = combined_df.select_dtypes(include=['float64', 'int64']).columns
+
+# Liczniki dla ffill i bfill
+ffill_counts = {}
+bfill_counts = {}
+
+# Krok 1: Interpolacja liniowa
+combined_df_before_ffill = combined_df[numeric_cols].copy()
+combined_df[numeric_cols] = combined_df[numeric_cols].interpolate(method='linear')
+
+# Krok 2: ffill - sprawdź, ile wartości zostało wypełnionych
+combined_df_after_ffill = combined_df[numeric_cols].copy()
+combined_df[numeric_cols] = combined_df[numeric_cols].ffill()
+for col in numeric_cols:
+    ffill_count = (combined_df_after_ffill[col].isna() & ~combined_df[numeric_cols][col].isna()).sum()
+    if ffill_count > 0:
+        ffill_counts[col] = ffill_count
+
+# Krok 3: bfill - sprawdź, ile wartości zostało wypełnionych
+combined_df_after_bfill = combined_df[numeric_cols].copy()
+combined_df[numeric_cols] = combined_df[numeric_cols].bfill()
+for col in numeric_cols:
+    bfill_count = (combined_df_after_bfill[col].isna() & ~combined_df[numeric_cols][col].isna()).sum()
+    if bfill_count > 0:
+        bfill_counts[col] = bfill_count
+
+# Wyświetl informacje o ffill i bfill
+print("\nWyniki użycia ffill():")
+if ffill_counts:
+    for col, count in ffill_counts.items():
+        print(f"Kolumna '{col}': Wypełniono {count} wartości metodą ffill.")
+else:
+    print("Metoda ffill() nie była potrzebna - wszystkie wartości zostały wypełnione przez interpolację liniową.")
+
+print("\nWyniki użycia bfill():")
+if bfill_counts:
+    for col, count in bfill_counts.items():
+        print(f"Kolumna '{col}': Wypełniono {count} wartości metodą bfill.")
+else:
+    print("Metoda bfill() nie była potrzebna - wszystkie wartości zostały wypełnione przez interpolację liniową lub ffill().")
+
+# Sprawdź, czy po interpolacji nadal są brakujące wartości
+print("\nLiczba brakujących wartości (NaN) w każdej kolumnie po interpolacji:")
 print(combined_df.isna().sum())
 
 # Zapisz do nowego pliku CSV

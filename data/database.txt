@@ -26,6 +26,12 @@ Słowacja Bilans - Bilans handlu z Slowacja [MWh]
 Szwecja Bilans - Bilans handlu ze Szwecja [MWh]
 Ukraina Bilans - Bilans handlu z Ukrainą [MWh]
 
+Ceny w innych krajach:
+se_price - Cena w Szwecji [PLN/MWh]
+sk_price - Cena w Slowacji [PLN/MWh]
+cz_price - ...
+lt_price - ...
+
 Straty mocy:
 power_loss - Utrata mocy w wyniku awarii [MW]
 Network_loss - Utrata mocy w sieci [MW]
@@ -33,6 +39,7 @@ Network_loss - Utrata mocy w sieci [MW]
 Ceny energii:
 fixing_i_price - Cena na RDN [PLN / MWh]
 fixing_i_volume - Wolumen [kMWh]
+rb_price - Ceny na RB [PLN/MWh]
 gas_price - cena gazu ziemnego [PLN/MWh]
 coal_price - Cena polskiego węgla kamiennego [PLN/gj]
 co2_price - Cena uprawnień do emisji CO2 [PLN/tCO2]
