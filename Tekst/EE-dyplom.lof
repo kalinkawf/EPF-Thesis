@@ -1,28 +1,29 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1}{\ignorespaces \xpg@aux {}{polish}Zmienność cen energii elektrycznej na RDN w latach 2016-2024}}{18}{figure.caption.5}%
-\contentsline {figure}{\numberline {2}{\ignorespaces \xpg@aux {}{polish}Histogram rozkładu zmiennej fixing\_i\_price}}{19}{figure.caption.6}%
-\contentsline {figure}{\numberline {3}{\ignorespaces \xpg@aux {}{polish}Zmienność temperatury w czasie (2016-2024)}}{21}{figure.caption.7}%
-\contentsline {figure}{\numberline {4}{\ignorespaces \xpg@aux {}{polish}Zmienność prędkości wiatru w czasie (2016-2024)}}{21}{figure.caption.8}%
-\contentsline {figure}{\numberline {5}{\ignorespaces \xpg@aux {}{polish}Zmienność promieniowania słonecznego w czasie (2016-2024)}}{22}{figure.caption.9}%
-\contentsline {figure}{\numberline {6}{\ignorespaces \xpg@aux {}{polish}Zmienność zachmurzenia w czasie (2016-2024)}}{22}{figure.caption.10}%
-\contentsline {figure}{\numberline {7}{\ignorespaces \xpg@aux {}{polish}Zmienność temperatury w czasie (2022)}}{23}{figure.caption.11}%
-\contentsline {figure}{\numberline {8}{\ignorespaces \xpg@aux {}{polish}Zmienność prędkości wiatru w czasie (2022)}}{23}{figure.caption.12}%
-\contentsline {figure}{\numberline {9}{\ignorespaces \xpg@aux {}{polish}Zmienność promieniowania słonecznego w czasie (2022)}}{24}{figure.caption.13}%
-\contentsline {figure}{\numberline {10}{\ignorespaces \xpg@aux {}{polish}Zmienność zachmurzenia w czasie (2022)}}{24}{figure.caption.14}%
-\contentsline {figure}{\numberline {11}{\ignorespaces \xpg@aux {}{polish}Zmienność produkcji energii z różnych źródeł w czasie (2016-2024)}}{25}{figure.caption.15}%
-\contentsline {figure}{\numberline {12}{\ignorespaces \xpg@aux {}{polish}Porównanie produkcji energii z emisyjnych i bezemisyjnych źródeł w 2024 roku}}{26}{figure.caption.16}%
-\contentsline {figure}{\numberline {13}{\ignorespaces \xpg@aux {}{polish}Ceny paliw kopalnych i emisji CO$_2$ w latach 2016-2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych rynkowych.}}{28}{figure.caption.19}%
-\contentsline {figure}{\numberline {14}{\ignorespaces \xpg@aux {}{polish}Straty mocy w wyniku awarii i w sieci w latach 2016-2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych z PSE.}}{29}{figure.caption.20}%
-\contentsline {figure}{\numberline {15}{\ignorespaces \xpg@aux {}{polish}Zapotrzebowanie na energię i wolumen handlu w latach 2016-2024 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych z PSE.}}{30}{figure.caption.21}%
-\contentsline {figure}{\numberline {16}{\ignorespaces \xpg@aux {}{polish}Korelacja dni tygodnia z cenami energii na RDN.}}{31}{figure.caption.23}%
+\contentsline {figure}{\numberline {1}{\ignorespaces \xpg@aux {}{polish}Zmienność cen energii elektrycznej na RDN w latach 2016-2023. Opracowanie własne na podstawie danych instrat.}}{18}{figure.caption.5}%
+\contentsline {figure}{\numberline {2}{\ignorespaces \xpg@aux {}{polish}Histogram rozkładu zmiennej fixing\_i\_price. Opracowanie własne na podstawie danych instrat.}}{19}{figure.caption.6}%
+\contentsline {figure}{\numberline {3}{\ignorespaces \xpg@aux {}{polish}Zmienność temperatury w czasie (2016-2023). Opracowanie własne na podstawie danych open-meteo.}}{21}{figure.caption.7}%
+\contentsline {figure}{\numberline {4}{\ignorespaces \xpg@aux {}{polish}Zmienność prędkości wiatru w czasie (2016-2023) Opracowanie własne na podstawie danych open-meteo.}}{21}{figure.caption.8}%
+\contentsline {figure}{\numberline {5}{\ignorespaces \xpg@aux {}{polish}Zmienność promieniowania słonecznego w czasie (2016-2023). Opracowanie własne na podstawie danych open-meteo.}}{22}{figure.caption.9}%
+\contentsline {figure}{\numberline {6}{\ignorespaces \xpg@aux {}{polish}Zmienność zachmurzenia w czasie (2016-2023). Opracowanie własne na podstawie danych open-meteo.}}{22}{figure.caption.10}%
+\contentsline {figure}{\numberline {7}{\ignorespaces \xpg@aux {}{polish}Zmienność temperatury w czasie (2022). Opracowanie własne na podstawie danych open-meteo.}}{23}{figure.caption.11}%
+\contentsline {figure}{\numberline {8}{\ignorespaces \xpg@aux {}{polish}Zmienność prędkości wiatru w czasie (2022). Opracowanie własne na podstawie danych open-meteo.}}{23}{figure.caption.12}%
+\contentsline {figure}{\numberline {9}{\ignorespaces \xpg@aux {}{polish}Zmienność promieniowania słonecznego w czasie (2022). Opracowanie własne na podstawie danych open-meteo.}}{24}{figure.caption.13}%
+\contentsline {figure}{\numberline {10}{\ignorespaces \xpg@aux {}{polish}Zmienność zachmurzenia w czasie (2022). Opracowanie własne na podstawie danych open-meteo.}}{24}{figure.caption.14}%
+\contentsline {figure}{\numberline {11}{\ignorespaces \xpg@aux {}{polish}Zmienność produkcji energii z różnych źródeł w czasie}}{25}{figure.caption.15}%
+\contentsline {figure}{\numberline {12}{\ignorespaces \xpg@aux {}{polish}Porównanie produkcji energii z emisyjnych i bezemisyjnych źródeł w 2023 roku. Opracowanie własne na podstawie danych PSE.}}{26}{figure.caption.16}%
+\contentsline {figure}{\numberline {13}{\ignorespaces \xpg@aux {}{polish}Ceny paliw kopalnych i emisji CO$_2$ w latach w ujęciu miesięcznym. Źródło: Opracowanie własne na podstawie danych rynkowych.}}{29}{figure.caption.20}%
+\contentsline {figure}{\numberline {14}{\ignorespaces \xpg@aux {}{polish}Straty mocy w wyniku awarii i w sieci w ujęciu miesięcznym. Źródło: Opracowanie własne na podstawie danych z PSE.}}{30}{figure.caption.21}%
+\contentsline {figure}{\numberline {15}{\ignorespaces \xpg@aux {}{polish}Zapotrzebowanie na energię i wolumen handlu w latach 2016-2023 (w ujęciu miesięcznym). Źródło: Opracowanie własne na podstawie danych z PSE.}}{31}{figure.caption.22}%
+\contentsline {figure}{\numberline {16}{\ignorespaces \xpg@aux {}{polish}Średnie miesięczne odchylenie ceny na rynku bilansującym (\texttt {rb\_price}) od ceny na Rynku Dnia Następnego (\texttt {fixing\_i\_price}) w latach 2016-2023 (w PLN/MWh). Źródło: Opracowanie własne na podstawie danych z PSE.}}{33}{figure.caption.23}%
+\contentsline {figure}{\numberline {17}{\ignorespaces \xpg@aux {}{polish}Korelacja dni tygodnia z cenami energii na RDN.}}{34}{figure.caption.25}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {17}{\ignorespaces \xpg@aux {}{polish}Wykres korelacji zmiennych objaśniających względem zmiennej docelowej \texttt {fixing\_i\_price}.}}{37}{figure.caption.29}%
-\contentsline {figure}{\numberline {18}{\ignorespaces \xpg@aux {}{polish}Mapa cieplna korelacji zmiennych objaśniających w skróconym zbiorze danych.}}{38}{figure.caption.31}%
-\contentsline {figure}{\numberline {19}{\ignorespaces \xpg@aux {}{polish}Podział szeregów czasowych cen energii na zbiory treningowe i testowe}}{40}{figure.caption.35}%
+\contentsline {figure}{\numberline {18}{\ignorespaces \xpg@aux {}{polish}Wykres korelacji zmiennych objaśniających względem zmiennej docelowej \texttt {fixing\_i\_price}.}}{40}{figure.caption.32}%
+\contentsline {figure}{\numberline {19}{\ignorespaces \xpg@aux {}{polish}Mapa cieplna korelacji zmiennych objaśniających w skróconym zbiorze danych.}}{41}{figure.caption.34}%
+\contentsline {figure}{\numberline {20}{\ignorespaces \xpg@aux {}{polish}Podział szeregów czasowych cen energii na zbiory treningowe i testowe}}{43}{figure.caption.38}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {20}{\ignorespaces \xpg@aux {}{polish}Porównanie rzeczywistych i przewidywanych wartości cen energii dla regresji Ridge w okresie stabilnym.}}{55}{figure.caption.40}%
-\contentsline {figure}{\numberline {21}{\ignorespaces \xpg@aux {}{polish}Histogram reszt dla regresji Ridge w okresie stabilnym.}}{55}{figure.caption.41}%
+\contentsline {figure}{\numberline {21}{\ignorespaces \xpg@aux {}{polish}Porównanie rzeczywistych i przewidywanych wartości cen energii dla regresji Ridge w okresie stabilnym.}}{58}{figure.caption.43}%
+\contentsline {figure}{\numberline {22}{\ignorespaces \xpg@aux {}{polish}Histogram reszt dla regresji Ridge w okresie stabilnym.}}{58}{figure.caption.44}%
 \addvspace {10\p@ }

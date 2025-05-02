@@ -19,6 +19,31 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global/global}
+    \entry{EIA}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=e5385eff42a8196ee7e2cc74567b41d2}{%
+           family={(EIA)},
+           familyi={(\bibinitperiod},
+           given={U.S.\bibnamedelimi Energy\bibnamedelimb Information\bibnamedelima Administration},
+           giveni={U\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim I\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{e5385eff42a8196ee7e2cc74567b41d2}
+      \strng{fullhash}{e5385eff42a8196ee7e2cc74567b41d2}
+      \strng{fullhashraw}{e5385eff42a8196ee7e2cc74567b41d2}
+      \strng{bibnamehash}{e5385eff42a8196ee7e2cc74567b41d2}
+      \strng{authorbibnamehash}{e5385eff42a8196ee7e2cc74567b41d2}
+      \strng{authornamehash}{e5385eff42a8196ee7e2cc74567b41d2}
+      \strng{authorfullhash}{e5385eff42a8196ee7e2cc74567b41d2}
+      \strng{authorfullhashraw}{e5385eff42a8196ee7e2cc74567b41d2}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.eia.gov/dnav/pet/hist/RBRTED.htm}}
+      \field{note}{Accessed: 2025-05-02}
+      \field{title}{Europe Brent Spot Price FOB (Dollars per Barrel)}
+      \field{year}{2025}
+    \endentry
     \entry{BUSBY2021102106}{article}{}{}
       \name{author}{10}{}{%
         {{hash=3c81b6c56149daa25454b7c464b6d3b4}{%
@@ -101,6 +126,54 @@
       \verb https://www.sciencedirect.com/science/article/pii/S2214629621001997
       \endverb
       \keyw{Energy systems,Electricity,Resilience,Texas}
+    \endentry
+    \entry{transparency_entso}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=2cdf01a1dacd4fc793f59761eea73957}{%
+           family={ENTSO-E},
+           familyi={E\bibinithyphendelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{2cdf01a1dacd4fc793f59761eea73957}
+      \strng{fullhash}{2cdf01a1dacd4fc793f59761eea73957}
+      \strng{fullhashraw}{2cdf01a1dacd4fc793f59761eea73957}
+      \strng{bibnamehash}{2cdf01a1dacd4fc793f59761eea73957}
+      \strng{authorbibnamehash}{2cdf01a1dacd4fc793f59761eea73957}
+      \strng{authornamehash}{2cdf01a1dacd4fc793f59761eea73957}
+      \strng{authorfullhash}{2cdf01a1dacd4fc793f59761eea73957}
+      \strng{authorfullhashraw}{2cdf01a1dacd4fc793f59761eea73957}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://newtransparency.entsoe.eu/market/energyPrices}}
+      \field{note}{Accessed: 2025-05-02}
+      \field{title}{Transparencja rynku energii elektrycznej}
+      \field{year}{2025}
+    \endentry
+    \entry{INSTRAT_ENERGY}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=7e61d86841c67f64ad269e1b4c260494}{%
+           family={Foundation},
+           familyi={F\bibinitperiod},
+           given={Instrat},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{7e61d86841c67f64ad269e1b4c260494}
+      \strng{fullhash}{7e61d86841c67f64ad269e1b4c260494}
+      \strng{fullhashraw}{7e61d86841c67f64ad269e1b4c260494}
+      \strng{bibnamehash}{7e61d86841c67f64ad269e1b4c260494}
+      \strng{authorbibnamehash}{7e61d86841c67f64ad269e1b4c260494}
+      \strng{authornamehash}{7e61d86841c67f64ad269e1b4c260494}
+      \strng{authorfullhash}{7e61d86841c67f64ad269e1b4c260494}
+      \strng{authorfullhashraw}{7e61d86841c67f64ad269e1b4c260494}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://energy.instrat.pl/}}
+      \field{note}{Accessed: 2025-05-02}
+      \field{title}{Energy Transition Insights}
+      \field{year}{2025}
     \endentry
     \entry{LAGO2021116983}{article}{}{}
       \name{author}{4}{}{%
@@ -403,6 +476,31 @@
       \verb https://www.mdpi.com/2673-9909/3/2/18
       \endverb
     \endentry
+    \entry{NBP_RATES}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=d0ba742dcb02a1fa49310228a76df7f0}{%
+           family={Polski},
+           familyi={P\bibinitperiod},
+           given={Narodowy\bibnamedelima Bank},
+           giveni={N\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \strng{namehash}{d0ba742dcb02a1fa49310228a76df7f0}
+      \strng{fullhash}{d0ba742dcb02a1fa49310228a76df7f0}
+      \strng{fullhashraw}{d0ba742dcb02a1fa49310228a76df7f0}
+      \strng{bibnamehash}{d0ba742dcb02a1fa49310228a76df7f0}
+      \strng{authorbibnamehash}{d0ba742dcb02a1fa49310228a76df7f0}
+      \strng{authornamehash}{d0ba742dcb02a1fa49310228a76df7f0}
+      \strng{authorfullhash}{d0ba742dcb02a1fa49310228a76df7f0}
+      \strng{authorfullhashraw}{d0ba742dcb02a1fa49310228a76df7f0}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://nbp.pl/statystyka-i-sprawozdawczosc/kursy/archiwum-tabela-a-csv-xls/}}
+      \field{note}{Accessed: 2025-05-02}
+      \field{title}{Roczne kursy walut - tabela A}
+      \field{year}{2025}
+    \endentry
     \entry{PSEOLD}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=6f0862d55fca52dbe032fa0b99e9c6b5}{%
@@ -423,7 +521,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://www.pse.pl/dane-systemowe}}
-      \field{note}{Accessed: 2025-04-09}
+      \field{note}{Accessed: 2025-05-02}
       \field{title}{Dane systemowe}
       \field{year}{2024}
     \endentry
@@ -447,7 +545,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://raporty.pse.pl}}
-      \field{note}{Accessed: 2025-04-09}
+      \field{note}{Accessed: 2025-05-02}
       \field{title}{Raporty historyczne}
       \field{year}{2025}
     \endentry

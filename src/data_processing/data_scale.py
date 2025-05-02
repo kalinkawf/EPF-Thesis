@@ -307,6 +307,10 @@ combined_df = combined_df.sort_values("timestamp")
 # Usuń rekordy, gdzie timestamp ma niezerowe minuty
 combined_df = combined_df[combined_df['timestamp'].dt.minute == 0]
 
+# Wyświetl całkowitą liczbę brakujących wartości (NaN) przed obróbką
+total_missing_values = combined_df.isna().sum().sum()
+print(f"\nCałkowita liczba brakujących wartości (NaN) przed obróbką: {total_missing_values}")
+
 # Deduplikacja timestampów (zachowaj pierwszy rekord)
 print(f"\nLiczba rekordów przed deduplikacją: {len(combined_df)}")
 duplicates_before = combined_df['timestamp'].duplicated().sum()

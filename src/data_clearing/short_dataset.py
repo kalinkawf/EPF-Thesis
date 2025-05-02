@@ -22,7 +22,8 @@ columns_to_keep = [
     "fixing_i_price_lag168", "fixing_i_price_mean24", "fixing_i_price_mean48",
     "gas_price", "co2_price", "brent_price", "pln_usd", "coal_pscmi1_pln_per_gj",
     "power_loss", "fixing_i_volume", "solar", "gas", "oil", "Load", "avg_wind_speed", "avg_solar_radiation",
-    "hour", "month", "is_holiday", "non_emissive_sources_percentage", "day_of_week"
+    "hour", "month", "is_holiday", "non_emissive_sources_percentage", "day_of_week", "RB_price", "se_price",
+    "sk_price", "cz_price", "lt_price", "pln_eur",
 ]
 
 # Utworzenie nowego DataFrame z wybranymi kolumnami

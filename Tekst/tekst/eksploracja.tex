@@ -1,25 +1,25 @@
 \chapter{Eksploracja danych}
 \label{sec:eksploracja}
 
-W niniejszym rozdziale przedstawiono proces przygotowania omówionego zestawu danych. Proces eksploracji danych ubejmuje obsługę braków wartości, dostosowanie granulacji zmiennych, analizę korelacji, podział danych na okresy o różnej zmienności, podział na zbiory treningowy, walidacyjny i testowy oraz preprocessing danych przed modelowaniem.
+W niniejszym rozdziale przedstawiono proces przygotowania omówionego zestawu danych. Proces eksploracji danych ubejmuje obsługę braków wartości, dostosowanie rozdzielczości zmiennych, analizę korelacji, podział danych na okresy o różnej zmienności, podział na zbiory treningowy, walidacyjny i testowy oraz preprocessing danych przed modelowaniem.
 
 \section{Wstępna obróbka danych}
 \subsubsection{Obsługa braków wartości}
-Pierwszym krokiem eksploracji jest analiza i obsługa brakujących wartości w zbiorze danych. Braki wartości w zmiennych objaśniających mogą wynikać z przyczyny, że w trakcie niektórych godzin pomiary nie były zbierane, lub z powodu błędów w danych, które mogły prowadzić do ich usunięcia. Na szczęście pierwotny zbiór danych zawierał niewiele braków i nie były one zbyt ciągłe w kontekście całego zbioru. W związku z tym rekordy zawierające brakujące wartości w miejscu dowolnej zmiennej zostały usunięte. Z oczekiwanych 78912 rekordów godzinowych pozostało 78451. Jest to zaledwie 0.55\% braków, co jest nie powinno stanowić problemu w dalszej analizie.
+Pierwszym etapem eksploracji danych jest analiza i obróbka brakujących wartości w zbiorze danych, co stanowi kluczowy krok w zapewnieniu jego jakości dla dalszej analizy. Brakujące wartości (NaN) w zmiennych objaśniających mogą wynikać z braku pomiarów w określonych godzinach, błędów w procesie gromadzenia danych lub ich celowego pominięcia. Początkowa ocena wykazała obecność 830 brakujących wartości oraz 120 zduplikowanych w zbiorze danych, który docelowo powinien obejmować 70128 rekordów godzinowych. Łączna liczba zduplikowanych i brakujących rekordów (950) stanowiła 1.35\% w stosunku do oczekiwanej liczby rekordów.
 
-Niektóre zmienne, takie jak kursy walut czy ceny paliw kopalnych miały braki w okresach zamkniętego rynku, czyli weeekendy i święta. W takich przypadkach brakujące wartości zostały przeniesione z poprzedniego dnia handlu. 
+Brakujące wartości rzadko stanowiły okres dłuższy, niż dwie godziny. Z tego powodu, w procesie obróbki zastosowano interpolację liniową do wypełnienia brakujących wartości, zapewniając ciągłość danych w ujęciu godzinowym. 120 zduplikowanych timestampów, z których usunięto drugie wystąpienie każdej pary, co pozwoliło na uzyskanie unikalnego zbioru 70128 rekordów. Takie podejście zminimalizowało utratę informacji i zapewniło spójność danych, umożliwiając ich dalsze wykorzystanie w modelowaniu.
 
-\subsubsection{Obsługa granulacji}
-Dane użyte w pracy charakteryzowały się różną granulacją czasową. PSE udostępnia dane dotyczące sieci energii elektrycznej, w tym handlu w rozdzielczości godzinowej. Zmienne pogodowe również mają granulację dzienną. Natomiast zmienne makroekonomiczne, takie jak ceny paliw, są dostępne w częstotliwości dniowej lub tygodniowej.
+\subsubsection{Obsługa różnic w rozdzielczości danych}
+Dane użyte w pracy charakteryzowały się różną rozdzielczością czasową. PSE udostępnia dane dotyczące sieci energii elektrycznej, w tym handlu w rozdzielczości godzinowej. Zmienne pogodowe również mają rozdzielczość dzienną. Natomiast zmienne makroekonomiczne, takie jak ceny paliw, są dostępne w częstotliwości dniowej lub tygodniowej.
 
-Aby ujednolicić granulację do poziomu godzinowego, zastosowano dwie techniki. W przypadku zmiennych o granulacji dziennej, takich jak dane pogodowe, założono, że wartości w ciągu doby nie ulegają zmianie. Wartości dzienne przypisano więc każdej godzinie danego dnia, co pozwoliło na zachowanie prostoty przy jednoczesnym dostosowaniu danych do godzinowej rozdzielczości ceny energii. 
+Aby ujednolicić rozdzielczość do poziomu godzinowego, zastosowano dwie techniki. W przypadku zmiennych o rozdzielczości dziennej, takich jak ceny gazu ziemnego, założono, że wartości w ciągu doby nie ulegają zmianie. Wartości dzienne przypisano więc każdej godzinie danego dnia, co pozwoliło na zachowanie prostoty przy jednoczesnym dostosowaniu danych do godzinowej rozdzielczości ceny energii. 
 
-Dla zmiennych o rzadszych granulacji, na przykład dla ceny węgla (miesięczna) oraz emisji CO2 (tygodniowa), przeprowadzono uzupełnianie danych metodą interpolacji liniowej między sąsiednimi wartościami. Poniższy przykład dla granulacji tygodniowej.
+Dla zmiennych o rzadszej rozdzielczości, na przykład dla ceny węgla (miesięczna) oraz emisji CO2 (tygodniowa), przeprowadzono uzupełnianie danych metodą interpolacji liniowej między sąsiednimi wartościami. Poniższy przykład dla rozdzielczości tygodniowej.
 \[
 \text{cena w dniu } d = \text{cena w tygodniu } t + \left( \frac{\text{cena w tygodniu } t+1 - \text{cena w tygodniu } t}{6} \right) \times d
 \]
 , gdzie \( \quad d \in [t, t+1] \) \newline
-Następnie, podobnie jak w przypadku danych dziennych, wartości te przypisano każdej godzinie w danej dobie. Podejście to umożliwiło ujednolicenie wszystkich zmiennych do godzinowej rozdzielczości danych docelowych, co jest niezbędnym krokiem dla poddania zbioru danych analizie.
+Następnie, podobnie jak w przypadku danych dziennych, wartości te przypisano każdej godzinie w danej dobie. Podejście to umożliwiło ujednolicenie wszystkich zmiennych do godzinowej rozdzielczości danych docelowych.
 
 \section{Analiza korelacji}
 
@@ -56,13 +56,13 @@ W wyniku tego powstał następujący wykres korelacji poniżej
     \label{fig:correlation_plot}
 \end{figure}
 
-Zgodnie z literaturą, największy wpływ na ceny energii mają zmienne, które powstały w wyniku przetworzenia zmiennej objaśnianej, czyli ceny opóźnione i średnie. Koljenymi zmiennymi wykazującymi silną korelację są ceny na surowce, kurs pollskiego złotego oraz zapotrzebowanie i wolumen. Sprzeczna z logiką może być pozytywna korelacja ceny z zmienną \texttt{solar}, która wskazuje na produkcję energii z paneli fotowoltaicznych. Wynika to prawdopodobnie z faktu, w momentach, gdy świeci słońce i produkcja energii z OZE jest wysoka, zapotrzebowanie również jest zwiększone i to powoduje wzrost cen. Z kolei wartości reprezentujące parametry pogodowe nie wykazują istotnej korelacji. 
+Największą korelację ze zmienną objaśnianą mają zmienne reprezentujące ceny, takie jak ceny na RB, ceny na rynkach sąsiednich, ceny opóźnione oraz średnie kroczące. Koljenymi zmiennymi wykazującymi silną korelację są ceny na surowce, kurs polskiego złotego oraz zapotrzebowanie i wolumen. Sprzeczna z logiką może być pozytywna korelacja ceny z zmienną \texttt{solar}, która wskazuje na produkcję energii z paneli fotowoltaicznych. Wynika to prawdopodobnie z faktu, w momentach, gdy świeci słońce i produkcja energii z OZE jest wysoka, zapotrzebowanie również jest zwiększone i to powoduje wzrost cen. Z kolei wartości reprezentujące parametry pogodowe nie wykazują istotnej korelacji. 
 
 Produkcja energii z odnawialnych źródeł i gazu również odgrywa rolę. Zmienna \texttt{solar} (Spearman: 0,490) wskazuje, że wysoka produkcja energii z fotowoltaiki obniża ceny energii, szczególnie w miesiącach letnich, gdzie nadpodaż energii z OZE może prowadzić do bardzo niskich cen. \texttt{gas} (Spearman: 0,449) pokazuje, że produkcja energii z gazu ma nieliniowy wpływ, zależny od cen gazu i dostępności innych źródeł energii. Ponadto zmienne takie jak \texttt{fixing\_i\_volume} (Spearman: 0,442), \texttt{power\_loss} (Spearman: 0,441), \texttt{oil} (Spearman: 0,349) oraz \texttt{Load} (Pearson: 0,256) mają umiarkowany wpływ, odzwierciedlając znaczenie wolumenu obrotu, strat w sieci, produkcji z oleju oraz zapotrzebowania na energię.
 
 \subsubsection{Zbiór danych skrócony}
 \label{sec:shortened_dataset}
-Na podstawie analizy korelacji stworzony został skrócony zbiór danych, który z pierwotnych 54 regresorów zostawia najbardziej istotne. Tymi zmiennymi zostały wszystkie przekraczające próg istotności na poziomie \texttt{0.2},  zmienne sezonowe określające dzień tygodnia, miesiąc, godzinę oraz święta, średnia arytmetyczna ze zmiennych objaśniających prędkość wiatru w Polsce, gdyż wykazują one najmocniejszą odwrotną korelację oraz zmienna objaśniająca generację OZE w procentach, ponieważ jest to ważna zmienna z punktu widzenia literatury. W wyniku tego powstał zbiór danych z 27 zmiennymi objaśniającymi. Taki zbiór danych został określony jako \texttt{zbiór danych skrócony} i będzie użyty w dalszej części pracy do analizy w celu sprawdzenia istotności zbioru danych o największej ilości parametrów. Poniżej przedstawiono mapę cieplną dla zmiennych objaśniających w zbiorze danych skróconym bez uwzględnienia zmiennych opóźnioncyh i średnich. 
+Na podstawie analizy korelacji stworzony został skrócony zbiór danych, który z pierwotnych 54 regresorów zostawia najbardziej istotne. Tymi zmiennymi zostały wszystkie przekraczające próg istotności na poziomie \texttt{0.2}, zmienne sezonowe określające dzień tygodnia, miesiąc, godzinę oraz święta, średnia arytmetyczna ze zmiennych objaśniających prędkość wiatru w Polsce, gdyż wykazują one najmocniejszą odwrotną korelację oraz zmienna objaśniająca generację OZE w procentach, ponieważ jest to ważna zmienna z punktu widzenia literatury. W wyniku tego powstał zbiór danych z 33 zmiennymi objaśniającymi. Taki zbiór danych został określony jako \texttt{zbiór danych skrócony} i będzie użyty w dalszej części pracy do analizy w celu sprawdzenia istotności zbioru danych o największej ilości parametrów. Poniżej przedstawiono mapę cieplną dla zmiennych objaśniających w zbiorze danych skróconym bez uwzględnienia zmiennych opóźnioncyh i średnich. 
 
 \begin{figure}[H]
     \centering

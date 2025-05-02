@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.8)  27 APR 2025 18:09
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.5.2)  2 MAY 2025 18:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1737,9 +1737,9 @@ Rozdział 1.
 [9
 
 
-]) (tekst/literatura.tex
+]
 
-[10]
+[10]) (tekst/literatura.tex
 
 [11]
 Rozdział 2.
@@ -1809,97 +1809,89 @@ File: ../plots/weather/cloud_cover_time_series_2022.png Graphic file (type bmp)
 File: ../plots/energy/energy_production_time_series_full.png Graphic file (type
  bmp)
 <../plots/energy/energy_production_time_series_full.png>
-File: ../plots/energy/emission_vs_non_emission_2024.png Graphic file (type bmp)
-
-<../plots/energy/emission_vs_non_emission_2024.png>
+File: ../plots/energy/emission_vs_non_emission_2023_high_res.png Graphic file (
+type bmp)
+<../plots/energy/emission_vs_non_emission_2023_high_res.png>
 
 
 [25]
 
 [26]
-Overfull \hbox (4.14987pt too wide) in paragraph at lines 200--208
+
+[27]
+Overfull \hbox (19.28278pt too wide) in paragraph at lines 223--231
  [][] 
  []
 
 
 
-[27]
+[28]
 File: ../plots/fuels/fuel_prices_2016_2024.png Graphic file (type bmp)
 <../plots/fuels/fuel_prices_2016_2024.png>
 
 
-[28]
-File: ../plots/losses/power_losses_2016_2024.png Graphic file (type bmp)
-<../plots/losses/power_losses_2016_2024.png>
+[29]
+File: ../plots/losses/power_losses.png Graphic file (type bmp)
+<../plots/losses/power_losses.png>
+
+
+[30]
 File: ../plots/market/load_vs_volume_2016_2024.png Graphic file (type bmp)
 <../plots/market/load_vs_volume_2016_2024.png>
 
 
-[29]
-
-[30]
-File: ../plots/fixing_i_price_weekdays_holidays.png Graphic file (type bmp)
-<../plots/fixing_i_price_weekdays_holidays.png>
-
-
 [31]
-Underfull \hbox (badness 2818) in paragraph at lines 295--296
-[]\TU/LatinModernSans(1)/m/n/10.95 Opróćz ceny opóźnionej, zostały wprowadzone 
-średnie kroczące z ostatnich 24 i 48
- []
+File: ../plots/market/average_price_deviation.png Graphic file (type bmp)
+<../plots/market/average_price_deviation.png>
 
-
-Underfull \hbox (badness 3668) in paragraph at lines 295--296
-\TU/LatinModernSans(1)/m/n/10.95 godzin. W wyniku tego do datasetu zostały doda
-ne zmienne \TU/LatinModernMono(0)/m/n/10.95 fixing_i_price_mean24
- []
-
-) (tekst/eksploracja.tex
 
 [32]
 
 [33]
+File: ../plots/fixing_i_price_weekdays_holidays.png Graphic file (type bmp)
+<../plots/fixing_i_price_weekdays_holidays.png>
+
+
+[34]
+
+[35]) (tekst/eksploracja.tex
+
+[36]
 Rozdział 4.
 
 
-[34
+[37
 
 ]
 
-[35]
+[38]
 File: ../plots/correlation_with_fixing_i_price.png Graphic file (type bmp)
 <../plots/correlation_with_fixing_i_price.png>
 
 
-[36]
+[39]
 
-[37]
+[40]
 File: ../plots/heatmap_short_db_features.png Graphic file (type bmp)
 <../plots/heatmap_short_db_features.png>
 
 
-[38]
+[41]
 
-[39]
+[42]
 File: gfx/../../plots/periods_split_combined.png Graphic file (type bmp)
 <gfx/../../plots/periods_split_combined.png>
 
 
-[40]) (tekst/metodology.tex
+[43]) (tekst/metodology.tex
 
-[41]
+[44]
 Rozdział 5.
 
 
-[42
+[45
 
 ]
-
-[43]
-
-[44]
-
-[45]
 
 [46]
 
@@ -1911,13 +1903,19 @@ Rozdział 5.
 
 [50]
 
-[51]) (tekst/analiza.tex
+[51]
 
 [52]
+
+[53]
+
+[54]) (tekst/analiza.tex
+
+[55]
 Rozdział 6.
 
 
-[53
+[56
 
 ]
 Overfull \hbox (13.82478pt too wide) in paragraph at lines 37--45
@@ -1929,36 +1927,37 @@ File: gfx/../../plots/predicts/ridge_predictions_full_stable_period.png Graphic
 <gfx/../../plots/predicts/ridge_predictions_full_stable_period.png>
 
 
-[54]
+[57]
 File: gfx/../../plots/predicts/residuals_histogram_Ridge_full_stable_period.png
  Graphic file (type bmp)
 <gfx/../../plots/predicts/residuals_histogram_Ridge_full_stable_period.png>
 
 
-[55]) (tekst/podsumowanie.tex
+[58]) (tekst/podsumowanie.tex
 
-[56]
+[59]
 Rozdział 7.
 )
 
-[57
+[60
 
 ]
-
-[58
-
-]
-
-[59
-
-]
-
-[60] (EE-dyplom.acr) (EE-dyplom.sls)
 
 [61
 
+
+]
+
+[62] (EE-dyplom.acr) (EE-dyplom.sls)
+
+[63
+
 ] (EE-dyplom.lof
-Overfull \hbox (16.10959pt too wide) in paragraph at lines 21--21
+
+[64
+
+]
+Overfull \hbox (16.10959pt too wide) in paragraph at lines 22--22
  [][] [][][]\TU/LatinModernSans(1)/m/n/10.95 Wykres korelacji zmiennych objaśni
 ających względem zmiennej docelowej \TU/LatinModernMono(0)/m/n/10.95 fixing_i_p
 rice\TU/LatinModernSans(1)/m/n/10.95 .[][] [][]  
@@ -1970,15 +1969,13 @@ rice\TU/LatinModernSans(1)/m/n/10.95 .[][] [][]
 
 
 
-[62
-
-] (EE-dyplom.lot)
+[65] (EE-dyplom.lot)
 \tf@lot=\write12
 \openout12 = `EE-dyplom.lot'.
 
 
 
-[63
+[66
 
 ] (EE-dyplom.app)
 \tf@app=\write13
@@ -1986,7 +1983,7 @@ rice\TU/LatinModernSans(1)/m/n/10.95 .[][] [][]
 
  (appendices.tex)
 
-[64
+[67
 
 ] (EE-dyplom.aux)
  ***********
@@ -1994,18 +1991,18 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `EE-dyplom.out' has not changed.
-(rerunfilecheck)             Checksum: E6803719CDE84EB07CB8D5B8AE98218B;6991.
+(rerunfilecheck)             Checksum: F7D1EAD7373BFBE407AF0B6C357CEBD7;7144.
 Package logreq Info: Writing requests to 'EE-dyplom.run.xml'.
 \openout1 = `EE-dyplom.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46345 strings out of 408640
- 939817 string characters out of 5744799
- 2103420 words of memory out of 5000000
- 68652 multiletter control sequences out of 15000+600000
+ 46370 strings out of 408640
+ 940884 string characters out of 5744799
+ 2107715 words of memory out of 5000000
+ 68676 multiletter control sequences out of 15000+600000
  569180 words of font info for 136 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 114i,12n,131p,2691b,5098s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 114i,12n,131p,2691b,5208s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on EE-dyplom.pdf (64 pages).
+Output written on EE-dyplom.pdf (67 pages).
