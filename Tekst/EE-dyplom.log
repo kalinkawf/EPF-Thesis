@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.5.2)  2 MAY 2025 18:12
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.5.2)  4 MAY 2025 17:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1573,26 +1573,26 @@ Package fontspec Info:
 (EE-dyplom.aux)
 \openout1 = `EE-dyplom.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1663,14 +1663,14 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'EE-dyplom.bbl' found.
  (EE-dyplom.bbl)
-Package biblatex Info: Reference section=0 on input line 63.
-Package biblatex Info: Reference segment=0 on input line 63.
+Package biblatex Info: Reference section=0 on input line 66.
+Package biblatex Info: Reference segment=0 on input line 66.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 63.
+Package hyperref Info: Link coloring ON on input line 66.
  (EE-dyplom.out) (EE-dyplom.out)
 \@outlinefile=\write9
 \openout9 = `EE-dyplom.out'.
@@ -1691,6 +1691,23 @@ File: gfx/mgrhead.png Graphic file (type bmp)
 [2
 
 ]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 67.
+
+ (C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 67.
+
+
+(C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+esint on input line 6
+7.
+
+(C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/esint\uesint.fd
+File: uesint.fd 
+)
 
 [3]
 
@@ -1705,22 +1722,6 @@ File: gfx/mgrhead.png Graphic file (type bmp)
 [6
 
 ] (EE-dyplom.toc
-LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
-
-(C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 5.
-
-(C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Trying to load font information for U+esint on input line 5
-.
-
-(C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/esint\uesint.fd
-File: uesint.fd 
-)
 
 [7
 
@@ -1914,17 +1915,18 @@ Rozdział 5.
 [55]
 Rozdział 6.
 
-
-[56
-
-]
 Overfull \hbox (13.82478pt too wide) in paragraph at lines 37--45
  [][] 
  []
 
-File: gfx/../../plots/predicts/ridge_predictions_full_stable_period.png Graphic
- file (type bmp)
-<gfx/../../plots/predicts/ridge_predictions_full_stable_period.png>
+
+
+[56
+
+]
+File: gfx/../../plots/predicts/ridge_predictions_full_q1_2019.png Graphic file 
+(type bmp)
+<gfx/../../plots/predicts/ridge_predictions_full_q1_2019.png>
 
 
 [57]
@@ -1933,28 +1935,112 @@ File: gfx/../../plots/predicts/residuals_histogram_Ridge_full_stable_period.png
 <gfx/../../plots/predicts/residuals_histogram_Ridge_full_stable_period.png>
 
 
-[58]) (tekst/podsumowanie.tex
+[58]
+File: gfx/../../plots/predicts/top_50_errors_Ridge_full_stable_period.png Graph
+ic file (type bmp)
+<gfx/../../plots/predicts/top_50_errors_Ridge_full_stable_period.png>
+
+Overfull \hbox (4.04387pt too wide) in paragraph at lines 97--98
+\TU/LatinModernSans(1)/m/n/10.95 ponieważ wstępne testy wykazały, że tryb multi
+plikatywny (\TU/LatinModernMono(0)/m/n/10.95 seasonality_mode='multiplicative'\
+TU/LatinModernSans(1)/m/n/10.95 )
+ []
+
+
 
 [59]
+Overfull \hbox (38.83804pt too wide) in paragraph at lines 99--100
+\TU/LatinModernSans(1)/m/n/10.95 leźć optymalne ustawienia. Najlepsze rezultaty
+ uzyskano dla kombinacji (\TU/LatinModernMono(0)/m/n/10.95 changepoint_prior_sc
+ale=0.100\TU/LatinModernSans(1)/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 1365) in paragraph at lines 99--100
+\TU/LatinModernSans(1)/m/n/10.95 zmiany w cenach energii (np. stopniowe wzrosty
+), oraz wysoką elastycznością sezonowości
+ []
+
+File: gfx/../../plots/predicts/Prophet_predictions_stable_Q1.png Graphic file (
+type bmp)
+<gfx/../../plots/predicts/Prophet_predictions_stable_Q1.png>
+File: gfx/../../plots/predicts/residuals_histogram_Prophet_full_stable_period_c
+omb_1.png Graphic file (type bmp)
+<gfx/../../plots/predicts/residuals_histogram_Prophet_full_stable_period_comb_1
+.png>
+
+
+[60]
+File: gfx/../../plots/predicts/top_50_errors_Prophet_full_stable_period_comb_1.
+png Graphic file (type bmp)
+<gfx/../../plots/predicts/top_50_errors_Prophet_full_stable_period_comb_1.png>
+
+
+[61]
+
+[62]
+File: gfx/../../plots/predicts/ridge_predictions_full_sep_oct_2023.png Graphic 
+file (type bmp)
+<gfx/../../plots/predicts/ridge_predictions_full_sep_oct_2023.png>
+
+
+[63]
+File: gfx/../../plots/predicts/residuals_histogram_Ridge_not_stable_period.png 
+Graphic file (type bmp)
+<gfx/../../plots/predicts/residuals_histogram_Ridge_not_stable_period.png>
+File: gfx/../../plots/predicts/top_50_errors_Ridge_full_not_stable_period.png G
+raphic file (type bmp)
+<gfx/../../plots/predicts/top_50_errors_Ridge_full_not_stable_period.png>
+
+
+[64]
+Underfull \hbox (badness 1515) in paragraph at lines 211--212
+\TU/LatinModernSans(1)/m/n/10.95 Model Prophet lekko poprawił wyniki w porównan
+iu do regresji liniowej i Ridge. Najlep-
+ []
+
+
+Overfull \hbox (55.538pt too wide) in paragraph at lines 211--212
+\TU/LatinModernMono(0)/m/n/10.95 seasonality_prior_scale=50.0\TU/LatinModernSan
+s(1)/m/n/10.95 , \TU/LatinModernMono(0)/m/n/10.95 holidays_prior_scale=0.1\TU/L
+atinModernSans(1)/m/n/10.95 ). Niska wartość \TU/LatinModernMono(0)/m/n/10.95 c
+hangepoint_prior_scale
+ []
+
+
+
+[65]
+File: gfx/../../plots/predicts/Prophet_predictions_unstable_sep_pełny_comb_1.pn
+g Graphic file (type bmp)
+<gfx/../../plots/predicts/Prophet_predictions_unstable_sep_pełny_comb_1.png>
+File: gfx/../../plots/predicts/residuals_histogram_Prophet_unstable_pełny_comb_
+1.png Graphic file (type bmp)
+<gfx/../../plots/predicts/residuals_histogram_Prophet_unstable_pełny_comb_1.png
+>
+
+
+[66]) (tekst/podsumowanie.tex
+
+[67]
 Rozdział 7.
 )
 
-[60
+[68
 
 ]
 
-[61
+[69
 
 
 ]
 
-[62] (EE-dyplom.acr) (EE-dyplom.sls)
+[70] (EE-dyplom.acr) (EE-dyplom.sls)
 
-[63
+[71
 
 ] (EE-dyplom.lof
 
-[64
+[72
 
 ]
 Overfull \hbox (16.10959pt too wide) in paragraph at lines 22--22
@@ -1969,13 +2055,19 @@ rice\TU/LatinModernSans(1)/m/n/10.95 .[][] [][]
 
 
 
-[65] (EE-dyplom.lot)
+[73] (EE-dyplom.lot
+Overfull \hbox (0.10072pt too wide) in paragraph at lines 18--18
+ [][] [][][]\TU/LatinModernSans(1)/m/n/10.95 Wyniki modelu Prophet dla pełnego 
+i skróconego zbioru danych w okresie niestabilnym 
+ []
+
+)
 \tf@lot=\write12
 \openout12 = `EE-dyplom.lot'.
 
 
 
-[66
+[74
 
 ] (EE-dyplom.app)
 \tf@app=\write13
@@ -1983,7 +2075,7 @@ rice\TU/LatinModernSans(1)/m/n/10.95 .[][] [][]
 
  (appendices.tex)
 
-[67
+[75
 
 ] (EE-dyplom.aux)
  ***********
@@ -1991,18 +2083,18 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `EE-dyplom.out' has not changed.
-(rerunfilecheck)             Checksum: F7D1EAD7373BFBE407AF0B6C357CEBD7;7144.
+(rerunfilecheck)             Checksum: 024455FA99018E34F3189EC861BDEB20;7144.
 Package logreq Info: Writing requests to 'EE-dyplom.run.xml'.
 \openout1 = `EE-dyplom.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46370 strings out of 408640
- 940884 string characters out of 5744799
- 2107715 words of memory out of 5000000
- 68676 multiletter control sequences out of 15000+600000
+ 46482 strings out of 408640
+ 948596 string characters out of 5744799
+ 2113927 words of memory out of 5000000
+ 68779 multiletter control sequences out of 15000+600000
  569180 words of font info for 136 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  114i,12n,131p,2691b,5208s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on EE-dyplom.pdf (67 pages).
+Output written on EE-dyplom.pdf (75 pages).

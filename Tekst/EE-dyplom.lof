@@ -26,4 +26,13 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {21}{\ignorespaces \xpg@aux {}{polish}Porównanie rzeczywistych i przewidywanych wartości cen energii dla regresji Ridge w okresie stabilnym.}}{58}{figure.caption.43}%
 \contentsline {figure}{\numberline {22}{\ignorespaces \xpg@aux {}{polish}Histogram reszt dla regresji Ridge w okresie stabilnym.}}{58}{figure.caption.44}%
+\contentsline {figure}{\numberline {23}{\ignorespaces \xpg@aux {}{polish}Największe 50 błędów prognoz dla regresji Ridge w okresie stabilnym. Opracowanie własne.}}{59}{figure.caption.45}%
+\contentsline {figure}{\numberline {24}{\ignorespaces \xpg@aux {}{polish}Porównanie rzeczywistych i przewidywanych wartości cen energii dla modelu Prophet w okresie stabilnym.}}{60}{figure.caption.48}%
+\contentsline {figure}{\numberline {25}{\ignorespaces \xpg@aux {}{polish}Histogram reszt dla modelu Prophet w okresie stabilnym.}}{61}{figure.caption.49}%
+\contentsline {figure}{\numberline {26}{\ignorespaces \xpg@aux {}{polish}Największe 50 błędów prognoz dla modelu Prophet w okresie stabilnym.}}{62}{figure.caption.50}%
+\contentsline {figure}{\numberline {27}{\ignorespaces \xpg@aux {}{polish}Prognozy modelu Ridge w porównaniu do rzeczywistych cen energii w okresie niestabilnym (2023).}}{64}{figure.caption.54}%
+\contentsline {figure}{\numberline {28}{\ignorespaces \xpg@aux {}{polish}Histogram reszt dla modelu Ridge w okresie niestabilnym (2023).}}{64}{figure.caption.55}%
+\contentsline {figure}{\numberline {29}{\ignorespaces \xpg@aux {}{polish}Największe 50 błędów prognoz dla regresji Ridge w okresie niestabilnym (2023).}}{65}{figure.caption.56}%
+\contentsline {figure}{\numberline {30}{\ignorespaces \xpg@aux {}{polish}Porównanie rzeczywistych i przewidywanych wartości cen energii dla modelu Prophet w okresie niestabilnym. Opracowanie własne.}}{66}{figure.caption.59}%
+\contentsline {figure}{\numberline {31}{\ignorespaces \xpg@aux {}{polish}Histogram reszt dla modelu Prophet w okresie niestabilnym. Opracowanie własne.}}{67}{figure.caption.60}%
 \addvspace {10\p@ }

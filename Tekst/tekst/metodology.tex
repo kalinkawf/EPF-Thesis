@@ -269,6 +269,7 @@ Regresja grzbietowa została zaimplementowana w Pythonie za pomocą biblioteki \
 Regresja grzbietowa jest bardziej odporna na współliniowość i przeuczenie od regresji liniowa, co czyni ją odpowiednią do zestawów danych z dużą liczbą zmiennych objaśniających. Jest to szczególnie przydatne, gdyż w pracy uwzględnione zostają parametry temperatury z całej Polski, które zdecydowanie mają korelację. Jednak, podobnie jak regresja liniowa, zakłada liniowe zależności, co może ograniczać jej skuteczność w modelowaniu bardziej złożonych wzorców, szczególnie w niestabilnych okresach rynkowych.
 
 \subsection{Prophet}
+\label{subsec:prophet}
 
 \textbf{Opis metody} \\
 Prophet \cite{prophet_doc} to model prognozowania szeregów czasowych opracowany przez Facebooka, zaprojektowany do analizy danych z wyraźną sezonowością i trendami, które mogą ulegać zmianom w czasie. W kontekście prognozowania cen energii elektrycznej (EPF) Prophet jest szczególnie ciekawy ze względu na zdolność do modelowania cyklicznych wzorców jakie występują na tym rynku oraz uwzględniania efektów specjalnych, takich jak święta. Model jest oparty na addytywnym podejściu, które rozkłada szereg czasowy na składowe trendu, sezonowości i efektów dodatkowych. Jego intuicyjna parametryzacja i możliwość automatycznego dopasowania do danych czynią go atrakcyjnym narzędziem w analizie dużych zbiorów danych, takich jak te wykorzystane w niniejszej pracy.

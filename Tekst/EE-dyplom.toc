@@ -44,10 +44,15 @@
 \contentsline {chapter}{\numberline {6}Analiza danych}{56}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Okres stabilny}{56}{section.6.1}%
 \contentsline {subsubsection}{Regresja liniowa i Ridge}{56}{section*.39}%
-\contentsline {section}{\numberline {6.2}Okres niestabilny}{59}{section.6.2}%
-\contentsline {chapter}{\numberline {7}Podsumowanie wyników i wnioski}{60}{chapter.7}%
-\contentsline {chapter}{Bibliografia}{61}{section*.45}%
-\contentsline {chapter}{Wykaz skrótów i symboli}{63}{chapter*.47}%
-\contentsline {chapter}{Spis rysunków}{64}{chapter*.50}%
-\contentsline {chapter}{Spis tabel}{66}{chapter*.51}%
-\contentsline {chapter}{Spis załączników}{67}{chapter*.52}%
+\contentsline {subsubsection}{Prophet}{59}{section*.46}%
+\contentsline {subsubsection}{MLP}{62}{section*.51}%
+\contentsline {section}{\numberline {6.2}Okres niestabilny}{62}{section.6.2}%
+\contentsline {subsubsection}{Regresja liniowa i Ridge}{63}{section*.52}%
+\contentsline {subsubsection}{Prophet}{65}{section*.57}%
+\contentsline {subsubsection}{MLP}{67}{section*.61}%
+\contentsline {chapter}{\numberline {7}Podsumowanie wyników i wnioski}{68}{chapter.7}%
+\contentsline {chapter}{Bibliografia}{69}{section*.62}%
+\contentsline {chapter}{Wykaz skrótów i symboli}{71}{chapter*.64}%
+\contentsline {chapter}{Spis rysunków}{72}{chapter*.67}%
+\contentsline {chapter}{Spis tabel}{74}{chapter*.68}%
+\contentsline {chapter}{Spis załączników}{75}{chapter*.69}%

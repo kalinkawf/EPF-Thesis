@@ -13,4 +13,7 @@
 \contentsline {table}{\numberline {7}{\ignorespaces \xpg@aux {}{polish}Wyniki regresji liniowej i grzebietowej dla pełnego zbioru danych w okresie stabilnym (2019).}}{56}{table.caption.40}%
 \contentsline {table}{\numberline {8}{\ignorespaces \xpg@aux {}{polish}Wyniki regresji liniowej i Ridge dla skróconego zbioru danych w okresie stabilnym (2019) wraz z różnicami względem pełnego zbioru.}}{57}{table.caption.41}%
 \contentsline {table}{\numberline {9}{\ignorespaces \xpg@aux {}{polish}Wyniki regresji liniowej i Ridge z logarytmizacją dla okresu stabilnego (2019).}}{57}{table.caption.42}%
+\contentsline {table}{\numberline {10}{\ignorespaces \xpg@aux {}{polish}Wyniki modelu Prophet dla pełnego i skróconego zbioru danych w okresie stabilnym (2019).}}{60}{table.caption.47}%
+\contentsline {table}{\numberline {11}{\ignorespaces \xpg@aux {}{polish}Wyniki metryk dla regresji liniowej i Ridge w okresie niestabilnym (2023). Opracowanie własne.}}{63}{table.caption.53}%
+\contentsline {table}{\numberline {12}{\ignorespaces \xpg@aux {}{polish}Wyniki modelu Prophet dla pełnego i skróconego zbioru danych w okresie niestabilnym (2023).}}{66}{table.caption.58}%
 \addvspace {10\p@ }

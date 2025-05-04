@@ -129,3 +129,73 @@ Wyniki dla Niespokojny (2023, skrócony zestaw):
 2   cps=0.1, sps=20.0, hps=0.1  170.29  200.66  40264.95   NaN    NaN   NaN -0.30
 
 cps=0.01, sps=50.0, hps=0.1
+
+
+   Combination  Changepoint_prior_scale  Seasonality_prior_scale  Holidays_prior_scale Seasonality_mode        MAE       RMSE  MAPE (%)  sMAPE (%)
+0            1                   0.1000                     20.0                   0.1         additive  15.601809  20.174655  7.419600   7.331684
+1            2                   0.0001                     20.0                  10.0         additive  17.937864  22.760994  8.201269   8.461258
+2            3                   0.0001                     50.0                   0.1         additive  19.725869  24.794817  8.910695   9.319743
+3            4                   0.0010                      0.1                   5.0         additive  16.301703  20.944938  7.556652   7.670574
+4            5                   0.0010                      1.0                  10.0         additive  16.601060  21.291940  7.669209   7.810283
+
+Wyniki dla skróconego zbioru danych:
+   Combination  Changepoint_prior_scale  Seasonality_prior_scale  Holidays_prior_scale Seasonality_mode        MAE       RMSE  MAPE (%)  sMAPE (%)
+0            1                   0.1000                     20.0                   0.1         additive  17.754480  22.854265  8.170869   8.324869
+1            2                   0.0001                     20.0                  10.0         additive  17.618364  22.573295  8.041631   8.250212
+2            3                   0.0001                     50.0                   0.1         additive  15.607073  20.441171  7.487795   7.278095
+3            4                   0.0010                      0.1                   5.0         additive  17.633459  22.471724  8.040868   8.278969
+4            5                   0.0010                      1.0                  10.0         additive  17.686453  22.523970  8.060540   8.302853
+
+NIESTABILNY:
+
+Wyniki dla pełnego zbioru danych:
+   Combination  Changepoint_prior_scale  Seasonality_prior_scale  Holidays_prior_scale Seasonality_mode         MAE        RMSE     MAPE (%)  sMAPE (%)
+0            1                    0.005                      0.1                   1.0         additive   64.624999   82.250815   244.976107  19.315629
+1            2                    0.005                     10.0                   5.0         additive   64.505796   82.107833   244.135854  19.282512
+2            3                    0.005                      1.0                  10.0         additive   64.983007   82.637215   249.820716  19.497101
+3            4                    0.100                      1.0                   0.1         additive  138.726585  163.670225  1167.879506  28.695795
+4            5                    0.100                     20.0                   0.1         additive  172.795656  198.932119  1457.527367  33.830301
+5            6                    0.100                     50.0                   0.1         additive  152.562990  178.055644  1295.241968  30.839041
+6            1                    0.001                      0.1                   5.0         additive  59.1571  75.823503  194.866235  17.112652
+0            1                   0.0010                      0.1                   5.0         additive  59.157100  75.823503  194.866235  17.112652
+1            2                   0.0010                      1.0                  10.0         additive  58.393659  74.999986  177.492856  16.672986
+2            3                   0.0010                      5.0                   1.0         additive  57.944398  74.488431  165.659147  16.402545
+3            4                   0.0010                      1.0                   0.1         additive  58.785346  75.411535  188.607640  16.930499
+4            5                   0.0010                     10.0                   1.0         additive  58.230775  74.784887  174.902393  16.592550
+5            6                   0.0001                     20.0                  10.0         additive  70.317036  87.486225  441.419728  17.697227
+6            7                   0.0001                     50.0                   0.1         additive  69.457796  86.324841  411.214583  17.420650
+0            1                    0.001                     50.0                   0.1         additive  57.868151  74.38893  163.573777  16.349488
+
+Wyniki dla skróconego zbioru danych:
+   Combination  Changepoint_prior_scale  Seasonality_prior_scale  Holidays_prior_scale Seasonality_mode         MAE        RMSE     MAPE (%)  sMAPE (%)
+0            1                    0.005                      0.1                   1.0         additive   62.556250   80.207373   201.070208  18.725486
+1            2                    0.005                     10.0                   5.0         additive   62.602442   80.257699   203.151245  18.750576
+2            3                    0.005                      1.0                  10.0         additive   62.400454   80.036764   200.164687  18.663524
+3            4                    0.100                      1.0                   0.1         additive  149.504008  174.925817  1298.417002  30.368948
+4            5                    0.100                     20.0                   0.1         additive  164.056973  189.459926  1410.396677  32.560425
+5            6                    0.100                     50.0                   0.1         additive  158.495629  183.902599  1368.342471  31.740424
+6            1                    0.001                      0.1                   5.0         additive  60.967537  78.405563  201.530668  18.122774
+0            1                   0.0010                      0.1                   5.0         additive  60.967537  78.405563  201.530668  18.122774
+2            3                   0.0010                      5.0                   1.0         additive  60.962769  78.415387  201.106839  18.116814
+3            4                   0.0010                      1.0                   0.1         additive  62.051672  79.550238  218.905934  18.619504
+4            5                   0.0010                     10.0                   1.0         additive  60.356453  77.758562  191.232001  17.844709
+5            6                   0.0001                     20.0                  10.0         additive  61.185125  76.936408  343.289365  15.991458
+0            1                    0.001                     50.0                   0.1         additive  61.100571  78.557692  202.718381  18.172627
+
+
+
+Wyniki dla pełnego zbioru danych:
+   Combination  Changepoint_prior_scale  Seasonality_prior_scale  Holidays_prior_scale Seasonality_mode        MAE       RMSE  MAPE (%)  sMAPE (%)
+0            1                   0.1000                     20.0                   0.1         additive  15.601809  20.174655  7.419600   7.331684
+1            2                   0.0001                     20.0                  10.0         additive  17.937864  22.760994  8.201269   8.461258
+2            3                   0.0001                     50.0                   0.1         additive  19.725869  24.794817  8.910695   9.319743
+3            4                   0.0010                      0.1                   5.0         additive  16.301703  20.944938  7.556652   7.670574
+4            5                   0.0010                      1.0                  10.0         additive  16.601060  21.291940  7.669209   7.810283
+
+Wyniki dla skróconego zbioru danych:
+   Combination  Changepoint_prior_scale  Seasonality_prior_scale  Holidays_prior_scale Seasonality_mode        MAE       RMSE  MAPE (%)  sMAPE (%)
+0            1                   0.1000                     20.0                   0.1         additive  17.754480  22.854265  8.170869   8.324869
+1            2                   0.0001                     20.0                  10.0         additive  17.618364  22.573295  8.041631   8.250212
+2            3                   0.0001                     50.0                   0.1         additive  15.607073  20.441171  7.487795   7.278095
+3            4                   0.0010                      0.1                   5.0         additive  17.633459  22.471724  8.040868   8.278969
+4            5                   0.0010                      1.0                  10.0         additive  17.686453  22.523970  8.060540   8.302853
