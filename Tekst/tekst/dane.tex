@@ -22,16 +22,15 @@ Zmienna zależna w niniejszej pracy to fixing\_i\_price, czyli cena energii elek
     \label{tab:fixing-i-price-stats}
 \end{table}
 
-Aby lepiej zrozumieć dynamikę cen energii na RDN, przeanalizowano ich zmienność w całym okresie badania. Rysunek poniżej przedstawia zmienność cen energii w czasie zebranych danych.
-
+Aby lepiej zrozumieć dynamikę cen energii na RDN, przeanalizowano ich zmienność w całym okresie badania. Rysunek poniżej przedstawia zmienność cen energii w czasie zebranych danych za pomocą wykresu świecowego.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{../plots/quarterly_fixing_i_price.png}
-    \caption{Zmienność cen energii elektrycznej na RDN w latach 2016-2023. Opracowanie własne na podstawie danych instrat.}
+    \includegraphics[width=\textwidth]{../plots/candlestick_fixing_i_price.png}
+    \caption{Ceny energii elektrycznej na RDN w latach 2016-2023. Opracowanie własne na podstawie danych instrat.}
     \label{fig:fixing-i-price-trend}
 \end{figure}
 
-Wyraźnie widoczna jest różnica w poziomie cen w różnych okresach: od 2016 do Q4 roku 2020 ceny były stosunkowo stabilne, oscylując w przedziale 100-300 PLN/MWh. Sytuacja zmieniła się w 2020 roku, gdy zaczęły pojawiać się pierwsze skoki cenowe z powodu poważnych obostrzeń z powodu pandemii, a w 2022 roku, w wyniku kryzysu energetycznego wywołanego wojną na Ukrainie i ograniczeniami w dostawach paliw kopalnych, ceny osiągnęły rekordowe poziomy. Pierwszy okres zostanie określony jako okres stabilności cenowej, a drugi jako okres skoków cenowych. Drugi z okresów pokazuje, jak niekorzystne sytuacje gospodarcze mogą wpływać na dynamikę cen energii, co ma istotne implikacje dla modelowania i prognozowania.
+Wyraźnie widoczna jest różnica w poziomie cen w różnych okresach: od 2016 do Q4 roku 2020 ceny były stosunkowo stabilne z rzadkimi szczytami. Większa część cen oscyluje w przedziale 100-300 PLN/MWh. Sytuacja zmieniła się w 2020 roku, gdy zaczęły pojawiać się pierwsze skoki cenowe z powodu poważnych obostrzeń z powodu pandemii, a w 2022 roku, w wyniku kryzysu energetycznego wywołanego wojną na Ukrainie i ograniczeniami w dostawach paliw kopalnych, ceny osiągnęły rekordowe poziomy. Pierwszy okres zostanie określony jako okres stabilności cenowej, a drugi jako okres skoków cenowych. Drugi z okresów pokazuje, jak niekorzystne sytuacje gospodarcze mogą wpływać na dynamikę cen energii, co ma istotne implikacje dla modelowania i prognozowania.
 
 \begin{figure}
     \centering
@@ -54,7 +53,7 @@ Warszawa, jako stolica i największe miasto Polski, reprezentuje centralny regio
 
 Parametry pogodowe zostały wybrane z uwzględnieniem ich bezpośredniego wpływu na rynek energii.\newline
 Temperatura jest kluczowym czynnikiem, ponieważ bezpośrednio wpływa na zapotrzebowanie na energię. Niskie temperatury zwiększają zużycie energii na ogrzewanie, natomiast bardzo wysokie temperatury latem mogą podnosić zapotrzebowanie na klimatyzację.\newline
-Udostępniona prędkość wiatru została zmierzona na wysokości 100 metrów nad powierzchnią ziemi. Taka wysokość została wybrana, ponieważ jest przeciętna dla turbin wiatrowych w Polsce, co pozwala dokładniej oszacować potencjalną produkcję energii z farm wiatrowych.\newline
+Pobrane dane prędkości wiatru dotyczą prędkości wiatru na wysokości 100 metrów nad powierzchnią ziemi. Taka wysokość została wybrana, ponieważ jest przeciętna dla turbin wiatrowych w Polsce, co pozwala dokładniej oszacować potencjalną produkcję energii z farm wiatrowych.\newline
 Promieniowanie słoneczne jest istotnym czynnikiem dla produkcji energii z paneli fotowoltaicznych.\newline
 Zachmurzenie zostało uwzględnione, ponieważ wysoki poziom zachmurzenia zmniejsza efektywność paneli słonecznych. 
 Wybór tych parametrów pozwala na kompleksową analizę wpływu pogody na ceny energii na RDN.
@@ -139,7 +138,7 @@ Dane te pochodzą z Polskich Sieci Elektroenergetycznych (PSE) \cite{PSEOLD} i z
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{../plots/energy/energy_production_time_series_full.png}
-    \caption{Zmienność produkcji energii z różnych źródeł w czasie}
+    \caption{Zmienność produkcji energii z różnych źródeł w czasie. Opracowanie własne na podstawie danych PSE.}
     \label{fig:energy-production-time-series-full}
 \end{figure}
 
@@ -238,7 +237,7 @@ Ceny paliw kopalnych i emisji CO$_2$ są istotne w kontekście prognozowania cen
 
 Aby zilustrować dynamikę tych zmiennych, na rysunku poniżej przedstawiono zmiany cen paliw kopalnych i emisji CO$_2$ w latach 2016-2023 w ujęciu miesięcznym. Dla lepszego przedstawienia danych użyłem skali logarytmicznej.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{../plots/fuels/fuel_prices_2016_2024.png}
     \caption{Ceny paliw kopalnych i emisji CO$_2$ w latach w ujęciu miesięcznym. Źródło: Opracowanie własne na podstawie danych rynkowych.}
@@ -254,7 +253,7 @@ Zmienne dotyczące strat mocy w systemie elektroenergetycznym odgrywają istotn�
 
 Aby zilustrować dynamikę tych zmiennych, na rysunku~\ref{fig:power_losses} przedstawiono zmiany strat mocy w wyniku awarii (\texttt{power\_loss}) oraz strat mocy w sieci (\texttt{network\_loss}) w latach 2016-2023 w ujęciu miesięcznym.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{../plots/losses/power_losses.png}
     \caption{Straty mocy w wyniku awarii i w sieci w ujęciu miesięcznym. Źródło: Opracowanie własne na podstawie danych z PSE.}
@@ -319,7 +318,7 @@ Zmienna \texttt{day\_of\_week} reprezentuje dzień tygodnia w zakresie od 1 do 7
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{../plots/fixing_i_price_weekdays_holidays.png}
-    \caption{Korelacja dni tygodnia z cenami energii na RDN.}
+    \caption{Korelacja dni tygodnia z cenami energii na RDN. Opracowanie własne.}
     \label{fig:seasonal-correlation}
 \end{figure}
 

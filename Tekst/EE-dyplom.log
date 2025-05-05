@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.5.2)  4 MAY 2025 17:29
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.5.2)  5 MAY 2025 20:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1752,9 +1752,9 @@ Rozdział 2.
 
 [13]
 
-[14]) (tekst/dane.tex
+[14]
 
-[15]
+[15]) (tekst/dane.tex
 
 [16]
 Rozdział 3.
@@ -1763,8 +1763,8 @@ Rozdział 3.
 [17
 
 ]
-File: ../plots/quarterly_fixing_i_price.png Graphic file (type bmp)
-<../plots/quarterly_fixing_i_price.png>
+File: ../plots/candlestick_fixing_i_price.png Graphic file (type bmp)
+<../plots/candlestick_fixing_i_price.png>
 File: ../plots/fixing_i_price_histogram.png Graphic file (type bmp)
 <../plots/fixing_i_price_histogram.png>
 
@@ -1820,7 +1820,7 @@ type bmp)
 [26]
 
 [27]
-Overfull \hbox (19.28278pt too wide) in paragraph at lines 223--231
+Overfull \hbox (19.28278pt too wide) in paragraph at lines 222--230
  [][] 
  []
 
@@ -2089,10 +2089,10 @@ Package logreq Info: Writing requests to 'EE-dyplom.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46482 strings out of 408640
- 948596 string characters out of 5744799
- 2113927 words of memory out of 5000000
- 68779 multiletter control sequences out of 15000+600000
+ 46488 strings out of 408640
+ 949011 string characters out of 5744799
+ 2118180 words of memory out of 5000000
+ 68785 multiletter control sequences out of 15000+600000
  569180 words of font info for 136 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  114i,12n,131p,2691b,5208s stack positions out of 10000i,1000n,20000p,200000b,200000s

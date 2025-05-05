@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 import matplotlib.dates as mdates
+import mplfinance as mpf
 
 # Wczytaj dane
 df = pd.read_csv("../../data/database.csv")
@@ -45,69 +46,135 @@ dataset_short = [
     "sk_price", "cz_price", "lt_price", "pln_eur",
 ]
 
-# Oblicz korelację Pearsona dla zmiennych liniowych
-pearson_features = [f for f in features if f not in non_linear_features]
-pearson_corr = df[pearson_features + [target]].corr(method="pearson")[target].drop(target)
+# Przekształcenie daty na kwartały
+df["quarter"] = df["timestamp"].dt.to_period("Q").astype(str)
 
-# Oblicz korelację Spearmana dla zmiennych nieliniowych
-spearman_corr = df[non_linear_features + [target]].corr(method="spearman")[target].drop(target)
+# Obliczenie średniej ceny dla każdego kwartału
+quarterly_data = df.groupby("quarter")["fixing_i_price"].mean().reset_index()
 
-# Połącz wyniki
-correlation_df = pd.concat([pearson_corr, spearman_corr], axis=0).to_frame()
-correlation_df.columns = ["Korelacja"]
-correlation_df = correlation_df.sort_values(by="Korelacja", ascending=False)
+# Tworzenie wykresu
+plt.figure(figsize=(12, 6))
+plt.plot(quarterly_data["quarter"], quarterly_data["fixing_i_price"], marker="o", color="#3498db", linewidth=1, markersize=5)
+plt.title("Średnia cena fixing_i_price w ujęciu kwartalnym (2016–2023)", fontsize=14)
+plt.xlabel("Kwartał", fontsize=12)
+plt.ylabel("Średnia cena (PLN/MWh)", fontsize=12)
+plt.grid(True, linestyle="--", alpha=0.7)
 
-# Tworzenie wykresu korelacji
-plt.figure(figsize=(12, 10))
-
-# Kolory: gradient w zależności od wartości korelacji
-colors = sns.diverging_palette(10, 130, as_cmap=True)
-colors = [colors(x) for x in (correlation_df["Korelacja"] + 1) / 2]  # Skalowanie do [0, 1]
-
-# Wykres słupkowy
-ax = sns.barplot(x="Korelacja", y=correlation_df.index, palette=colors, data=correlation_df)
-
-# Dodaj wartości korelacji na słupkach
-for i, v in enumerate(correlation_df["Korelacja"]):
-    ax.text(v if v >= 0 else v - 0.15, i, f"{v:.2f}", va="center", ha="right" if v < 0 else "left", fontsize=10)
-
-# Dodaj linie progu istotności
-plt.axvline(x=0.3, color="gray", linestyle="--", alpha=0.7, label="Próg istotności (|r| = 0.3)")
-plt.axvline(x=-0.3, color="gray", linestyle="--", alpha=0.7)
-
-# Dodaj etykiety i tytuł
-plt.title("Korelacja zmiennych z fixing_i_price (Pearson i Spearman)", fontsize=16, pad=20)
-plt.xlabel("Współczynnik korelacji", fontsize=12)
-plt.ylabel("Zmienna", fontsize=12)
-
-# Dodaj siatkę i legendę
-plt.grid(True, axis="x", linestyle="--", alpha=0.7)
-plt.legend()
-
-# Dopasuj układ
-plt.tight_layout()
-
-# Zapisz wykres
-plt.savefig("../../plots/correlation_with_fixing_i_price.png", dpi=300)
-plt.close()
-
-# Oblicz macierz korelacji między wybranymi zmiennymi objaśniającymi (używamy Pearsona dla uproszczenia)
-corr_matrix = df_short[dataset_short].corr(method="pearson")
-
-# Tworzenie heatmapy
-plt.figure(figsize=(12, 10))
-sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", vmin=-1, vmax=1, center=0,
-            square=True, cbar_kws={"label": "Współczynnik korelacji"})
-plt.title("Heatmapa korelacji między zmiennymi objaśniającymi o największym wpływie na fixing_i_price", fontsize=16, pad=20)
+# Formatowanie osi X, aby etykiety były czytelne
 plt.xticks(rotation=45, ha="right")
-plt.yticks(rotation=0)
-
-# Dopasuj układ
+plt.gca().set_xticks(range(0, len(quarterly_data), 2))  # Pokazuj co drugi kwartał, aby uniknąć nakładania
 plt.tight_layout()
 
-# Zapisz heatmapę
-plt.savefig("../../plots/heatmap_short_db_features.png", dpi=300)
+# Zapis wykresu
+plt.savefig("C:/mgr/EPF-Thesis/plots/quarterly_fixing_i_price.png", dpi=300)
 plt.close()
+
+# wykres świecowy
+df.set_index("timestamp", inplace=True)
+ohlc = df["fixing_i_price"].resample("ME").agg({
+    "Open": "first",
+    "High": "max",
+    "Low": "min",
+    "Close": "last"
+})
+
+ohlc.index.name = "Data"
+
+print(mpf.available_styles())
+
+fig, axlist = mpf.plot(
+    ohlc,
+    type='candle',
+    style='yahoo',
+    title='Fixing_i_price - wykres świecowy (miesięczny)',
+    ylabel='Cena (PLN/MWh)',
+    figratio=(16, 6),
+    figscale=1.2,
+    tight_layout=True,  # <--- to usuwa marginesy
+    datetime_format='%m.%Y',
+    returnfig=True,
+)
+
+# Dodaj tytuł nad wykresem (nie w środku)
+fig.suptitle(
+    'Fixing_i_price - wykres świecowy (miesięczny)',
+    fontsize=14,
+    fontweight='normal',  # <-- usuwa pogrubienie
+    y=0.98                # <-- wyżej niż domyślnie
+)
+main_ax = axlist[0]
+
+# 🔧 Formatowanie osi Y
+main_ax.yaxis.set_label_position("left")  # etykieta po prawej
+main_ax.yaxis.tick_left()                # cyfry po prawej
+
+fig.savefig('C:/mgr/EPF-Thesis/plots/candlestick_fixing_i_price.png', dpi=300, bbox_inches='tight')
+plt.close(fig)
+
+# KORELACJA
+# # Oblicz korelację Pearsona dla zmiennych liniowych
+# pearson_features = [f for f in features if f not in non_linear_features]
+# pearson_corr = df[pearson_features + [target]].corr(method="pearson")[target].drop(target)
+
+# # Oblicz korelację Spearmana dla zmiennych nieliniowych
+# spearman_corr = df[non_linear_features + [target]].corr(method="spearman")[target].drop(target)
+
+# # Połącz wyniki
+# correlation_df = pd.concat([pearson_corr, spearman_corr], axis=0).to_frame()
+# correlation_df.columns = ["Korelacja"]
+# correlation_df = correlation_df.sort_values(by="Korelacja", ascending=False)
+
+# # Tworzenie wykresu korelacji
+# plt.figure(figsize=(12, 10))
+
+# # Kolory: gradient w zależności od wartości korelacji
+# colors = sns.diverging_palette(10, 130, as_cmap=True)
+# colors = [colors(x) for x in (correlation_df["Korelacja"] + 1) / 2]  # Skalowanie do [0, 1]
+
+# # Wykres słupkowy
+# ax = sns.barplot(x="Korelacja", y=correlation_df.index, palette=colors, data=correlation_df)
+
+# # Dodaj wartości korelacji na słupkach
+# for i, v in enumerate(correlation_df["Korelacja"]):
+#     ax.text(v if v >= 0 else v - 0.15, i, f"{v:.2f}", va="center", ha="right" if v < 0 else "left", fontsize=10)
+
+# # Dodaj linie progu istotności
+# plt.axvline(x=0.3, color="gray", linestyle="--", alpha=0.7, label="Próg istotności (|r| = 0.3)")
+# plt.axvline(x=-0.3, color="gray", linestyle="--", alpha=0.7)
+
+# # Dodaj etykiety i tytuł
+# plt.title("Korelacja zmiennych z fixing_i_price (Pearson i Spearman)", fontsize=16, pad=20)
+# plt.xlabel("Współczynnik korelacji", fontsize=12)
+# plt.ylabel("Zmienna", fontsize=12)
+
+# # Dodaj siatkę i legendę
+# plt.grid(True, axis="x", linestyle="--", alpha=0.7)
+# plt.legend()
+
+# # Dopasuj układ
+# plt.tight_layout()
+
+# # Zapisz wykres
+# plt.savefig("../../plots/correlation_with_fixing_i_price.png", dpi=300)
+# plt.close()
+
+# # Oblicz macierz korelacji między wybranymi zmiennymi objaśniającymi (używamy Pearsona dla uproszczenia)
+# corr_matrix = df_short[dataset_short].corr(method="pearson")
+
+# # Tworzenie heatmapy
+# plt.figure(figsize=(12, 10))
+# sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", vmin=-1, vmax=1, center=0,
+#             square=True, cbar_kws={"label": "Współczynnik korelacji"})
+# plt.title("Heatmapa korelacji między zmiennymi objaśniającymi o największym wpływie na fixing_i_price", fontsize=16, pad=20)
+# plt.xticks(rotation=45, ha="right")
+# plt.yticks(rotation=0)
+
+# # Dopasuj układ
+# plt.tight_layout()
+
+# # Zapisz heatmapę
+# plt.savefig("../../plots/heatmap_short_db_features.png", dpi=300)
+# plt.close()
 
 # # Podział na okresy spokojny i niespokojny
 # calm_period = df[(df["timestamp"] >= "2016-01-01") & (df["timestamp"] <= "2019-12-31")]
@@ -198,29 +265,6 @@ plt.close()
 # # Wyświetlenie wyników analizy korelacji w konsoli
 # print("Analiza korelacji zmiennych z fixing_i_price:")
 # print(correlation_df)
-
-# # Przekształcenie daty na kwartały
-# df["quarter"] = df["timestamp"].dt.to_period("Q").astype(str)
-
-# # Obliczenie średniej ceny dla każdego kwartału
-# quarterly_data = df.groupby("quarter")["fixing_i_price"].mean().reset_index()
-
-# # Tworzenie wykresu
-# plt.figure(figsize=(12, 6))
-# plt.plot(quarterly_data["quarter"], quarterly_data["fixing_i_price"], marker="o", color="#3498db", linewidth=1, markersize=5)
-# plt.title("Średnia cena fixing_i_price w ujęciu kwartalnym (2016–2023)", fontsize=14)
-# plt.xlabel("Kwartał", fontsize=12)
-# plt.ylabel("Średnia cena (PLN/MWh)", fontsize=12)
-# plt.grid(True, linestyle="--", alpha=0.7)
-
-# # Formatowanie osi X, aby etykiety były czytelne
-# plt.xticks(rotation=45, ha="right")
-# plt.gca().set_xticks(range(0, len(quarterly_data), 2))  # Pokazuj co drugi kwartał, aby uniknąć nakładania
-# plt.tight_layout()
-
-# # Zapis wykresu
-# plt.savefig("C:/mgr/EPF-Thesis/plots/quarterly_fixing_i_price.png", dpi=300)
-# plt.close()
 
 # # Wykres ceny fixing_i_price w dni robocze i święta
 # plt.figure(figsize=(14, 8))

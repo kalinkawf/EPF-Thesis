@@ -340,6 +340,50 @@
       \endverb
       \keyw{Day-ahead electricity price,Quantile regression,Conformal prediction,Isotonic distributional regression,Combining probabilistic forecasts,Shapley values}
     \endentry
+    \entry{maciejowska2022forecastingelectricityprices}{misc}{}{}
+      \name{author}{3}{}{%
+        {{hash=8bd9c3d99cea19ec2646061c9180eb38}{%
+           family={Maciejowska},
+           familyi={M\bibinitperiod},
+           given={Katarzyna},
+           giveni={K\bibinitperiod}}}%
+        {{hash=706a737c0e45dfec3c1b8ed2d4ace631}{%
+           family={Uniejewski},
+           familyi={U\bibinitperiod},
+           given={Bartosz},
+           giveni={B\bibinitperiod}}}%
+        {{hash=e1f0ef6630db56bf45bb6ba2fbf8f108}{%
+           family={Weron},
+           familyi={W\bibinitperiod},
+           given={Rafał},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{9772b8268ee21f1c9982f4f9976d5275}
+      \strng{fullhash}{85ca58faf22efcc7239fd8188d578c41}
+      \strng{fullhashraw}{85ca58faf22efcc7239fd8188d578c41}
+      \strng{bibnamehash}{85ca58faf22efcc7239fd8188d578c41}
+      \strng{authorbibnamehash}{85ca58faf22efcc7239fd8188d578c41}
+      \strng{authornamehash}{9772b8268ee21f1c9982f4f9976d5275}
+      \strng{authorfullhash}{85ca58faf22efcc7239fd8188d578c41}
+      \strng{authorfullhashraw}{85ca58faf22efcc7239fd8188d578c41}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{q-fin.ST}
+      \field{eprinttype}{arXiv}
+      \field{title}{Forecasting Electricity Prices}
+      \field{year}{2022}
+      \verb{eprint}
+      \verb 2204.11735
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2204.11735
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2204.11735
+      \endverb
+    \endentry
     \entry{en13184605}{article}{}{}
       \name{author}{1}{}{%
         {{hash=d049c99fa3e5674ec00d202decf5a142}{%
@@ -525,7 +569,7 @@
       \field{title}{Dane systemowe}
       \field{year}{2024}
     \endentry
-    \entry{PSENEW}{misc}{}{}
+    \entry{PSE_BALANCING_MARKET}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=6f0862d55fca52dbe032fa0b99e9c6b5}{%
            family={PSE},
@@ -540,6 +584,30 @@
       \strng{authorfullhash}{6f0862d55fca52dbe032fa0b99e9c6b5}
       \strng{authorfullhashraw}{6f0862d55fca52dbe032fa0b99e9c6b5}
       \field{extraname}{2}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.pse.pl/obszary-dzialalnosci/rynek-energii/monitorowanie-rynku-bilansujacego}}
+      \field{note}{Accessed: 2025-05-02}
+      \field{title}{Monitorowanie rynku bilansującego}
+      \field{year}{2025}
+    \endentry
+    \entry{PSENEW}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=6f0862d55fca52dbe032fa0b99e9c6b5}{%
+           family={PSE},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{6f0862d55fca52dbe032fa0b99e9c6b5}
+      \strng{fullhash}{6f0862d55fca52dbe032fa0b99e9c6b5}
+      \strng{fullhashraw}{6f0862d55fca52dbe032fa0b99e9c6b5}
+      \strng{bibnamehash}{6f0862d55fca52dbe032fa0b99e9c6b5}
+      \strng{authorbibnamehash}{6f0862d55fca52dbe032fa0b99e9c6b5}
+      \strng{authornamehash}{6f0862d55fca52dbe032fa0b99e9c6b5}
+      \strng{authorfullhash}{6f0862d55fca52dbe032fa0b99e9c6b5}
+      \strng{authorfullhashraw}{6f0862d55fca52dbe032fa0b99e9c6b5}
+      \field{extraname}{3}
       \field{sortinit}{P}
       \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
       \field{labelnamesource}{author}
