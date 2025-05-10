@@ -1,7 +1,7 @@
 \chapter{Eksploracja danych}
 \label{sec:eksploracja}
 
-W niniejszym rozdziale przedstawiono proces przygotowania omówionego zestawu danych. Proces eksploracji danych ubejmuje obsługę braków wartości, dostosowanie rozdzielczości zmiennych, analizę korelacji, podział danych na okresy o różnej zmienności, podział na zbiory treningowy, walidacyjny i testowy oraz preprocessing danych przed modelowaniem.
+W niniejszym rozdziale przedstawiono proces przygotowania omówionego zestawu danych. Proces eksploracji danych obejmuje obsługę braków wartości, dostosowanie rozdzielczości zmiennych, analizę korelacji, podział danych na okresy o różnej zmienności, podział na zbiory treningowy i testowy oraz preprocessing danych przed modelowaniem.
 
 \section{Wstępna obróbka danych}
 \subsubsection{Obsługa braków wartości}
@@ -52,22 +52,22 @@ W wyniku tego powstał następujący wykres korelacji poniżej
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{../plots/correlation_with_fixing_i_price.png}
-    \caption{Wykres korelacji zmiennych objaśniających względem zmiennej docelowej \texttt{fixing\_i\_price}.}
+    \caption{Wykres korelacji zmiennych objaśniających względem zmiennej docelowej \texttt{fixing\_i\_price}. Opracowanie własne.}
     \label{fig:correlation_plot}
 \end{figure}
 
-Największą korelację ze zmienną objaśnianą mają zmienne reprezentujące ceny, takie jak ceny na RB, ceny na rynkach sąsiednich, ceny opóźnione oraz średnie kroczące. Koljenymi zmiennymi wykazującymi silną korelację są ceny na surowce, kurs polskiego złotego oraz zapotrzebowanie i wolumen. Sprzeczna z logiką może być pozytywna korelacja ceny z zmienną \texttt{solar}, która wskazuje na produkcję energii z paneli fotowoltaicznych. Wynika to prawdopodobnie z faktu, w momentach, gdy świeci słońce i produkcja energii z OZE jest wysoka, zapotrzebowanie również jest zwiększone i to powoduje wzrost cen. Z kolei wartości reprezentujące parametry pogodowe nie wykazują istotnej korelacji. 
+Największą korelację ze zmienną objaśnianą mają zmienne reprezentujące ceny, takie jak ceny na RB, ceny na rynkach sąsiednich, ceny opóźnione oraz średnie kroczące. Kolejnymi zmiennymi wykazującymi silną korelację są ceny na surowce, kurs polskiego złotego oraz zapotrzebowanie i wolumen. Sprzeczna z logiką może być pozytywna korelacja ceny z zmienną \texttt{solar}, która wskazuje na produkcję energii z paneli fotowoltaicznych. Wynika to prawdopodobnie z faktu, w momentach, gdy świeci słońce i produkcja energii z OZE jest wysoka, zapotrzebowanie również jest zwiększone i to powoduje wzrost cen. Z kolei wartości reprezentujące parametry pogodowe nie wykazują istotnej korelacji. 
 
 Produkcja energii z odnawialnych źródeł i gazu również odgrywa rolę. Zmienna \texttt{solar} (Spearman: 0,490) wskazuje, że wysoka produkcja energii z fotowoltaiki obniża ceny energii, szczególnie w miesiącach letnich, gdzie nadpodaż energii z OZE może prowadzić do bardzo niskich cen. \texttt{gas} (Spearman: 0,449) pokazuje, że produkcja energii z gazu ma nieliniowy wpływ, zależny od cen gazu i dostępności innych źródeł energii. Ponadto zmienne takie jak \texttt{fixing\_i\_volume} (Spearman: 0,442), \texttt{power\_loss} (Spearman: 0,441), \texttt{oil} (Spearman: 0,349) oraz \texttt{Load} (Pearson: 0,256) mają umiarkowany wpływ, odzwierciedlając znaczenie wolumenu obrotu, strat w sieci, produkcji z oleju oraz zapotrzebowania na energię.
 
 \subsubsection{Zbiór danych skrócony}
 \label{sec:shortened_dataset}
-Na podstawie analizy korelacji stworzony został skrócony zbiór danych, który z pierwotnych 54 regresorów zostawia najbardziej istotne. Tymi zmiennymi zostały wszystkie przekraczające próg istotności na poziomie \texttt{0.2}, zmienne sezonowe określające dzień tygodnia, miesiąc, godzinę oraz święta, średnia arytmetyczna ze zmiennych objaśniających prędkość wiatru w Polsce, gdyż wykazują one najmocniejszą odwrotną korelację oraz zmienna objaśniająca generację OZE w procentach, ponieważ jest to ważna zmienna z punktu widzenia literatury. W wyniku tego powstał zbiór danych z 33 zmiennymi objaśniającymi. Taki zbiór danych został określony jako \texttt{zbiór danych skrócony} i będzie użyty w dalszej części pracy do analizy w celu sprawdzenia istotności zbioru danych o największej ilości parametrów. Poniżej przedstawiono mapę cieplną dla zmiennych objaśniających w zbiorze danych skróconym bez uwzględnienia zmiennych opóźnioncyh i średnich. 
+Na podstawie analizy korelacji stworzony został skrócony zbiór danych, który z pierwotnych 54 regresorów zostawia najbardziej istotne. Tymi zmiennymi zostały wszystkie przekraczające próg istotności na poziomie \texttt{0.2}, zmienne sezonowe określające dzień tygodnia, miesiąc, godzinę oraz święta, średnia arytmetyczna ze zmiennych objaśniających prędkość wiatru w Polsce, gdyż wykazują one najmocniejszą odwrotną korelację oraz zmienna objaśniająca generację OZE w procentach, ponieważ jest to ważna zmienna z punktu widzenia literatury. W wyniku tego powstał zbiór danych z 33 zmiennymi objaśniającymi. Taki zbiór danych został określony jako \texttt{zbiór danych skrócony} i będzie użyty w dalszej części pracy do analizy w celu sprawdzenia istotności zbioru danych o największej ilości parametrów. Poniżej przedstawiono mapę cieplną dla zmiennych objaśniających w zbiorze danych skróconym bez uwzględnienia zmiennych opóźnionych i średnich. 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{../plots/heatmap_short_db_features.png}
-    \caption{Mapa cieplna korelacji zmiennych objaśniających w skróconym zbiorze danych.}
+    \caption{Mapa cieplna korelacji zmiennych objaśniających w skróconym zbiorze danych. Opracowanie własne.}
     \label{fig:heatmap_shortened_dataset}
 \end{figure}
 
@@ -119,7 +119,7 @@ Dane zostały podzielone na zbiory treningowe i testowe w obrębie każdego z dw
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.9\textwidth]{../../plots/periods_split_combined.png}
-    \caption{Podział szeregów czasowych cen energii na zbiory treningowe i testowe}
+    \caption{Podział szeregów czasowych cen energii na zbiory treningowe i testowe. Opracowanie własne.}
     \label{fig:periods_split_combined}
 \end{figure}
 

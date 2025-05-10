@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.5.2)  5 MAY 2025 20:09
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.5.2)  10 MAY 2025 20:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1573,26 +1573,26 @@ Package fontspec Info:
 (EE-dyplom.aux)
 \openout1 = `EE-dyplom.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1663,14 +1663,14 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'EE-dyplom.bbl' found.
  (EE-dyplom.bbl)
-Package biblatex Info: Reference section=0 on input line 66.
-Package biblatex Info: Reference segment=0 on input line 66.
+Package biblatex Info: Reference section=0 on input line 64.
+Package biblatex Info: Reference segment=0 on input line 64.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 66.
+Package hyperref Info: Link coloring ON on input line 64.
  (EE-dyplom.out) (EE-dyplom.out)
 \@outlinefile=\write9
 \openout9 = `EE-dyplom.out'.
@@ -1688,32 +1688,31 @@ File: gfx/mgrhead.png Graphic file (type bmp)
 
 ]
 
-[2
+[2]
+File: gfx/karta_pracy.png Graphic file (type bmp)
+<gfx/karta_pracy.png>
 
-]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 67.
+
+[3]
+
+[4]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 65.
 
  (C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 67.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 65.
 
 
 (C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+esint on input line 6
-7.
+5.
 
 (C:\Users\kalin\AppData\Local\Programs\MiKTeX\tex/latex/esint\uesint.fd
 File: uesint.fd 
 )
-
-[3]
-
-[4
-
-]
 
 [5
 
@@ -1721,9 +1720,17 @@ File: uesint.fd
 
 [6
 
-] (EE-dyplom.toc
+]
 
 [7
+
+]
+
+[8
+
+] (EE-dyplom.toc
+
+[9
 
 ])
 \tf@toc=\write10
@@ -1731,36 +1738,36 @@ File: uesint.fd
 
 
 
-[8] (tekst/wstep.tex
+[10] (tekst/wstep.tex
 Rozdział 1.
 
 
-[9
+[11
 
 
 ]
 
-[10]) (tekst/literatura.tex
+[12]) (tekst/literatura.tex
 
-[11]
+[13]
 Rozdział 2.
 
 
-[12
+[14
 
 ]
 
-[13]
-
-[14]
-
-[15]) (tekst/dane.tex
+[15]
 
 [16]
+
+[17]) (tekst/dane.tex
+
+[18]
 Rozdział 3.
 
 
-[17
+[19
 
 ]
 File: ../plots/candlestick_fixing_i_price.png Graphic file (type bmp)
@@ -1769,14 +1776,14 @@ File: ../plots/fixing_i_price_histogram.png Graphic file (type bmp)
 <../plots/fixing_i_price_histogram.png>
 
 
-[18]
+[20]
 
-[19]
+[21]
 File: ../plots/weather/temp_time_series_full.png Graphic file (type bmp)
 <../plots/weather/temp_time_series_full.png>
 
 
-[20]
+[22]
 File: ../plots/weather/wind_speed_time_series_full.png Graphic file (type bmp)
 <../plots/weather/wind_speed_time_series_full.png>
 File: ../plots/weather/solar_radiation_time_series_full.png Graphic file (type 
@@ -1784,7 +1791,7 @@ bmp)
 <../plots/weather/solar_radiation_time_series_full.png>
 
 
-[21]
+[23]
 File: ../plots/weather/cloud_cover_time_series_full.png Graphic file (type bmp)
 
 <../plots/weather/cloud_cover_time_series_full.png>
@@ -1792,7 +1799,7 @@ File: ../plots/weather/temp_time_series_2022.png Graphic file (type bmp)
 <../plots/weather/temp_time_series_2022.png>
 
 
-[22]
+[24]
 File: ../plots/weather/wind_speed_time_series_2022.png Graphic file (type bmp)
 <../plots/weather/wind_speed_time_series_2022.png>
 File: ../plots/weather/solar_radiation_time_series_2022.png Graphic file (type 
@@ -1800,13 +1807,13 @@ bmp)
 <../plots/weather/solar_radiation_time_series_2022.png>
 
 
-[23]
+[25]
 File: ../plots/weather/cloud_cover_time_series_2022.png Graphic file (type bmp)
 
 <../plots/weather/cloud_cover_time_series_2022.png>
 
 
-[24]
+[26]
 File: ../plots/energy/energy_production_time_series_full.png Graphic file (type
  bmp)
 <../plots/energy/energy_production_time_series_full.png>
@@ -1815,88 +1822,84 @@ type bmp)
 <../plots/energy/emission_vs_non_emission_2023_high_res.png>
 
 
-[25]
-
-[26]
-
 [27]
+
+[28]
+
+[29]
 Overfull \hbox (19.28278pt too wide) in paragraph at lines 222--230
  [][] 
  []
 
 
 
-[28]
+[30]
 File: ../plots/fuels/fuel_prices_2016_2024.png Graphic file (type bmp)
 <../plots/fuels/fuel_prices_2016_2024.png>
 
 
-[29]
+[31]
 File: ../plots/losses/power_losses.png Graphic file (type bmp)
 <../plots/losses/power_losses.png>
 
 
-[30]
+[32]
 File: ../plots/market/load_vs_volume_2016_2024.png Graphic file (type bmp)
 <../plots/market/load_vs_volume_2016_2024.png>
 
 
-[31]
+[33]
 File: ../plots/market/average_price_deviation.png Graphic file (type bmp)
 <../plots/market/average_price_deviation.png>
 
 
-[32]
+[34]
 
-[33]
+[35]
 File: ../plots/fixing_i_price_weekdays_holidays.png Graphic file (type bmp)
 <../plots/fixing_i_price_weekdays_holidays.png>
 
 
-[34]
-
-[35]) (tekst/eksploracja.tex
-
 [36]
+
+[37]) (tekst/eksploracja.tex
+
+[38]
 Rozdział 4.
 
 
-[37
+[39
 
 ]
 
-[38]
+[40]
 File: ../plots/correlation_with_fixing_i_price.png Graphic file (type bmp)
 <../plots/correlation_with_fixing_i_price.png>
-
-
-[39]
-
-[40]
-File: ../plots/heatmap_short_db_features.png Graphic file (type bmp)
-<../plots/heatmap_short_db_features.png>
 
 
 [41]
 
 [42]
+File: ../plots/heatmap_short_db_features.png Graphic file (type bmp)
+<../plots/heatmap_short_db_features.png>
+
+
+[43]
+
+[44]
 File: gfx/../../plots/periods_split_combined.png Graphic file (type bmp)
 <gfx/../../plots/periods_split_combined.png>
 
 
-[43]) (tekst/metodology.tex
+[45]) (tekst/metodology.tex
 
-[44]
+[46]
 Rozdział 5.
 
 
-[45
+[47
 
 ]
-
-[46]
-
-[47]
 
 [48]
 
@@ -1910,36 +1913,38 @@ Rozdział 5.
 
 [53]
 
-[54]) (tekst/analiza.tex
+[54]
 
 [55]
+
+[56]) (tekst/analiza.tex
+
+[57]
 Rozdział 6.
 
+
+[58
+
+]
 Overfull \hbox (13.82478pt too wide) in paragraph at lines 37--45
  [][] 
  []
 
-
-
-[56
-
-]
 File: gfx/../../plots/predicts/ridge_predictions_full_q1_2019.png Graphic file 
 (type bmp)
 <gfx/../../plots/predicts/ridge_predictions_full_q1_2019.png>
 
 
-[57]
+[59]
+File: gfx/../../plots/predicts/errors_over_time_Ridge_full_stable_period.png Gr
+aphic file (type bmp)
+<gfx/../../plots/predicts/errors_over_time_Ridge_full_stable_period.png>
 File: gfx/../../plots/predicts/residuals_histogram_Ridge_full_stable_period.png
  Graphic file (type bmp)
 <gfx/../../plots/predicts/residuals_histogram_Ridge_full_stable_period.png>
 
 
-[58]
-File: gfx/../../plots/predicts/top_50_errors_Ridge_full_stable_period.png Graph
-ic file (type bmp)
-<gfx/../../plots/predicts/top_50_errors_Ridge_full_stable_period.png>
-
+[60]
 Overfull \hbox (4.04387pt too wide) in paragraph at lines 97--98
 \TU/LatinModernSans(1)/m/n/10.95 ponieważ wstępne testy wykazały, że tryb multi
 plikatywny (\TU/LatinModernMono(0)/m/n/10.95 seasonality_mode='multiplicative'\
@@ -1947,8 +1952,6 @@ TU/LatinModernSans(1)/m/n/10.95 )
  []
 
 
-
-[59]
 Overfull \hbox (38.83804pt too wide) in paragraph at lines 99--100
 \TU/LatinModernSans(1)/m/n/10.95 leźć optymalne ustawienia. Najlepsze rezultaty
  uzyskano dla kombinacji (\TU/LatinModernMono(0)/m/n/10.95 changepoint_prior_sc
@@ -1961,46 +1964,68 @@ Underfull \hbox (badness 1365) in paragraph at lines 99--100
 ), oraz wysoką elastycznością sezonowości
  []
 
+
+
+[61]
 File: gfx/../../plots/predicts/Prophet_predictions_stable_Q1.png Graphic file (
 type bmp)
 <gfx/../../plots/predicts/Prophet_predictions_stable_Q1.png>
+File: gfx/../../plots/predicts/errors_over_time_Prophet_full_stable_period.png 
+Graphic file (type bmp)
+<gfx/../../plots/predicts/errors_over_time_Prophet_full_stable_period.png>
+
+
+[62]
 File: gfx/../../plots/predicts/residuals_histogram_Prophet_full_stable_period_c
 omb_1.png Graphic file (type bmp)
 <gfx/../../plots/predicts/residuals_histogram_Prophet_full_stable_period_comb_1
 .png>
 
 
-[60]
-File: gfx/../../plots/predicts/top_50_errors_Prophet_full_stable_period_comb_1.
-png Graphic file (type bmp)
-<gfx/../../plots/predicts/top_50_errors_Prophet_full_stable_period_comb_1.png>
+[63]
+
+[64]
+File: gfx/../../plots/mlp1/mlp_predictions_full_stable_q1_(64, 64, 32, 16, 8).p
+ng Graphic file (type bmp)
+<gfx/../../plots/mlp1/mlp_predictions_full_stable_q1_(64, 64, 32, 16, 8).png>
 
 
-[61]
+[65]
+File: gfx/../../plots/mlp1/errors_over_time_(64, 64, 32, 16, 8)_Stabilny_2019_p
+ełny.png Graphic file (type bmp)
+<gfx/../../plots/mlp1/errors_over_time_(64, 64, 32, 16, 8)_Stabilny_2019_pełny.
+png>
+File: gfx/../../plots/mlp1/mlp_errors_histogram_full_stable_(64, 64, 32, 16, 8)
+.png Graphic file (type bmp)
+<gfx/../../plots/mlp1/mlp_errors_histogram_full_stable_(64, 64, 32, 16, 8).png>
 
-[62]
+
+
+[66]
+
+[67]
 File: gfx/../../plots/predicts/ridge_predictions_full_sep_oct_2023.png Graphic 
 file (type bmp)
 <gfx/../../plots/predicts/ridge_predictions_full_sep_oct_2023.png>
 
 
-[63]
+[68]
+File: gfx/../../plots/predicts/errors_over_time_Ridge_non_stable_period.png Gra
+phic file (type bmp)
+<gfx/../../plots/predicts/errors_over_time_Ridge_non_stable_period.png>
 File: gfx/../../plots/predicts/residuals_histogram_Ridge_not_stable_period.png 
 Graphic file (type bmp)
 <gfx/../../plots/predicts/residuals_histogram_Ridge_not_stable_period.png>
-File: gfx/../../plots/predicts/top_50_errors_Ridge_full_not_stable_period.png G
-raphic file (type bmp)
-<gfx/../../plots/predicts/top_50_errors_Ridge_full_not_stable_period.png>
 
 
-[64]
-Underfull \hbox (badness 1515) in paragraph at lines 211--212
+[69]
+Underfull \hbox (badness 1515) in paragraph at lines 259--260
 \TU/LatinModernSans(1)/m/n/10.95 Model Prophet lekko poprawił wyniki w porównan
 iu do regresji liniowej i Ridge. Najlep-
  []
 
 
-Overfull \hbox (55.538pt too wide) in paragraph at lines 211--212
+Overfull \hbox (55.538pt too wide) in paragraph at lines 259--260
 \TU/LatinModernMono(0)/m/n/10.95 seasonality_prior_scale=50.0\TU/LatinModernSan
 s(1)/m/n/10.95 , \TU/LatinModernMono(0)/m/n/10.95 holidays_prior_scale=0.1\TU/L
 atinModernSans(1)/m/n/10.95 ). Niska wartość \TU/LatinModernMono(0)/m/n/10.95 c
@@ -2009,44 +2034,101 @@ hangepoint_prior_scale
 
 
 
-[65]
+[70]
 File: gfx/../../plots/predicts/Prophet_predictions_unstable_sep_pełny_comb_1.pn
 g Graphic file (type bmp)
 <gfx/../../plots/predicts/Prophet_predictions_unstable_sep_pełny_comb_1.png>
+File: gfx/../../plots/predicts/errors_over_time_Prophet_non_stable.png Graphic 
+file (type bmp)
+<gfx/../../plots/predicts/errors_over_time_Prophet_non_stable.png>
+
+
+[71]
 File: gfx/../../plots/predicts/residuals_histogram_Prophet_unstable_pełny_comb_
 1.png Graphic file (type bmp)
 <gfx/../../plots/predicts/residuals_histogram_Prophet_unstable_pełny_comb_1.png
 >
 
 
-[66]) (tekst/podsumowanie.tex
+[72]
+File: gfx/../../plots/mlp2/mlp_predictions_short_unstable_aug_sep_(64, 64, 32, 
+16, 8).png Graphic file (type bmp)
+<gfx/../../plots/mlp2/mlp_predictions_short_unstable_aug_sep_(64, 64, 32, 16, 8
+).png>
+File: gfx/../../plots/mlp2/errors_over_time_(64, 64, 32, 16, 8)_Niestabilny_202
+3_skrócony.png Graphic file (type bmp)
+<gfx/../../plots/mlp2/errors_over_time_(64, 64, 32, 16, 8)_Niestabilny_2023_skr
+ócony.png>
 
-[67]
+
+[73]
+File: gfx/../../plots/mlp2/mlp_errors_histogram_short_unstable_(64, 64, 32, 16,
+ 8).png Graphic file (type bmp)
+<gfx/../../plots/mlp2/mlp_errors_histogram_short_unstable_(64, 64, 32, 16, 8).p
+ng>
+) (tekst/podsumowanie.tex
+
+[74]
+
+[75]
 Rozdział 7.
-)
 
-[68
+Underfull \hbox (badness 1552) in paragraph at lines 18--19
+[]\TU/LatinModernSans(1)/m/n/10.95 Model Prophet, skonfigurowany z trybem addyt
+ywnym i dostosowaniem hiperparame-
+ []
+
+
+
+[76
+
+]
+Overfull \hbox (22.02132pt too wide) in paragraph at lines 25--26
+\TU/LatinModernSans(1)/m/n/10.95 względem MAE i RMSE, przy optymalnych hiperpar
+ametrach (\TU/LatinModernMono(0)/m/n/10.95 changepoint_prior_scale=0.001\TU/Lat
+inModernSans(1)/m/n/10.95 ,
+ []
+
+
+Overfull \hbox (82.91298pt too wide) in paragraph at lines 25--26
+\TU/LatinModernMono(0)/m/n/10.95 seasonality_prior_scale=50.0\TU/LatinModernSan
+s(1)/m/n/10.95 , \TU/LatinModernMono(0)/m/n/10.95 holidays_prior_scale=0.1\TU/L
+atinModernSans(1)/m/n/10.95 ). Niska wartość \TU/LatinModernMono(0)/m/n/10.95 c
+hangepoint_prior_scale
+ []
+
+
+
+[77]
+File: ../plots/predicts/top_50_errors_Prophet_full_stable_period.png Graphic fi
+le (type bmp)
+<../plots/predicts/top_50_errors_Prophet_full_stable_period.png>
+
+
+[78]
+
+[79])
+
+[80]
+
+[81
+
 
 ]
 
-[69
+[82] (EE-dyplom.acr) (EE-dyplom.sls)
 
-
-]
-
-[70] (EE-dyplom.acr) (EE-dyplom.sls)
-
-[71
+[83
 
 ] (EE-dyplom.lof
 
-[72
+[84
 
 ]
-Overfull \hbox (16.10959pt too wide) in paragraph at lines 22--22
+Overfull \hbox (27.05959pt too wide) in paragraph at lines 22--22
  [][] [][][]\TU/LatinModernSans(1)/m/n/10.95 Wykres korelacji zmiennych objaśni
 ających względem zmiennej docelowej \TU/LatinModernMono(0)/m/n/10.95 fixing_i_p
-rice\TU/LatinModernSans(1)/m/n/10.95 .[][] [][]  
+rice\TU/LatinModernSans(1)/m/n/10.95 . 
  []
 
 )
@@ -2055,8 +2137,8 @@ rice\TU/LatinModernSans(1)/m/n/10.95 .[][] [][]
 
 
 
-[73] (EE-dyplom.lot
-Overfull \hbox (0.10072pt too wide) in paragraph at lines 18--18
+[85] (EE-dyplom.lot
+Overfull \hbox (0.10072pt too wide) in paragraph at lines 19--19
  [][] [][][]\TU/LatinModernSans(1)/m/n/10.95 Wyniki modelu Prophet dla pełnego 
 i skróconego zbioru danych w okresie niestabilnym 
  []
@@ -2067,7 +2149,7 @@ i skróconego zbioru danych w okresie niestabilnym
 
 
 
-[74
+[86
 
 ] (EE-dyplom.app)
 \tf@app=\write13
@@ -2075,7 +2157,7 @@ i skróconego zbioru danych w okresie niestabilnym
 
  (appendices.tex)
 
-[75
+[87
 
 ] (EE-dyplom.aux)
  ***********
@@ -2083,18 +2165,18 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `EE-dyplom.out' has not changed.
-(rerunfilecheck)             Checksum: 024455FA99018E34F3189EC861BDEB20;7144.
+(rerunfilecheck)             Checksum: F57D3BB2F73B9A4A32FCD3F78EDE8620;7481.
 Package logreq Info: Writing requests to 'EE-dyplom.run.xml'.
 \openout1 = `EE-dyplom.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46488 strings out of 408640
- 949011 string characters out of 5744799
- 2118180 words of memory out of 5000000
- 68785 multiletter control sequences out of 15000+600000
+ 46599 strings out of 408640
+ 956468 string characters out of 5744799
+ 2120974 words of memory out of 5000000
+ 68884 multiletter control sequences out of 15000+600000
  569180 words of font info for 136 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  114i,12n,131p,2691b,5208s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on EE-dyplom.pdf (75 pages).
+Output written on EE-dyplom.pdf (87 pages).

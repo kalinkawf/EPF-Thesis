@@ -222,7 +222,7 @@ predictions_df_short_ridge.to_csv("../../results/predictions_short_ridge_not_sta
 residuals_ridge_full = y_test_full_original - ridge_predictions_full_original
 plt.figure(figsize=(6, 4))
 plt.hist(residuals_ridge_full, bins=50, color="red", alpha=0.7)
-plt.title("Histogram reszt - Regresja Ridge (pełny zbiór)", fontsize=12)
+plt.title("Histogram reszt - Regresja Ridge", fontsize=12)
 plt.xlabel("Reszty", fontsize=10)
 plt.ylabel("Częstość", fontsize=10)
 plt.grid(True)
@@ -230,18 +230,18 @@ plt.tight_layout()
 plt.savefig("../../plots/predicts/residuals_histogram_Ridge_full_not_stable_period.png", dpi=300)
 plt.close()
 
-# --- Wykres predykcji vs. wartości rzeczywistych ---
-plt.figure(figsize=(12, 4))
-plt.plot(test_spokojny_full["timestamp"], y_test_full_original, label="Rzeczywiste", color="blue", alpha=0.7)
-plt.plot(test_spokojny_full["timestamp"], ridge_predictions_full_original, label="Regresja Ridge", color="red", alpha=0.7, linestyle="--")
-plt.title("Okres niestabilny (2023)", fontsize=14)
-plt.xlabel("Czas", fontsize=12)
-plt.ylabel("Cena energii [PLN/MWh]", fontsize=12)
-plt.grid(True)
-plt.legend()
-plt.tight_layout()
-plt.savefig("../../plots/predicts/ridge_predictions_full_not_stable_period.png", dpi=300)
-plt.close()
+# # --- Wykres predykcji vs. wartości rzeczywistych ---
+# plt.figure(figsize=(12, 4))
+# plt.plot(test_spokojny_full["timestamp"], y_test_full_original, label="Rzeczywiste", color="blue", alpha=0.7)
+# plt.plot(test_spokojny_full["timestamp"], ridge_predictions_full_original, label="Regresja Ridge", color="red", alpha=0.7, linestyle="--")
+# plt.title("Okres niestabilny (2023)", fontsize=14)
+# plt.xlabel("Czas", fontsize=12)
+# plt.ylabel("Cena energii [PLN/MWh]", fontsize=12)
+# plt.grid(True)
+# plt.legend()
+# plt.tight_layout()
+# plt.savefig("../../plots/predicts/ridge_predictions_full_not_stable_period.png", dpi=300)
+# plt.close()
 
 # --- Wykres predykcji vs. wartości rzeczywistych (Wrzesień - Październik 2023) ---
 sep_oct_mask = (test_spokojny_full["timestamp"] >= "2023-09-01") & (test_spokojny_full["timestamp"] < "2023-11-01")
@@ -268,18 +268,31 @@ top_50_timestamps = test_spokojny_full.iloc[top_50_indices]["timestamp"].values
 print("\nTimestampy największych błędów:")
 print(top_50_timestamps)
 
-plt.figure(figsize=(8, 6))
-plt.scatter(top_50_pred, top_50_actual, color="red", alpha=0.7)
-plt.plot([min(top_50_actual.min(), top_50_pred.min()), max(top_50_actual.max(), top_50_pred.max())],
-         [min(top_50_actual.min(), top_50_pred.min()), max(top_50_actual.max(), top_50_pred.max())],
-         color="black", linestyle="--", label="Linia idealna")
-plt.title("Top 50 błędów: Predykcje vs Rzeczywiste (Ridge, pełny zbiór)", fontsize=12)
-plt.xlabel("Predykcje [PLN/MWh]", fontsize=10)
-plt.ylabel("Rzeczywiste wartości [PLN/MWh]", fontsize=10)
+# plt.figure(figsize=(8, 6))
+# plt.scatter(top_50_pred, top_50_actual, color="red", alpha=0.7)
+# plt.plot([min(top_50_actual.min(), top_50_pred.min()), max(top_50_actual.max(), top_50_pred.max())],
+#          [min(top_50_actual.min(), top_50_pred.min()), max(top_50_actual.max(), top_50_pred.max())],
+#          color="black", linestyle="--", label="Linia idealna")
+# plt.title("Top 50 błędów: Predykcje vs Rzeczywiste (Ridge, pełny zbiór)", fontsize=12)
+# plt.xlabel("Predykcje [PLN/MWh]", fontsize=10)
+# plt.ylabel("Rzeczywiste wartości [PLN/MWh]", fontsize=10)
+# plt.grid(True)
+# plt.legend()
+# plt.tight_layout()
+# plt.savefig("../../plots/predicts/top_50_errors_Ridge_full_not_stable_period.png", dpi=300)
+# plt.close()
+
+# --- Wykres błędów na całym okresie testowym ---
+plt.figure(figsize=(12, 6))
+plt.plot(test_spokojny_full["timestamp"], residuals_ridge_full, color="red", alpha=0.7, label="Błędy")
+plt.axhline(y=0, color="black", linestyle="--", label="Linia zerowa")
+plt.title("Błędy na całym okresie testowym - Regresja Ridge", fontsize=14)
+plt.xlabel("Czas", fontsize=12)
+plt.ylabel("Błędy w czasie [PLN/MWh]", fontsize=12)
 plt.grid(True)
 plt.legend()
 plt.tight_layout()
-plt.savefig("../../plots/predicts/top_50_errors_Ridge_full_not_stable_period.png", dpi=300)
+plt.savefig("../../plots/predicts/errors_over_time_Ridge_non_stable_period.png", dpi=300)
 plt.close()
 
 # --- Wykres wszystkich błędów vs predykcji z linią przerywaną ---
@@ -287,7 +300,7 @@ residuals_all = y_test_full_original - ridge_predictions_full_original
 plt.figure(figsize=(8, 6))
 plt.scatter(ridge_predictions_full_original, residuals_all, color="orange", alpha=0.5, label="Błędy")
 plt.axhline(y=0, color="black", linestyle="--", label="Linia zerowa")
-plt.title("Błędy vs Predykcje (Ridge, pełny zbiór)", fontsize=12)
+plt.title("Błędy vs Predykcje", fontsize=12)
 plt.xlabel("Predykcje [PLN/MWh]", fontsize=10)
 plt.ylabel("Błędy (Rzeczywiste - Predykcje) [PLN/MWh]", fontsize=10)
 plt.grid(True)
@@ -309,17 +322,17 @@ feature_importance = feature_importance.sort_values(by='Abs_Coefficient', ascend
 print("\nNajważniejsze czynniki wpływające na cenę (Ridge, pełny zbiór):")
 print(feature_importance[['Feature', 'Coefficient']].head(10))
 
-# Wykres 10 najważniejszych czynników
-top_10_features = feature_importance.head(10)
-plt.figure(figsize=(10, 6))
-plt.barh(top_10_features['Feature'], top_10_features['Coefficient'], color="teal")
-plt.title("Top 10 najważniejszych czynników (Ridge, pełny zbiór)", fontsize=12)
-plt.xlabel("Współczynnik", fontsize=10)
-plt.ylabel("Cecha", fontsize=10)
-plt.grid(True, axis="x")
-plt.tight_layout()
-plt.savefig("../../plots/predicts/feature_importance_Ridge_full_not_stable_period.png", dpi=300)
-plt.close()
+# # Wykres 10 najważniejszych czynników
+# top_10_features = feature_importance.head(10)
+# plt.figure(figsize=(10, 6))
+# plt.barh(top_10_features['Feature'], top_10_features['Coefficient'], color="teal")
+# plt.title("Top 10 najważniejszych czynników (Ridge, pełny zbiór)", fontsize=12)
+# plt.xlabel("Współczynnik", fontsize=10)
+# plt.ylabel("Cecha", fontsize=10)
+# plt.grid(True, axis="x")
+# plt.tight_layout()
+# plt.savefig("../../plots/predicts/feature_importance_Ridge_full_not_stable_period.png", dpi=300)
+# plt.close()
 
 # --- Czas wykonania ---
 execution_time = time.time() - start_time

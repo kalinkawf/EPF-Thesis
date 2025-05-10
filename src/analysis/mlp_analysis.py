@@ -1,11 +1,24 @@
+# mlp_keras_grid_search_unstable.py
+
 # Importowanie bibliotek
 import pandas as pd
 import numpy as np
-from sklearn.neural_network import MLPRegressor
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error, r2_score
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 import time
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.callbacks import EarlyStopping
+from tensorflow.keras.regularizers import l2
+import os
+
+# Funkcja do obliczania sMAPE
+def smape(y_true, y_pred):
+    epsilon = 1e-5
+    denominator = (np.abs(y_true) + np.abs(y_pred)) / 2
+    return np.mean(np.abs(y_true - y_pred) / np.maximum(denominator, epsilon)) * 100
 
 # Wczytanie danych
 df_full = pd.read_csv("../../data/database.csv")
@@ -17,275 +30,260 @@ df_short["timestamp"] = pd.to_datetime(df_short["timestamp"])
 
 # Konwersja zmiennych logicznych na numeryczne
 df_full["is_holiday"] = df_full["is_holiday"].astype(int)
+df_full["peak_hour"] = df_full["peak_hour"].astype(int)
 df_short["is_holiday"] = df_short["is_holiday"].astype(int)
 
-# Lista zmiennych objaśniających dla pełnego zestawu danych (bez gas_volume)
-features_full = [
-    "temp_waw", "wind_speed_waw", "cloud_cover_waw", "solar_radiation_waw",
-    "temp_ksz", "wind_speed_ksz", "cloud_cover_ksz", "solar_radiation_ksz",
-    "temp_krk", "wind_speed_krk", "cloud_cover_krk", "solar_radiation_krk",
-    "temp_bab", "wind_speed_bab", "cloud_cover_bab", "solar_radiation_bab",
-    "power_loss", "Network_loss",
-    "Niemcy Bilans", "Czechy Bilans", "Litwa Bilans", "Słowacja Bilans", "Szwecja Bilans", "Ukraina Bilans",
-    "hard_coal", "coal-derived", "lignite", "gas", "oil", "biomass", "wind_onshore", "solar",
-    "fixing_i_volume", "Load", "gas_price", "coal_pscmi1_pln_per_gj", "co2_price",
-    "pln_usd", "brent_price", "day_of_week", "month", "hour", "fixing_i_price_lag24", "fixing_i_price_lag168", "is_holiday"
+# Definicja pełnego i skróconego zbioru danych
+full_features = [
+    'timestamp', 'temp_waw', 'wind_speed_waw', 'cloud_cover_waw', 'solar_radiation_waw',
+    'temp_ksz', 'wind_speed_ksz', 'cloud_cover_ksz', 'solar_radiation_ksz',
+    'temp_krk', 'wind_speed_krk', 'cloud_cover_krk', 'solar_radiation_krk',
+    'temp_bab', 'wind_speed_bab', 'cloud_cover_bab', 'solar_radiation_bab',
+    'power_loss', 'Network_loss', 'Niemcy Bilans', 'Czechy Bilans', 'Litwa Bilans',
+    'Słowacja Bilans', 'Szwecja Bilans', 'Ukraina Bilans', 'hard_coal', 'coal-derived',
+    'lignite', 'gas', 'oil', 'biomass', 'wind_onshore', 'solar', 'fixing_i_price',
+    'fixing_i_volume', 'Load', 'non_emissive_sources_percentage', 'RB_price',
+    'cz_price', 'se_price', 'lt_price', 'sk_price', 'gas_price', 'coal_pscmi1_pln_per_gj',
+    'co2_price', 'pln_usd', 'pln_eur', 'brent_price', 'day_of_week', 'month', 'hour',
+    'fixing_i_price_mean24', 'fixing_i_price_mean48', 'fixing_i_price_lag24',
+    'fixing_i_price_lag48', 'fixing_i_price_lag72', 'fixing_i_price_lag96',
+    'fixing_i_price_lag120', 'fixing_i_price_lag144', 'fixing_i_price_lag168',
+    'is_holiday', 'peak_hour'
 ]
 
-# Lista zmiennych objaśniających dla skróconego zestawu danych
-features_short = [
-    "fixing_i_price_lag24", "fixing_i_price_lag168",
-    "gas_price", "co2_price", "brent_price", "pln_usd", "coal_pscmi1_pln_per_gj",
-    "power_loss", "fixing_i_volume", "solar", "gas", "oil", "Load",
-    "avg_temp", "avg_wind_speed", "avg_solar_radiation",
-    "hour", "month", "is_holiday", "wind_onshore", "day_of_week"
+short_features = [
+    'timestamp', 'fixing_i_price', 'fixing_i_price_lag24', 'fixing_i_price_lag48',
+    'fixing_i_price_lag72', 'fixing_i_price_lag96', 'fixing_i_price_lag120',
+    'fixing_i_price_lag144', 'fixing_i_price_lag168', 'fixing_i_price_mean24',
+    'fixing_i_price_mean48', 'gas_price', 'co2_price', 'brent_price', 'pln_usd',
+    'coal_pscmi1_pln_per_gj', 'power_loss', 'fixing_i_volume', 'solar', 'gas', 'oil',
+    'Load', 'hour', 'month', 'is_holiday',
+    'non_emissive_sources_percentage', 'day_of_week', 'RB_price', 'se_price',
+    'sk_price', 'cz_price', 'lt_price', 'pln_eur'
 ]
 
 target = "fixing_i_price"
 
 # Usunięcie brakujących wartości
-df_full = df_full[features_full + [target, "timestamp"]].dropna()
-df_short = df_short[features_short + [target, "timestamp"]].dropna()
+df_full = df_full[full_features].dropna()
+df_short = df_short[short_features].dropna()
 
-# Przesunięcie danych, aby wszystkie wartości były dodatnie
-min_value_full = df_full[target].min()
-min_value_short = df_short[target].min()
-shift_value = min(min_value_full, min_value_short)
-if shift_value < 0:
-    shift_value = abs(shift_value) + 1
-else:
-    shift_value = 1
+# Preprocessing: Kodowanie cykliczne
+def encode_cyclic(df, column, max_value):
+    df[f'{column}_sin'] = np.sin(2 * np.pi * df[column] / max_value)
+    df[f'{column}_cos'] = np.cos(2 * np.pi * df[column] / max_value)
+    return df
 
-# print(f"Przesunięcie danych o: {shift_value}")
-# df_full[target] = df_full[target] + shift_value
-# df_short[target] = df_short[target] + shift_value
+for df in [df_full, df_short]:
+    df = encode_cyclic(df, 'hour', 24)
+    df = encode_cyclic(df, 'day_of_week', 7)
+    df = encode_cyclic(df, 'month', 12)
+    df.drop(columns=['hour', 'day_of_week', 'month'], inplace=True)
 
-# Zastąpienie ewentualnych wartości ujemnych lub zerowych małą wartością dodatnią
-df_full[target] = df_full[target].clip(lower=1e-5)
-df_short[target] = df_short[target].clip(lower=1e-5)
+# Aktualizacja list cech po kodowaniu cyklicznym
+full_features_updated = [col for col in df_full.columns if col not in ['timestamp', target]]
+short_features_updated = [col for col in df_short.columns if col not in ['timestamp', target]]
 
-# # Transformacja logarytmiczna zmiennej celu
-# df_full[target] = np.log(df_full[target])
-# df_short[target] = np.log(df_short[target])
+# Definicja zmiennych do standaryzacji
+features_to_scale_full = [col for col in df_full.columns if col not in ['timestamp', target, 'is_holiday', 'peak_hour']]
+features_to_scale_short = [col for col in df_short.columns if col not in ['timestamp', target, 'is_holiday']]
 
-# Funkcja do obliczania metryk (bez MASE)
-def calculate_metrics(y_true, y_pred, shift_value):
-    # Odwrócenie transformacji logarytmicznej i przesunięcia
-    # y_true = np.exp(y_true) - shift_value
-    # y_pred = np.exp(y_pred) - shift_value
+# Standaryzacja zmiennych
+scaler_full = StandardScaler()
+scaler_short = StandardScaler()
+df_full[features_to_scale_full] = scaler_full.fit_transform(df_full[features_to_scale_full])
+df_short[features_to_scale_short] = scaler_short.fit_transform(df_short[features_to_scale_short])
 
-    # Obliczanie MAPE z większym epsilon
-    epsilon = 1e-10  # Small value to prevent division by zero
-    mape = np.mean(np.abs((y_true - y_pred) / (np.abs(y_true) + epsilon))) * 100
-    
-    # Obliczanie sMAPE z zabezpieczeniem przed zerowym mianownikiem
-    denominator = (np.abs(y_true) + np.abs(y_pred)) / 2 + epsilon
-    smape = np.mean(np.abs(y_true - y_pred) / denominator) * 100
+# Przygotowanie danych dla okresu niestabilnego
+df_unstable_full = df_full[df_full["timestamp"].dt.year >= 2020]
+df_unstable_short = df_short[df_short["timestamp"].dt.year >= 2020]
 
-    # y_true = y_true - shift_value
-    # y_pred = y_pred - shift_value
+train_unstable_full = df_unstable_full[(df_unstable_full["timestamp"].dt.year >= 2020) & (df_unstable_full["timestamp"].dt.year <= 2022)]
+train_unstable_short = df_unstable_short[(df_unstable_short["timestamp"].dt.year >= 2020) & (df_unstable_short["timestamp"].dt.year <= 2022)]
 
-    # Upewniamy się, że y_true i y_pred są pandas.Series
-    if isinstance(y_true, np.ndarray):
-        y_true = pd.Series(y_true)
-    if isinstance(y_pred, np.ndarray):
-        y_pred = pd.Series(y_pred)
+test_unstable_full = df_unstable_full[df_unstable_full["timestamp"].dt.year == 2023]
+test_unstable_short = df_unstable_short[df_unstable_short["timestamp"].dt.year == 2023]
 
-    mae = mean_absolute_error(y_true, y_pred)
-    rmse = np.sqrt(mean_squared_error(y_true, y_pred))
-    mse = mean_squared_error(y_true, y_pred)
-    
-    r2 = r2_score(y_true, y_pred)
-    return {"MAE": mae, "RMSE": rmse, "MSE": mse, "MAPE": mape, "sMAPE": smape, "R2": r2}
+# Lista architektur do przetestowania
+architectures = [
+    (64, 64, 32, 16, 8),
+]
 
-# Funkcja do trenowania i oceny modelu MLP
-def train_and_evaluate(df, features, period_name, train_data, val_data, test_data, shift_value):
+# Funkcja do trenowania i oceny modelu MLP w Keras
+def train_and_evaluate_keras(df, features, period_name, train_data, test_data, architecture):
     start_time = time.time()
-    
-    # Przygotowanie danych treningowych, walidacyjnych i testowych
-    X_train = train_data[features]
-    y_train = train_data[target]
-    X_val = val_data[features]
-    y_val = val_data[target]
-    X_test = test_data[features]
-    y_test = test_data[target]
+    features = [feature for feature in features if feature != "timestamp"]
 
-    # Przeskalowanie zmiennych objaśniających
+    # Przygotowanie danych
+    X_train = train_data[features].values
+    y_train = train_data[target].values
+    X_test = test_data[features].values
+    y_test = test_data[target].values
+
+    # Standaryzacja zmiennych
     scaler = StandardScaler()
     X_train = scaler.fit_transform(X_train)
-    X_val = scaler.transform(X_val)
     X_test = scaler.transform(X_test)
 
-    # Inicjalizacja prostego modelu MLP
-    model = MLPRegressor(
-        hidden_layer_sizes=(32, 32),
-        activation='relu',
-        solver='adam',
-        alpha=0.1,
-        max_iter=500,  # Minimalna liczba iteracji, aby przyspieszyć obliczenia
-        random_state=42,
-        early_stopping=True,  # Włączamy wczesne zatrzymywanie
-        validation_fraction=0.01,  # 10% danych treningowych jako wewnętrzny zbiór walidacyjny
-        n_iter_no_change=10,  # Zatrzymaj, jeśli brak poprawy przez 10 iteracji
-    )
+    # Debug: Sprawdzenie wymiarów y_train i y_test
+    print(f"{period_name} - y_train shape: {y_train.shape}, y_test shape: {y_test.shape}")
+
+    # Budowa modelu w Keras
+    model = Sequential()
+    model.add(Dense(architecture[0], activation='relu', input_dim=X_train.shape[1], kernel_regularizer=l2(0.1)))
+    for units in architecture[1:]:
+        model.add(Dense(units, activation='relu', kernel_regularizer=l2(0.1)))
+        model.add(Dropout(0.2))
+    model.add(Dense(1))
+
+    # Kompilacja modelu
+    model.compile(optimizer=Adam(learning_rate=0.005), loss='mse')
 
     # Trenowanie modelu
-    model.fit(X_train, y_train)
+    model.fit(
+        X_train, y_train,
+        epochs=500,
+        batch_size=64,
+        verbose=0
+    )
 
-    # Prognozowanie na zbiorze walidacyjnym
-    y_pred_val = model.predict(X_val)
-    metrics_val = calculate_metrics(y_val, y_pred_val, shift_value)
+    # Prognozowanie
+    y_pred_test = model.predict(X_test, verbose=0).flatten()
 
-    # Prognozowanie na zbiorze testowym
-    y_pred_test = model.predict(X_test)
-    metrics_test = calculate_metrics(y_test, y_pred_test, shift_value)
+    # Debug: Sprawdzenie wymiarów y_test i y_pred_test
+    print(f"{period_name} - y_test shape: {y_test.shape}, y_pred_test shape: {y_pred_test.shape}")
+
+    # Obliczenie metryk
+    metrics_test = {
+        "MAE": mean_absolute_error(y_test, y_pred_test),
+        "RMSE": np.sqrt(mean_squared_error(y_test, y_pred_test)),
+        "MAPE": mean_absolute_percentage_error(y_test, y_pred_test) * 100,
+        "sMAPE": smape(y_test, y_pred_test),
+        "R2": r2_score(y_test, y_pred_test)
+    }
 
     end_time = time.time()
     execution_time = end_time - start_time
-    print(f"Czas wykonania dla {period_name}: {execution_time:.2f} sekund")
+    print(f"Czas wykonania dla {period_name} (architektura {architecture}): {execution_time:.2f} sekund")
 
-    return metrics_val, metrics_test, y_test, y_pred_test, test_data["timestamp"]
+    return metrics_test, y_test, y_pred_test, test_data["timestamp"]
 
-# Przygotowanie danych dla okresu spokojnego (2016–2019)
-# Treningowy: 2016–2018 (75%)
-# Walidacyjny: pierwsza połowa 2019
-# Testowy: druga połowa 2019
-df_spokojny_full = df_full[(df_full["timestamp"].dt.year >= 2016) & (df_full["timestamp"].dt.year <= 2019)]
-df_spokojny_short = df_short[(df_short["timestamp"].dt.year >= 2016) & (df_short["timestamp"].dt.year <= 2019)]
+# Lista do przechowywania wyników
+results_test = []
+period_names = ["Niestabilny (2023, pełny)", "Niestabilny (2023, skrócony)"]
+datasets = [
+    (df_full, full_features_updated, train_unstable_full, test_unstable_full),
+    (df_short, short_features_updated, train_unstable_short, test_unstable_short)
+]
 
-# Treningowy: 2016–2018
-train_spokojny_full = df_spokojny_full[(df_spokojny_full["timestamp"].dt.year >= 2016) & (df_spokojny_full["timestamp"].dt.year <= 2018)]
-train_spokojny_short = df_spokojny_short[(df_spokojny_short["timestamp"].dt.year >= 2016) & (df_spokojny_short["timestamp"].dt.year <= 2018)]
+# Pętla po architekturach
+for architecture in architectures:
+    print(f"\nTestowanie architektury: {architecture}")
+    
+    # Wyniki dla każdej architektury
+    test_metrics_all = []
+    y_tests = []
+    y_preds = []
+    dates_all = []
 
-# Podział na treningowy (75%) i wstępny walidacyjny (25%) w ramach 2016–2018
-train_spokojny_full = train_spokojny_full.sample(frac=0.75, random_state=42)
-train_spokojny_short = train_spokojny_short.sample(frac=0.75, random_state=42)
+    # Pętla po zestawach danych
+    for (df, features, train_data, test_data), period_name in zip(datasets, period_names):
+        metrics_test, y_test, y_pred_test, dates = train_and_evaluate_keras(
+            df, features, period_name, train_data, test_data, architecture
+        )
+        test_metrics_all.append(metrics_test)
+        y_tests.append(y_test)
+        y_preds.append(y_pred_test)
+        dates_all.append(dates)
 
-# Walidacyjny: pierwsza połowa 2019
-val_spokojny_full = df_spokojny_full[(df_spokojny_full["timestamp"].dt.year == 2019) & (df_spokojny_full["timestamp"].dt.month <= 6)]
-val_spokojny_short = df_spokojny_short[(df_spokojny_short["timestamp"].dt.year == 2019) & (df_spokojny_short["timestamp"].dt.month <= 6)]
+    # Tworzenie DataFrame z wynikami dla testu
+    results_test_df = pd.DataFrame({
+        "Metryka": ["MAE (PLN/MWh)", "RMSE (PLN/MWh)", "MAPE (%)", "sMAPE (%)", "R2"],
+        "Niestabilny (2023, pełny)": [test_metrics_all[0]["MAE"], test_metrics_all[0]["RMSE"], test_metrics_all[0]["MAPE"], 
+                                      test_metrics_all[0]["sMAPE"], test_metrics_all[0]["R2"]],
+        "Niestabilny (2023, skrócony)": [test_metrics_all[1]["MAE"], test_metrics_all[1]["RMSE"], test_metrics_all[1]["MAPE"], 
+                                         test_metrics_all[1]["sMAPE"], test_metrics_all[1]["R2"]]
+    })
 
-# Testowy: druga połowa 2019
-test_spokojny_full = df_spokojny_full[(df_spokojny_full["timestamp"].dt.year == 2019) & (df_spokojny_full["timestamp"].dt.month > 6)]
-test_spokojny_short = df_spokojny_short[(df_spokojny_short["timestamp"].dt.year == 2019) & (df_spokojny_short["timestamp"].dt.month > 6)]
+    # Zaokrąglenie wyników
+    results_test_df.iloc[:, 1:] = results_test_df.iloc[:, 1:].round(2)
 
-# Przygotowanie danych dla okresu niespokojnego (2020–2023)
-# Treningowy: 2020–2022 (75%)
-# Walidacyjny: pierwsza połowa 2023
-# Testowy: druga połowa 2023
-df_niespokojny_full = df_full[(df_full["timestamp"].dt.year >= 2020) & (df_full["timestamp"].dt.year <= 2023)]
-df_niespokojny_short = df_short[(df_short["timestamp"].dt.year >= 2020) & (df_short["timestamp"].dt.year <= 2023)]
+    # Dodanie wyników do listy
+    results_test.append((architecture, results_test_df))
 
-# Treningowy: 2020–2022
-train_niespokojny_full = df_niespokojny_full[(df_niespokojny_full["timestamp"].dt.year >= 2020) & (df_niespokojny_full["timestamp"].dt.year <= 2022)]
-train_niespokojny_short = df_niespokojny_short[(df_niespokojny_short["timestamp"].dt.year >= 2020) & (df_niespokojny_short["timestamp"].dt.year <= 2022)]
+    # Wyświetlenie wyników
+    print(f"\nWyniki na zbiorze testowym dla architektury {architecture}:")
+    print(results_test_df)
 
-# Podział na treningowy (75%) i wstępny walidacyjny (25%) w ramach 2020–2022
-train_niespokojny_full = train_niespokojny_full.sample(frac=0.75, random_state=42)
-train_niespokojny_short = train_niespokojny_short.sample(frac=0.75, random_state=42)
+    # Zapisywanie wyników do pliku
+    os.makedirs('../../plots/mlp2', exist_ok=True)
+    results_test_df.to_csv(f'../../plots/mlp2/mlp_results_{architecture}.csv', index=False)
 
-# Walidacyjny: pierwsza połowa 2023
-val_niespokojny_full = df_niespokojny_full[(df_niespokojny_full["timestamp"].dt.year == 2023) & (df_niespokojny_full["timestamp"].dt.month <= 6)]
-val_niespokojny_short = df_niespokojny_short[(df_niespokojny_short["timestamp"].dt.year == 2023) & (df_niespokojny_short["timestamp"].dt.month <= 6)]
+    # Wykresy predykcji vs rzeczywiste wartości (Aug-Sep 2023 dla niestabilnego)
+    unstable_aug_sep_dates = dates_all[0][(dates_all[0].dt.month >= 8) & (dates_all[0].dt.month <= 9)]
+    unstable_aug_sep_y_test = y_tests[0][(dates_all[0].dt.month >= 8) & (dates_all[0].dt.month <= 9)]
+    unstable_aug_sep_y_pred = y_preds[0][(dates_all[0].dt.month >= 8) & (dates_all[0].dt.month <= 9)]
+    plt.figure(figsize=(12, 4))
+    plt.plot(unstable_aug_sep_dates, unstable_aug_sep_y_test, label='Rzeczywiste ceny', color='blue', alpha=0.7)
+    plt.plot(unstable_aug_sep_dates, unstable_aug_sep_y_pred, label='MLP', color='red', alpha=0.7, linestyle='--')
+    plt.title('Okres niestabilny (Sierpień-Wrzesień 2023)', fontsize=14)
+    plt.xlabel('Czas', fontsize=12)
+    plt.ylabel('Cena energii [PLN/MWh]', fontsize=12)
+    plt.grid(True)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(f'../../plots/mlp2/mlp_predictions_full_unstable_aug_sep_{architecture}.png', dpi=300)
+    plt.close()
 
-# Testowy: druga połowa 2023
-test_niespokojny_full = df_niespokojny_full[(df_niespokojny_full["timestamp"].dt.year == 2023) & (df_niespokojny_full["timestamp"].dt.month > 6)]
-test_niespokojny_short = df_niespokojny_short[(df_niespokojny_short["timestamp"].dt.year == 2023) & (df_niespokojny_short["timestamp"].dt.month > 6)]
+    # Niestabilny (Aug-Sep 2023, skrócony zestaw)
+    unstable_aug_sep_short_dates = dates_all[1][(dates_all[1].dt.month >= 8) & (dates_all[1].dt.month <= 9)]
+    unstable_aug_sep_short_y_test = y_tests[1][(dates_all[1].dt.month >= 8) & (dates_all[1].dt.month <= 9)]
+    unstable_aug_sep_short_y_pred = y_preds[1][(dates_all[1].dt.month >= 8) & (dates_all[1].dt.month <= 9)]
+    plt.figure(figsize=(12, 4))
+    plt.plot(unstable_aug_sep_short_dates, unstable_aug_sep_short_y_test, label='Rzeczywiste ceny', color='blue', alpha=0.7)
+    plt.plot(unstable_aug_sep_short_dates, unstable_aug_sep_short_y_pred, label='MLP', color='red', alpha=0.7, linestyle='--')
+    plt.title('Okres niestabilny (Sierpień-Wrzesień 2023, skrócony zestaw)', fontsize=14)
+    plt.xlabel('Czas', fontsize=12)
+    plt.ylabel('Cena energii [PLN/MWh]', fontsize=12)
+    plt.grid(True)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(f'../../plots/mlp2/mlp_predictions_short_unstable_aug_sep_{architecture}.png', dpi=300)
+    plt.close()
 
-# Trenowanie i ocena modelu dla wszystkich zestawów danych
-# Spokojny (2019, pełny zestaw)
-# metrics_val_spokojny_full, metrics_test_spokojny_full, y_test_spokojny_full, y_pred_spokojny_full, dates_spokojny_full = train_and_evaluate(
-#     df_full, features_full, "Spokojny (2019, pełny)", train_spokojny_full, val_spokojny_full, test_spokojny_full, shift_value
-# )
+    # Histogram błędów (dla całego zbioru testowego niestabilnego 2023, pełny zestaw)
+    errors_unstable = y_tests[0] - y_preds[0]
+    plt.figure(figsize=(8, 6))
+    plt.hist(errors_unstable, bins=50, color='red', alpha=0.7)
+    plt.title('Histogram reszt - MLP', fontsize=14)
+    plt.xlabel('Reszty [PLN/MWh]', fontsize=12)
+    plt.ylabel('Częstość', fontsize=12)
+    plt.grid(True)
+    plt.savefig(f'../../plots/mlp2/mlp_errors_histogram_full_unstable_{architecture}.png', dpi=300)
+    plt.close()
 
-# Spokojny (2019, skrócony zestaw)
-metrics_val_spokojny_short, metrics_test_spokojny_short, y_test_spokojny_short, y_pred_spokojny_short, dates_spokojny_short = train_and_evaluate(
-    df_short, features_short, "Spokojny (2019, skrócony)", train_spokojny_short, val_spokojny_short, test_spokojny_short, shift_value
-)
+    # Histogram błędów (dla całego zbioru testowego niestabilnego 2023, skrócony zestaw)
+    errors_unstable_short = y_tests[1] - y_preds[1]
+    plt.figure(figsize=(8, 6))
+    plt.hist(errors_unstable_short, bins=50, color='red', alpha=0.7)
+    plt.title('Histogram reszt - MLP', fontsize=14)
+    plt.xlabel('Reszty [PLN/MWh]', fontsize=12)
+    plt.ylabel('Częstość', fontsize=12)
+    plt.grid(True)
+    plt.savefig(f'../../plots/mlp2/mlp_errors_histogram_short_unstable_{architecture}.png', dpi=300)
+    plt.close()
 
-# # Niespokojny (2023, pełny zestaw)
-# metrics_val_niespokojny_full, metrics_test_niespokojny_full, y_test_niespokojny_full, y_pred_niespokojny_full, dates_niespokojny_full = train_and_evaluate(
-#     df_full, features_full, "Niespokojny (2023, pełny)", train_niespokojny_full, val_niespokojny_full, test_niespokojny_full, shift_value
-# )
-
-# Niespokojny (2023, skrócony zestaw)
-metrics_val_niespokojny_short, metrics_test_niespokojny_short, y_test_niespokojny_short, y_pred_niespokojny_short, dates_niespokojny_short = train_and_evaluate(
-    df_short, features_short, "Niespokojny (2023, skrócony)", train_niespokojny_short, val_niespokojny_short, test_niespokojny_short, shift_value
-)
-
-# Tworzenie DataFrame z wynikami dla walidacji (bez MASE)
-results_val_df = pd.DataFrame({
-    "Metryka": ["MAE (PLN/MWh)", "RMSE (PLN/MWh)", "MSE (PLN/MWh)^2", "MAPE (%)", "sMAPE (%)", "R2"],
-    # "Spokojny (2019, pełny)": [metrics_val_spokojny_full["MAE"], metrics_val_spokojny_full["RMSE"], metrics_val_spokojny_full["MSE"], 
-    #                            metrics_val_spokojny_full["MAPE"], metrics_val_spokojny_full["sMAPE"], metrics_val_spokojny_full["R2"]],
-    "Spokojny (2019, skrócony)": [metrics_val_spokojny_short["MAE"], metrics_val_spokojny_short["RMSE"], metrics_val_spokojny_short["MSE"], 
-                                  metrics_val_spokojny_short["MAPE"], metrics_val_spokojny_short["sMAPE"], metrics_val_spokojny_short["R2"]],
-    # "Niespokojny (2023, pełny)": [metrics_val_niespokojny_full["MAE"], metrics_val_niespokojny_full["RMSE"], metrics_val_niespokojny_full["MSE"], 
-    #                               metrics_val_niespokojny_full["MAPE"], metrics_val_niespokojny_full["sMAPE"], metrics_val_niespokojny_full["R2"]],
-    "Niespokojny (2023, skrócony)": [metrics_val_niespokojny_short["MAE"], metrics_val_niespokojny_short["RMSE"], metrics_val_niespokojny_short["MSE"], 
-                                     metrics_val_niespokojny_short["MAPE"], metrics_val_niespokojny_short["sMAPE"], metrics_val_niespokojny_short["R2"]]
-})
-
-# Tworzenie DataFrame z wynikami dla testu (bez MASE)
-results_test_df = pd.DataFrame({
-    "Metryka": ["MAE (PLN/MWh)", "RMSE (PLN/MWh)", "MSE (PLN/MWh)^2", "MAPE (%)", "sMAPE (%)", "R2"],
-    # "Spokojny (2019, pełny)": [metrics_test_spokojny_full["MAE"], metrics_test_spokojny_full["RMSE"], metrics_test_spokojny_full["MSE"], 
-    #                            metrics_test_spokojny_full["MAPE"], metrics_test_spokojny_full["sMAPE"], metrics_test_spokojny_full["R2"]],
-    "Spokojny (2019, skrócony)": [metrics_test_spokojny_short["MAE"], metrics_test_spokojny_short["RMSE"], metrics_test_spokojny_short["MSE"], 
-                                  metrics_test_spokojny_short["MAPE"], metrics_test_spokojny_short["sMAPE"], metrics_test_spokojny_short["R2"]],
-    # "Niespokojny (2023, pełny)": [metrics_test_niespokojny_full["MAE"], metrics_test_niespokojny_full["RMSE"], metrics_test_niespokojny_full["MSE"], 
-    #                               metrics_test_niespokojny_full["MAPE"], metrics_test_niespokojny_full["sMAPE"], metrics_test_niespokojny_full["R2"]],
-    "Niespokojny (2023, skrócony)": [metrics_test_niespokojny_short["MAE"], metrics_test_niespokojny_short["RMSE"], metrics_test_niespokojny_short["MSE"], 
-                                     metrics_test_niespokojny_short["MAPE"], metrics_test_niespokojny_short["sMAPE"], metrics_test_niespokojny_short["R2"]]
-})
-
-# Zaokrąglenie wyników
-results_val_df.iloc[:, 1:] = results_val_df.iloc[:, 1:].round(2)
-results_test_df.iloc[:, 1:] = results_test_df.iloc[:, 1:].round(2)
-
-# Wyświetlenie wyników
-print("\nWyniki na zbiorze walidacyjnym:")
-print(results_val_df)
-print("\nWyniki na zbiorze testowym:")
-print(results_test_df)
-
-# # Zapisywanie wyników w formacie LaTeX
-# latex_table_val = results_val_df.to_latex(index=False, float_format="%.2f", 
-#                                           caption="Wyniki MLP na zbiorze walidacyjnym dla pełnego i skróconego zestawu danych (bez MASE).",
-#                                           label="tab:mlp_val_results")
-# print("\nTabela w formacie LaTeX dla zbioru walidacyjnego:")
-# print(latex_table_val)
-
-# latex_table_test = results_test_df.to_latex(index=False, float_format="%.2f", 
-#                                             caption="Wyniki MLP na zbiorze testowym dla pełnego i skróconego zestawu danych (bez MASE).",
-#                                             label="tab:mlp_test_results")
-# print("\nTabela w formacie LaTeX dla zbioru testowego:")
-# print(latex_table_test)
-
-# # Wykres prognoz vs rzeczywiste wartości dla okresu niespokojnego (2023, pełny zestaw, testowy)
-# plt.figure(figsize=(12, 6))
-# plt.plot(dates_niespokojny_full, np.exp(y_test_niespokojny_full) - shift_value, label='Rzeczywiste ceny', color='blue')
-# plt.plot(dates_niespokojny_full, np.exp(y_pred_niespokojny_full) - shift_value, label='Prognozy MLP (pełny zestaw)', color='red', linestyle='--')
-# plt.title('Prognozy cen energii (MLP, okres niespokojny 2023, pełny zestaw, zbiór testowy)')
-# plt.xlabel('Data')
-# plt.ylabel('Cena (PLN/MWh)')
-# plt.legend()
-# plt.grid(True)
-# plt.tight_layout()
-# plt.savefig("../../plots/prognozy_mlp_niespokojny_full_test.png", dpi=300)
-# plt.close()
-
-# # Wykres prognoz vs rzeczywiste wartości dla okresu niespokojnego (2023, skrócony zestaw, testowy)
-# plt.figure(figsize=(12, 6))
-# plt.plot(dates_niespokojny_short, np.exp(y_test_niespokojny_short) - shift_value, label='Rzeczywiste ceny', color='blue')
-# plt.plot(dates_niespokojny_short, np.exp(y_pred_niespokojny_short) - shift_value, label='Prognozy MLP (skrócony zestaw)', color='red', linestyle='--')
-# plt.title('Prognozy cen energii (MLP, okres niespokojny 2023, skrócony zestaw, zbiór testowy)')
-# plt.xlabel('Data')
-# plt.ylabel('Cena (PLN/MWh)')
-# plt.legend()
-# plt.grid(True)
-# plt.tight_layout()
-# plt.savefig("../../plots/prognozy_mlp_niespokojny_short_test.png", dpi=300)
-# plt.close()
-
-# print("Wykresy zapisane w ../../plots/prognozy_mlp_niespokojny_full_test.png i ../../plots/prognozy_mlp_niespokojny_short_test.png")
+    # Wykres błędów na całym okresie testowym
+    for i, period_name in enumerate(period_names):
+        residuals = y_tests[i] - y_preds[i]
+        plt.figure(figsize=(12, 6))
+        plt.plot(dates_all[i], residuals, color="red", alpha=0.7, label="Błędy")
+        plt.axhline(y=0, color="black", linestyle="--", label="Linia zerowa")
+        plt.title("Błędy na całym okresie testowym - MLP", fontsize=14)
+        plt.xlabel("Czas", fontsize=12)
+        plt.ylabel("Błędy w czasie [PLN/MWh]", fontsize=12)
+        plt.grid(True)
+        plt.legend()
+        plt.tight_layout()
+        plt.savefig(f"../../plots/mlp2/errors_over_time_{architecture}_{period_name.replace(' ', '_').replace('(', '').replace(')', '').replace(',', '')}.png", dpi=300)
+        plt.close()

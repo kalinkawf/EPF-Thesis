@@ -791,6 +791,22 @@
     \counterwithout{lstlisting}{chapter} % hack niestety
     \pagestyle{empty}
     \maketitle
+    \pagestyle{empty}
+    \newpage
+    \newpage
+    \thispagestyle{empty}
+    \null
+    \newpage
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{gfx/karta_pracy.png}
+    \end{figure}
+    \newpage
+    \thispagestyle{empty}
+    \null
+    \newpage
+    \pagestyle{empty}
+    \newpage
     \abstractpages
 % Zgodnie z Zarządzeniem JM Rektora 3/2022, oświadczenia o autorstwie i
 % opcjonalne oświadczenie o udzieleniu licencji składane są w systemie USOS

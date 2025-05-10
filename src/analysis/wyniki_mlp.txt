@@ -1,112 +1,184 @@
-Logarytmizowanie funkcji celu pogarsza wynik 
+# Budowa modelu w Keras
+model = Sequential()
+model.add(Dense(architecture[0], activation='relu', input_dim=X_train.shape[1], kernel_regularizer=l2(0.1)))
+for units in architecture[1:]:
+    model.add(Dense(units, activation='relu', kernel_regularizer=l2(0.1)))
+    model.add(Dropout(0.2))
+model.add(Dense(1))
 
-Wyniki na zbiorze testowym:
-           Metryka  Spokojny (2019, pełny)  Spokojny (2019, skrócony)  Niespokojny (2023, pełny)  Niespokojny (2023, skrócony)
-0    MAE (PLN/MWh)                   94.89                      91.20                     235.95                        260.42
-1   RMSE (PLN/MWh)                  115.20                     115.70                     289.04                        317.49
-2  MSE (PLN/MWh)^2                13270.56                   13385.56                   83543.90                     100797.18
-3         MAPE (%)                     NaN                        NaN                        NaN                           NaN
-4        sMAPE (%)                     NaN                        NaN                        NaN                           NaN
-5               R2                   -4.85                      -4.90                      -1.73                         -2.30
+# Kompilacja modelu
+model.compile(optimizer=Adam(learning_rate=0.0001), loss='mse')
 
-więcej neuronów 
-           Metryka  Spokojny (2019, pełny)  Spokojny (2019, skrócony)  Niespokojny (2023, pełny)  Niespokojny (2023, skrócony)
-0    MAE (PLN/MWh)                   89.03                      87.40                     207.44                        212.94
-1   RMSE (PLN/MWh)                  108.20                     105.02                     260.87                        239.81
-2  MSE (PLN/MWh)^2                11706.43                   11028.47                   68052.59                      57510.19
-3         MAPE (%)                     NaN                        NaN                        NaN                           NaN
-4        sMAPE (%)                     NaN                        NaN                        NaN                           NaN
-5               R2                   -4.16                      -3.86                      -1.23                         -0.88
+    # Trenowanie modelu
+    model.fit(
+        X_train, y_train,
+        epochs=1000,
+        batch_size=128,
+        verbose=0
+    )
 
-hidden_layer_sizes=(128, 64, 32),
-Wyniki na zbiorze testowym:
-           Metryka  Spokojny (2019, skrócony)  Niespokojny (2023, skrócony)
-0    MAE (PLN/MWh)                      51.21                        213.68
-1   RMSE (PLN/MWh)                      63.50                        255.42
-2  MSE (PLN/MWh)^2                    4031.75                      65241.85
-3         MAPE (%)                        NaN                           NaN
-4        sMAPE (%)                        NaN                           NaN
-5               R2                      -0.78                         -1.13
-
-Keras - dużo lepiej : Wyniki na zbiorze testowym:
-           Metryka  Spokojny (2019, pełny)  Spokojny (2019, skrócony)  Niespokojny (2023, skrócony)
-0    MAE (PLN/MWh)                   27.57                      25.97                         97.19
-1   RMSE (PLN/MWh)                   34.37                      32.97                        120.76
-2  MSE (PLN/MWh)^2                 1181.23                    1086.85                      14583.66
-3         MAPE (%)                   13.12                      13.19                       2733.34
-4        sMAPE (%)                   12.83                      11.75                         24.82
-5               R2                    0.48                       0.52                          0.52
-
-
-Wyniki na zbiorze testowym dla architektury (32, 16, 16):
-           Metryka  Spokojny (2019, pełny)  Spokojny (2019, skrócony)  Niespokojny (2023, pełny)  Niespokojny (2023, skrócony)
-0    MAE (PLN/MWh)                   24.68                      27.55                     100.88                        103.28
-1   RMSE (PLN/MWh)                   30.82                      33.93                     129.11                        130.41
-2  MSE (PLN/MWh)^2                  949.94                    1151.37                   16669.02                      17005.47
-3         MAPE (%)                   11.64                      13.55                    3539.62                       2373.08
-4        sMAPE (%)                   11.23                      12.52                      25.55                         26.18
-5               R2                    0.58                       0.49                       0.45                          0.44
-
-
-Wyniki na zbiorze testowym dla architektury (32, 16, 8):
-           Metryka  Spokojny (2019, pełny)  Spokojny (2019, skrócony)  Niespokojny (2023, pełny)  Niespokojny (2023, skrócony)
-0    MAE (PLN/MWh)                   24.80                      26.98                     100.11                         89.15
-1   RMSE (PLN/MWh)                   31.13                      33.62                     130.64                        111.08
-2  MSE (PLN/MWh)^2                  969.33                    1130.22                   17067.74                      12339.83
-3         MAPE (%)                   12.10                      13.55                    3557.38                       2597.08
-4        sMAPE (%)                   11.37                      12.29                      26.11                         23.78
-5               R2                    0.57                       0.50                       0.44                          0.60
-
-Wyniki na zbiorze testowym dla architektury (64, 32, 16):
-           Metryka  Spokojny (2019, pełny)  Spokojny (2019, skrócony)  Niespokojny (2023, pełny)  Niespokojny (2023, skrócony)
-0    MAE (PLN/MWh)                   25.33                      24.93                     116.50                         99.69
-1   RMSE (PLN/MWh)                   31.89                      30.89                     148.48                        124.14
-2  MSE (PLN/MWh)^2                 1017.26                     954.37                   22045.76                      15410.59
-3         MAPE (%)                   12.27                      12.43                    3884.01                       3105.85
-4        sMAPE (%)                   11.53                      11.54                      28.16                         26.42
-5               R2                    0.55                       0.58                       0.28                          0.50
-
-Wyniki na zbiorze testowym dla architektury (32, 32, 32):
-           Metryka  Spokojny (2019, pełny)  Spokojny (2019, skrócony)  Niespokojny (2023, pełny)  Niespokojny (2023, skrócony)
-0    MAE (PLN/MWh)                   27.50                      28.24                     114.71                         89.51
-1   RMSE (PLN/MWh)                   34.47                      35.12                     143.49                        113.60
-2  MSE (PLN/MWh)^2                 1187.97                    1233.19                   20590.23                      12903.91
-3         MAPE (%)                   13.04                      13.74                    2282.97                       2354.40
-4        sMAPE (%)                   13.00                      12.35                      29.13                         23.72
-5               R2                    0.48                       0.46                       0.33                          0.58
-
-Wyniki na zbiorze testowym dla architektury (64, 32):
-           Metryka  Spokojny (2019, pełny)  Spokojny (2019, skrócony)  Niespokojny (2023, pełny)  Niespokojny (2023, skrócony)
-0    MAE (PLN/MWh)                   27.83                      28.77                     106.46                        102.18
-1   RMSE (PLN/MWh)                   34.20                      35.57                     136.61                        128.90
-2  MSE (PLN/MWh)^2                 1169.65                    1265.12                   18661.94                      16614.51
-3         MAPE (%)                   13.25                      13.84                    2462.14                       2877.09
-4        sMAPE (%)                   13.01                      12.79                      28.11                         26.06
-5               R2                    0.48                       0.44                       0.39                          0.46
-
-Wyniki na zbiorze testowym dla architektury (32, 32):
-           Metryka  Spokojny (2019, pełny)  Spokojny (2019, skrócony)  Niespokojny (2023, pełny)  Niespokojny (2023, skrócony)
-0    MAE (PLN/MWh)                   25.19                      28.13                      99.38                        104.30
-1   RMSE (PLN/MWh)                   31.13                      34.90                     128.50                        128.18
-2  MSE (PLN/MWh)^2                  969.10                    1217.67                   16512.85                      16430.85
-3         MAPE (%)                   12.07                      13.93                    3579.44                       1990.62
-4        sMAPE (%)                   11.57                      12.73                      26.94                         25.66
-5               R2                    0.57                       0.46                       0.46                          0.46
 
 Wyniki na zbiorze testowym dla architektury (32,):
-           Metryka  Spokojny (2019, pełny)  Spokojny (2019, skrócony)  Niespokojny (2023, pełny)  Niespokojny (2023, skrócony)
-0    MAE (PLN/MWh)                   25.41                      28.61                     120.39                         82.09
-1   RMSE (PLN/MWh)                   31.78                      35.14                     151.90                        103.34
-2  MSE (PLN/MWh)^2                 1010.19                    1235.12                   23073.64                      10678.35
-3         MAPE (%)                   11.87                      14.08                    1829.09                       2123.81
-4        sMAPE (%)                   11.85                      13.01                      36.81                         22.77
-5               R2                    0.56                       0.46                       0.25                          0.65
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   18.18                      26.26                     167.67                        154.79
+1  RMSE (PLN/MWh)                   23.69                      31.87                     197.82                        188.64
+2        MAPE (%)                    9.10                      13.18                    1270.36                        807.25
+3       sMAPE (%)                    8.58                      11.77                      46.27                         51.52
+4              R2                    0.77                       0.59                      -0.22                         -0.11
 
-Wyniki na zbiorze testowym dla architektury (32, 16, 8): patience 50
-           Metryka  Spokojny (2019, pełny)  Spokojny (2019, skrócony)  Niespokojny (2023, pełny)  Niespokojny (2023, skrócony)
-0    MAE (PLN/MWh)                   24.26                      28.60                     124.21                        129.04
-1   RMSE (PLN/MWh)                   30.60                      34.74                     151.47                        159.62
-2  MSE (PLN/MWh)^2                  936.63                    1206.79                   22942.27                      25479.40
-3         MAPE (%)                   11.71                      13.87                    3129.02                       3690.30
-4        sMAPE (%)                   11.16                      13.43                      30.04                         29.70
-5               R2                    0.59                       0.47                       0.25                          0.17
+Wyniki na zbiorze testowym dla architektury (32,):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   18.75                      21.05                     168.90                        160.10
+1  RMSE (PLN/MWh)                   24.64                      26.58                     197.29                        191.73
+2        MAPE (%)                    9.55                      10.81                    1443.08                        449.75
+3       sMAPE (%)                    8.80                       9.70                      46.58                         53.72
+4              R2                    0.75                       0.71                      -0.22                         -0.15
+
+Wyniki na zbiorze testowym dla architektury (64,):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   19.02                      23.64                     128.15                        140.19
+1  RMSE (PLN/MWh)                   24.76                      29.36                     154.29                        167.06
+2        MAPE (%)                    9.45                      12.04                    1645.04                        338.22
+3       sMAPE (%)                    8.77                      10.70                      33.80                         45.09
+4              R2                    0.75                       0.65                       0.26                          0.13
+
+Wyniki na zbiorze testowym dla architektury (128,):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   20.42                      29.39                      99.42                        100.64
+1  RMSE (PLN/MWh)                   26.77                      35.08                     123.12                        122.20
+2        MAPE (%)                   10.25                      14.07                    2092.09                       1102.53
+3       sMAPE (%)                    9.18                      12.57                      25.28                         25.35
+4              R2                    0.71                       0.50                       0.53                          0.53
+
+Wyniki na zbiorze testowym dla architektury (32, 32):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   24.58                      22.79                     115.38                         95.92
+1  RMSE (PLN/MWh)                   31.79                      28.70                     143.86                        116.97
+2        MAPE (%)                   12.33                      11.73                    2427.83                       1783.64
+3       sMAPE (%)                   10.82                      10.40                      29.21                         23.72
+4              R2                    0.59                       0.67                       0.35                          0.57
+
+Wyniki na zbiorze testowym dla architektury (64, 32):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   22.80                      35.09                      99.45                         99.22
+1  RMSE (PLN/MWh)                   29.61                      41.08                     122.32                        120.18
+2        MAPE (%)                   11.62                      17.26                    1889.63                       1888.08
+3       sMAPE (%)                   10.34                      14.98                      24.67                         24.77
+4              R2                    0.64                       0.32                       0.53                          0.55
+
+Wyniki na zbiorze testowym dla architektury (128, 64):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   25.68                      40.66                      96.04                         95.08
+1  RMSE (PLN/MWh)                   33.40                      46.70                     117.79                        115.07
+2        MAPE (%)                   13.00                      19.46                    1849.89                       1948.08
+3       sMAPE (%)                   11.36                      16.83                      23.89                         23.37
+4              R2                    0.55                       0.12                       0.57                          0.59
+
+Wyniki na zbiorze testowym dla architektury (32, 32, 32):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   28.56                      39.21                     108.06                        118.72
+1  RMSE (PLN/MWh)                   36.32                      47.38                     139.09                        148.76
+2        MAPE (%)                   14.87                      18.78                    2946.10                       2275.20
+3       sMAPE (%)                   12.71                      16.11                      24.96                         25.92
+4              R2                    0.47                       0.09                       0.40                          0.31
+
+Wyniki na zbiorze testowym dla architektury (64, 32, 16):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   28.02                      34.51                     109.16                         91.45
+1  RMSE (PLN/MWh)                   35.33                      42.49                     133.90                        111.97
+2        MAPE (%)                   14.20                      16.30                    2700.75                       1859.95
+3       sMAPE (%)                   12.39                      14.23                      26.20                         22.61
+4              R2                    0.49                       0.27                       0.44                          0.61
+
+Wyniki na zbiorze testowym dla architektury (128, 64, 32):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   31.39                      46.98                     114.02                         92.92
+1  RMSE (PLN/MWh)                   39.61                      54.84                     143.06                        119.24
+2        MAPE (%)                   14.75                      21.93                    2147.32                       2059.18
+3       sMAPE (%)                   13.11                      18.77                      26.67                         21.96
+4              R2                    0.36                      -0.22                       0.36                          0.56
+
+Wyniki na zbiorze testowym dla architektury (32, 16, 8):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   20.29                      20.93                     112.33                        107.40
+1  RMSE (PLN/MWh)                   26.58                      27.39                     136.96                        128.70
+2        MAPE (%)                   10.49                      10.37                    2853.27                       1808.21
+3       sMAPE (%)                    9.48                       9.32                      27.19                         26.72
+4              R2                    0.71                       0.70                       0.41                          0.48
+
+Wyniki na zbiorze testowym dla architektury (64, 32, 16, 8):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   26.46                      26.68                      94.54                         79.66
+1  RMSE (PLN/MWh)                   34.06                      34.93                     115.68                        101.01
+2        MAPE (%)                   12.97                      12.91                    1696.57                       1747.79
+3       sMAPE (%)                   11.51                      11.40                      23.74                         19.79
+4              R2                    0.53                       0.51                       0.58                          0.68
+
+Wyniki na zbiorze testowym dla architektury (128, 64, 32, 16):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   28.75                      23.65                     150.00                        120.04
+1  RMSE (PLN/MWh)                   43.23                      35.98                     179.88                        150.53
+2        MAPE (%)                   12.82                      10.40                    2224.41                       2383.44
+3       sMAPE (%)                   11.44                       9.69                      30.83                         26.36
+4              R2                    0.24                       0.48                      -0.01                          0.29
+
+Wyniki na zbiorze testowym dla architektury (256, 128, 64):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   24.43                      59.03                     114.37                        194.03
+1  RMSE (PLN/MWh)                   31.80                      85.42                     146.54                        228.71
+2        MAPE (%)                   11.93                      25.20                    1976.81                       2860.41
+3       sMAPE (%)                   10.66                      20.64                      25.65                         36.81
+4              R2                    0.59                      -1.96                       0.33                         -0.64
+
+Wyniki na zbiorze testowym dla architektury (64, 64, 32, 16, 8):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   17.09                      34.55                      98.10                         79.45
+1  RMSE (PLN/MWh)                   22.75                      53.58                     125.19                        103.57
+2        MAPE (%)                    8.43                      14.87                    2524.32                       2119.38
+3       sMAPE (%)                    7.87                      13.56                      23.95                         19.96
+4              R2                    0.79                      -0.16                       0.51                          0.66
+
+Wyniki na zbiorze testowym dla architektury (128, 128, 64, 32, 16):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   24.67                      19.50                      99.93                         91.65
+1  RMSE (PLN/MWh)                   36.35                      25.77                     126.95                        119.41
+2        MAPE (%)                   11.27                       9.14                    1930.14                       1556.73
+3       sMAPE (%)                   10.22                       8.96                      23.36                         22.41
+4              R2                    0.46                       0.73                       0.50                          0.55
+
+Wyniki na zbiorze testowym dla architektury (32, 32, 16, 8, 4):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   22.10                      28.60                      91.88                         87.03
+1  RMSE (PLN/MWh)                   28.03                      33.80                     115.44                        107.88
+2        MAPE (%)                   10.33                      12.82                    2008.90                       1754.40
+3       sMAPE (%)                   10.24                      13.45                      23.33                         21.68
+4              R2                    0.68                       0.54                       0.58                          0.64
+
+Wyniki na zbiorze testowym dla architektury (32, 32, 16, 16, 8):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   22.43                      20.90                     115.30                         96.86
+1  RMSE (PLN/MWh)                   28.64                      27.41                     140.17                        116.87
+2        MAPE (%)                   10.91                      10.20                    2393.87                       1752.15
+3       sMAPE (%)                   10.47                       9.48                      27.79                         23.73
+4              R2                    0.67                       0.70                       0.39                          0.57
+
+NOWY TEST : ZWIEKSZLEM EPOKI DO 1k , batch_size - 128, dropout = 0.1, learning_rate=0.001
+Wyniki na zbiorze testowym dla architektury (64, 64, 32, 16, 8):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   19.35                      49.38                     104.61                        113.39
+1  RMSE (PLN/MWh)                   24.92                      80.28                     128.50                        142.99
+2        MAPE (%)                    9.30                      20.30                    1688.25                       1773.13
+3       sMAPE (%)                    9.05                      16.76                      25.76                         25.32
+4              R2                    0.75                      -1.61                       0.48                          0.36
+
+
+learning_rate = 0.001
+Wyniki na zbiorze testowym dla architektury (64, 64, 32, 16, 8):
+          Metryka  Stabilny (2019, pełny)  Stabilny (2019, skrócony)  Niestabilny (2023, pełny)  Niestabilny (2023, skrócony)
+0   MAE (PLN/MWh)                   21.52                      50.31                      98.85                         66.08
+1  RMSE (PLN/MWh)                   26.98                      80.09                     126.89                         88.46
+2        MAPE (%)                   10.09                      20.76                    1361.22                       1702.13
+3       sMAPE (%)                    9.96                      17.16                      22.21                         17.38
+4              R2                    0.70                      -1.60                       0.50                          0.76
+
+learning_rate = 0.01, 

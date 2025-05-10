@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from prophet import Prophet
-from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error
+from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error, r2_score
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 import os
@@ -223,67 +223,81 @@ def evaluate_prophet(train_data, test_data, params, combination_idx, dataset_typ
     rmse = np.sqrt(mean_squared_error(y_true, y_pred))
     mape = mean_absolute_percentage_error(y_true, y_pred) * 100
     smape_value = smape(y_true, y_pred)
+    r2 = r2_score(y_true, y_pred)
 
     # Zmierz czas zakończenia
     end_time = time.time()
     execution_time = end_time - start_time
     print(f"Czas wykonania dla kombinacji {combination_idx} ({dataset_type}): {execution_time:.2f} sekund")
     
-    # Histogram reszt
-    residuals = y_true - y_pred
-    plt.figure(figsize=(6, 4))
-    plt.hist(residuals, bins=50, color="red", alpha=0.7)
-    plt.title(f"Histogram reszt - Prophet (pełny zbiór)", fontsize=12)
-    plt.xlabel("Reszty", fontsize=10)
-    plt.ylabel("Częstość", fontsize=10)
-    plt.grid(True)
-    plt.tight_layout()
-    os.makedirs('../../plots/predicts', exist_ok=True)
-    plt.savefig(f'../../plots/predicts/residuals_histogram_Prophet_stable.png', dpi=300)
-    plt.close()
+    # # Histogram reszt
+    # residuals = y_true - y_pred
+    # plt.figure(figsize=(6, 4))
+    # plt.hist(residuals, bins=50, color="red", alpha=0.7)
+    # plt.title(f"Histogram reszt - Prophet", fontsize=12)
+    # plt.xlabel("Reszty", fontsize=10)
+    # plt.ylabel("Częstość", fontsize=10)
+    # plt.grid(True)
+    # plt.tight_layout()
+    # os.makedirs('../../plots/predicts', exist_ok=True)
+    # plt.savefig(f'../../plots/predicts/residuals_histogram_Prophet_stable.png', dpi=300)
+    # plt.close()
     
-    # Wykres predykcji vs. wartości rzeczywistych
-    # Filtrowanie danych testowych dla Q1 (pierwszy kwartał)
-    test_data_q1 = test_data[(test_data['ds'] >= '2019-01-01') & (test_data['ds'] < '2019-04-01')]
-    y_true_q1 = test_data_q1['y'].values
-    y_pred_q1 = forecast.loc[forecast['ds'].isin(test_data_q1['ds']), 'yhat'].values
+    # # Wykres predykcji vs. wartości rzeczywistych
+    # # Filtrowanie danych testowych dla Q1 (pierwszy kwartał)
+    # test_data_q1 = test_data[(test_data['ds'] >= '2019-01-01') & (test_data['ds'] < '2019-04-01')]
+    # y_true_q1 = test_data_q1['y'].values
+    # y_pred_q1 = forecast.loc[forecast['ds'].isin(test_data_q1['ds']), 'yhat'].values
 
-    plt.figure(figsize=(12, 4))
-    plt.plot(test_data_q1['ds'], y_true_q1, label="Rzeczywiste", color="blue", alpha=0.7)
-    plt.plot(test_data_q1['ds'], y_pred_q1, label="Prophet", color="red", alpha=0.7, linestyle='--')
-    plt.title(f"Okres stabilny - Q1 2019", fontsize=14)
-    plt.xlabel("Czas", fontsize=12)
-    plt.ylabel("Cena energii [PLN/MWh]", fontsize=12)
-    plt.grid(True)
-    plt.legend()
-    plt.tight_layout()
-    plt.savefig(f'../../plots/predicts/Prophet_predictions_stable_Q1.png', dpi=300)
-    plt.close()
+    # plt.figure(figsize=(12, 4))
+    # plt.plot(test_data_q1['ds'], y_true_q1, label="Rzeczywiste", color="blue", alpha=0.7)
+    # plt.plot(test_data_q1['ds'], y_pred_q1, label="Prophet", color="red", alpha=0.7, linestyle='--')
+    # plt.title(f"Okres stabilny - Q1 2019", fontsize=14)
+    # plt.xlabel("Czas", fontsize=12)
+    # plt.ylabel("Cena energii [PLN/MWh]", fontsize=12)
+    # plt.grid(True)
+    # plt.legend()
+    # plt.tight_layout()
+    # plt.savefig(f'../../plots/predicts/Prophet_predictions_stable_Q1.png', dpi=300)
+    # plt.close()
+
+    # # --- Wykres błędów na całym okresie testowym ---
+    # plt.figure(figsize=(12, 6))
+    # plt.plot(test_data["ds"], y_true - y_pred, color="red", alpha=0.7, label="Błędy")
+    # plt.axhline(y=0, color="black", linestyle="--", label="Linia zerowa")
+    # plt.title("Błędy na całym okresie testowym - Prophet", fontsize=14)
+    # plt.xlabel("Czas", fontsize=12)
+    # plt.ylabel("Błędy w czasie [PLN/MWh]", fontsize=12)
+    # plt.grid(True)
+    # plt.legend()
+    # plt.tight_layout()
+    # plt.savefig("../../plots/predicts/errors_over_time_Prophet_full_stable_period.png", dpi=300)
+    # plt.close()
 
     # --- Wykres top 50 błędów (Prophet, pełny zbiór) ---
-    residuals_abs = np.abs(residuals)
-    top_50_indices = np.argsort(residuals_abs)[-50:]  # Indeksy 50 największych błędów
-    top_50_actual = y_true[top_50_indices]
-    top_50_pred = y_pred[top_50_indices]
-    top_50_timestamps = test_data.iloc[top_50_indices]["ds"].values
+    # residuals_abs = np.abs(residuals)
+    # top_50_indices = np.argsort(residuals_abs)[-50:]  # Indeksy 50 największych błędów
+    # top_50_actual = y_true[top_50_indices]
+    # top_50_pred = y_pred[top_50_indices]
+    # top_50_timestamps = test_data.iloc[top_50_indices]["ds"].values
 
-    # Wyprintowanie timestampów największych błędów
-    print("\nTimestampy największych błędów:")
-    print(top_50_timestamps)
+    # # Wyprintowanie timestampów największych błędów
+    # print("\nTimestampy największych błędów:")
+    # print(top_50_timestamps)
 
-    plt.figure(figsize=(8, 6))
-    plt.scatter(top_50_pred, top_50_actual, color="red", alpha=0.7)
-    plt.plot([min(top_50_actual.min(), top_50_pred.min()), max(top_50_actual.max(), top_50_pred.max())],
-             [min(top_50_actual.min(), top_50_pred.min()), max(top_50_actual.max(), top_50_pred.max())],
-             color="black", linestyle="--", label="Linia idealna")
-    plt.title("Top 50 błędów: Predykcje vs Rzeczywiste (Prophet, pełny zbiór)", fontsize=12)
-    plt.xlabel("Predykcje [PLN/MWh]", fontsize=10)
-    plt.ylabel("Rzeczywiste wartości [PLN/MWh]", fontsize=10)
-    plt.grid(True)
-    plt.legend()
-    plt.tight_layout()
-    plt.savefig("../../plots/predicts/top_50_errors_Prophet_full_stable_period.png", dpi=300)
-    plt.close()
+    # plt.figure(figsize=(8, 6))
+    # plt.scatter(top_50_pred, top_50_actual, color="red", alpha=0.7)
+    # plt.plot([min(top_50_actual.min(), top_50_pred.min()), max(top_50_actual.max(), top_50_pred.max())],
+    #          [min(top_50_actual.min(), top_50_pred.min()), max(top_50_actual.max(), top_50_pred.max())],
+    #          color="black", linestyle="--", label="Linia idealna")
+    # plt.title("Top 50 błędów: Predykcje vs Rzeczywiste (Prophet, pełny zbiór)", fontsize=12)
+    # plt.xlabel("Predykcje [PLN/MWh]", fontsize=10)
+    # plt.ylabel("Rzeczywiste wartości [PLN/MWh]", fontsize=10)
+    # plt.grid(True)
+    # plt.legend()
+    # plt.tight_layout()
+    # plt.savefig("../../plots/predicts/top_50_errors_Prophet_full_stable_period.png", dpi=300)
+    # plt.close()
     
     return {
         'Combination': combination_idx,
@@ -294,7 +308,8 @@ def evaluate_prophet(train_data, test_data, params, combination_idx, dataset_typ
         'MAE': mae,
         'RMSE': rmse,
         'MAPE (%)': mape,
-        'sMAPE (%)': smape_value
+        'sMAPE (%)': smape_value,
+        'R2': r2,
     }
 
 # Testowanie na pełnym i skróconym zbiorze danych
@@ -307,18 +322,18 @@ for i, params in enumerate(param_combinations, 1):
     results_full.append(result_full)
     
     # Skrócony zbiór danych
-    # result_short = evaluate_prophet(train_prophet_short, test_prophet_short, params, i, 'Skrócony', regressors_short)
-    # results_short.append(result_short)
+    result_short = evaluate_prophet(train_prophet_short, test_prophet_short, params, i, 'Skrócony', regressors_short)
+    results_short.append(result_short)
 
 # Konwersja wyników do DataFrame
 results_full_df = pd.DataFrame(results_full)
-# results_short_df = pd.DataFrame(results_short)
+results_short_df = pd.DataFrame(results_short)
 
 # Zapis wyników do plików CSV
-# results_full_df.to_csv('../../plots/predicts/prophet_results_full_stable.csv', index=False)
-# results_short_df.to_csv('../../plots/predicts/prophet_results_short_stable.csv', index=False)
+results_full_df.to_csv('../../plots/predicts/prophet_results_full_stable.csv', index=False)
+results_short_df.to_csv('../../plots/predicts/prophet_results_short_stable.csv', index=False)
 
 print("\nWyniki dla pełnego zbioru danych:")
 print(results_full_df)
-# print("\nWyniki dla skróconego zbioru danych:")
-# print(results_short_df)
+print("\nWyniki dla skróconego zbioru danych:")
+print(results_short_df)

@@ -1,0 +1,6 @@
+Metryka,"Stabilny (2019, pełny)","Stabilny (2019, skrócony)","Niestabilny (2023, pełny)","Niestabilny (2023, skrócony)"
+MAE (PLN/MWh),20.42,29.39,99.42,100.64
+RMSE (PLN/MWh),26.77,35.08,123.12,122.2
+MAPE (%),10.25,14.07,2092.09,1102.53
+sMAPE (%),9.18,12.57,25.28,25.35
+R2,0.71,0.5,0.53,0.53

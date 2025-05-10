@@ -1,0 +1,2 @@
+Combination,Changepoint_prior_scale,Seasonality_prior_scale,Holidays_prior_scale,Seasonality_mode,MAE,RMSE,MAPE (%),sMAPE (%),R2
+1,0.1,20.0,0.1,additive,15.60180938947006,20.174654983432408,7.419600371219462,7.3316843950601225,0.8350112970114272

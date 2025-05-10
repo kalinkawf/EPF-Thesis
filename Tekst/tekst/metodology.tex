@@ -118,7 +118,7 @@ Podobnie jak MAPE, sMAPE jest wyrażane w procentach. Na przykład, sMAPE równe
 \textbf{Zalety sMAPE:}
 \begin{itemize}
     \item Rozwiązuje problem dzielenia przez zero, co jest istotne w EPF, gdzie ceny mogą być bliskie zera.
-    \item Symetria - traktuje nad- i niedoszacowania w bardziej zrównoważony sposób niż MAPE.
+    \item Symetria - traktuje oszacowanie w dół i w górę w bardziej zrównoważony sposób niż MAPE.
 \end{itemize}
 
 \textbf{Ograniczenia sMAPE:}
@@ -161,7 +161,7 @@ W kontekście EPF, na przykład na RDN, \( R^2 \) równe 0,85 oznaczałoby, że 
 \textbf{Ograniczenia \( R^2 \):}
 \begin{itemize}
     \item Wrażliwość na przeuczenie - \( R^2 \) może być zawyżone w modelach o dużej liczbie parametrów, szczególnie w przypadku małych zbiorów danych, co może prowadzić do mylnego wniosku o dobrym dopasowaniu modelu.
-    \item Brak informacji o kierunku błędów - \( R^2 \) nie rozróżnia, czy model nad- czy niedoszacowuje wartości, co w EPF może być istotne z ekonomicznego punktu widzenia.
+    \item Brak informacji o kierunku błędów - \( R^2 \) nie rozróżnia, czy model przecenia czy niedocenia wartości, co w EPF może być istotne z ekonomicznego punktu widzenia.
 \end{itemize}
 
 W niniejszej pracy \( R^2 \) zostanie wykorzystane jako dodatkowa metryka oceny, aby uzupełnić analizę opartą na MAE, RMSE, MAPE, sMAPE.

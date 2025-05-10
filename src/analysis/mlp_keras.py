@@ -1,4 +1,4 @@
-# mlp_keras_grid_search_stable_no_val.py
+# mlp_keras_grid_search_stable.py
 
 # Importowanie bibliotek
 import pandas as pd
@@ -33,7 +33,7 @@ df_full["is_holiday"] = df_full["is_holiday"].astype(int)
 df_full["peak_hour"] = df_full["peak_hour"].astype(int)
 df_short["is_holiday"] = df_short["is_holiday"].astype(int)
 
-# Definicja pełnego i skróconego zbioru danych (zgodne z poprzednimi modelami)
+# Definicja pełnego i skróconego zbioru danych
 full_features = [
     'timestamp', 'temp_waw', 'wind_speed_waw', 'cloud_cover_waw', 'solar_radiation_waw',
     'temp_ksz', 'wind_speed_ksz', 'cloud_cover_ksz', 'solar_radiation_ksz',
@@ -94,49 +94,33 @@ scaler_short = StandardScaler()
 df_full[features_to_scale_full] = scaler_full.fit_transform(df_full[features_to_scale_full])
 df_short[features_to_scale_short] = scaler_short.fit_transform(df_short[features_to_scale_short])
 
-# Przygotowanie danych dla okresu stabilnego (2016–2019)
-df_spokojny_full = df_full[(df_full["timestamp"].dt.year >= 2016) & (df_full["timestamp"].dt.year <= 2019)]
-df_spokojny_short = df_short[(df_short["timestamp"].dt.year >= 2016) & (df_short["timestamp"].dt.year <= 2019)]
+# Przygotowanie danych dla okresu stabilnego
+df_stable_full = df_full[df_full["timestamp"].dt.year <= 2019]
+df_stable_short = df_short[df_short["timestamp"].dt.year <= 2019]
 
-train_spokojny_full = df_spokojny_full[(df_spokojny_full["timestamp"].dt.year >= 2016) & (df_spokojny_full["timestamp"].dt.year <= 2018)]
-train_spokojny_short = df_spokojny_short[(df_spokojny_short["timestamp"].dt.year >= 2016) & (df_spokojny_short["timestamp"].dt.year <= 2018)]
+train_stable_full = df_stable_full[(df_stable_full["timestamp"].dt.year >= 2016) & (df_stable_full["timestamp"].dt.year <= 2018)]
+train_stable_short = df_stable_short[(df_stable_short["timestamp"].dt.year >= 2016) & (df_stable_short["timestamp"].dt.year <= 2018)]
 
-train_spokojny_full = train_spokojny_full.sample(frac=0.75, random_state=42)
-train_spokojny_short = train_spokojny_short.sample(frac=0.75, random_state=42)
-
-test_spokojny_full = df_spokojny_full[(df_spokojny_full["timestamp"].dt.year == 2019)]
-test_spokojny_short = df_spokojny_short[(df_spokojny_short["timestamp"].dt.year == 2019)]
+test_stable_full = df_stable_full[df_stable_full["timestamp"].dt.year == 2019]
+test_stable_short = df_stable_short[df_stable_short["timestamp"].dt.year == 2019]
 
 # Lista architektur do przetestowania
 architectures = [
-    # 1 warstwa
-    (32,),
-    # 2 warstwy
-    (32, 32),
-    (64, 32),
-    # 3 warstwy
-    (32, 32, 32),
-    (64, 32, 16),
-    (32, 32, 16),
-    (32, 16, 8),
-    (128, 64, 32),
-    # 4 warstwy
-    (64, 32, 16, 8),
-    (32, 16, 16, 8),
+    (64, 64, 32, 16, 8),
 ]
 
 # Funkcja do trenowania i oceny modelu MLP w Keras
 def train_and_evaluate_keras(df, features, period_name, train_data, test_data, architecture):
     start_time = time.time()
     features = [feature for feature in features if feature != "timestamp"]
- 
+
     # Przygotowanie danych
     X_train = train_data[features].values
     y_train = train_data[target].values
     X_test = test_data[features].values
     y_test = test_data[target].values
 
-    # Standaryzacja zmiennych (już wykonana wcześniej na całym DataFrame)
+    # Standaryzacja zmiennych
     scaler = StandardScaler()
     X_train = scaler.fit_transform(X_train)
     X_test = scaler.transform(X_test)
@@ -146,23 +130,20 @@ def train_and_evaluate_keras(df, features, period_name, train_data, test_data, a
 
     # Budowa modelu w Keras
     model = Sequential()
-    # Pierwsza warstwa (z input_dim)
     model.add(Dense(architecture[0], activation='relu', input_dim=X_train.shape[1], kernel_regularizer=l2(0.1)))
-    # Dodatkowe warstwy (jeśli istnieją)
     for units in architecture[1:]:
         model.add(Dense(units, activation='relu', kernel_regularizer=l2(0.1)))
-        model.add(Dropout(0.2))  # Dodanie warstwy Dropout
-    # Warstwa wyjściowa
+        model.add(Dropout(0.2))
     model.add(Dense(1))
 
     # Kompilacja modelu
     model.compile(optimizer=Adam(learning_rate=0.0001), loss='mse')
 
-    # Trenowanie modelu (bez walidacji)
+    # Trenowanie modelu
     model.fit(
         X_train, y_train,
-        epochs=500,
-        batch_size=64,
+        epochs=1000,
+        batch_size=128,
         verbose=0
     )
 
@@ -187,12 +168,12 @@ def train_and_evaluate_keras(df, features, period_name, train_data, test_data, a
 
     return metrics_test, y_test, y_pred_test, test_data["timestamp"]
 
-# Listy do przechowywania wyników
+# Lista do przechowywania wyników
 results_test = []
-period_names = ["Spokojny (2019, pełny)", "Spokojny (2019, skrócony)"]
+period_names = ["Stabilny (2019, pełny)", "Stabilny (2019, skrócony)"]
 datasets = [
-    (df_full, full_features_updated, train_spokojny_full, test_spokojny_full),
-    (df_short, short_features_updated, train_spokojny_short, test_spokojny_short)
+    (df_full, full_features_updated, train_stable_full, test_stable_full),
+    (df_short, short_features_updated, train_stable_short, test_stable_short)
 ]
 
 # Pętla po architekturach
@@ -205,7 +186,7 @@ for architecture in architectures:
     y_preds = []
     dates_all = []
 
-    # Pętla po zestawach danych (2 przypadki: pełny i skrócony)
+    # Pętla po zestawach danych
     for (df, features, train_data, test_data), period_name in zip(datasets, period_names):
         metrics_test, y_test, y_pred_test, dates = train_and_evaluate_keras(
             df, features, period_name, train_data, test_data, architecture
@@ -218,9 +199,9 @@ for architecture in architectures:
     # Tworzenie DataFrame z wynikami dla testu
     results_test_df = pd.DataFrame({
         "Metryka": ["MAE (PLN/MWh)", "RMSE (PLN/MWh)", "MAPE (%)", "sMAPE (%)", "R2"],
-        "Spokojny (2019, pełny)": [test_metrics_all[0]["MAE"], test_metrics_all[0]["RMSE"], test_metrics_all[0]["MAPE"], 
-                                   test_metrics_all[0]["sMAPE"], test_metrics_all[0]["R2"]],
-        "Spokojny (2019, skrócony)": [test_metrics_all[1]["MAE"], test_metrics_all[1]["RMSE"], test_metrics_all[1]["MAPE"], 
+        "Stabilny (2019, pełny)": [test_metrics_all[0]["MAE"], test_metrics_all[0]["RMSE"], test_metrics_all[0]["MAPE"], 
+                                  test_metrics_all[0]["sMAPE"], test_metrics_all[0]["R2"]],
+        "Stabilny (2019, skrócony)": [test_metrics_all[1]["MAE"], test_metrics_all[1]["RMSE"], test_metrics_all[1]["MAPE"], 
                                       test_metrics_all[1]["sMAPE"], test_metrics_all[1]["R2"]]
     })
 
@@ -234,29 +215,75 @@ for architecture in architectures:
     print(f"\nWyniki na zbiorze testowym dla architektury {architecture}:")
     print(results_test_df)
 
-    # # Wykres prognoz vs rzeczywiste wartości dla okresu stabilnego (2019, pełny zestaw, testowy)
-    # plt.figure(figsize=(12, 4))
-    # plt.plot(dates_all[0], y_tests[0], label='Rzeczywiste ceny', color='blue', alpha=0.7)
-    # plt.plot(dates_all[0], y_preds[0], label=f'Prognozy MLP (Keras, pełny zestaw, architektura {architecture})', color='red', alpha=0.7)
-    # plt.title(f'Okres stabilny (2019) - Pełny zbiór, architektura {architecture}', fontsize=14)
-    # plt.xlabel('Czas', fontsize=12)
-    # plt.ylabel('Cena energii [PLN/MWh]', fontsize=12)
-    # plt.grid(True)
-    # plt.legend()
-    # plt.tight_layout()
-    # os.makedirs('../../plots/predicts', exist_ok=True)
-    # plt.savefig(f'../../plots/predicts/mlp_predictions_full_stable_{architecture}.png', dpi=300)
-    # plt.close()
+    # Zapisywanie wyników do pliku
+    os.makedirs('../../plots/mlp1', exist_ok=True)
+    results_test_df.to_csv(f'../../plots/mlp1/mlp_results_{architecture}.csv', index=False)
 
-    # # Wykres prognoz vs rzeczywiste wartości dla okresu stabilnego (2019, skrócony zestaw, testowy)
-    # plt.figure(figsize=(12, 4))
-    # plt.plot(dates_all[1], y_tests[1], label='Rzeczywiste ceny', color='blue', alpha=0.7)
-    # plt.plot(dates_all[1], y_preds[1], label=f'Prognozy MLP (Keras, skrócony zestaw, architektura {architecture})', color='red', alpha=0.7)
-    # plt.title(f'Okres stabilny (2019) - Skrócony zbiór, architektura {architecture}', fontsize=14)
-    # plt.xlabel('Czas', fontsize=12)
-    # plt.ylabel('Cena energii [PLN/MWh]', fontsize=12)
-    # plt.grid(True)
-    # plt.legend()
-    # plt.tight_layout()
-    # plt.savefig(f'../../plots/predicts/mlp_predictions_short_stable_{architecture}.png', dpi=300)
-    # plt.close()
+    # Wykresy predykcji vs rzeczywiste wartości (Q1 2019 dla stabilnego)
+    stable_q1_dates = dates_all[0][(dates_all[0].dt.month >= 1) & (dates_all[0].dt.month <= 3)]
+    stable_q1_y_test = y_tests[0][(dates_all[0].dt.month >= 1) & (dates_all[0].dt.month <= 3)]
+    stable_q1_y_pred = y_preds[0][(dates_all[0].dt.month >= 1) & (dates_all[0].dt.month <= 3)]
+    plt.figure(figsize=(12, 4))
+    plt.plot(stable_q1_dates, stable_q1_y_test, label='Rzeczywiste', color='blue', alpha=0.7)
+    plt.plot(stable_q1_dates, stable_q1_y_pred, label='MLP', color='red', alpha=0.7, linestyle='--')
+    plt.title('Okres stabilny (Q1 2019)', fontsize=14)
+    plt.xlabel('Czas', fontsize=12)
+    plt.ylabel('Cena energii [PLN/MWh]', fontsize=12)
+    plt.grid(True)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(f'../../plots/mlp1/mlp_predictions_full_stable_q1_{architecture}.png', dpi=300)
+    plt.close()
+
+    # Stabilny (Q1 2019, skrócony zestaw)
+    stable_q1_short_dates = dates_all[1][(dates_all[1].dt.month >= 1) & (dates_all[1].dt.month <= 3)]
+    stable_q1_short_y_test = y_tests[1][(dates_all[1].dt.month >= 1) & (dates_all[1].dt.month <= 3)]
+    stable_q1_short_y_pred = y_preds[1][(dates_all[1].dt.month >= 1) & (dates_all[1].dt.month <= 3)]
+    plt.figure(figsize=(12, 4))
+    plt.plot(stable_q1_short_dates, stable_q1_short_y_test, label='Rzeczywiste', color='blue', alpha=0.7)
+    plt.plot(stable_q1_short_dates, stable_q1_short_y_pred, label='MLP', color='red', alpha=0.7, linestyle='--')
+    plt.title('Okres stabilny (Q1 2019, skrócony zestaw)', fontsize=14)
+    plt.xlabel('Czas', fontsize=12)
+    plt.ylabel('Cena energii [PLN/MWh]', fontsize=12)
+    plt.grid(True)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(f'../../plots/mlp1/mlp_predictions_short_stable_q1_{architecture}.png', dpi=300)
+    plt.close()
+
+    # Histogram błędów (dla całego zbioru testowego stabilnego 2019, pełny zestaw)
+    errors = y_tests[0] - y_preds[0]
+    plt.figure(figsize=(8, 6))
+    plt.hist(errors, bins=50, color='red', alpha=0.7)
+    plt.title('Histogram reszt - MLP', fontsize=14)
+    plt.xlabel('Reszty [PLN/MWh]', fontsize=12)
+    plt.ylabel('Częstość', fontsize=12)
+    plt.grid(True)
+    plt.savefig(f'../../plots/mlp1/mlp_errors_histogram_full_stable_{architecture}.png', dpi=300)
+    plt.close()
+
+    # Histogram błędów (dla całego zbioru testowego stabilnego 2019, skrócony zestaw)
+    errors_short = y_tests[1] - y_preds[1]
+    plt.figure(figsize=(8, 6))
+    plt.hist(errors_short, bins=50, color='red', alpha=0.7)
+    plt.title('Histogram reszt - MLP', fontsize=14)
+    plt.xlabel('Reszty [PLN/MWh]', fontsize=12)
+    plt.ylabel('Częstość', fontsize=12)
+    plt.grid(True)
+    plt.savefig(f'../../plots/mlp1/mlp_errors_histogram_short_stable_{architecture}.png', dpi=300)
+    plt.close()
+
+    # Wykres błędów na całym okresie testowym
+    for i, period_name in enumerate(period_names):
+        residuals = y_tests[i] - y_preds[i]
+        plt.figure(figsize=(12, 6))
+        plt.plot(dates_all[i], residuals, color="red", alpha=0.7, label="Błędy")
+        plt.axhline(y=0, color="black", linestyle="--", label="Linia zerowa")
+        plt.title("Błędy na całym okresie testowym - MLP", fontsize=14)
+        plt.xlabel("Czas", fontsize=12)
+        plt.ylabel("Błędy w czasie [PLN/MWh]", fontsize=12)
+        plt.grid(True)
+        plt.legend()
+        plt.tight_layout()
+        plt.savefig(f"../../plots/mlp1/errors_over_time_{architecture}_{period_name.replace(' ', '_').replace('(', '').replace(')', '').replace(',', '')}.png", dpi=300)
+        plt.close()

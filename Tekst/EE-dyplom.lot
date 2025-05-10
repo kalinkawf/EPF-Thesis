@@ -1,19 +1,21 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {1}{\ignorespaces \xpg@aux {}{polish}Podstawowe statystyki zmiennej fixing\_i\_price}}{18}{table.caption.4}%
-\contentsline {table}{\numberline {2}{\ignorespaces \xpg@aux {}{polish}Średni bilans wymiany energii z sąsiadami w latach 2016-2023. Opracowanie własne na podstawie danych PSE.}}{27}{table.caption.17}%
-\contentsline {table}{\numberline {3}{\ignorespaces \xpg@aux {}{polish}Statystyki cen energii (PLN/MWh) na rynkach sąsiednich w okresie 2016-2023. Opracowanie własne na podstawie danych ENTSO-E.}}{28}{table.caption.18}%
-\contentsline {table}{\numberline {4}{\ignorespaces \xpg@aux {}{polish}Opis zmiennych dotyczących cen paliw kopalnych i emisji CO$_2$.}}{29}{table.caption.19}%
-\contentsline {table}{\numberline {5}{\ignorespaces \xpg@aux {}{polish}Średni kurs wymiany PLN/USD i PLN/EUR w latach 2016-2023. Źródło: Opracowanie własne na podstawie danych NBP.}}{35}{table.caption.29}%
+\contentsline {table}{\numberline {1}{\ignorespaces \xpg@aux {}{polish}Podstawowe statystyki zmiennej fixing\_i\_price}}{20}{table.caption.5}%
+\contentsline {table}{\numberline {2}{\ignorespaces \xpg@aux {}{polish}Średni bilans wymiany energii z sąsiadami w latach 2016-2023. Opracowanie własne na podstawie danych PSE.}}{29}{table.caption.18}%
+\contentsline {table}{\numberline {3}{\ignorespaces \xpg@aux {}{polish}Statystyki cen energii (PLN/MWh) na rynkach sąsiednich w okresie 2016-2023. Opracowanie własne na podstawie danych ENTSO-E.}}{30}{table.caption.19}%
+\contentsline {table}{\numberline {4}{\ignorespaces \xpg@aux {}{polish}Opis zmiennych dotyczących cen paliw kopalnych i emisji CO$_2$.}}{31}{table.caption.20}%
+\contentsline {table}{\numberline {5}{\ignorespaces \xpg@aux {}{polish}Średni kurs wymiany PLN/USD i PLN/EUR w latach 2016-2023. Źródło: Opracowanie własne na podstawie danych NBP.}}{37}{table.caption.30}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6}{\ignorespaces \xpg@aux {}{polish}Porównanie statystyk opisowych cen energii w okresach spokojnym (2016-2019) i niespokojnym (2020-2023).}}{42}{table.caption.36}%
+\contentsline {table}{\numberline {6}{\ignorespaces \xpg@aux {}{polish}Porównanie statystyk opisowych cen energii w okresach spokojnym (2016-2019) i niespokojnym (2020-2023).}}{44}{table.caption.37}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {7}{\ignorespaces \xpg@aux {}{polish}Wyniki regresji liniowej i grzebietowej dla pełnego zbioru danych w okresie stabilnym (2019).}}{56}{table.caption.40}%
-\contentsline {table}{\numberline {8}{\ignorespaces \xpg@aux {}{polish}Wyniki regresji liniowej i Ridge dla skróconego zbioru danych w okresie stabilnym (2019) wraz z różnicami względem pełnego zbioru.}}{57}{table.caption.41}%
-\contentsline {table}{\numberline {9}{\ignorespaces \xpg@aux {}{polish}Wyniki regresji liniowej i Ridge z logarytmizacją dla okresu stabilnego (2019).}}{57}{table.caption.42}%
-\contentsline {table}{\numberline {10}{\ignorespaces \xpg@aux {}{polish}Wyniki modelu Prophet dla pełnego i skróconego zbioru danych w okresie stabilnym (2019).}}{60}{table.caption.47}%
-\contentsline {table}{\numberline {11}{\ignorespaces \xpg@aux {}{polish}Wyniki metryk dla regresji liniowej i Ridge w okresie niestabilnym (2023). Opracowanie własne.}}{63}{table.caption.53}%
-\contentsline {table}{\numberline {12}{\ignorespaces \xpg@aux {}{polish}Wyniki modelu Prophet dla pełnego i skróconego zbioru danych w okresie niestabilnym (2023).}}{66}{table.caption.58}%
+\contentsline {table}{\numberline {7}{\ignorespaces \xpg@aux {}{polish}Wyniki regresji liniowej i grzebietowej dla pełnego zbioru danych w okresie stabilnym (2019).}}{58}{table.caption.41}%
+\contentsline {table}{\numberline {8}{\ignorespaces \xpg@aux {}{polish}Wyniki regresji liniowej i Ridge dla skróconego zbioru danych w okresie stabilnym (2019) wraz z różnicami względem pełnego zbioru.}}{59}{table.caption.42}%
+\contentsline {table}{\numberline {9}{\ignorespaces \xpg@aux {}{polish}Wyniki regresji liniowej i Ridge z logarytmizacją dla okresu stabilnego (2019).}}{59}{table.caption.43}%
+\contentsline {table}{\numberline {10}{\ignorespaces \xpg@aux {}{polish}Wyniki modelu Prophet dla pełnego i skróconego zbioru danych w okresie stabilnym (2019).}}{62}{table.caption.48}%
+\contentsline {table}{\numberline {11}{\ignorespaces \xpg@aux {}{polish}Wyniki modelu MLP dla pełnego i skróconego zbioru danych w okresie stabilnym (2019).}}{65}{table.caption.53}%
+\contentsline {table}{\numberline {12}{\ignorespaces \xpg@aux {}{polish}Wyniki metryk dla regresji liniowej i Ridge w okresie niestabilnym (2023). Opracowanie własne.}}{68}{table.caption.58}%
+\contentsline {table}{\numberline {13}{\ignorespaces \xpg@aux {}{polish}Wyniki modelu Prophet dla pełnego i skróconego zbioru danych w okresie niestabilnym (2023).}}{71}{table.caption.63}%
+\contentsline {table}{\numberline {14}{\ignorespaces \xpg@aux {}{polish}Wyniki modelu MLP dla pełnego i skróconego zbioru danych w okresie niestabilnym (2023).}}{73}{table.caption.68}%
 \addvspace {10\p@ }
