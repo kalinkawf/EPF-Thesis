@@ -175,6 +175,37 @@
       \field{title}{Energy Transition Insights}
       \field{year}{2025}
     \endentry
+    \entry{MGR2025}{thesis}{}{}
+      \name{author}{2}{}{%
+        {{hash=cffe553c88550d21ff7ce13fad77172d}{%
+           family={Kalisz},
+           familyi={K\bibinitperiod},
+           given={Mikołaj},
+           giveni={M\bibinitperiod}}}%
+        {{hash=4fa8ee93baf279d2d95a48ad1fd932aa}{%
+           family={Mantiuk},
+           familyi={M\bibinitperiod},
+           given={Adam},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Politechnika Warszawska, Mechatroniki}%
+      }
+      \strng{namehash}{68aed0f0a5d57bb107389527e082e084}
+      \strng{fullhash}{68aed0f0a5d57bb107389527e082e084}
+      \strng{fullhashraw}{68aed0f0a5d57bb107389527e082e084}
+      \strng{bibnamehash}{68aed0f0a5d57bb107389527e082e084}
+      \strng{authorbibnamehash}{68aed0f0a5d57bb107389527e082e084}
+      \strng{authornamehash}{68aed0f0a5d57bb107389527e082e084}
+      \strng{authorfullhash}{68aed0f0a5d57bb107389527e082e084}
+      \strng{authorfullhashraw}{68aed0f0a5d57bb107389527e082e084}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Uczenie ciągłe w modelowaniu cen energii elektrycznej}
+      \field{year}{2025}
+    \endentry
     \entry{LAGO2021116983}{article}{}{}
       \name{author}{4}{}{%
         {{hash=e6d8a5b4cb4cd4ec0c45b4b15eaecce7}{%
@@ -420,33 +451,6 @@
       \verb{url}
       \verb https://www.mdpi.com/1996-1073/13/18/4605
       \endverb
-    \endentry
-    \entry{MGR2025}{thesis}{}{}
-      \name{author}{1}{}{%
-        {{hash=7bc7231d3ff0ffc53535b105543c0ef4}{%
-           family={Mikołaj\bibnamedelima Kalisz},
-           familyi={M\bibinitperiod\bibinitdelim K\bibinitperiod},
-           given={Adam\bibnamedelima Mantiuk},
-           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
-      }
-      \list{institution}{1}{%
-        {Politechnika Warszawska, Mechatroniki}%
-      }
-      \strng{namehash}{7bc7231d3ff0ffc53535b105543c0ef4}
-      \strng{fullhash}{7bc7231d3ff0ffc53535b105543c0ef4}
-      \strng{fullhashraw}{7bc7231d3ff0ffc53535b105543c0ef4}
-      \strng{bibnamehash}{7bc7231d3ff0ffc53535b105543c0ef4}
-      \strng{authorbibnamehash}{7bc7231d3ff0ffc53535b105543c0ef4}
-      \strng{authornamehash}{7bc7231d3ff0ffc53535b105543c0ef4}
-      \strng{authorfullhash}{7bc7231d3ff0ffc53535b105543c0ef4}
-      \strng{authorfullhashraw}{7bc7231d3ff0ffc53535b105543c0ef4}
-      \field{sortinit}{M}
-      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Uczenie ciągłe w modelowaniu cen energii elektrycznej}
-      \field{type}{mathesis}
-      \field{year}{2025}
     \endentry
     \entry{METEO}{misc}{}{}
       \name{author}{1}{}{%

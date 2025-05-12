@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.5.2)  10 MAY 2025 20:37
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.5.2)  12 MAY 2025 17:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1952,16 +1952,12 @@ TU/LatinModernSans(1)/m/n/10.95 )
  []
 
 
-Overfull \hbox (38.83804pt too wide) in paragraph at lines 99--100
-\TU/LatinModernSans(1)/m/n/10.95 leźć optymalne ustawienia. Najlepsze rezultaty
- uzyskano dla kombinacji (\TU/LatinModernMono(0)/m/n/10.95 changepoint_prior_sc
-ale=0.100\TU/LatinModernSans(1)/m/n/10.95 ,
- []
-
-
-Underfull \hbox (badness 1365) in paragraph at lines 99--100
-\TU/LatinModernSans(1)/m/n/10.95 zmiany w cenach energii (np. stopniowe wzrosty
-), oraz wysoką elastycznością sezonowości
+Overfull \hbox (32.92017pt too wide) in paragraph at lines 99--100
+\TU/LatinModernSans(1)/m/n/10.95 (\TU/LatinModernMono(0)/m/n/10.95 changepoint_
+prior_scale=0.100\TU/LatinModernSans(1)/m/n/10.95 , \TU/LatinModernMono(0)/m/n/
+10.95 seasonality_prior_scale=20.0\TU/LatinModernSans(1)/m/n/10.95 , \TU/LatinM
+odernMono(0)/m/n/10.95 holidays_prior_scale=0.1\TU/LatinModernSans(1)/m/n/10.95
+ ),
  []
 
 
@@ -2019,17 +2015,21 @@ Graphic file (type bmp)
 
 
 [69]
-Underfull \hbox (badness 1515) in paragraph at lines 259--260
+Underfull \hbox (badness 1515) in paragraph at lines 259--261
 \TU/LatinModernSans(1)/m/n/10.95 Model Prophet lekko poprawił wyniki w porównan
 iu do regresji liniowej i Ridge. Najlep-
  []
 
 
-Overfull \hbox (55.538pt too wide) in paragraph at lines 259--260
-\TU/LatinModernMono(0)/m/n/10.95 seasonality_prior_scale=50.0\TU/LatinModernSan
-s(1)/m/n/10.95 , \TU/LatinModernMono(0)/m/n/10.95 holidays_prior_scale=0.1\TU/L
-atinModernSans(1)/m/n/10.95 ). Niska wartość \TU/LatinModernMono(0)/m/n/10.95 c
-hangepoint_prior_scale
+Underfull \hbox (badness 3449) in paragraph at lines 259--261
+\TU/LatinModernMono(0)/m/n/10.95 changepoint_prior_scale \TU/LatinModernSans(1)
+/m/n/10.95 sugeruje, że model preferuje bardziej stabilne trendy, unika-
+ []
+
+
+Underfull \hbox (badness 4242) in paragraph at lines 259--261
+\TU/LatinModernSans(1)/m/n/10.95 jąc nadmiernego dopasowania do szumów w danych
+ treningowych. Zwiększona wartość
  []
 
 
@@ -2090,14 +2090,6 @@ inModernSans(1)/m/n/10.95 ,
  []
 
 
-Overfull \hbox (82.91298pt too wide) in paragraph at lines 25--26
-\TU/LatinModernMono(0)/m/n/10.95 seasonality_prior_scale=50.0\TU/LatinModernSan
-s(1)/m/n/10.95 , \TU/LatinModernMono(0)/m/n/10.95 holidays_prior_scale=0.1\TU/L
-atinModernSans(1)/m/n/10.95 ). Niska wartość \TU/LatinModernMono(0)/m/n/10.95 c
-hangepoint_prior_scale
- []
-
-
 
 [77]
 File: ../plots/predicts/top_50_errors_Prophet_full_stable_period.png Graphic fi
@@ -2151,32 +2143,24 @@ i skróconego zbioru danych w okresie niestabilnym
 
 [86
 
-] (EE-dyplom.app)
-\tf@app=\write13
-\openout13 = `EE-dyplom.app'.
-
- (appendices.tex)
-
-[87
-
 ] (EE-dyplom.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `EE-dyplom.out' has not changed.
-(rerunfilecheck)             Checksum: F57D3BB2F73B9A4A32FCD3F78EDE8620;7481.
+(rerunfilecheck)             Checksum: FB5908B75CAA55F1745BB4140E68F2E5;7343.
 Package logreq Info: Writing requests to 'EE-dyplom.run.xml'.
 \openout1 = `EE-dyplom.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46599 strings out of 408640
- 956468 string characters out of 5744799
- 2120974 words of memory out of 5000000
- 68884 multiletter control sequences out of 15000+600000
+ 46584 strings out of 408640
+ 956218 string characters out of 5744799
+ 2121974 words of memory out of 5000000
+ 68875 multiletter control sequences out of 15000+600000
  569180 words of font info for 136 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  114i,12n,131p,2691b,5208s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on EE-dyplom.pdf (87 pages).
+Output written on EE-dyplom.pdf (86 pages).

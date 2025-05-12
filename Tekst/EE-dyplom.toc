@@ -59,4 +59,3 @@
 \contentsline {chapter}{Wykaz skrótów i symboli}{83}{chapter*.77}%
 \contentsline {chapter}{Spis rysunków}{84}{chapter*.80}%
 \contentsline {chapter}{Spis tabel}{86}{chapter*.81}%
-\contentsline {chapter}{Spis załączników}{87}{chapter*.82}%
