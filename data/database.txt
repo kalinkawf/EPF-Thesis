@@ -68,7 +68,7 @@ fixing_i_price_mean48
 Other data:
 day_of_week - Dzień tyg [0-6]
 is_holiday - Czy święto [True/False]
-peak_hour - Czy godzina szczytu i zapotrzebowanie duże
+peak_hour - Czy godzina szczytu i zapotrzebowanie duże [True/False]
 
 Ilosc danych : 78813
 Zakres 01.01.2016 - 31.12.2024 minus popsute dane
